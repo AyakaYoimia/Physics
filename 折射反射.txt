@@ -1,0 +1,57 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{qqwuqq}{rgb}{0,0.39215686274509803,0}
+\definecolor{ffzzqq}{rgb}{1,0.6,0}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\begin{axis}[
+x=1cm,y=1cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-10.440309090909096,
+xmax=13.523327272727276,
+ymin=-7.395563636363631,
+ymax=7.8044363636363565,
+xtick={-10,-9,...,13},
+ytick={-7,-6,...,7},]
+\clip(-10.440309090909096,-7.395563636363631) rectangle (13.523327272727276,7.8044363636363565);
+\draw [shift={(0,0)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.10000000149011612] (0,0) -- (90:0.5454545454545456) arc (90:153.434948822922:0.5454545454545456) -- cycle;
+\draw [shift={(0,0)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.10000000149011612] (0,0) -- (26.565051177077986:0.5454545454545456) arc (26.565051177077986:90:0.5454545454545456) -- cycle;
+\draw [shift={(0,0)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.10000000149011612] (0,0) -- (-90:0.5454545454545456) arc (-90:-69.39030706246793:0.5454545454545456) -- cycle;
+\draw [line width=2pt,domain=-10.440309090909096:0] plot(\x,{(-0--2*\x)/-4});
+\draw [line width=2pt,domain=0:13.523327272727276] plot(\x,{(-0-2.34*\x)/0.88});
+\draw [line width=2pt,domain=0:13.523327272727276] plot(\x,{(-0--2*\x)/4});
+\draw [->,line width=2pt] (-4,2) -- (-3.176,1.588);
+\draw [->,line width=2pt] (4,2) -- (4.704,2.352);
+\draw [->,line width=2pt] (0.88,-2.34) -- (1.24174336,-3.3019084800000003);
+\draw [->,line width=2pt,color=ffzzqq] (-4,2) -- (-3.608,2.784);
+\draw [->,line width=2pt,color=ffzzqq] (4,2) -- (3.616,2.768);
+\draw [->,line width=2pt,color=ffzzqq] (0.88,-2.34) -- (1.7213516799999993,-2.02359424);
+\begin{scriptsize}
+\draw [fill=ududff] (-4,2) circle (2.5pt);
+\draw[color=ududff] (-4.2766727272727305,1.958981818181815) node {$E_{1s}$};
+\draw [fill=ududff] (0.88,-2.34) circle (2.5pt);
+\draw[color=ududff] (0.41423636363636196,-2.1864727272727267) node {$E_{2s}$};
+\draw [fill=xdxdff] (0,0) circle (2.5pt);
+\draw [fill=ududff] (4,2) circle (2.5pt);
+\draw[color=ududff] (4.505145454545454,1.8498909090909061) node {$E'_{1s}$};
+\draw[color=black] (-3.367581818181821,2.1408) node {$k_{1}$};
+\draw[color=black] (4.505145454545454,2.522618181818178) node {$k'_{1}$};
+\draw[color=black] (1.2506,-2.513745454545454) node {$k_{2}$};
+\draw[color=ffzzqq] (-4.07667272727273,3.0862545454545414) node {$E_{1p}$};
+\draw[color=ffzzqq] (3.432418181818181,2.6317090909090872) node {$E'_{1p}$};
+\draw[color=ffzzqq] (1.2142363636363622,-1.5682909090909094) node {$E_{2p}$};
+\draw[color=qqwuqq] (-0.5675818181818202,1.0135272727272704) node {$i_{1}$};
+\draw[color=qqwuqq] (0.505145454545453,0.9226181818181796) node {$i'_{1}$};
+\draw[color=qqwuqq] (0.21423636363636192,-0.8773818181818189) node {$i_{2}$};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+\end{document}
