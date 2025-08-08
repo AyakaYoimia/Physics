@@ -1,0 +1,454 @@
+\chapter{定态微扰理论}
+
+保守Hamiltonian特征方程的近似解法
+
+\section{方法概述}
+
+微扰理论适用于Hamiltonian
+\begin{gather*}
+    \hat{H}(\lambda)=\hat{H}_0+\lambda\hat{W}
+\end{gather*}
+$\hat{H}_0$的特征值特征向量已知，具有离散谱，微扰$\lambda \ll 1$
+\begin{gather*}
+    \hat{H}_0 \ket{\varphi_p^i}=E_p^0 \ket{\varphi_p^i}
+\end{gather*}
+$\{\ket{\varphi_p^i}\}$构成一组正交归一基
+
+近似求解特征方程
+\begin{gather*}
+    \hat{H}(\lambda) \ket{\psi(\lambda)}=E(\lambda) \ket{\psi(\lambda)}
+    \\
+    \intertext{幂次展开}
+    E(\lambda)=\sum_{q=0}^{\infty} \lambda^q \varepsilon_q
+    \\
+    \ket{\psi(\lambda)}=\sum_{q=0}^{\infty} \lambda^q \ket{q}
+    \\
+    \intertext{代入特征方程}
+    (\hat{H}_0+\lambda\hat{W}) \left[\sum_{q=0}^{\infty} \lambda^q \ket{q}\right]=\left[\sum_{q'=0}^{\infty} \lambda^{q'} \varepsilon_{q'} \right] \left[\sum_{q=0}^{\infty} \lambda^q \ket{q}\right]
+    \\
+    \intertext{上式对$\forall \lambda$成立，比较系数}
+    \hat{H}_0 \ket{0}=\varepsilon_0 \ket{0}
+    \\
+    (\hat{H}_0-\varepsilon_0) \ket{1}+(\hat{W}-\varepsilon_1)\ket{0}=0
+    \\
+    (\hat{H}_0-\varepsilon_0) \ket{2}+(\hat{W}-\varepsilon_1)\ket{1}-\varepsilon_2 \ket{0}=0
+    \\
+    (\hat{H}_0-\varepsilon_0) \ket{q}+(\hat{W}-\varepsilon_1)\ket{q-1}-\varepsilon_2 \ket{q-2}-\cdots-\varepsilon_q \ket{0}=0
+\end{gather*}
+规定相位使$\inpro{0}{\psi(\lambda)}$为实数
+
+\subsection{非简并能级}
+
+考虑非简并能级$E_n^0$，特征向量$\ket{\varphi_n}$
+
+\subsubsection{零阶修正}
+
+\begin{gather*}
+    \lambda \to 0
+    \\
+    \begin{cases}
+        \varepsilon_0=E_n^0
+        \\
+        \ket{0}=\ket{\varphi_n}
+    \end{cases}
+\end{gather*}
+假设$\lambda$足够小使得$E_n(\lambda)$保持为非简并的
+
+\subsubsection{一阶修正}
+
+一阶方程作用到$\bra{\varphi_n}$上
+\begin{gather*}
+    \varepsilon_1=\inpro{\varphi_n}{\hat{W} \vert \varphi_n}
+    \\
+    E_n(\lambda)=E_n^0+\lambda \inpro{\varphi_n}{\hat{W} \vert \varphi_n}+o(\lambda^2)
+\end{gather*}
+
+一阶方程作用到$\ket{\varphi_p^i}(p \neq n)$上，结合$\inpro{\varphi_n}{1}=0$，
+\begin{gather*}
+    \ket{1}=\sum_{p \neq n} \sum_{i} \frac{\inpro{\varphi_p^i}{\hat{W} \vert \varphi_n}}{E_n^0-E_p^0} \ket{\varphi_p^i}+o(\lambda^2)
+    \\
+    \ket{\psi_n(\lambda)}=\ket{\varphi_n}+\lambda \sum_{p \neq n} \sum_{i} \frac{\inpro{\varphi_p^i}{\hat{W} \vert \varphi_n}}{E_n^0-E_p^0} \ket{\varphi_p^i}+o(\lambda^2)
+\end{gather*}
+
+\subsubsection{二阶修正}
+
+仿照上述方法
+\begin{gather*}
+    \varepsilon_2=\sum_{p \neq n} \sum_{i} \frac{\left| \inpro{\varphi_p^i}{\hat{W} \vert \varphi_n} \right|^2}{E_n^0-E_p^0}+o(\lambda^3)
+    \\
+    E_n(\lambda)=E_n^0+\lambda \inpro{\varphi_n}{\hat{W} \vert \varphi_n}+\lambda^2 \sum_{p \neq n} \sum_{i} \frac{\left| \inpro{\varphi_p^i}{\hat{W} \vert \varphi_n} \right|^2}{E_n^0-E_p^0}+o(\lambda^3)
+\end{gather*}
+
+$\varepsilon_2$上限
+\begin{gather*}
+    \intertext{$E_n^0$与其他能级差下限$\Delta E$}
+    |E_n^0-E_p^0| \geq \Delta E
+    \\
+    |\varepsilon_2| \leq \frac{\sigma^2_{\hat{W}}}{\Delta E}
+\end{gather*}
+
+\subsection{简并能级}
+
+设能级$E_n^0$简并度为$g_n$
+\begin{gather*}
+    \varepsilon_0=E_n^0
+    \\
+    \ket{0}\in \mathscr{E}_n^0
+\end{gather*}
+
+一阶方程作用到$\ket{\varphi_n^i}$上
+\begin{gather*}
+    \inpro{\varphi_n^i}{\hat{W} \vert 0}=\varepsilon_1 \inpro{\varphi_n^i}{0}
+    \\
+    \intertext{插入封闭性关系式，由$\ket{0}\in \mathscr{E}_n^0$得到}
+    \sum_{i'=1}^{g_n} \inpro{\varphi_n^i}{\hat{W} \vert \varphi_n^{i'}} \inpro{\varphi_n^{i'}}{0}=\varepsilon_1 \inpro{\varphi_n^{i}}{0}
+\end{gather*}
+限制在子空间$\mathscr{E}_n^0$内，得到特征值方程
+\begin{gather*}
+    \hat{W}^{(n)} \ket{0}=\varepsilon_1 \ket{0}
+\end{gather*}
+
+在$\mathscr{E}_n^0$内将表示矩阵对角化，可以得到一阶特征值和零阶特征向量，设表示矩阵互异特征值为
+\begin{gather*}
+    \varepsilon_i^j \quad j=1,2,\cdots,f_n^{(1)}
+\end{gather*}
+简并度之和为$g_n$，则在一级修正下简并能级$E_n^0$分裂
+\begin{itemize}
+    \item $\varepsilon_1^j$非简并：$\ket{0}$可以确定，对应非简并特征值$E_n^0+\lambda \varepsilon_1^j$
+    \item $\varepsilon_1^j$是$q$重简并的：$\ket{0}$在对应的$q$维子空间中，需要更高阶近似确定，在实质简并的情况下高阶也无法确定
+\end{itemize}
+
+\section{微扰势场中的一维谐振子}
+
+\begin{gather*}
+    \hat{H}_0=\frac{\hat{P}^2}{2m}+\frac{1}{2}m\omega^2 \hat{X}^2
+    \\
+    E_n^0=(n+\frac{1}{2})\hbar \omega \quad n=0,1,2,\cdots
+\end{gather*}
+
+\subsection{一次微扰}
+
+\begin{gather*}
+    \hat{W}=\lambda \hbar \omega \frac{m\omega}{\hbar} \hat{X}
+    \\
+    \hat{H}=\hat{H}_0+\hat{W}
+    \\
+    E_n=(n+\frac{1}{2})\hbar \omega-\frac{1}{2} \lambda^2 \hbar \omega
+    \\
+    \ket{\psi_n}=\e^{-\frac{\lambda}{\sqrt{2}}(\hat{a}^{\dagger}-\hat{a})}\ket{\varphi_n}
+\end{gather*}
+
+\subsection{二次微扰}
+
+\begin{gather*}
+    \hat{W}=\frac{1}{2} \rho m\omega^2 \hat{X}^2
+    \\
+    E_n=(n+\frac{1}{2})\hbar \omega \sqrt{1+\rho}
+\end{gather*}
+
+\subsection{三次微扰}
+
+\begin{align*}
+    \hat{W}=&\sigma \hbar \omega \hat{X}^3
+    \\
+    E_n=&(n+\frac{1}{2})\hbar \omega-\frac{15}{4} \sigma^2 (n+\frac{1}{2})^2 \hbar \omega - \frac{7}{16} \sigma^2 \hbar \omega + \cdots
+    \\
+    \ket{\psi_n}=&\ket{\varphi_n}-3\sigma (\frac{n+1}{2})^{\frac{3}{2}} \ket{\varphi_{n+1}}+3\sigma (\frac{n}{2})^{\frac{3}{2}} \ket{\varphi_{n}}
+    \\
+    &-\frac{\sigma}{3}(\frac{(n+3)(n+2)(n+1)}{8})^{\frac{1}{2}} \ket{\varphi_{n+3}}+\frac{\sigma}{3}(\frac{n(n-1)(n-2)}{8})^{\frac{1}{2}} \ket{\varphi_{n-3}}
+\end{align*}
+
+应用：双原子分子振动的非谐性\\
+受到微扰势场影响，选择定则改变
+
+\section{磁偶极子相互作用}
+
+考虑静磁场$\bm{B}_0$中两个自旋$\frac{1}{2}$粒子的磁偶极相互作用，例如$\mathrm{CaSO_4 \cdot 2H_2O}$单晶中结晶水分子的两个质子
+\begin{gather*}
+    \bm{M}_1=\gamma_1 \bm{S}_1
+    \\
+    \bm{M}_2=\gamma_2 \bm{S}_2
+    \\
+    W=\frac{\mu_0}{4\pi} \gamma_1 \gamma_2 \frac{1}{r^3}[\bm{S}_1 \cdot \bm{S}_2-3(\bm{S}_1 \cdot \bm{n})(\bm{S}_2 \cdot \bm{n})]
+\end{gather*}
+$\bm{n}$为粒子1指向粒子2连线方向的单位矢量
+\begin{gather*}
+    \hat{W}=\xi(r)(T_0+T'_0+T_1+T_{-1}+T_2+T_{-2})
+    \\
+    \begin{cases}
+        \xi(r)=-\frac{\mu_0}{4\pi} \gamma_1 \gamma_2 \frac{1}{r^3}
+        \\
+        T_0=(3\cos^2\theta-1)\hat{S}_{1z}\hat{S}_{2z}
+        \\
+        T'_0=-\frac{3\cos^2\theta-1}{4}(\hat{S}_{1+}\hat{S}_{2-}+\hat{S}_{1-}\hat{S}_{2+})
+        \\
+        T_1=\frac{3}{2}\sin\theta\cos\theta \e^{-\i \phi}(\hat{S}_{1z}\hat{S}_{2+}+\hat{S}_{1+}\hat{S}_{2z})
+        \\
+        T_{-1}=\frac{3}{2}\sin\theta\cos\theta \e^{\i \phi}(\hat{S}_{1z}\hat{S}_{2-}+\hat{S}_{1-}\hat{S}_{2z})
+        \\
+        T_2=\frac{3}{4}\sin^2\theta \e^{-2\i \phi} \hat{S}_{1+} \hat{S}_{2+}
+        \\
+        T_{-2}=\frac{3}{4}\sin^2\theta \e^{2\i \phi} \hat{S}_{1-} \hat{S}_{2-}
+    \end{cases}
+\end{gather*}
+$T_q$前一因子为轨道项，正比于球谐函数$Y_{2,q}(\theta,\phi)$，在轨道自由度给出选择定则
+\begin{gather*}
+    l'=l,l\pm2
+    \\
+    m'=m+q
+    \\
+    l,l' \geq 1
+\end{gather*}
+
+若粒子1和粒子2位置未固定，例如基态氢原子，选取基
+\begin{gather*}
+    \{\ket{\varphi_{1,0,0} \otimes \ket{\varepsilon_1,\varepsilon_2}}\}
+\end{gather*}
+$\hat{W}$在这组基下矩阵元为$0$，偶极-偶极相互作用会影响到激发态的超精细结构
+
+\section{van der Vaals力}
+
+考虑两氢原子A、B间偶极相互作用，A、B距离$R$，从A指向B方向的单位矢量$\bm{n}$，电子A相对质子A位矢$\bm{r}_A$，电子B相对质子B位矢$\bm{r}_B$，假设
+\begin{gather*}
+    R \ll |\bm{r}_A|,|\bm{r}_B|
+    \\
+    \intertext{偶极相互作用能}
+    \hat{W}=\frac{q^2}{4\pi \epsilon_0 R^3}(\hat{X}_A \hat{X}_B+\hat{Y}_A \hat{Y}_B-2\hat{Z}_A \hat{Z}_B)
+\end{gather*}
+
+\subsection{两个1s氢原子}
+
+\begin{gather*}
+    \hat{H}=\hat{H}_{0A}+\hat{H}_{0B}+\hat{W}
+    \\
+    \hat{H}_{0A}+\hat{H}_{0B} \ket{\varphi_{nlm}^A \varphi_{n'l'm'}^B}=(E_n+E_{n'}) \ket{\varphi_{nlm}^A \varphi_{n'l'm'}^B}
+\end{gather*}
+
+一阶修正
+\begin{gather*}
+    \varepsilon_1=\inpro{\varphi_{1,0,0}^A \varphi_{1,0,0}^B}{\hat{W} \vert \varphi_{1,0,0}^A \varphi_{1,0,0}^B}=0
+\end{gather*}
+
+二阶修正
+\begin{gather*}
+    \varepsilon_2=-\frac{C}{R^6}
+    \\
+    C=(\frac{e^2}{4\pi \epsilon_0})^2 \displaystyle \sum_{nlm} \sum_{n'l'm'} \frac{|\inpro{\varphi_{nlm}^A \varphi_{n'l'm'}^B}{\hat{X}_A \hat{X}_B+\hat{Y}_A \hat{Y}_B-2\hat{Z}_A \hat{Z}_B \vert \varphi_{1,0,0}^A \varphi_{1,0,0}^B}|^2}{2E_I-E_n-E_{n'}}
+    \\
+    \intertext{忽略激发态能量}
+    C\approx (\frac{e^2}{4\pi \epsilon_0})^2 \frac{1}{2E_I} \inpro{\varphi_{1,0,0}^A \varphi_{1,0,0}^B}{(\hat{X}_A \hat{X}_B+\hat{Y}_A \hat{Y}_B-2\hat{Z}_A \hat{Z}_B)^2 \vert \varphi_{1,0,0}^A \varphi_{1,0,0}^B}
+    \\
+    \intertext{由1s态球对称性，}
+    C\approx (\frac{e^2}{4\pi \epsilon_0})^2 \frac{1}{2E_I} \times 6|\inpro{\varphi_{1,0,0}}{\frac{\hat{\bm{R}}^2}{3} \vert \varphi_{1,0,0}}|^2=6\frac{q^2}{4\pi \epsilon_0} a_0^5
+    \\
+    \varepsilon_2 \approx -6\frac{e^2}{4\pi \epsilon_0 R} (\frac{a_0}{R})^5
+\end{gather*}
+
+A、B偶极矩随机涨落无关，相互作用平均值为0，没有一阶修正。但A的涨落影响电场，对B产生感应电偶极矩，反过来作用到A上，产生二阶修正。
+
+若计入推迟效应，相互作用能以$\frac{1}{R^7}$减小
+
+\subsection{1s氢原子和2p氢原子}
+
+特征子空间基
+\begin{gather*}
+    \{\ket{\varphi_{1,0,0}^A \varphi_{2,0,0}^B},\ket{\varphi_{2,0,0}^A \varphi_{1,0,0}^B},\ket{\varphi_{1,0,0}^A \varphi_{2,1,m}^B},\ket{\varphi_{2,1,m}^A \varphi_{1,0,0}^B}\}
+\end{gather*}
+
+一级修正
+\begin{itemize}
+    \item 由$\hat{R}_{Ai},\hat{R}_{Bi}$是奇性的，$\hat{W}$只能联系$\ket{\varphi_{1,0,0}^A}$和$\ket{\varphi_{2,1,m}^A}$，$\ket{\varphi_{1,0,0}^B}$和$\ket{\varphi_{2,1,B}^A}$
+    \item 绕连线旋转，相互作用不变，$[\hat{W},\hat{L}_A+\hat{L}_B]=0$，$\hat{W}$只能联系$\hat{L}_A+\hat{L}_B$特征值相等的态
+\end{itemize}
+可以得到，
+\begin{gather*}
+    \inpro{\varphi_{1,0,0}^A \varphi_{2,1,m}^B}{\hat{W} \vert \varphi_{2,1,m}^A \varphi_{1,0,0}^B}=\frac{k_m}{R^3}
+\end{gather*}
+其余矩阵元均为$0$。在对应于$m$的子空间中对角化
+\begin{gather*}
+    \begin{bmatrix}
+        0 & \frac{k_m}{R^3} \\
+        \frac{k_m}{R^3} & 0
+    \end{bmatrix}
+\end{gather*}
+特征值$\pm \frac{k_m}{R^3}$，特征向量
+\begin{gather*}
+    \frac{1}{\sqrt{2}}(\ket{\varphi_{1,0,0}^A \varphi_{2,1,m}^B}+\ket{\varphi_{2,1,m}^A \varphi_{1,0,0}^B})
+    \\
+    \frac{1}{\sqrt{2}}(\ket{\varphi_{1,0,0}^A \varphi_{2,1,m}^B}-\ket{\varphi_{2,1,m}^A \varphi_{1,0,0}^B})
+\end{gather*}
+
+\section{体积效应}
+
+类氢原子中，将原子核视为半径$\rho_0$、电荷$Ze$的均匀带电球体，电势
+\begin{gather*}
+    V(r)=
+    \begin{cases}
+        -\frac{Ze^2}{4\pi \epsilon_0 r} \quad r > \rho_0
+        \\
+        \frac{Ze^2}{8\pi \epsilon_0 \rho_0}((\frac{r}{\rho_0})^2-3) \quad 0 \leq r \leq \rho_0
+    \end{cases}
+\end{gather*}
+微扰
+\begin{gather*}
+    W(r)=
+    \begin{cases}
+        0 \quad r > \rho_0
+        \\
+        \frac{Ze^2}{8\pi \epsilon_0 \rho_0}((\frac{r}{\rho_0})^2+\frac{2\rho_0}{r}-3) \quad 0 \leq r \leq \rho_0
+    \end{cases}
+    \intertext{假设}
+    \rho_0 \ll a_0
+    \\
+    R_{nl}(r) \approx R_{nl}(0)
+    \\
+    \inpro{\varphi_{nlm}}{\hat{W} \vert \varphi_{n'l'm'}}=\frac{Ze^2}{40\pi \epsilon_0} \rho_0^2 |R_{nl}(0)|^2 \delta_{ll'} \delta_{mm'}
+\end{gather*}
+
+\section{变分法}
+
+考虑保守体系，假设能级是离散且非简并的
+\begin{gather*}
+    \hat{H} \ket{\varphi_n}=E_n \ket{\varphi_n}\quad n=1,2,\cdots
+    \\
+    \left<H\right>=\frac{\inpro{\psi}{\hat{H} \vert \psi}}{\inpro{\psi}{\psi}} \geq E_0
+\end{gather*}
+当且仅当$\ket{\psi}$是$E_0$对应特征向量时，等号成立
+
+Ritz定理：Hamiltonian的平均值在离散特征值附近是稳定的
+
+将试探右矢限制在一个子空间中，通过求极小值得到Hamiltonian各个特征值
+
+\subsection{一维谐振子}
+
+\begin{gather*}
+    \hat{H}=-\frac{\hbar^2}{2m} \dt{^2}{x^2} + \frac{1}{2} m\omega^2 x^2
+\end{gather*}
+
+指数试探函数
+\begin{gather*}
+    \psi_{\alpha}(x)=\e^{-\alpha x^2} \quad \alpha>0
+    \\
+    \left<H\right>(\alpha)=\frac{\hbar^2}{2m}\alpha+\frac{1}{8}m\omega^2 \frac{1}{\alpha}
+    \\
+    \intertext{极小值}
+    \left<H\right>(\alpha_0)=E_0=\frac{1}{2}\hbar \omega
+    \\
+    \intertext{求$E_1$，选取}
+    \psi_{\alpha}(x)=x\e^{-\alpha x^2} \quad \alpha>0
+    \\
+    \left<H\right>(\alpha)=\frac{3\hbar^2}{2m}\alpha+\frac{3}{8}m\omega^2 \frac{1}{\alpha}
+    \\
+    \intertext{极小值}
+    \left<H\right>(\alpha_0)=E_1=\frac{3}{2}\hbar \omega
+\end{gather*}
+
+\subsection{固体中电子能带}
+
+$N$个等间隔全同离子作用下，随着间距$R$减小，定态逐步取消定域，每个孤立原子的能级逐渐变为$N$个能级，展宽$\Delta$，若$N$很大，形成了容许能带
+
+考察由等间隔无穷多正离子构成的无穷长直链，设电子与第$n$个离子构成原子的态为$\ket{v_n}$，假设$v_n(x)$的互相覆盖可以忽略，且构成正交归一基。只考虑相邻原子的耦合，$\hat{H}$的表示矩阵为
+\begin{gather*}
+    \hat{H} \to
+    \begin{bmatrix}
+        E_0 & -A & 0 & 0 & \cdots \\
+        -A & E_0 & -A & 0 & \cdots \\
+        0 & -A & E_0 & -A & \cdots \\
+        0 & 0 & -A & E_0 & \cdots \\
+        \cdots & \cdots & \cdots & \cdots & \cdots
+    \end{bmatrix}
+    \\
+    \intertext{求特征向量，设特征向量为}
+    \ket{\varphi}=\sum_{q=-\infty}^{+\infty} c_q \ket{v_q}
+    \\
+    c_q=\e^{\i kql}
+    \\
+    E(k)=E_0-2A\cos kl \quad k \in [-\frac{\pi}{l},\frac{\pi}{l}]
+    \\
+    \intertext{周期性}
+    v_q(x)=v_0(x-ql)
+    \\
+    \intertext{得到}
+    \varphi_k(x+l)=\e^{\i kl} \varphi_k(x)
+\end{gather*}
+这样的波函数称为Bloch函数
+
+对于有限的原子数，忽略边界效应，引入周期性边界条件Born-von Kármán边界条件
+\begin{gather*}
+    \e^{\i kL}=1
+    \\
+    k_n=n\frac{2\pi}{L}
+\end{gather*}
+可以证明，在这样边界条件下求出的态密度$\rho(E)$与真实态密度相同
+\begin{gather*}
+    \intertext{Fourier变换求出定态}
+    \chi(x,t)=\frac{1}{\sqrt{2\pi}} \int g(k)\e^{\i(kx-\frac{E(k)}{\hbar}t)} \d k
+    \\
+    \intertext{群速度}
+    v_g=\frac{1}{\hbar} \left.\dt{E}{k} \right|_{k=k_0}=\frac{2Al}{\hbar}\sin k_0l
+\end{gather*}
+$k_0=\pm \frac{\pi}{l}$，光学类比Bragg反射
+
+\subsection{$\mathrm{H_2^+}$离子的化学键}
+
+采用Born-Oppenheimer近似，认为两质子固定，设质子距离$R$，电子与两质子距离$r_1$、$r_2$，换到椭球坐标$(\mu,\nu,\phi)$
+\begin{gather*}
+    \mu=\frac{r_1+r_2}{R}
+    \\
+    \nu=\frac{r_1-r_2}{R}
+    \\
+    \d V=\frac{R^3}{8}(\mu^2-\nu^2)\d \mu \d \nu \d \phi
+\end{gather*}
+
+变分法计算能量：原子轨道线性组合法
+\begin{gather*}
+    \intertext{Hamiltonian}
+    \hat{H}=\frac{\hat{\bm{P}}^2}{2m}-\frac{e^2}{4\pi \epsilon_0 r_1}-\frac{e^2}{4\pi \epsilon_0 r_2}+\frac{e^2}{4\pi \epsilon_0 R}
+    \\
+    \intertext{两个1s态右矢组成的子空间}
+    \inpro{\bm{r}}{\varphi_1}=\frac{1}{\sqrt{\pi a_0^3}} \e^{-\frac{r_1}{a_0}}
+    \\
+    \inpro{\bm{r}}{\varphi_2}=\frac{1}{\sqrt{\pi a_0^3}} \e^{-\frac{r_2}{a_0}}
+    \\
+    \intertext{试探右矢}
+    \ket{\psi}=c_1\ket{\varphi_1}+c_2\ket{\varphi_2}
+    \\
+    \intertext{特征方程}
+    \inpro{\varphi_i}{\hat{H} \vert \psi}=E \inpro{\varphi_i}{\psi}
+    \\
+    \intertext{设}
+    S_{ij}=\inpro{\varphi_i}{\varphi_j}
+    \\
+    \begin{bmatrix}
+        H_{11}-ES_{11} & H_{12}-ES_{12} \\
+        H_{21}-ES_{21} & H_{22}-ES_{22}
+    \end{bmatrix}
+    \begin{bmatrix}
+        c_1 \\ c_2
+    \end{bmatrix}
+    =0
+    \\
+    S_{11}=S_{22}=1
+    \\
+    S_{21}=S_{12}=S=\e^{-\frac{R}{a_0}}(1+\frac{R}{a_0}+\frac{1}{3}(\frac{R}{a_0})^2)
+    \\
+    H_{11}=H_{22}=-E_I+\frac{e^2}{4\pi \epsilon_0 R}-C
+    \\
+    \intertext{Coulomb积分}
+    C=\frac{2a_0}{R}E_I(1-\e^{-\frac{2R}{a_0}}(1+\frac{R}{a_0}))
+    \\
+    H_{12}=H_{21}=-E_I S+\frac{e^2}{4\pi \epsilon_0 R}S-A
+    \\
+    \intertext{共振积分}
+    A=2E_I \e^{-\frac{R}{a_0}}(1+\frac{R}{a_0})
+    \\
+    \intertext{特征值}
+    E_+=-E_I+\frac{2a_0}{R}E_I+\frac{A-C}{1-S}
+    \\
+    E_-=-E_I+\frac{2a_0}{R}E_I-\frac{A+C}{1+S}
+    \\
+    \intertext{$E_+$对应特征态为反键合态}
+    \ket{\psi_+}=\frac{1}{\sqrt{2(1-S)}}(\ket{\varphi_1}-\ket{\varphi_2})
+    \\
+    \ket{\psi_-}=\frac{1}{\sqrt{2(1+S)}}(\ket{\varphi_1}+\ket{\varphi_2})
+\end{gather*}

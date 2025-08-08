@@ -1,0 +1,305 @@
+\chapter{氢原子的精细和超精细结构}
+
+\section{精细结构}
+
+假设质子质量无限大，相对论修正给出Hamiltonian
+\begin{gather*}
+    \hat{H}=m_e c^2+\hat{H}_0+\hat{W}_{mv}+\hat{W}_{SO}+\hat{W}_D
+    \\
+    \hat{H}_0=\frac{\hat{\bm{P}}^2}{2\mu}+V(R)=\frac{\hat{\bm{P}}^2}{2\mu}-\frac{e^2}{4\pi \epsilon_0 R}
+\end{gather*}
+\begin{enumerate}
+    \item $\hat{W}_{mv}$来源于相对论动能修正
+    \begin{equation*}
+        \hat{W}_{mv}=-\frac{\hat{\bm{P}}^4}{8m_e^3 c^2}
+    \end{equation*}
+    \item 质子产生电场在电子本征系中带来轨道磁场，$\hat{W}_{SO}$来源于电子自旋磁矩与该磁场的耦合，$\frac{1}{2}$因子来源于Thomas进动
+    \begin{equation*}
+        \hat{W}_{SO}=\frac{1}{2m_e^2c^2 R} \dt{V(R)}{R} \bm{L} \cdot \bm{S}
+    \end{equation*}
+    \item $\hat{W}_D$来源于非相对论近似下电子和场的相互作用不是局域的，而是受到以$\bm{r}$为中心半径$\frac{\hbar}{m_e c}$量级区域内电场作用
+    \begin{gather*}
+        V(\bm{r}) \to \iiint V(\bm{r}+\bm{\rho})f(\rho) \d^3 \bm{\rho}
+        \\
+        \iiint f(\rho) \d^3 \bm{\rho}=1
+        \\
+        \intertext{对$V(\bm{r})$做Taylor展开，得到修正的数量级为}
+        \frac{\hbar^2}{m_e^2 c^2} \nabla^2 V(R)
+        \\
+        \hat{W}_D=\frac{\hbar^2}{8m_e^2 c^2} \nabla^2 V(R)
+    \end{gather*}
+\end{enumerate}
+精细结构修正与$H_0$的比值约为$\alpha^2$
+
+\section{超精细结构}
+
+质子自旋$\hat{\bm{I}}$，带来磁矩
+\begin{gather*}
+    \hat{\bm{M}}_I=\frac{g_p e}{2m_p} \hat{\bm{I}}
+\end{gather*}
+氢原子Hamiltonian
+\begin{gather*}
+    \hat{H}=\frac{1}{2m_e}(\hat{\bm{P}}+e\hat{\bm{A}}_I(\hat{\bm{R}}))^2-eU_I(\hat{\bm{R}})+\frac{e}{m_e}\hat{\bm{S}} \cdot \nabla \times \hat{\bm{A}}_I(\hat{\bm{R}})
+    \\
+    \bm{A}_I(\bm{r})=\frac{\mu_0}{4\pi} \frac{\bm{M }_I \times \bm{r}}{r^3}
+\end{gather*}
+保留$\bm{A}_I$线性项，超精细结构Hamiltonian
+\begin{gather*}
+    \hat{W}_{hf}=\frac{e}{2m_e}(\hat{\bm{P}} \cdot \hat{\bm{A}}_I(\hat{\bm{R}})+\hat{\bm{A}}_I(\hat{\bm{R}}) \cdot \hat{\bm{P}})+\frac{e}{m_e} \hat{\bm{S}} \cdot \nabla \times \hat{\bm{A}}_I(\hat{\bm{R}}) 
+\end{gather*}
+计算得到
+\begin{align*}
+    \hat{W}_{hf}=\frac{\mu_0}{4\pi} \left\{\frac{e}{m_e R^3} \bm{L} \cdot \bm{M}_I-\frac{1}{R^3}\left[3(\bm{M}_S \cdot \bm{n})(\bm{M}_I \cdot \bm{n})-\bm{M}_S \cdot \bm{M}_I\right]-\frac{8\pi}{3}\bm{M}_S \cdot \bm{M}_I \delta(R)\right\}
+\end{align*}
+第一项来源于质子自旋-轨道耦合，第二项和第三项来源于电子自旋与质子自旋产生的磁场的耦合
+
+对于$I>\frac{1}{2}$的体系，电多极矩会产生影响
+
+对于重原子，体积效应不可忽略，会添加不正比于$\delta^3(\bm{r})$的接触项
+
+\section{能级$n=2$的精细结构}
+
+$\hat{W}_f$在$2s$和$2p$子空间中分别起作用，在基$\{\ket{l;s;m_l;m_s}\}$下，对$2s_{1/2}$
+\begin{gather*}
+    \langle W_{mv} \rangle_{2s}=-\frac{13}{128}m_e c^2 \alpha^4
+    \\
+    \langle W_{D} \rangle_{2s}=\frac{1}{16}m_e c^2 \alpha^4
+    \\
+    \langle W_{SO} \rangle_{2s}=-0
+    \\
+    W_{2s_{1/2}}=-\frac{5}{128}m_e c^2 \alpha^4
+\end{gather*}
+在$2p$子空间中，重新选取基
+\begin{gather*}
+    \{\ket{l;s;j;m_j}\}
+\end{gather*}
+\begin{gather*}
+    \langle W_{mv} \rangle_{2p}=-\frac{7}{384}m_e c^2 \alpha^4
+    \\
+    \langle W_{D} \rangle_{2p}=0
+\end{gather*}
+\begin{itemize}
+    \item 对于$j=\frac{1}{2}$，
+    \begin{gather*}
+        \langle W_{SO} \rangle_{2p}=-\frac{1}{48}m_e c^2 \alpha^4
+        \\
+        W_{2p_{1/2}}=-\frac{5}{128}m_e c^2 \alpha^4
+    \end{gather*}
+    \item 对于$j=\frac{3}{2}$，
+    \begin{gather*}
+        \langle W_{SO} \rangle_{2p}=\frac{1}{96}m_e c^2 \alpha^4
+        \\
+        W_{2p_{3/2}}=-\frac{1}{128}m_e c^2 \alpha^4
+    \end{gather*}
+\end{itemize}
+求解Dirac方程得到准确解
+\begin{align*}
+    E_{n,j}&=\frac{m_e c^2}{\sqrt{1+\frac{\alpha^2}{\left(n-j-\frac{1}{2}+\sqrt{(j+\frac{1}{2})^2-\alpha^2}\right)^2}}}
+    \\
+    &=m_e c^2-\frac{1}{2}m_e c^2 \alpha^2 \frac{1}{n^2}-\frac{m_e c^2}{2n^4}(\frac{n}{j+\frac{1}{2}}-\frac{3}{4}) \alpha^4+\cdots
+\end{align*}
+量子电动力学带来Lamb位移，消除了$2s_{1/2}$和$2p_{1/2}$的简并
+
+\section{能级$n=1$的超精细结构}
+
+$1s$没有精细结构，只是引起能级偏移
+\begin{gather*}
+    \langle W_{mv} \rangle_{1s}=-\frac{5}{8}m_e c^2 \alpha^4
+    \\
+    \langle W_{D} \rangle_{1s}=\frac{1}{2}m_e c^2 \alpha^4
+    \\
+    \langle W_{SO} \rangle_{1s}=0
+    \\
+    W_f=-\frac{1}{8}m_e c^2 \alpha^4
+\end{gather*}
+
+超精细结构，同理选取基
+\begin{gather*}
+    \{\ket{s;I;F;m_F}\}
+\end{gather*}
+$F$由核自旋角动量和电子自旋角动量合成，是$2F+1$重简并的。$\hat{W}_{hf}$前两项不贡献，第三项部分消除简并
+\begin{itemize}
+    \item 对于$F=1$，
+    \begin{gather*}
+        W_{hf}=g_p \frac{m_e^2 c^2 \alpha^4}{3m_p(1+\frac{m_e}{m_p})^3}
+    \end{gather*}
+    \item 对于$F=0$，
+    \begin{gather*}
+        W_{hf}=-g_p \frac{m_e^2 c^2 \alpha^4}{m_p(1+\frac{m_e}{m_p})^3}
+    \end{gather*}
+\end{itemize}
+
+\section{$1s$的超精细结构的Zeeman效应}
+
+均匀磁场$\bm{B}_0$沿$z$轴
+\begin{gather*}
+    \hat{W}_Z=\omega_0(\hat{L}_z+2\hat{S}_z)+\omega_n \hat{I}_z
+    \\
+    \begin{cases}
+        \omega_0=\frac{eB_0}{2m_e}
+        \\
+        \omega_n=-\frac{g_p eB_0}{2m_p}
+    \end{cases}
+\end{gather*}
+可以忽略最后一项
+
+\subsection{弱磁场}
+
+选取基
+\begin{gather*}
+    \{\ket{F,m_F}\}
+\end{gather*}
+表示矩阵为
+\begin{gather*}
+    \hat{S}_z \to \frac{\hbar}{2}
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & -1 & 0 \\
+        0 & 1 & 0 & 0
+    \end{bmatrix}
+    \\
+    \intertext{特征向量和特征值}
+    \begin{cases}
+        \ket{1,1} \to \frac{g_p m_e^2 c^2 \alpha^4}{3m_p(1+\frac{m_e}{m_p})^3} + \hbar \omega_0
+        \\
+        \ket{1,0} \to \frac{g_p m_e^2 c^2 \alpha^4}{3m_p(1+\frac{m_e}{m_p})^3}
+        \\
+        \ket{1,-1} \to \frac{g_p m_e^2 c^2 \alpha^4}{3m_p(1+\frac{m_e}{m_p})^3} - \hbar \omega_0
+        \\
+        \ket{0,0} \to -\frac{g_p m_e^2 c^2 \alpha^4}{m_p(1+\frac{m_e}{m_p})^3}
+    \end{cases}
+\end{gather*}
+
+经典矢量模型：$\bm{S}$和$\bm{I}$围绕$\bm{F}$快速进动，叠加$\bm{F}$围绕$\bm{B}_0$慢速Larmor进动
+
+\subsection{强磁场}
+
+选取基
+\begin{gather*}
+    \{\ket{m_s,m_I}\}
+\end{gather*}
+得到特征方程
+\begin{gather*}
+    \begin{cases}
+        2\omega_0 \hat{S}_z \ket{+,\pm}=\hbar \omega_0 \ket{+,\pm}
+        \\
+        2\omega_0 \hat{S}_z \ket{-,\pm}=-\hbar \omega_0 \ket{-,\pm}
+    \end{cases}
+\end{gather*}
+超精细项微扰的对角元
+\begin{gather*}
+    \inpro{m_s,m_I}{\hat{\bm{I}} \cdot \hat{\bm{S}} \vert m_s,m_I}=m_s m_I \hbar^2
+    \\
+    \intertext{特征向量和特征值}
+    \begin{cases}
+        \ket{+,+} \to \hbar \omega_0 + \frac{g_p m_e^2 c^2 \alpha^4}{3m_p(1+\frac{m_e}{m_p})^3}
+        \\
+        \ket{+,-} \to \hbar \omega_0 - \frac{g_p m_e^2 c^2 \alpha^4}{3m_p(1+\frac{m_e}{m_p})^3}
+        \\
+        \ket{-,+} \to -\hbar \omega_0 - \frac{g_p m_e^2 c^2 \alpha^4}{3m_p(1+\frac{m_e}{m_p})^3}
+        \\
+        \ket{-,-} \to -\hbar \omega_0 + \frac{g_p m_e^2 c^2 \alpha^4}{3m_p(1+\frac{m_e}{m_p})^3}
+    \end{cases}
+\end{gather*}
+
+经典矢量模型：在强场$B_0$上添加正比于$I_z$的沿$z$轴的弱场，$\bm{S}$绕$z$轴进动频率变化
+
+\subsection{一般情况}
+
+总微扰（精细结构和Zeeman项）的表示矩阵
+\begin{gather*}
+    \begin{bmatrix}
+        \frac{g_p m_e^2 c^2 \alpha^4}{3m_p(1+\frac{m_e}{m_p})^3} + \hbar \omega_0 & 0 & 0 & 0 \\
+        0 & \frac{g_p m_e^2 c^2 \alpha^4}{3m_p(1+\frac{m_e}{m_p})^3} & 0 & \hbar \omega_0 \\
+        0 & 0 & \frac{g_p m_e^2 c^2 \alpha^4}{3m_p(1+\frac{m_e}{m_p})^3} - \hbar \omega_0 & 0 \\
+        0 & \hbar \omega_0 & 0 & -\frac{g_p m_e^2 c^2 \alpha^4}{m_p(1+\frac{m_e}{m_p})^3}
+    \end{bmatrix}
+    \\
+    \intertext{设}
+    E_0=\frac{g_p m_e^2 c^2 \alpha^4}{3m_p(1+\frac{m_e}{m_p})^3}
+    \\
+    \intertext{特征值}
+    E_0 \pm \hbar \omega_0, \quad -E_0 \pm \sqrt{\hbar^2\omega_0^2+4E_0^2}
+\end{gather*}
+
+\section{$\mu$-原子核电子偶素的超精细结构和Zeeman效应}
+
+\subsection{$1s$的超精细结构}
+
+设电子自旋$\bm{S}_1$，另一个粒子自旋$\bm{S}_2$，超精细结构耦合项
+\begin{gather*}
+    A\hat{\bm{S}}_1 \cdot \hat{\bm{S}}_2
+\end{gather*}
+特征向量$\ket{F,m_F}$
+\begin{itemize}
+    \item $F=1$特征值$\frac{1}{4}A \hbar^2$
+    \item $F=0$特征值$-\frac{3}{4}A \hbar^2$
+\end{itemize}
+
+\subsection{$1s$的Zeeman效应}
+
+施加沿$z$轴的磁场$B_0$，设旋磁比分别为$\gamma_1$和$\gamma_2$，设
+\begin{gather*}
+    \omega_1=-\gamma_1 B_0
+    \\
+    \omega_2=-\gamma_2 B_0
+\end{gather*}
+
+Zeeman效应Hamiltonian
+\begin{gather*}
+    \omega_1 \hat{S}_{1z}+\omega_2 \hat{S}_{2z}
+\end{gather*}
+
+总微扰
+\begin{gather*}
+    \hat{W}=A\hat{\bm{S}}_1 \cdot \hat{\bm{S}}_2 + \omega_1 \hat{S}_{1z}+\omega_2 \hat{S}_{2z}
+    \\
+    \intertext{表示矩阵}
+    \begin{bmatrix}
+        \frac{1}{4}A \hbar^2 + \frac{1}{2}\hbar(\omega_1+\omega_2) & 0 & 0 & 0 \\
+        0 & \frac{1}{4}A \hbar^2 & 0 & \frac{1}{2}\hbar (\omega_1-\omega_2) \\
+        0 & 0 & \frac{1}{4}A \hbar^2 - \frac{1}{2}\hbar(\omega_1+\omega_2) & 0 \\
+        0 & \frac{1}{2}\hbar (\omega_1-\omega_2) & 0 & -\frac{3}{4}A \hbar^2
+    \end{bmatrix}
+    \\
+    \intertext{特征值}
+    \frac{1}{4}A \hbar^2 \pm \frac{1}{2}\hbar(\omega_1+\omega_2), \quad -\frac{1}{4}A\hbar^2 \pm \sqrt{(\frac{1}{2}A\hbar^2)^2+\frac{\hbar^2}{4}(\omega_1-\omega_2)^2}
+\end{gather*}
+
+\section{氢原子的Stark效应}
+
+添加沿$z$轴的均匀静电场$\mathscr{E}$，忽略$\hat{W}_{f}$和$\hat{W}_{hf}$
+\begin{gather*}
+    \hat{W}_S=-q\mathscr{E}\hat{Z}
+\end{gather*}
+
+\subsection{$n=1$的Stark效应}
+
+$1s$态能级没有一阶修正，只有二阶修正
+
+特征向量修正带来$z$轴的感应偶极矩，另外两个方向感生偶极矩为$0$
+
+\subsection{$n=2$的Stark效应}
+
+在$n=2$子空间中，只有矩阵元$\inpro{2,1,m}{\hat{W}_S \vert 2,0,0}=\gamma \mathscr{E}$不为$0$，表示矩阵为
+\begin{gather*}
+    \hat{W} \to 
+    \begin{bmatrix}
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & \gamma \mathscr{E} \\
+        0 & 0 & 0 & 0 \\
+        0 & \gamma \mathscr{E} & 0 & 0
+    \end{bmatrix}
+    \\
+    \intertext{对应特征向量和特征值}
+    \begin{cases}
+        \ket{2,1,1} \to 0
+        \\
+        \ket{2,1,-1} \to 0
+        \\
+        \frac{1}{\sqrt{2}}(\ket{2,1,0}+\ket{2,0,0}) \to \gamma \mathscr{E}
+        \\
+        \frac{1}{\sqrt{2}}(\ket{2,1,0}-\ket{2,0,0}) \to -\gamma \mathscr{E}
+    \end{cases}
+\end{gather*}

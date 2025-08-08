@@ -1,0 +1,239 @@
+\chapter{势场中的散射的初等量子理论}
+
+物理实验中，通过探测碰撞后末态粒子来研究粒子的相互作用
+\begin{itemize}
+    \item 重排碰撞：基本粒子重新组合
+    \item 相对论能量的“物质化”：产生新粒子
+    \item 散射：粒子种类没有变化
+    \begin{itemize}
+        \item 弹性散射：粒子的内部状态没有变化
+    \end{itemize}
+\end{itemize}
+
+本章讨论第一类粒子入射到作为靶的第二类粒子弹性的散射，引入简化假设
+\begin{itemize}
+    \item 两类粒子都没有自旋
+    \item 不考虑两类粒子的内部结构
+    \item 靶充分薄，忽略多重散射
+    \item 忽略各个靶粒子产生散射波的相干性，即第一类粒子波包的展延度小于第二类粒子的平均间距
+    \item 两类粒子的相互作用势能可以表示为$V(\bm{r}_1-\bm{r}_2)$，转化到质心系中约化粒子在势场$V(\bm{r})$中的散射
+\end{itemize}
+
+入射粒子通量$F_i$，在$(\theta,\phi)$方向单位时间探测到粒子数
+\begin{gather*}
+    \d n=F_i \sigma(\theta,\phi) \d \Omega
+\end{gather*}
+$\sigma(\theta,\phi)$称为有效微分散射截面，散射截面
+\begin{gather*}
+    \sigma=\int \sigma(\theta,\phi) \d \Omega
+\end{gather*}
+
+\section{散射定态}
+
+\subsection{定义}
+
+\begin{gather*}
+    \psi(\bm{r},t)=\varphi(\bm{r})\e^{-\frac{\i}{\hbar} Et}
+    \\
+    \intertext{定态Schrödinger方程}
+    \left[ -\frac{\hbar^2}{2\mu} \nabla^2+V(\bm{r}) \right] \varphi(\bm{r})=E\varphi(\bm{r})
+    \\
+    \intertext{设}
+    \begin{cases}
+        E=\frac{\hbar^2 k^2}{2\mu}
+        \\
+        V(\bm{r})=\frac{\hbar^2}{2\mu}U(\bm{r})
+    \end{cases}
+    \\
+    \intertext{得到}
+    \left[ \nabla^2+k^2 - U(\bm{r}) \right] \varphi(\bm{r})=0
+\end{gather*}
+对于$k$的每一个值都是无穷重简并的，满足特定条件的特征态称为散射的定态，波函数$v_k^{(\text{diff})}(\bm{r})$
+\begin{gather*}
+    v_k^{(\text{diff})}(\bm{r}) \approx \e^{\i kz}+f_k(\theta,\phi)\frac{\e^{\i kr}}{r},\quad r \to +\infty
+\end{gather*}
+
+\subsection{概率流}
+
+散射定态对应稳恒流动的概率流
+\begin{gather*}
+    \intertext{概率流密度}
+    \bm{J}(\bm{r})\frac{1}{\mu} \Re(\varphi(\bm{r})^* \frac{\hbar}{\i} \nabla \varphi(\bm{r}))
+    \\
+    \intertext{入射流}
+    \bm{J}_i=\frac{\hbar k}{\mu} \bm{e}_z
+    \\
+    \intertext{散射流}
+    (\bm{J}_d)_r=\frac{\hbar k}{\mu r^2}|f_k(\theta,\phi)|^2
+    \\
+    (\bm{J}_d)_{\theta}=\frac{\hbar}{\mu r^3} \Re\left[\frac{1}{\i} f_k^*(\theta,\phi)\pt{}{\theta}f_k(\theta,\phi)\right]
+    \\
+    (\bm{J}_d)_{\phi}=\frac{\hbar}{\mu r^3 \sin\theta} \Re\left[\frac{1}{\i} f_k^*(\theta,\phi)\pt{}{\phi}f_k(\theta,\phi)\right]
+\end{gather*}
+由于$r \to +\infty$，可以忽略$(\bm{J}_d)_{\theta}$和$(\bm{J}_d)_{\phi}$，认为$\bm{J}_d$沿径向
+
+\begin{gather*}
+    \intertext{入射通量}
+    F_i=C\frac{\hbar k}{\mu}
+    \\
+    \d n=C\frac{\hbar k}{\mu} |f_k(\theta,\phi)|^2 \d \Omega
+    \\
+    \sigma(\theta,\phi)=|f_k(\theta,\phi)|^2
+\end{gather*}
+除了$\theta=0$方向，入射波和散射波的干涉项不存在
+
+\subsection{积分方程}
+
+\begin{gather*}
+    (\nabla^2+k^2) \varphi_0(\bm{r})=0
+    \\
+    (\nabla^2+k^2) G(\bm{r})=\delta^3(\bm{r})
+    \\
+    \varphi(\bm{r})=\varphi_0(\bm{r})+\int G_+(\bm{r}-\bm{r'})U(\bm{r'})\varphi(\bm{r'}) \d V'
+    \\
+    \intertext{Green函数}
+    G_{\pm}(\bm{r})=-\frac{1}{4\pi} \frac{\e^{\pm \i kr}}{r}
+    \\
+    v_k^{(\text{diff})}(\bm{r})=\e^{\i kz}+\int G_+(\bm{r}-\bm{r'})U(\bm{r'})v_k^{(\text{diff})}(\bm{r'}) \d V'
+\end{gather*}
+对于远场区域，设势场作用范围$L$，有
+\begin{gather*}
+    r\gg L,\quad r' \leq L
+    \\
+    |\bm{r}-\bm{r'}| \approx r-\bm{n} \cdot \bm{r'}
+\end{gather*}
+得到
+\begin{gather*}
+    v_k^{(\text{diff})}(\bm{r}) \approx \e^{\i kz}-\frac{1}{4\pi} \frac{\e^{\i kr}}{r} \int \e^{-\i k \bm{n} \cdot \bm{r'}}U(\bm{r'})v_k^{(\text{diff})}(\bm{r'}) \d V'
+    \\
+    f_k(\theta,\phi)=-\frac{1}{4\pi} \int \e^{-\i k \bm{n} \cdot \bm{r'}}U(\bm{r'})v_k^{(\text{diff})}(\bm{r'}) \d V' 
+\end{gather*}
+
+\subsection{Born近似}
+
+\begin{gather*}
+    \intertext{定义入射波波矢$\bm{k}_i$，散射波波矢}
+    \bm{k}_d=k\bm{n}
+    \\
+    \intertext{转移波矢}
+    \bm{K}=\bm{k}_d-\bm{k}_i
+    \\
+    v_k^{(\text{diff})}(\bm{r})=\e^{\i \bm{k}_i \cdot \bm{r}}+\int G_+(\bm{r}-\bm{r'})U(\bm{r'})v_k^{(\text{diff})}(\bm{r'}) \d V'
+    \\
+    v_k^{(\text{diff})}(\bm{r'})=\e^{\i \bm{k}_i \cdot \bm{r'}}+\int G_+(\bm{r'}-\bm{r''})U(\bm{r''})v_k^{(\text{diff})}(\bm{r''}) \d V''
+\end{gather*}
+类似可以不断迭代展开，取最低次项，
+\begin{gather*}
+    v_k^{(\text{diff})}(\bm{r})=\e^{\i \bm{k}_i \cdot \bm{r}}+\int G_+(\bm{r}-\bm{r'})U(\bm{r'})\e^{\i \bm{k}_i \cdot \bm{r'}}\d V'
+    \\
+    f_k^{(B)}=-\frac{1}{4\pi}\int \e^{-\i \bm{K} \cdot \bm{r'}}U(\bm{r'}) \d V'
+    \\
+    \sigma_k^{(B)}=\frac{\mu^2}{4\pi^2 \hbar^4}\left|\int \e^{-\i \bm{K} \cdot \bm{r}}V(\bm{r}) \d V\right|^2
+\end{gather*}
+
+\section{中心势场：分波法}
+
+分波：$\hat{H}$、$\hat{\bm{L}}^2$、$\hat{L}_z$的共同特征态对应的波函数$\varphi(\bm{r})$
+
+\subsection{自由粒子}
+
+\begin{gather*}
+    \intertext{自由粒子Hamiltonian}
+    \hat{H}_0=\frac{1}{2\mu} \hat{\bm{P}}^2
+\end{gather*}
+
+\begin{enumerate}
+    \item 平面波：选取ECOC$\hat{H}_0$和$\hat{\bm{P}}$确定的态空间
+    \begin{gather*}
+        \begin{cases}
+            \bm{P} \ket{\bm{p}}=\bm{p} \ket{\bm{p}}
+            \\
+            \hat{H}_0 \ket{\bm{p}}=\frac{\bm{p}^2}{2\mu} \ket{\bm{p}}
+            \\
+            \inpro{\bm{r}}{\bm{p}}=(\frac{1}{2\pi\hbar})^{\frac{3}{2}} \e^{\frac{\i}{\hbar} \bm{p} \cdot \bm{r}}
+        \end{cases}
+        \\
+        \begin{cases}
+            \bm{P} \ket{\bm{k}}=\hbar\bm{k} \ket{\bm{k}}
+            \\
+            \hat{H}_0 \ket{\bm{k}}=\frac{\hbar^2 \bm{k}^2}{2\mu} \ket{\bm{k}}
+            \\
+            \inpro{\bm{r}}{\bm{k}}=(\frac{1}{2\pi})^{\frac{3}{2}} \e^{\i \bm{k} \cdot \bm{r}}
+        \end{cases}
+    \end{gather*}
+    \item 球面波：选取ECOC$\hat{H}$、$\hat{\bm{L}}^2$和$\hat{L}_z$确定的态空间
+    \begin{gather*}
+        \varphi_{klm}^{(0)}(\bm{r})=\sqrt{\frac{2k^2}{\pi}} j_l(kr)Y_{lm}(\theta,\phi)
+        \\
+        \inpro{\varphi_{klm}^{(0)}}{\varphi_{k'l'm'}^{(0)}}=\delta(k-k')\delta_{ll'}\delta_{mm'}
+        \\
+        \int_{0}^{+\infty} \displaystyle \sum_{l=0}^{+\infty} \sum_{m=-l}^{l} \ket{\varphi_{klm}^{(0)}} \bra{\varphi_{klm}^{(0)}} \d k=\hat{I}
+    \end{gather*}
+    \begin{enumerate}
+        \item 原点附近
+        \begin{gather*}
+            j_l(\rho) \approx \frac{\rho^l}{(2l+1)!!},\quad \rho \to 0
+        \end{gather*}
+        当$r<\frac{1}{k}\sqrt{l(l+1)}$时，概率接近$0$，也就是定态下粒子对半径$b_k=\frac{1}{k}\sqrt{l(l+1)}$内的过程无反应，经典意义下$b_k=\frac{L}{p}$为碰撞参数
+        \item 渐近行为
+        \begin{gather*}
+            \varphi_{klm}^{(0)}(r,\theta,\phi) \approx -\sqrt{\frac{2k^2}{\pi}} Y_{lm}(\theta,\phi)\frac{\e^{-\i kr}\e^{\i l\frac{\pi}{2}}-\e^{\i kr}\e^{-\i l\frac{\pi}{2}}}{2\i kr},\quad r \to +\infty
+        \end{gather*}
+        为向内球面波与向外球面波的叠加，相位差$l\pi$
+    \end{enumerate}
+    \item 平面波按球面波展开
+    \begin{align*}
+        \e^{\i kz}&=\displaystyle \sum_{l=0}^{+\infty} \i^l \sqrt{4\pi(2l+1)} j_l(kr)Y_{l,0}(\theta,\phi)
+        \\
+        &=\displaystyle \sum_{l=0}^{+\infty} \i^l (2l+1) j_l(kr) P_l(\cos\theta)
+    \end{align*}
+\end{enumerate}
+
+\subsection{势场中的分波}
+
+\begin{gather*}
+    \varphi_{klm}(\bm{r})=R_{kl}(r)Y_{lm}(\theta,\phi)=\frac{1}{r} u_{kl}(r)Y_{lm}(\theta,\phi)
+    \\
+    \intertext{$u_{kl}(r)$满足}
+    \begin{cases}
+        (-\frac{\hbar^2}{2m}\dt{^2}{r^2}+\frac{l(l+1)\hbar^2}{2mr^2} + V(r))u_{kl}(r)=E_{kl} u_{kl}(r)
+        \\
+        u_{kl}(0)=0
+    \end{cases}
+\end{gather*}
+$r \to +\infty$，方程化为
+\begin{gather*}
+    \left(\dt{^2}{r^2}+k^2\right)u_{kl}(r) =0
+    \\
+    u_{kl}(r)=C\sin\left(kr-l\frac{\pi}{2}+\delta_l\right)
+    \\
+    \varphi_{klm}(\bm{r}) \approx -C Y_{lm}(\theta,\phi)\frac{\e^{-\i kr}\e^{\i (l\frac{\pi}{2}+\delta_l)}-\e^{\i kr}\e^{-\i (l\frac{\pi}{2}-\delta_l)}}{2\i kr}
+    \\
+    \intertext{改写为}
+    \tilde{\varphi}_{klm}(\bm{r}) \approx -Y_{lm}(\theta,\phi)\frac{\e^{-\i kr}\e^{\i l\frac{\pi}{2}}-\e^{\i kr}\e^{-\i l\frac{\pi}{2}}\e^{2\i \delta_l}}{2\i kr}
+\end{gather*}
+
+\subsection{散射定态}
+
+由于中心势场下关于$z$轴对称，只包含$m=0$的分波，
+\begin{gather*}
+    v_k^{(\text{diff})}(\bm{r})=\displaystyle \sum_{l=0}^{+\infty} \i^l \sqrt{4\pi(2l+1)} \tilde{\varphi}_{k,l,0}(\bm{r})
+\end{gather*}
+\begin{proof}
+    \begin{align*}
+        \e^{2\i \delta_l}&=1+2\i \e^{\i \delta_l} \sin\delta_l
+        \\
+        \displaystyle \sum_{l=0}^{+\infty} \i^l \sqrt{4\pi(2l+1)} \tilde{\varphi}_{k,l,0}(\bm{r})&=-\displaystyle \sum_{l=0}^{+\infty} \i^l \sqrt{4\pi(2l+1)} \left[\frac{\e^{-\i kr}\e^{\i l\frac{\pi}{2}}-\e^{\i kr}\e^{-\i l\frac{\pi}{2}}}{2\i kr}-\frac{\e^{\i kr}}{r} \frac{1}{k} \e^{-\i l\frac{\pi}{2}}\e^{\i \delta_l}\sin\delta_l\right]
+        \\
+        &=\e^{\i kz}+f_k(\theta)\frac{\e^{\i kr}}{r}
+        \\
+        f_k(\theta)&=\frac{1}{k} \displaystyle \sum_{l=0}^{+\infty} \i^l \sqrt{4\pi(2l+1)} \e^{\i \delta_l} \sin\delta_l Y_{l,0}(\theta)
+    \end{align*}
+\end{proof}
+\begin{gather*}
+    \intertext{有效微分散射截面}
+    \sigma(\theta)=\frac{1}{k^2} \left|\displaystyle \sum_{l=0}^{+\infty} \sqrt{4\pi(2l+1)} \e^{\i \delta_l} \sin\delta_l Y_{l,0}(\theta)\right|^2
+    \\
+    \intertext{散射截面}
+    \sigma=\frac{4\pi}{k^2} \displaystyle \sum_{l=0}^{+\infty} (2l+1) \sin^2 \delta_l
+\end{gather*}

@@ -1,0 +1,124 @@
+\chapter{电子的自旋}
+
+\section{实验}
+
+\begin{itemize}
+    \item 谱线的精细结构
+    \item 反常Zeeman效应：原子序数为奇数的原子却得到了偶数个Zeeman次能级
+    \item Stern-Gerlach实验中，银原子分布在对称的斑点上，说明银原子具有半整数角动量
+\end{itemize}
+
+\section{自旋}
+
+电子具有固有的角动量$\bm{S}$，称为自旋角动量
+\begin{gather*}
+    \intertext{对应磁矩}
+    \bm{M}_S=\frac{q}{m} \bm{S}
+\end{gather*}
+量子电动力学会对旋磁比加入修正，称为反常磁矩
+
+对自旋角动量量子化
+\begin{enumerate}
+    \item 自旋算符$\hat{\bm{S}}$满足对易关系
+    \begin{gather*}
+        [\hat{S}_x,\hat{S}_y]=\i \hbar \hat{S}_z
+    \end{gather*}
+    \item 自旋算符在自旋态空间$\mathscr{E}_S$中作用，$\hat{\bm{S}}^2$和$\hat{S}_z$构成一组ECOC
+    \begin{gather*}
+        \begin{cases}
+            \hat{\bm{S}}^2 \ket{s,m}=s(s+1)\hbar^2 \ket{s,m}
+            \\
+            \hat{S}_z \ket{s,m}=m\hbar \ket{s,m}
+        \end{cases}
+    \end{gather*}
+    $s$为整数或半整数，$m$取$-s$与$s$之间间隔为$1$的点列，$\mathscr{E}_S$是$(2s+1)$维空间
+    \item 粒子的态空间
+    \begin{gather*}
+        \mathscr{E}=\mathscr{E}_{\bm{r}} \otimes \mathscr{E}_S
+    \end{gather*}
+    \item 电子自旋为$s=\frac{1}{2}$
+\end{enumerate}
+
+\section{$\frac{1}{2}$角动量}
+
+选取$\hat{\bm{S}}^2$和$\hat{S}_z$的共同特征向量$\ket{+}$和$\ket{-}$作为基，
+\begin{gather*}
+    \begin{cases}
+       \hat{S}_z \ket{\pm}=\pm\frac{\hbar}{2} \ket{\pm} \\
+       \hat{\bm{S}}^2 \ket{\pm}=\frac{3}{4} \hbar^2 \ket{\pm}
+    \end{cases}
+    \\
+    \begin{cases}
+       \inpro{+}{+}=\inpro{-}{-}=1 \\
+       \inpro{+}{-}=0\\
+       \ket{+}\bra{+}+\ket{-}\bra{-}=\hat{I}
+    \end{cases}
+    \\
+    \intertext{升降阶算符}
+    \hat{S}_{\pm}=\hat{S}_x \pm \i \hat{S}_y
+ \end{gather*}
+
+\section{对自旋$\frac{1}{2}$粒子的非相对论性描述}
+
+将$\mathscr{E}_{\bm{r}}$和$\mathscr{E}_S$中的观察算符延伸到$\mathscr{E}$中，在两个子空间分别选定一组ECOC，由于$\mathscr{E}$中的所有右矢都是$\hat{\bm{S}}^2$中对应相同特征值的特征向量，可以不选择$\hat{\bm{S}}^2$
+\begin{gather*}
+    \ket{\bm{r},\pm}=\ket{\bm{r}} \otimes \ket{\pm}
+\end{gather*}
+构成正交归一完备基
+
+在$\left\{\ket{\bm{r}}\right\}$表象下，
+\begin{gather*}
+    \psi_{\pm}(\bm{r})=\inpro{\bm{r},\pm}{\psi}
+    \\
+    \intertext{右矢表示为二分量旋量的形式}
+    [\psi](\bm{r})=
+    \begin{bmatrix}
+        \psi_+(\bm{r})
+        \\
+        \psi_-(\bm{r})
+    \end{bmatrix}
+    \\
+    \intertext{左矢表示为}
+    [\psi]^{\dagger}(\bm{r})=
+    \begin{bmatrix}
+        \psi_+^*(\bm{r}) & \psi_-^*(\bm{r})
+    \end{bmatrix}
+\end{gather*}
+线性算符可以用矩阵表示
+
+\section{自旋$\frac{1}{2}$粒子的旋转算符}
+
+围绕$\bm{u}$方向旋转角度$\alpha$，
+\begin{gather*}
+    \hat{R}_{\bm{u}}(\alpha)=\e^{-\frac{\i}{\hbar} \alpha \hat{\bm{J}} \cdot \bm{u}}
+\end{gather*}
+
+自旋态的旋转算符
+\begin{align*}
+    \hat{R}_{\bm{u}}^{(S)}(\alpha)&=\e^{-\frac{\i}{\hbar} \alpha \hat{\bm{J}} \cdot \bm{u}}
+    \\
+    &=\cos\frac{\alpha}{2}-\i \bm{\sigma} \cdot \bm{u} \sin\frac{\alpha}{2}
+\end{align*}
+
+二分量旋量的旋转
+\begin{gather*}
+    \ket{\psi'}=\hat{R} \ket{\psi}
+    \\
+    \psi'_{\pm}(\bm{r})=R_{\pm +}^{(s)} \psi_+(R^{-1}\bm{r}) + R_{\pm -}^{(s)} \psi_-(R^{-1}\bm{r})
+    \\
+    \begin{bmatrix}
+        \psi'_{+}(\bm{r})
+        \\
+        \psi'_{-}(\bm{r})
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        R_{++}^{(s)} & R_{+-}^{(s)} \\
+        R_{-+}^{(s)} & R_{--}^{(s)}
+    \end{bmatrix}
+    \begin{bmatrix}
+        \psi_{+}(\bm{r})
+        \\
+        \psi_{-}(\bm{r})
+    \end{bmatrix}
+\end{gather*}

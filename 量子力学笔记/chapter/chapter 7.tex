@@ -1,0 +1,645 @@
+\chapter{中心势场中的粒子}
+
+\section{定态} \label{sec:7.1}
+
+类比经典力学，在$\{\ket{\bm{r}}\}$表象下，定态Schrödinger方程可以写成
+\begin{gather*}
+   -\frac{\hbar^2}{2mr}\pt{^2}{r^2}(r\varphi)+\frac{1}{2mr^2} \hat{\bm{L}}^2 \varphi + V(r)\varphi=E \varphi
+\end{gather*}
+类比角动量守恒，
+\begin{gather*}
+   [\hat{H},\hat{\bm{L}}]=0
+\end{gather*}
+$\hat{H}$、$\hat{\bm{L}}^2$、$\hat{L}_z$构成一组ECOC，再引入一个指标$k$，由第六章讨论，$\hat{H}$仅与$n,l$有关。选取共同特征函数构成态空间的一组正交归一基，待求解的特征方程组
+\begin{gather*}
+   \begin{cases}
+      H \varphi(\bm{r})=E \varphi(\bm{r})
+      \\
+      \hat{\bm{L}}^2 \varphi(\bm{r})=l(l+1)\hbar^2 \varphi(\bm{r})
+      \\
+      \hat{L}_z \varphi(\bm{r})=m\hbar \varphi(\bm{r})
+   \end{cases}
+   \\
+   \varphi_{klm}(\bm{r})=R_{kl}(r)Y_{lm}(\theta,\phi)=\frac{1}{r} u_{kl}(r)Y_{lm}(\theta,\phi)
+\end{gather*}
+径向方程化简为
+\begin{gather*}
+   (-\frac{\hbar^2}{2m}\dt{^2}{r^2}+\frac{l(l+1)\hbar^2}{2mr^2} + V(r))u_{kl}(r)=E_{kl} u_{kl}(r)
+\end{gather*}
+为了使$r \to 0$，$\varphi(\bm{r}) \to 0$，有
+\begin{gather*}
+   R_{kl}(r) \propto r^{l}
+   \\
+   R_{kl}(0)=0
+\end{gather*}
+这使得对于每个$E_{kl}$，径向方程最多只有一个合理解 \\
+平方可积性
+\begin{gather*}
+   \int_{0}^{+\infty} |R_{kl}(r)|^2 r^2 \d r=1
+   \\
+   \intertext{或对于连续谱，}
+   \int_{0}^{+\infty} R^*_{k'l'}(r) R_{kl}(r)r^2 \d r=\delta(k'-k)
+\end{gather*}
+简并度
+\begin{itemize}
+   \item 实质性简并：同一个$E_{kl}$，$m$可以取$2l+1$个不同的值
+   \item 偶然性简并：对于某些势场，存在$E_{kl}=E_{k'l'},k' \neq k,l' \neq l$
+\end{itemize}
+
+\section{二体运动}
+
+两个粒子构成的孤立体系，相互作用势能$V(|\bm{r}_1-\bm{r}_2|)$只与两粒子距离有关
+
+\begin{enumerate}
+   \item 经典力学 \\
+   引入两个假想粒子，质量、位置、动量分别为
+   \begin{gather*}
+      \begin{cases}
+         M=m_1+m_2
+         \\
+         \bm{r}_C=\frac{m_1 \bm{r}_1 + m_2 \bm{r}_2}{m_1+m_2}
+         \\
+         \bm{p}_C=\bm{p}_1+\bm{p}_2
+      \end{cases}
+      \\
+      \begin{cases}
+         \mu=\frac{m_1 m_2}{m_1+m_2}
+         \\
+         \bm{r}=\bm{r}_1-\bm{r}_2
+         \\
+         \bm{p}=\frac{m_2 \bm{p}_1 - m_1 \bm{p}_2}{m_1+m_2}
+      \end{cases}
+   \end{gather*}
+   则Hamiltonian化为
+   \begin{gather*}
+      H=\frac{\bm{p}_C^2}{2M}+\frac{\bm{p}^2}{2\mu}+V(r)
+      \\
+      \intertext{动力学方程}
+      \begin{cases}
+         \dot{\bm{p}_C}=0
+         \\
+         \dot{\bm{p}}=-\nabla V(r)
+      \end{cases}
+   \end{gather*}
+   在质心系中，只考虑约化粒子的运动即可
+   \item 量子力学 \\
+   类比经典力学，可以将Hamiltonian分为两部分，态空间表示为两个假想粒子态空间的张量积
+   \begin{gather*}
+      \hat{H}=\hat{H}_C+\hat{H}_r
+      \\
+      \begin{cases}
+         \hat{H}_C=\frac{\hat{\bm{P}}_C^2}{2M}
+         \\
+         \hat{H}_r=\frac{\hat{\bm{P}}^2}{2\mu}+\hat{V}(\hat{R})
+      \end{cases}
+      [\hat{H}_C,\hat{H}_r]=0
+      \\
+      \begin{cases}
+         \hat{H}_C \ket{\chi_C}=E_C \ket{\chi_C}
+         \\
+         \hat{H}_r \ket{\chi_r}=E_r \ket{\chi_r}
+      \end{cases}
+      \\
+      \intertext{在$\{\ket{\bm{r}_C}\}$和$\{\ket{\bm{r}}\}$表象下写出方程}
+      \begin{cases}
+         -\frac{\hbar^2}{2M} \nabla_C^2 \chi_C(\bm{r}_C)=E_C \chi_C(\bm{r}_C)
+         \\
+         (-\frac{\hbar^2}{2\mu} \nabla^2 + V(r))\chi_r(\bm{r})=E_r \chi_r(\bm{r})
+      \end{cases}
+   \end{gather*}
+   质心的波函数为平面波，
+   \begin{gather*}
+      \chi_C(\bm{r}_C)=\frac{1}{(2\pi \hbar)^{\frac{3}{2}}} \e^{\frac{\i}{\hbar} \bm{p}_C \cdot \bm{r}_C}
+      \\
+      E_C=\frac{\bm{p}_C^2}{2M}
+   \end{gather*}
+   相对运动方程与中心势场中的粒子相同
+\end{enumerate}
+
+\section{氢原子}
+
+\begin{gather*}
+   V(r)=-\frac{e^2}{4\pi \epsilon_0 r}
+   \\
+   \mu=\frac{m_p m_e}{m_p + m_e} \approx m_e
+\end{gather*}
+
+\subsection{Bohr模型}
+
+\begin{gather*}
+   E=\frac{1}{2}\mu v^2-\frac{e^2}{4\pi \epsilon_0 r}
+   \\
+   \mu \frac{v^2}{r}=\frac{e^2}{4\pi \epsilon_0 r^2}
+   \\
+   \mu vr=n\hbar,\quad n \in \mathbb{Z}^+
+   \\
+   \intertext{设电离能}
+   E_I=\frac{1}{2} \mu (\frac{e^2}{4\pi \epsilon_0 \hbar})^2
+   \\
+   \intertext{Bohr半径}
+   a=\frac{4\pi \epsilon_0 \hbar^2}{\mu e^2}
+   \\
+   \intertext{解得}
+   E_n=-\frac{E_I}{n^2}
+   \\
+   r_n=n^2 a
+   \\
+   v_n=\frac{1}{n} \frac{e^2}{4\pi \epsilon_0 \hbar}
+\end{gather*}
+
+\subsection{量子力学}
+
+由\ref{sec:7.1}，只需关注径向方程，
+\begin{gather*}
+   \begin{cases}
+      (-\frac{\hbar^2}{2m}\dt{^2}{r^2}+\frac{l(l+1)\hbar^2}{2mr^2}-\frac{e^2}{4\pi \epsilon_0 r})u_{kl}(r)=E_{kl} u_{kl}(r)
+      \\
+      u_{kl}(0)=0
+   \end{cases}
+   \\
+   \intertext{无量纲化}
+   \begin{cases}
+      \rho=\frac{r}{a}
+      \\
+      \lambda_{kl}=\sqrt{-\frac{E_{kl}}{E_I}}
+   \end{cases}
+   \\
+   \dt{^2 u}{\rho^2} - \frac{l(l+1)}{\rho^2} u + \frac{2}{\rho} u -\lambda_{kl}^2 u=0
+   \\
+   \intertext{$\rho \to +\infty$，渐近行为}
+   u_{kl}(\rho) \to \e^{\pm \lambda_{kl} \rho}
+   \\
+   \intertext{舍去正指数解，设}
+   u_{kl}(\rho)=\e^{-\lambda_{kl} \rho} y_{kl}(\rho)
+   \\
+   \intertext{幂级数法，设}
+   y_{kl}(\rho)=\rho^{s} \displaystyle \sum_{q=0}^{+\infty} c_q \rho^q
+   \\
+   \intertext{解得}
+   \begin{cases}
+      s=l+1
+      \\
+      c_q=\frac{2((q+l)\lambda_{kl}-1)}{q(q+2l+1)}c_{q-1}
+   \end{cases}
+   \\
+   \intertext{由波函数可积性，幂级数截断为多项式}
+   \exists q=k, \lambda_{kl}=\frac{1}{k+l}
+   \\
+   E_{kl}=-\frac{1}{2} \mu (\frac{e^2}{4\pi \epsilon_0 \hbar})^2 \frac{1}{(k+l)^2}
+   \\
+   c_q=(-\frac{2}{k+l})^q \frac{(k-1)!}{(k-q-1)!} \frac{(2l+1)!}{q!(q+2l+1)!} c_0
+\end{gather*}
+
+$k+l$同时出现，标记为新的量子数$n=k+l$
+\begin{gather*}
+   E_n=-\frac{1}{2} \mu (\frac{e^2}{4\pi \epsilon_0 \hbar})^2 \frac{1}{n^2}
+   \\
+   n \in \mathbb{Z}^+
+   \\
+   l=0,1,\cdots,n-1,
+   \\
+   m=-l,-l+1,\cdots,l
+   \\
+   \intertext{$E_n$简并度}
+   g_n=n^2
+   \\
+   \intertext{定态波函数}
+   \varphi_{nlm}=\sqrt{\left(\frac{2}{na}\right)^3\frac{(n-l-1)!}{2n(n+l)!}}\left(\frac{2r}{na}\right)^le^{-\frac{r}{na}}L_{n-l-1}^{(2l+1)}\left(\frac{2r}{na}\right)Y_{lm}(\theta,\varphi)
+\end{gather*}
+其中$L_n^{(\alpha)}(x)$为关联Laguerre多项式
+
+\subsection{定态的概率流}
+
+一般表达式
+\begin{gather*}
+   \psi(\bm{r})=\alpha(\bm{r}) \e^{\i \xi(\bm{r})},\quad \alpha(\bm{r}) \geq 0,0\leq \xi(\bm{r}) < 2\pi
+   \\
+   \rho(\bm{r})=\alpha^2(\bm{r})
+   \\
+   \bm{J}(\bm{r})=\bm{J}(\bm{r},t)=\frac{\hbar}{2\mu\i} (\psi^* \nabla \psi - \psi \nabla \psi^*)=\frac{\hbar}{\mu} \alpha^2(\bm{r}) \nabla \xi(\bm{r})
+\end{gather*}
+若已知概率密度和概率流，
+\begin{gather*}
+   \nabla \xi(\bm{r})=\frac{\mu}{\hbar} \frac{\bm{J}(\bm{r})}{\rho(\bm{r})}
+   \\
+   \intertext{只有满足下列条件时，波函数才有解}
+   \nabla \times \frac{\bm{J}(\bm{r})}{\rho(\bm{r})}=0
+\end{gather*}
+
+对于氢原子的定态，
+\begin{gather*}
+   \bm{J}_{nlm}(\bm{r})=\frac{m\hbar}{\mu} \frac{\rho_{nlm}(\bm{r})}{r\sin\theta} \bm{e}_{\phi}
+\end{gather*}
+概率流密度可以类比为动量密度，角动量
+\begin{gather*}
+   L_z=\mu \int \bm{e}_z \cdot (\bm{r} \times \bm{J}_{nlm}(\bm{r})) \d^3 \bm{r}=m\hbar
+\end{gather*}
+
+磁场影响：加入沿$z$轴的匀强磁场$\bm{B}$，在规范$\bm{A}(\bm{r})=-\frac{1}{2} \bm{r} \times \bm{B}$下，磁场可以视为微扰，波函数的变化很小，
+\begin{gather*}
+   \bm{J}_{nlm}(\bm{r})=\frac{1}{\mu} \rho_{nlm}(\bm{r})(\hbar \nabla \xi_{nlm}(\bm{r}))-e \bm{A}(\bm{r})
+   \\
+   \bm{J}_{1,0,0}(\bm{r})=\frac{\omega_c}{2} \rho_{1,0,0}(\bm{r}) \bm{e}_z \times \bm{r}
+\end{gather*}
+与无磁场时不同，基态概率流密度不为$0$
+
+\subsection{均匀磁场中的氢原子}
+
+认为原子核是静止的，磁场是微扰
+
+选取规范
+\begin{gather*}
+   \bm{A}(\bm{r})=-\frac{1}{2} \bm{r} \times \bm{B}
+\end{gather*}
+Hamiltonian
+\begin{gather*}
+   \hat{H}=\frac{1}{2m}(\hat{\bm{P}}-q\hat{\bm{A}}(\hat{\bm{R}}))^2+\hat{V}(\hat{\bm{R}})=\hat{H}_0+\hat{H}_1+\hat{H}_2
+   \\
+   \hat{H}_0=\frac{1}{2m}\hat{\bm{P}}^2+\hat{V}(\hat{\bm{R}})
+   \\
+   \hat{H}_1=-\frac{\mu_B}{\hbar} \hat{\bm{L}} \cdot \bm{B}
+   \\
+   \hat{H}_2=\frac{q^2 \bm{B}^2}{8m} \hat{\bm{R}}_{\perp}^2
+   \\
+   \intertext{Bohr磁子}
+   \mu_B=\frac{q\hbar}{2m}
+   \\
+   \intertext{有}
+   \frac{\Delta E_2}{\Delta E_1} \approx \frac{\Delta E_1}{\Delta E_0} \ll 1
+\end{gather*}
+顺磁项
+\begin{gather*}
+   \intertext{角动量对应磁矩}
+   \bm{m}_1=\frac{q}{2m} \bm{L}
+   \\
+   \hat{H}_1=-\hat{\bm{m}}_1 \cdot \bm{B}
+\end{gather*}
+抗磁项
+\begin{gather*}
+   \intertext{磁矢势带来磁矩}
+   \bm{m}_2=\frac{q}{2m}(-q \bm{r} \times \bm{A}(\bm{r}))=\frac{q^2}{4m}((\bm{r} \cdot \bm{B})\bm{r}-r^2 \bm{B})
+   \\
+   \intertext{对应能量}
+   W_2=-\int_{0}^{B} \bm{m}(\bm{B'}) \cdot \d \bm{B'}=\frac{q^2}{8m} \bm{r}_{\perp}^2 \bm{B}^2
+   \\
+   \hat{H}_2 =\frac{q^2 \bm{B}^2}{8m} \hat{\bm{R}}_{\perp}^2
+\end{gather*}
+总磁矩与机械角动量有关，
+\begin{gather*}
+   \bm{m}=\frac{q}{2m} \bm{r} \times m\bm{v}=\bm{m}_1+\bm{m}_2
+\end{gather*}
+
+Zeeman效应：忽略$\hat{H}_2$，设$\hat{H}_0$特征向量$\ket{\varphi_{nlm}}$
+\begin{gather*}
+   \hat{H} \ket{\varphi_{nlm}}=(E_n-m\mu_B B)\ket{\varphi_{nlm}}
+\end{gather*}
+对于$1s$和$2p$能级之间的跃迁，
+\begin{gather*}
+   \hat{H}\ket{\varphi_{1,0,0}}=-E_I \ket{\varphi_{1,0,0}}
+   \\
+   \hat{H}\ket{\varphi_{2,1,m}}=(-E_I+\hbar (\Omega + m \omega_L))\ket{\varphi_{2,1,m}}
+   \\
+   \intertext{式中}
+   \Omega=\frac{E_2-E_1}{\hbar}
+   \\
+   \intertext{Larmor角频率}
+   \omega_L=-\frac{qB}{2m}
+\end{gather*}
+偶极辐射
+\begin{gather*}
+   \intertext{由对称性，}
+   \inpro{\varphi_{1,0,0}}{\hat{\bm{D}} \vert \varphi_{1,0,0}}=\inpro{\varphi_{2,1,m'}}{\hat{\bm{D}} \vert \varphi_{2,1,m}}=0
+   \\
+   \intertext{设径向积分}
+   \chi=\int_{0}^{+\infty} R_{2,1}(r)R_{1,0}(r) r^3 \d^3 r=\frac{128\sqrt{6}}{243}a
+   \\
+   \begin{cases}
+      \inpro{\varphi_{2,1,1}}{\hat{D}_x \vert \varphi_{1,0,0}}=-\inpro{\varphi_{2,1,-1}}{\hat{D}_x \vert \varphi_{1,0,0}}=-\frac{q\chi}{\sqrt{6}}
+      \\
+      \inpro{\varphi_{2,1,0}}{\hat{D}_x \vert \varphi_{1,0,0}}=0
+   \end{cases}
+   \\
+   \begin{cases}
+      \inpro{\varphi_{2,1,1}}{\hat{D}_y \vert \varphi_{1,0,0}}=\inpro{\varphi_{2,1,-1}}{\hat{D}_y \vert \varphi_{1,0,0}}=-\frac{\i q\chi}{\sqrt{6}}
+      \\
+      \inpro{\varphi_{2,1,0}}{\hat{D}_y \vert \varphi_{1,0,0}}=0
+   \end{cases}
+   \\
+   \begin{cases}
+      \inpro{\varphi_{2,1,1}}{\hat{D}_z \vert \varphi_{1,0,0}}=\inpro{\varphi_{2,1,-1}}{\hat{D}_z \vert \varphi_{1,0,0}}=0
+      \\
+      \inpro{\varphi_{2,1,0}}{\hat{D}_x \vert \varphi_{1,0,0}}=\frac{q\chi}{\sqrt{3}}
+   \end{cases}
+   \\
+   \intertext{设初态}
+   \ket{\psi_m(0)}=\cos\alpha \ket{\varphi_{1,0,0}}+\sin\alpha \ket{\varphi_{2,1,m}}
+   \\
+   \intertext{忽略总体相位因子$\e^{\frac{\i}{\hbar} E_I t}$}
+   \ket{\psi_m(t)}=\cos\alpha \ket{\varphi_{1,0,0}}+\sin\alpha \e^{-\i(\Omega+m\omega_L)t} \ket{\varphi_{2,1,m}}
+   \\
+   \intertext{计算}
+   \langle \bm{D} \rangle_m(t)=\inpro{\psi_m(t)}{\hat{\bm{D}} \vert \psi_m(t)}
+   \\
+   \begin{cases}
+      \langle D_x \rangle_1=-\frac{q\chi}{\sqrt{6}} \sin2\alpha \cos(\Omega+\omega_L)t
+      \\
+      \langle D_y \rangle_1=-\frac{q\chi}{\sqrt{6}} \sin2\alpha \sin(\Omega+\omega_L)t
+      \\
+      \langle D_z \rangle_1=0
+   \end{cases}
+   \\
+   \begin{cases}
+      \langle D_x \rangle_0=\langle D_y \rangle_0=0
+      \\
+      \langle D_z \rangle_0=\frac{q\chi}{\sqrt{3}} \sin2\alpha \cos\Omega t
+   \end{cases}
+   \\
+   \begin{cases}
+      \langle D_x \rangle_{-1}=\frac{q\chi}{\sqrt{6}} \sin2\alpha \cos(\Omega-\omega_L)t
+      \\
+      \langle D_y \rangle_{-1}=-\frac{q\chi}{\sqrt{6}} \sin2\alpha \sin(\Omega-\omega_L)t
+      \\
+      \langle D_z \rangle_{-1}=0
+   \end{cases}
+\end{gather*}
+\begin{itemize}
+   \item 若$m=1$，频率$\Omega+\omega_L$，$z$轴上是圆偏振光$\sigma_+$偏振，$xOy$平面上是线偏振光，其余方向是椭圆偏振
+   \item 若$m=0$，频率$\Omega$，在$z$轴上无电磁波，其余方向是线偏振
+   \item 若$m=-1$，频率$\Omega-\omega_L$，偏振方向与$m=1$时相反，$z$轴上是圆偏振光$\sigma_-$偏振，$xOy$平面上是线偏振光，其余方向是椭圆偏振
+\end{itemize}
+
+\subsection{原子轨道}
+
+原子轨道：重新选定一组基，用实函数来表示波函数
+\begin{enumerate}
+   \item $ns$轨道$(l=0)$
+   \begin{gather*}
+      \varphi_{ns}(\bm{r})=\varphi_{n,0,0}(\bm{r})
+   \end{gather*}
+   \item $np_x,np_y,np_z$轨道$(l=1)$
+   \begin{gather*}
+      \begin{cases}
+         \varphi_{np_x}(\bm{r})=-\frac{1}{\sqrt{2}}(\varphi_{n,1,1}(\bm{r})-\varphi_{n,1,-1}(\bm{r}))=\sqrt{\frac{3}{4\pi}}R_{n,1}(r)\frac{x}{r}
+         \\
+         \varphi_{np_y}(\bm{r})=\frac{\i}{\sqrt{2}}(\varphi_{n,1,1}(\bm{r})+\varphi_{n,1,-1}(\bm{r}))=\sqrt{\frac{3}{4\pi}}R_{n,1}(r)\frac{y}{r}
+         \\
+         \varphi_{np_z}(\bm{r})=\varphi_{n,1,0}(\bm{r})=\sqrt{\frac{3}{4\pi}}R_{n,1}(r)\frac{z}{r}
+      \end{cases}
+   \end{gather*}
+   对于$\bm{u}=(\cos\alpha,\cos\beta,\cos\gamma)$方向上的$np$轨道，
+   \begin{gather*}
+      \varphi_{np_u}(\bm{r})=\cos\alpha \varphi_{np_x}(\bm{r})+\cos\beta \varphi_{np_y}(\bm{r})+\cos\gamma \varphi_{np_z}(\bm{r})
+   \end{gather*}
+   \item $l$的其他值：对于$m \neq 0$，将$\varphi_{n,l,m}(\bm{r})$和$\varphi_{n,l,m}(\bm{r})$替换为
+   \begin{gather*}
+      \frac{1}{\sqrt{2}}(\varphi_{n,l,m}(\bm{r})+(-1)^m \varphi_{n,l,-m}(\bm{r}))
+      \\
+      \frac{\i}{\sqrt{2}}(\varphi_{n,l,m}(\bm{r})-(-1)^m \varphi_{n,l,-m}(\bm{r}))
+   \end{gather*}
+\end{enumerate}
+
+杂化轨道：重新选定$\mathscr{E}_s \otimes \mathscr{E}_p$空间的一组基
+\begin{enumerate}
+   \item $sp$杂化
+   \begin{gather*}
+      \begin{cases}
+         \varphi_{n,s,p_z}(\bm{r})=\frac{1}{\sqrt{2}}(\varphi_{ns}(\bm{r})+\varphi_{np_z}(\bm{r}))
+         \\
+         \varphi'_{n,s,p_z}(\bm{r})=\frac{1}{\sqrt{2}}(\varphi_{ns}(\bm{r})-\varphi_{np_z}(\bm{r}))
+         \\
+         \varphi_{np_x}(\bm{r})
+         \\
+         \varphi_{np_y}(\bm{r})
+      \end{cases}
+   \end{gather*}
+   \item $sp^2$杂化
+   \begin{gather*}
+      \begin{cases}
+         \varphi_{n,s,p_x,p_y}(\bm{r})=\frac{1}{\sqrt{3}}\varphi_{ns}(\bm{r})+\sqrt{\frac{2}{3}}\varphi_{np_x}(\bm{r})
+         \\
+         \varphi'_{n,s,p_x,p_y}(\bm{r})=\frac{1}{\sqrt{3}}\varphi_{ns}(\bm{r})-\frac{1}{\sqrt{6}}\varphi_{np_x}(\bm{r})+\frac{1}{\sqrt{2}}\varphi_{np_y}(\bm{r})
+         \\
+         \varphi''_{n,s,p_x,p_y}(\bm{r})=\frac{1}{\sqrt{3}}\varphi_{ns}(\bm{r})-\frac{1}{\sqrt{6}}\varphi_{np_x}(\bm{r})-\frac{1}{\sqrt{2}}\varphi_{np_y}(\bm{r})
+         \\
+         \varphi_{np_z}(\bm{r})
+      \end{cases}
+      \\
+      \intertext{旋转对称}
+      \begin{cases}
+         \ket{\varphi'_{n,s,p_x,p_y}}=\e^{-\frac{\i}{\hbar}\frac{2\pi}{3} \hat{L}_z} \ket{\varphi_{n,s,p_x,p_y}}
+         \\
+         \ket{\varphi''_{n,s,p_x,p_y}}=\e^{\frac{\i}{\hbar}\frac{2\pi}{3} \hat{L}_z} \ket{\varphi_{n,s,p_x,p_y}}
+      \end{cases}
+   \end{gather*}
+   \item $sp^3$杂化
+   \begin{gather*}
+      \begin{bmatrix}
+         \varphi_{n,s,p_x,p_y,p_z}(\bm{r}) \\
+         \varphi'_{n,s,p_x,p_y,p_z}(\bm{r}) \\
+         \varphi''_{n,s,p_x,p_y,p_z}(\bm{r}) \\
+         \varphi'''_{n,s,p_x,p_y,p_z}(\bm{r})
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+         \frac{1}{2} & \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\
+         \frac{1}{2} & -\frac{1}{2} & -\frac{1}{2} & \frac{1}{2} \\
+         \frac{1}{2} & -\frac{1}{2} & \frac{1}{2} & -\frac{1}{2} \\
+         \frac{1}{2} & \frac{1}{2} & -\frac{1}{2} & -\frac{1}{2}
+      \end{bmatrix}
+      \begin{bmatrix}
+         \varphi_{ns}(\bm{r}) \\
+         \varphi_{np_x}(\bm{r}) \\
+         \varphi_{np_y}(\bm{r}) \\
+         \varphi_{np_z}(\bm{r})
+      \end{bmatrix}
+   \end{gather*}
+\end{enumerate}
+
+\subsection{类氢体系}
+
+\begin{gather*}
+   \begin{cases}
+      \text{含有一个电子}
+      \begin{cases}
+         \text{氢的同位素}
+         \\
+         \text{$\mu$子素：$\mu^+$子代替质子}
+         \\
+         \text{电子偶素：正电子$e^+$代替质子}
+         \\
+         \text{固体物理}
+         \begin{cases}
+            \text{磷原子代替硅原子，要替换介电常数，质量替换为有效质量}
+            \\
+            \text{激子：外层电子吸收光子从价带激发到导带，产生空穴}
+         \end{cases}
+         \\
+         \text{类氢离子：只有一个电子的离子}
+      \end{cases}
+      \\
+      \text{无电子：奇特原子}
+      \begin{cases}
+         \text{$\mu$原子：$\mu^-$子代替电子，对强相互作用不敏感，用来探索核的内部结构}
+         \\
+         \text{强子原子：带负电的强子代替电子，激发态可以忽略强相互作用}
+      \end{cases}
+   \end{cases}
+\end{gather*}
+
+\section{各向同性三维谐振子}
+
+径向方程
+\begin{gather*}
+   -\frac{\hbar^2}{2mr}\dt{^2}{r^2}(rR_{nl})+\frac{1}{2}m\omega^2 r^2 R_{kl}+\frac{l(l+1)\hbar^2}{2mr^2} R_{kl}=E_{kl} R_{kl}
+   \\
+   \intertext{设}
+   \begin{cases}
+      R_{kl}(r)=\frac{1}{r}u_{kl}(r)
+      \\
+      \epsilon_{kl}=\frac{2mE_{kl}}{\hbar^2}
+      \\
+      \beta=\sqrt{\frac{m\omega}{\hbar}}
+   \end{cases}
+   \\
+   \begin{cases}
+      (\dt{^2}{r^2}-\beta^4 r^2-\frac{l(l+1)}{r^2}+\epsilon_{kl})u_{kl}(r)=0
+      \\
+      u_{kl}(0)=0
+   \end{cases}
+   \\
+   \intertext{考察渐近行为，设}
+   u_{kl}(r)=\e^{-\frac{1}{2}\beta^2 r^2} y_{kl}(r)
+   \\
+   \intertext{幂级数法，设}
+   y_{kl}(r)=r^s \displaystyle \sum_{q=0}^{+\infty} a_q r^q
+   \\
+   \intertext{解得奇数项为$0$，}
+   s=l+1
+   \\
+   a_{q+2}=\frac{(2q+2l+3)\beta^2-\epsilon_{kl}}{(q+2)(q+2l+3)}a_q
+   \\
+   \intertext{由平方可积性，幂级数截断为多项式}
+   \epsilon_{kl}=(2k+2l+3)\beta^2,\quad k\text{为偶数}
+   \\
+   E_{kl}=(k+l+\frac{3}{2})\hbar \omega,\quad k\text{为偶数}
+   \\
+   \intertext{统一标记为量子数$n=k+l$}
+   E_n=(n+\frac{3}{2})\hbar \omega
+   \\
+   \intertext{由$k$为偶数可以推知$l$的取值，可以求得简并度}
+   g_n=\frac{(n+1)(n+2)}{2}
+\end{gather*}
+
+\section{双原子分子的振动-转动}
+
+仅考虑相对运动，定态波函数
+\begin{gather*}
+   \varphi_{klm}(r,\theta,\phi)=\frac{1}{r}u_{kl}(r) Y_{lm}(\theta,\phi)
+   \\
+   (-\frac{\hbar^2}{2m}\dt{^2}{r^2}+V(r)+\frac{l(l+1)\hbar^2}{2mr^2})u_{kl}(r)=E_{kl} u_{kl}(r)
+\end{gather*}
+
+
+\begin{enumerate}
+   \item $l=0$ \\
+   $V(r)$在最小值$r=r_e$处Taylor展开
+   \begin{gather*}
+      V(r)=-V_0+f(r-r_e)^2-g(r-r_e)^3+\cdots
+   \end{gather*}
+   略去三次及以上的项，得到谐振子方程，
+   \begin{gather*}
+      \omega=\sqrt{\frac{2f}{\mu}}
+      \\
+      E_{k,0}=-V_0+(k+\frac{1}{2})\hbar \omega,\quad k \in \mathbb{N}
+      \\
+      u_{k,0}(r)=\sqrt[4]{\frac{\mu\omega}{\pi \hbar}} \frac{1}{\sqrt{2^k k!}} \e^{-\frac{1}{2} \frac{\mu \omega}{\hbar} (r-r_e)^2} H_k(\sqrt{\frac{\mu \omega}{\hbar}} (r-r_e))
+      \\
+      \intertext{波函数展延范围}
+      \Delta r_k \approx \sqrt{(k+\frac{1}{2})\frac{\hbar}{\mu \omega}}
+      \\
+      \intertext{条件}
+      \begin{cases}
+         f \gg g \Delta r_k
+         \\
+         \Delta r_k \ll r_e
+      \end{cases}
+   \end{gather*}
+   只考虑小量子数$k$
+   \item $l$为任意值 \\
+   为了使离心势可以忽略高阶项，取为$r=r_e$处的值，应当有
+   \begin{gather*}
+      \frac{l(l+1)\hbar^2}{2\mu r_e^2} \ll \hbar \omega
+   \end{gather*}
+   只考虑小量子数$l$
+   \begin{gather*}
+      E_{k,l}=-V_0+(k+\frac{1}{2})\hbar \omega+\frac{l(l+1)\hbar^2}{2\mu r_e^2} \quad k,l \in \mathbb{N}
+      \\
+      \intertext{径向函数只与$k$有关}
+      u_{kl}(r)=u_{k,0}(r)
+   \end{gather*}
+   振动-转动谱
+   \begin{gather*}
+      \inpro{\varphi_{k'l'm'}}{\hat{D} \cos\theta \vert \varphi_{klm}}
+   \end{gather*}
+   非零条件：
+   \begin{gather*}
+      \begin{cases}
+         l'-l=\pm 1
+         \\
+         k'-k=0,\pm 1
+      \end{cases}
+   \end{gather*}
+   \begin{itemize}
+      \item $k'-k=0$构成纯转动谱，在\ref{sec:6.5}节已经讨论过
+      \item $k'=k+1,l'=l+1$，谱线角频率
+      \begin{gather*}
+         \omega+\frac{\hbar}{\mu r_e^2} (l+1) \quad l = 0,1,\cdots
+      \end{gather*}
+      \item $k'=k+1,l'=l-1$，谱线角频率
+      \begin{gather*}
+         \omega-\frac{\hbar}{\mu r_e^2} (l'+1) \quad l' = 0,1,\cdots
+      \end{gather*}
+   \end{itemize}
+   \ref{sec:5.7.1}节讨论的纯振动谱实际上不存在
+\end{enumerate}
+
+离心势的变化带来的修正：离心势在$r=r_e$处Taylor展开
+\begin{gather*}
+   \frac{l(l+1)\hbar^2}{2\mu r^2}=\frac{l(l+1)\hbar^2}{2\mu r_e^2}-\frac{l(l+1)\hbar^2}{\mu r_e^3}(r-r_e)+\frac{3l(l+1)\hbar^2}{2\mu r_e^2}(r-r_e)^2+\cdots
+   \\
+   V_{eff}(r)=-V_0+f(r-r_e)^2-g(r-r_e)^3+\frac{l(l+1)\hbar^2}{2\mu r_e^2}-\frac{l(l+1)\hbar^2}{\mu r_e^3}(r-r_e)+\frac{3l(l+1)\hbar^2}{2\mu r_e^2}(r-r_e)^2+\cdots
+\end{gather*}
+极小值点变为$r=r'_e$，忽略$\frac{3l(l+1)\hbar^2}{2\mu r_e^2}(r-r_e)^2$和$-g(r-r_e)^3$及更高阶项，
+\begin{gather*}
+   r'_e = r_e+\frac{l(l+1)\hbar^2}{2\mu f r_e^3}
+\end{gather*}
+满足
+\begin{gather*}
+   \frac{r'_e-r_e}{\Delta r_0} \approx \frac{\frac{l(l+1)\hbar^2}{\mu r_e^2}}{\hbar \omega} \frac{\Delta r_0}{r_e} \ll 1
+   \\
+   V_{eff}(r'_e)=-V_0+\frac{\hbar^2}{2\mu r_e^2}l(l+1)-\frac{\hbar^4}{4\mu^2 r_e^6 f} l^2 (l+1)^2
+   \\
+   \intertext{有效势重新Taylor展开为}
+   V_{eff}(r)=V_{eff}(r'_e)+f'(r-r'_e)^2-g'(r-r'_e)^3+\cdots
+   \\
+   f'=f+\frac{3l(l+1)\hbar^2}{2\mu r_e^4}-\frac{3gl(l+1)\hbar^2}{2\mu f r_e^3}
+   \\
+   \omega'=\sqrt{\frac{2f'}{\mu}}=\omega-l(l+1)\frac{3\hbar^2 }{4\mu f r_e^3} \omega(\frac{g}{f}-\frac{1}{r_e})
+   \\
+   g' \approx g
+   \\
+   \intertext{忽略高阶项，有效势可以写作}
+   V_{eff}(r)=V_{eff}(r'_e)+\frac{1}{2} \mu \omega'(r-r'_e)^2-g(r-r'_e)^3
+   \\
+   \intertext{运用微扰论，在谐振子势的基础上，求得三次方的势带来的能量修正}
+   E_{kl}=-V_0+(k+\frac{1}{2})\hbar \omega'+ \frac{\hbar^2}{2\mu r_e^2}l(l+1)-\frac{\hbar^4}{4\mu^2 r_e^6 f} l^2 (l+1)^2-\frac{15g^2\hbar^2}{4\mu^3 \omega'^4}((k+\frac{1}{2})^2+\frac{7}{60})
+\end{gather*}
+振动-转动耦合项
+\begin{gather*}
+   (k+\frac{1}{2})\hbar (\omega'-\omega)=-l(l+1)(k+\frac{1}{2})\frac{3\hbar^2 }{4\mu f r_e^3} \hbar \omega(\frac{g}{f}-\frac{1}{r_e})
+\end{gather*}
+可以等效为振动改变了转动惯量，原因有
+\begin{itemize}
+   \item 第一项$\frac{g}{f}$来源于$g$引起$V(r)$非对称，$r$在$r>r_e$区间时间更长，贡献更大，能量减小
+   \item 第二项来源于离心势取平均，$r<r_e$贡献更大，$\langle \frac{1}{r^2} \rangle \geq \frac{1}{\langle r^2 \rangle}$，能量增大
+\end{itemize}

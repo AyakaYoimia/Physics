@@ -1,0 +1,404 @@
+\chapter{全同粒子体系}
+
+\begin{definition*}[全同粒子]
+    如果两个粒子的一切固有性质都一样，则称它们是全同的。全同粒子可以交换。    
+\end{definition*}
+
+\begin{enumerate}
+    \item 经典全同粒子：考虑两个全同粒子，
+    \begin{gather*}
+        \intertext{若}
+        \begin{cases}
+            \bm{r}_1(t_0)=\bm{r}_0
+            \\
+            \bm{v}_1(t_0)=\bm{v}_0
+            \\
+            \bm{r}_2(t_0)=\bm{r'}_0
+            \\
+            \bm{v}_2(t_0)=\bm{v'}_0
+        \end{cases}
+        \implies 
+        \begin{cases}
+            \bm{r}_1(t)=\bm{r}(t)
+            \\
+            \bm{r}_2(t)=\bm{r'}(t)
+        \end{cases}
+        \\
+        \intertext{则}
+        \begin{cases}
+            \bm{r}_1(t_0)=\bm{r'}_0
+            \\
+            \bm{v}_1(t_0)=\bm{v'}_0
+            \\
+            \bm{r}_2(t_0)=\bm{r}_0
+            \\
+            \bm{v}_2(t_0)=\bm{v}_0
+        \end{cases}
+        \implies 
+        \begin{cases}
+            \bm{r}_1(t)=\bm{r'}(t)
+            \\
+            \bm{r}_2(t)=\bm{r}(t)
+        \end{cases}
+    \end{gather*}
+    轨道是分开的，因此每个粒子在编号后可以追踪
+    \item 量子力学中的全同粒子：由于波函数假定，全同粒子的波包在演化中会重叠，使粒子不可区分，同一个物理状态对应多个态矢量，即为交换简并，对每一个粒子都进行完全测量后不能确定唯一的右矢，与基本假设发生矛盾
+    \begin{example}
+        两个全同粒子，假设沿$z$轴自旋一个为$\frac{\hbar}{2}$，另一个为$-\frac{\hbar}{2}$，态空间的基$\{\ket{+,-},\ket{-,+}\}$，则所有右矢
+        \begin{gather*}
+            \ket{\psi}=\alpha \ket{+,-} + \beta \ket{-,+},\quad |\alpha|^2 + |\beta|^2 = 1
+        \end{gather*}
+        对应同一个物理状态，而对物理量的测量结果会与在两个基矢上的分量有关，因此需要确定右矢消除交换简并
+    \end{example}
+\end{enumerate}
+
+\section{置换算符}
+
+\subsection{双粒子体系}
+
+考虑两个自旋均为$S$的、态空间同构的粒子（不要求全同）1和2，在粒子1的态空间中选定一组基$\{\ket{u_i}\}$，通过张量积构成态空间的基
+\begin{gather*}
+    \{\ket{1:u_i;2:u_j}\}
+\end{gather*}
+有
+\begin{gather*}
+    \ket{1:u_i;2:u_j}=\ket{2:u_j;1:u_i}
+    \\
+    \ket{1:u_i;2:u_j} \neq \ket{1:u_j;2:u_i},\quad \text{若}i \neq j
+\end{gather*}
+
+置换算符的作用为
+\begin{gather*}
+    P_{21} \ket{1:u_i;2:u_j}=\ket{1:u_j;2:u_i}
+\end{gather*}
+性质有
+\begin{itemize}
+    \item $P_{21}^2=1$
+    \item $P_{21}$是Hermite算符
+    \item $P_{21}$是幺正算符
+\end{itemize}
+\begin{enumerate}
+    \item 对称右矢：对应$P_{21}$特征值为$1$
+    \item 反对称右矢：对应$P_{21}$特征值为$-1$
+\end{enumerate}
+\begin{gather*}
+    \intertext{设对称化算符}
+    S=\frac{1+P}{2}
+    \\
+    \intertext{反对称化算符}
+    A=\frac{1-P}{2}
+    \\
+    \intertext{有}
+    \begin{cases}
+        S^2=S
+        \\
+        A^2=A
+    \end{cases}
+    \\
+    \begin{cases}
+        S^{\dagger}=S
+        \\
+        A^{\dagger}=A
+    \end{cases}
+    \\
+    SA=AS=0
+    \\
+    S+A=1
+\end{gather*}
+$S$和$A$的子空间构成正交补
+
+\begin{gather*}
+    \intertext{对于与子空间1，2有关的任意算符$\hat{O}(1,2)$，有}
+    P_{21}\hat{O}(1,2)P_{21}^{\dagger}=\hat{O}(2,1)
+    \\
+    \intertext{若}
+    \hat{O}_S(2,1)=\hat{O}_S(2,1)
+    \\
+    \implies [\hat{O}_S(1,2),P_{21}]=0
+\end{gather*}
+
+\subsection{多粒子体系}
+
+$N$个粒子体系有$N!$个置换算符，置换算符构成置换群
+
+位调算符：只涉及两个粒子的置换算符，位调算符是Hermite算符，是幺正算符
+
+置换算符是幺正算符，但不一定是Hermite算符
+
+置换算符可以表示为位调算符的乘积，且具有宇称性，对于任意$N$，奇宇称和偶宇称的置换算符个数相等
+
+对于置换算符$P_\alpha$
+\begin{enumerate}
+    \item 对称右矢：对应$P_\alpha$特征值为$1$
+    \item 反对称右矢：对应$P_\alpha$特征值为$\varepsilon_\alpha$
+    \begin{gather*}
+        \begin{cases}
+            \varepsilon_\alpha=1,\text{若}P_\alpha\text{具有偶宇称}
+            \\
+            \varepsilon_\alpha=-1,\text{若}P_\alpha\text{具有奇宇称}
+        \end{cases}
+    \end{gather*}
+\end{enumerate}
+\begin{gather*}
+    \intertext{设对称化算符}
+    S=\frac{1}{N!} \displaystyle \sum_{\alpha} P_\alpha
+    \\
+    \intertext{反对称化算符}
+    A=\frac{1}{N!} \displaystyle \sum_{\alpha} \varepsilon_\alpha P_\alpha
+    \\
+    \intertext{有}
+    \begin{cases}
+        S^2=S
+        \\
+        A^2=A
+    \end{cases}
+    \\
+    \begin{cases}
+        S^{\dagger}=S
+        \\
+        A^{\dagger}=A
+    \end{cases}
+    \\
+    SA=AS=0
+    \\
+    \intertext{但}
+    S+A \neq 1
+\end{gather*}
+
+\section{对称化假设}
+
+\begin{definition*}[对称化假设]
+    全同粒子体系态空间中，对应物理状态的右矢，或者是完全对称的，或者是完全反对称的
+    \begin{itemize}
+        \item 称这类粒子为Boson，如果物理右矢是对称的
+        \item 称这类粒子为Fermion，如果物理右矢是反对称的
+    \end{itemize}
+    经验规律：自旋为整数的粒子是Boson，自旋为半整数的粒子是Fermion
+\end{definition*}
+
+对于右矢$\ket{u}$，$P_{\alpha} \ket{u}$也在子空间$\mathscr{E}_u$中，由于
+\begin{gather*}
+    S\ket{u}=SP_{\alpha} \ket{u}
+    \\
+    A\ket{u}=\varepsilon_\alpha AP_{\alpha} \ket{u}
+\end{gather*}
+$\mathscr{E}_u$中右矢在子空间$\mathscr{E}_S$和$\mathscr{E}_A$上的投影共线，从而在两个子空间中分别确定了唯一的右矢（即物理右矢）$S\ket{u}$和$A\ket{u}$
+
+对于Fermion，在$\mathscr{E}_A$上的投影可能为$0$，这样的物理状态不会出现，即为Pauli不相容原理，两个全同Fermion不可能处于相同的单粒子态
+
+多粒子体系确定物理右矢的方法
+\begin{itemize}
+    \item 对于Boson，直接对各基矢相加取平均
+    \item 对于Fermion，写成Slater行列式形式
+    \begin{gather*}
+        A \ket{u}=\frac{1}{N!}
+        \begin{vmatrix}
+            \ket{1:u_1} & \ket{1:u_2} & \cdots & \ket{1:u_N} \\
+            \ket{2:u_1} & \ket{2:u_2} & \cdots & \ket{2:u_N} \\
+            \cdots & \cdots & \cdots & \cdots \\
+            \ket{N:u_1} & \ket{N:u_2} & \cdots & \ket{N:u_N}
+        \end{vmatrix}
+    \end{gather*}
+    若单粒子态有相同的，Slater行列式为$0$，即为Pauli不相容原理
+\end{itemize}
+
+物理态空间的基：引入占有数$n_k$，代表处于单粒子态$\ket{u_k}$的粒子个数，若两个不同右矢的各态占有数都相等，则向物理态空间中投影得到同一个右矢，为
+\begin{gather*}
+    \ket{n_1,n_2,\cdots,n_k,\cdots}=
+    \begin{cases}
+        \sqrt{\frac{N!}{n_1!n_2!\cdots n_k!\cdots}} S\ket{1:u_1;2:u_1;\cdots;n_1:u_1;n_1+1:u_2;\cdots;n_1+n_2:u_2;\cdots},\:\text{对于Boson}
+        \\
+        \sqrt{N!} A\ket{1:u_1;2:u_1;\cdots;n_1:u_1;n_1+1:u_2;\cdots;n_1+n_2:u_2;\cdots},\:\text{对于Fermion}
+    \end{cases}
+    \\
+    \displaystyle \sum_{k} n_k=N
+\end{gather*}
+\begin{itemize}
+    \item 对于Boson，$\ket{n_1,n_2,\cdots,n_k,\cdots}$构成一组正交归一基
+    \item 对于Fermion，各占有数为$0$或$1$，$\ket{n_1,n_2,\cdots,n_k,\cdots}$构成一组基
+\end{itemize}
+
+\section{其他假设的应用}
+
+\begin{enumerate}
+    \item 测量概率：设测量前为态$\ket{\psi(t)}$，测量后为态$\ket{u}$，则测量结果的概率幅为$\inpro{u}{\psi(t)}$
+    \item 观察算符$\hat{G}$对全同粒子体系有对称性,$[\hat{G},P_{\alpha}]=0,\forall P_{\alpha}$，子空间$\mathscr{E}_S$和$\mathscr{E}_A$是$\hat{G}$作用的不变子空间。对称化假设使$\hat{G}$的特征值数量可能减少，但不会增加
+    \item $[\hat{H},P_{\alpha}]=0$，使得演化过程中$\ket{\psi(t)}$保持在子空间中
+\end{enumerate}
+
+Fermi能：全同Fermion体系基态时单粒子最大的能量
+
+\section{全同性的干涉效应}
+
+考虑两个全同粒子的体系，一个处于单粒子态$\ket{\varphi}$，另一个处于单粒子态$\ket{\chi}$，体系态矢量
+\begin{gather*}
+    \ket{\varphi;\chi}=\frac{1}{\sqrt{2}}(1+\varepsilon P_{21})\ket{1:\varphi;2:\chi}
+    \\
+    \varepsilon=\begin{cases}
+        1,\quad \text{对于Boson}
+        \\
+        -1,\quad \text{对于Fermion}
+    \end{cases}
+    \\
+    \intertext{设观测算符$\hat{B}$有离散非简并谱}
+    \hat{B}\ket{u_i}=b_i \ket{u_i}
+    \\
+    \intertext{对于$n \neq n'$，}
+    \ket{u_n;u_{n'}}=\frac{1}{\sqrt{2}}(1+\varepsilon P_{21})\ket{1:u_n;2:u_{n'}}
+    \\
+    \inpro{u_n;u_{n'}}{\varphi;\chi}=\inpro{u_n}{\varphi}\inpro{u_{n'}}{\chi}+\varepsilon\inpro{u_{n'}}{\varphi}\inpro{u_n}{\chi}
+    \\
+    P(b_n;b_{n'})=|\inpro{u_n;u_{n'}}{\varphi;\chi}=\inpro{u_n}{\varphi}\inpro{u_{n'}}{\chi}+\varepsilon\inpro{u_{n'}}{\varphi}\inpro{u_n}{\chi}|^2
+\end{gather*}
+编号消失，发生干涉，第一项称为直接项，第二项称为交换项
+
+可以忽略对称化假设的情况
+\begin{itemize}
+    \item 处于空间中不同区域的无相互作用粒子
+    \item 可以用自旋取向鉴别的粒子
+\end{itemize}
+
+\section{多电子原子}
+
+假设原子核位置固定，
+\begin{gather*}
+    \hat{H}=\displaystyle \sum_{i=1}^{Z}\frac{\hat{\bm{P}_i}^2}{2m_e}-\sum_{i=1}^{Z}\frac{Ze^2}{4\pi \epsilon_0 R_i}+\sum_{i<j} \frac{e^2}{4\pi \epsilon_0 |\bm{R}_i-\bm{R}_j|}
+\end{gather*}
+
+中心场近似：对于其中一个电子，认为其他$(Z-1)$个电子的运动不受该电子影响，该电子受到其余电子的排斥力取平均，得到平均势场$V_c(R_i)$
+\begin{gather*}
+    \hat{H} \approx \hat{H}_0=\displaystyle \sum_{i=1}^{Z} \left[\frac{\hat{\bm{P}_i}^2}{2m_e}+V_c(R_i)\right]
+    \\
+    V_c(r) \approx
+    \begin{cases}
+        -\frac{e^2}{4\pi \epsilon_0 r},\quad r\text{很小}
+        \\
+        -\frac{Ze^2}{4\pi \epsilon_0 r},\quad r\text{很大}
+    \end{cases}
+\end{gather*}
+不再有氢原子的偶然简并，能量与$n$和$l$均有关
+\begin{gather*}
+    E_{n',l}<E_{n,l},\quad n'< n
+    \\
+    E_{n,l'}<E_{n,l},\quad l'<l
+\end{gather*}
+
+\section{氦原子}
+
+\subsection{中心场近似}
+
+\begin{gather*}
+    \hat{H}=\hat{H}_0+\hat{W}
+    \\
+    \hat{H}_0=\frac{\hat{\bm{P}_1}^2}{2m_e}+\frac{\hat{\bm{P}_2}^2}{2m_e}+V_c(R_1)+V_c(R_2)
+    \\
+    \hat{W}=-\frac{2e^2}{4\pi \epsilon_0 R_1}-\frac{2e^2}{4\pi \epsilon_0 R_2}+\frac{e^2}{4\pi \epsilon_0 |\bm{R}_1-\bm{R}_2|}-V_c(R_1)-V_c(R_2)
+\end{gather*}
+
+电子组态
+\begin{gather*}
+    \ket{n,l,m,\varepsilon;n',l',m',\varepsilon'}
+\end{gather*}
+简并度
+\begin{itemize}
+    \item $nl^2$组态$n=n',l=l'$简并度$(2l+1)(4l+1)$
+    \item 其余情况$nl,n'l'$简并度$4(2l+1)(2l'+1)$
+\end{itemize}
+
+\subsection{微扰}
+
+在组态对应子空间$\mathscr{E}(n,l;n';l')$中计算$\hat{W}$矩阵元，在子空间$\mathscr{E}_{n,l}(1) \otimes \mathscr{E}_{n,l}(2)$中，选取$\hat{\bm{L}}^2,\hat{L}_z,\hat{\bm{S}}^2,\hat{S}_z$共同特征向量作为基，
+\begin{gather*}
+    \{\ket{1:n,l;2:n',l';L,m_L} \otimes \ket{s,m_s}\}
+\end{gather*}
+反对称化后得到$\mathscr{E}(n,l;n';l')$的正交归一基
+\begin{gather*}
+    \ket{n,l;n',l';L,m_L;s,m_s}=c(1-P_{21})\ket{1:n,l;2:n',l';L,m_L} \otimes \ket{s,m_s}
+    \\
+    P_{21}=P_{21}^{\bm{r}} \otimes P_{21}^{S}
+    \\
+    P_{21}^{S} \ket{s,m_s}=(-1)^{s+1} \ket{s,m_s}
+\end{gather*}
+\begin{itemize}
+    \item 若$n=n',l=l'$，
+    \begin{gather*}
+        P_{21}^{\bm{r}} \ket{1:n,l;2:n,l;L,m_L}=(-1)^L \ket{1:n,l;2:n,l;L,m_L}
+        \\
+        \ket{n,l;n,l;L,m_L;s,m_s}=
+        \begin{cases}
+            0,\quad L+s \text{为奇数}
+            \\
+            \ket{1:n,l;2:n,l;L,m_L} \otimes \ket{s,m_s},\quad L+s \text{为偶数}
+        \end{cases}
+    \end{gather*}
+    \item 其余情况，$\mathscr{E}(n,l;n';l')$与$\mathscr{E}_{n,l}(1) \otimes \mathscr{E}_{n,l}(2)$维数相同，归一化系数$c=\frac{1}{\sqrt{2}}$
+\end{itemize}
+对称化假设要求自旋部分与轨道部分对称性相反
+
+在这组基下，$\hat{W}$矩阵元是对角的，特征值
+\begin{gather*}
+    \delta(L,s)=\inpro{n,l;n',l';L,m_L;s,m_s}{\hat{W} \vert n,l;n',l';L,m_L;s,m_s}
+\end{gather*}
+能级$E(n,l;n'l')+\delta(L,s)$，简并度$(2L+1)(2s+1)$，这些次能级称为谱项，记为$^{2s+1}L,L=S,P,D,F \cdots$。简并性的部分消除与对称化假设无关
+
+\subsection{精细结构}
+
+不考虑电子自旋的相互作用，只考虑相对论效应和自旋-轨道耦合，精细结构Hamiltonian为$\hat{H}_{SF}$
+\begin{gather*}
+    [\hat{H}_{SF},\hat{\bm{J}}]=0
+\end{gather*}
+对于每一个谱项，$L$和$s$固定，基$\ket{n,l;n',l';L,m_L;s,m_s}$，由于
+\begin{gather*}
+    j=L+s,L+s-1,\cdots,|L-s|
+\end{gather*}
+$\hat{H}_{SF}$部分消除简并，能级数为$j$的可能取值数，每一个能级简并度$(2j+1)$，记为$^{2s+1}L_{j},L=S,P,D,F \cdots$
+
+\section{电子气}
+
+考虑有$N$个电子的体系，封闭在边长$L$的立方体中，波函数
+\begin{gather*}
+    \varphi_{n_x,n_y,n_z}=\left(\frac{2}{L}\right)^2 \sin\frac{n_x \pi x}{L} \sin\frac{n_y \pi y}{L} \sin\frac{n_z \pi z}{L}
+    \\
+    E_{n_x,n_y,n_z}=\frac{\pi^2 \hbar^2}{2m_e L^2}(n_x^2+n_y^2+n_z^2)=\frac{\hbar^2}{2m_e}\bm{k}_{n_x,n_y,n_z}^2
+\end{gather*}
+当$L$很大时，$\bm{k}_{n_x,n_y,n_z}$近似连续取值，能量比$E$小的电子数
+\begin{gather*}
+    N(E)=2 \times \frac{1}{8} \times \frac{\frac{4}{3}\pi \left(\sqrt{\frac{2m_e E}{\hbar^2}}\right)^3}{\left(\frac{\pi}{L}\right)^3}=\frac{L^3}{3\pi^2} \left(\frac{2m_e}{\hbar^2}E\right)^{\frac{3}{2}}
+\end{gather*}
+
+Fermi能$E_F$满足
+\begin{gather*}
+    N(E_F)=N
+    \\
+    E_F=\frac{\hbar^2}{2m_e}\left(\frac{3\pi^2 N}{L^3}\right)^{\frac{2}{3}}
+\end{gather*}
+态密度
+\begin{gather*}
+    \rho(E)=\dt{N(E)}{E}=\frac{L^3}{2\pi^2} \left(\frac{2m_e}{\hbar^2}\right)^{\frac{3}{2}} E^{\frac{1}{2}}
+\end{gather*}
+
+绝对零度下电子处于基态，所有电子能量不大于Fermi能。当温度升高时，由于Pauli不相容原理，能量靠近$E_F$的电子先进入到更高能级，因此电子气物理性质（如比热、磁化率、导电性）受到该部分电子影响最大
+
+周期边界条件：实际情况下自由电子波函数为平面波，引入周期性边界条件（Born-von Kármán边界条件），限定后得到$\bm{k}$值的离散集合，满足
+\begin{itemize}
+    \item $\bm{k}$对应的平面波构成一组基，可以表示之前设定的箱内的函数
+    \item 对应的态密度与真实态密度相等
+\end{itemize}
+
+\subsection{固体中的电子}
+
+\begin{itemize}
+    \item 导体：Fermi能级$\mu$位于容许能带中，
+    \item 绝缘体：Fermi能级$\mu$位于禁止能带中，以下的所有容许能带都被填满，禁止能带间隔$\Delta E$越大，绝缘性能越好
+\end{itemize}
+其中深层的容许能带叫做价带，顶层部分被填充的能带叫做导带
+
+半导体
+\begin{itemize}
+    \item 本征半导体：升温后电子越过禁止能带产生的导电效应
+    \item 非本征半导体：掺杂产生的导电
+    \begin{itemize}
+        \item $n$型半导体：掺入高价杂质作为施主，禁带上方下降导致禁带变窄
+        \item $p$型半导体：掺入低价杂质作为受主，禁带下方上升导致禁带变窄
+    \end{itemize}
+\end{itemize}

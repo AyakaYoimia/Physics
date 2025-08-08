@@ -1,0 +1,441 @@
+\chapter{含时微扰理论}
+
+原体系Hamiltonian满足
+\begin{gather*}
+    \hat{H}_0 \ket{\varphi_n}=E_n \ket{\varphi_n}
+\end{gather*}
+假设$\hat{H}_0$的谱是离散、非简并的，且$\hat{H}_0$不含时
+
+在$t=0$时刻施加微扰，
+\begin{gather*}
+    \hat{H}(t)=\hat{H}_0+\lambda \hat{W}(t),\quad \lambda \ll 1
+\end{gather*}
+设初态为定态$\ket{\varphi_i}$
+
+选取表象$\{\ket{\varphi_n}\}$
+\begin{gather*}
+    \ket{\psi(t)}=\displaystyle \sum_{n} c_n(t) \ket{\varphi_n}
+    \\
+    \intertext{Schrödinger方程}
+    \i \hbar \dt{}{t} \ket{\psi(t)}=(\hat{H}_0+\lambda \hat{W}(t)) \ket{\psi(t)}
+    \\
+    \i \hbar \dt{}{t} c_n(t)=E_n c_n(t)+\displaystyle \sum_k \lambda \hat{W}_{nk}(t) c_k(t)
+    \\
+    \intertext{由于$\lambda \ll 1$，猜解}
+    c_n(t)=b_n(t) \e^{-\frac{\i}{\hbar} E_n t}
+    \\
+    \intertext{引入Bohr角频率}
+    \omega_{nk}=\frac{E_n-E_k}{\hbar}
+    \\
+    \intertext{得到}
+    \i \hbar \dt{}{t} b_n(t)=\lambda \displaystyle \sum_k \e^{\i \omega_{nk} t} \hat{W}_{nk}(t) b_k(t)
+    \\
+    \intertext{幂级数展开}
+    b_n(t)=\displaystyle \sum_{r=0}^{+\infty} \lambda^r b_n^{(r)}(t)
+\end{gather*}
+\begin{itemize}
+    \item 对于$r=0$，$b_n^{(0)}(t)$为常数
+    \item 对于$r=1$，
+    \begin{gather*}
+        \i \hbar \dt{}{t} b_n^{(r)}(t)=\lambda \displaystyle \sum_k \e^{\i \omega_{nk} t} \hat{W}_{nk}(t) b_k^{(r-1)}(t)
+    \end{gather*}
+    通过递推可以求解
+\end{itemize}
+一阶近似，初态
+\begin{gather*}
+    b_n(0)=\delta_{ni}
+    \\
+    b_n^{(0)}(t)=\delta_{ni}
+    \\
+    b_n^{(1)}(t)=\frac{1}{\i \hbar} \int_{0}^{t} \e^{\i \omega_{ni} t'} \hat{W}_{ni}(t') \d t'
+\end{gather*}
+在$t$时刻跃迁到$\ket{\varphi_f}$态的概率
+\begin{gather*}
+    P_{if}(t)=\frac{1}{\hbar^2} \left|\int_{0}^{t} \e^{\i \omega_{fi} t'} \lambda \hat{W}_{fi}(t') \d t'\right|
+\end{gather*}
+
+\section{正弦型微扰和恒定微扰}
+
+\subsection{末态为离散谱中的态}
+
+\begin{gather*}
+    \hat{W}(t)=\hat{W} \sin \omega t
+    \\
+    P_{if}(t;\omega)=\frac{|\lambda \hat{W}_{fi}|^2}{4\hbar^2} \left|\frac{1-\e^{\i (\omega_{fi}+\omega)t}}{\omega_{fi}+\omega}-\frac{1-\e^{\i (\omega_{fi}-\omega)t}}{\omega_{fi}-\omega}\right|^2
+\end{gather*}
+设$\omega_{fi}>0$，考虑共振点附近$|\omega-\omega_{fi}|\ll |\omega_{fi}|$，可以略去第一项
+\begin{gather*}
+    P_{if}(t;\omega)=\frac{|\lambda \hat{W}_{fi}|^2}{4\hbar^2} \left(\frac{\sin\frac{(\omega_{fi}-\omega)t}{2}}{\frac{\omega_{fi}-\omega}{2}}\right)^2
+\end{gather*}
+\begin{itemize}
+    \item 共振近似要求$t\gg \frac{1}{\omega}$
+    \item 在共振点，
+    \begin{gather*}
+        P_{if}(t;\omega_{fi})=\frac{|\lambda \hat{W}_{fi}|^2}{4\hbar^2} t^2
+    \end{gather*}
+    为使一阶近似在共振点成立，$P_{if}(t;\omega_{fi})$有限性要求
+    \begin{gather*}
+        t \ll \frac{\hbar}{|\lambda \hat{W}_{fi}|}
+    \end{gather*}
+\end{itemize}
+
+恒定微扰
+\begin{equation*}
+    P_{if}(t)=P_{if}(t;\omega)=\frac{|\lambda \hat{W}_{fi}|^2}{\hbar^2} \left(\frac{\sin\frac{\omega_{fi}t}{2}}{\frac{\omega_{fi}}{2}}\right)^2
+\end{equation*}
+
+\subsection{末态为连续谱中的态}
+
+末态用参变量$\alpha$标记变换为用$\ket{\beta,E}$标记，值域中心$\alpha_f$
+\begin{gather*}
+    \d \alpha = \rho(\beta,E) \d \beta \d E
+    \\
+    \delta P(\alpha_f,t)=\int_{\beta \in \delta \beta_f} \int_{E \in \delta E_f} \rho(\beta,E) |\inpro{\beta,E}{\psi(t)}|^2 \d \beta \d E
+\end{gather*}
+
+恒定微扰下，当$t \to +\infty$时，
+\begin{align*}
+    \delta P(\varphi_i,\alpha_f,t)&=\frac{1}{\hbar^2} \int_{\beta \in \delta \beta_f} \int_{E \in \delta E_f} \rho(\beta,E) |\inpro{\beta,E}{\lambda \hat{W} \vert \psi(t)}|^2 \left(\frac{\sin\frac{(E-E_i)t}{2\hbar}}{\frac{E-E_i}{2\hbar}}\right)^2 \d \beta \d E
+    \\
+    &=\frac{1}{\hbar^2} \int_{\beta \in \delta \beta_f} \int_{E \in \delta E_f} \rho(\beta,E) |\inpro{\beta,E}{\lambda \hat{W} \vert \psi(t)}|^2 2\pi \hbar t \delta(E-E_i) \d \beta \d E
+    \\
+    &=\begin{cases}
+        \frac{2\pi}{\hbar} t \rho(\beta_f,E_i) |\inpro{\beta_f,E_i}{\lambda \hat{W} \vert \psi(t)}|^2 \delta \beta_f,\quad E_i \in \delta E_f
+        \\
+        0,\quad E_i \notin \delta E_f
+    \end{cases}
+\end{align*}
+得到Fermi黄金规则：恒定微扰在能量相等的两态之间引起跃迁
+
+\section{原子与电磁波的相互作用}
+
+\subsection{相互作用的Hamiltonian}
+
+考虑波矢$\bm{k}$沿$y$轴，电场沿$z$轴，磁场沿$x$轴的入射电磁波
+\begin{gather*}
+    \intertext{磁矢势}
+    \bm{A}(\bm{r},t)=(\mathscr{A}_0\e^{\i(ky-\omega t)}+\mathscr{A}_0^*\e^{-\i(ky-\omega t)})\bm{e}_z
+    \\
+    \intertext{选定时间零点使$\mathscr{A}$为纯虚数，设}
+    \begin{cases}
+        \mathscr{E}=2\i \omega \mathscr{A}_0
+        \\
+        \mathscr{B}=2\i k \mathscr{A}_0
+    \end{cases}
+    \\
+    \begin{cases}
+        \bm{E}(\bm{r},t)=\mathscr{E} \bm{e}_z \cos(ky-\omega t)
+        \\
+        \bm{B}(\bm{r},t)=\mathscr{B} \bm{e}_x \cos(ky-\omega t)
+    \end{cases}
+    \\
+    \intertext{Poynting矢量平均值}
+    \bar{\bm{G}}=\frac{1}{2}\epsilon_0 c \mathscr{E}^2 \bm{e}_y
+    \\
+    \intertext{Hamiltonian}
+    \hat{H}=\frac{1}{2m}[\hat{\bm{P}}-q\hat{\bm{A}}(\hat{\bm{R}},t)]^2+\hat{V}(R)-\frac{q}{m}\hat{\bm{S}} \cdot \hat{\bm{B}}(\hat{\bm{R}},t)
+    \\
+    \hat{H}=\hat{H}_0+\hat{W}(t)
+    \\
+    \hat{H}_0=\frac{\hat{\bm{P}}^2}{2m}+\hat{V}(R)
+    \\
+    \intertext{微扰}
+    \hat{W}(t)=-\frac{q}{m}\hat{\bm{P}} \cdot \hat{\bm{A}}(\hat{\bm{R}},t) - \frac{q}{m}\hat{\bm{S}} \cdot \hat{\bm{B}}(\hat{\bm{R}},t)+\frac{q^2}{2m} \hat{\bm{A}}^2(\hat{\bm{R}},t)
+    \\
+    \intertext{略去$\mathscr{A}_0^2$项}
+    \hat{W}(t) \approx \hat{W}_I(t)+\hat{W}_{II}(t)
+    \\
+    \hat{W}_I(t)=-\frac{q}{m}\hat{\bm{P}} \cdot \hat{\bm{A}}(\hat{\bm{R}},t)
+    \\
+    \hat{W}_{II}(t)=-\frac{q}{m}\hat{\bm{S}} \cdot \hat{\bm{B}}(\hat{\bm{R}},t) \ll \hat{W}_I(t)
+\end{gather*}
+
+\begin{enumerate}
+    \item 电偶极项
+    \begin{gather*}
+        \hat{W}_I(t)=-\frac{q}{m}\hat{P}_z[\mathscr{A}_0\e^{\i k\hat{Y}}\e^{-\i \omega t}+\mathscr{A}_0^*\e^{-\i k\hat{Y}}\e^{\i \omega t}]
+        \\
+        \hat{W}_I(t)\approx \hat{W}_{DE}(t) = \frac{q\mathscr{E}}{m \omega} \hat{P}_z \sin \omega t
+        \\
+        \intertext{矩阵元}
+        \inpro{\varphi_f}{\hat{P}_z \vert \varphi_i}=\i m \omega_{fi} \inpro{\varphi_f}{\hat{Z} \vert \varphi_i}
+        \\
+        \intertext{选择定则}
+        \begin{cases}
+            \Delta l=\pm 1
+            \\
+            \Delta m=0,\pm 1
+        \end{cases}
+    \end{gather*}
+    \item 磁偶极项和电四极项
+    \begin{gather*}
+        \e^{\pm \i k \hat{Y}} \approx 1 \pm \i k \hat{Y}
+        \\
+        \hat{W}_I(t)-\hat{W}_{DE}(t)+\hat{W}_{II}(t)=\hat{W}_{DM}(t)+\hat{W}_{QE}(t)
+        \\
+        \hat{W}_{DM}(t)=-\frac{q}{2m}(\hat{L}_x+2\hat{S}_x)\mathscr{B} \cos \omega t
+        \\
+        \hat{W}_{QE}(t)=-\frac{q}{2mc}(\hat{Y}\hat{P}_z+\hat{Z}\hat{P}_y)\mathscr{E} \cos \omega t
+    \end{gather*}
+    \begin{enumerate}
+        \item 磁偶极跃迁选择定则
+        \begin{gather*}
+            \begin{cases}
+                \Delta l=0
+                \\
+                \Delta m_l=0,\pm 1
+                \\
+                \Delta m_s=0,\pm 1
+            \end{cases}
+        \end{gather*}
+        \item 电四极跃迁选择定则
+        \begin{gather*}
+            \begin{cases}
+                \Delta l=0,\pm 2
+                \\
+                \Delta m=0,\pm 1,\pm 2
+            \end{cases}
+        \end{gather*}
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{非共振激发}
+
+\begin{gather*}
+    \ket{\psi(t=0)}=\ket{\varphi_0}
+    \\
+    \intertext{应用一阶近似结果}
+    \ket{\psi(t)}=\ket{\varphi_0}+\displaystyle \sum_{n \neq 0} \frac{q \mathscr{E}}{2\i m\hbar \omega}\inpro{\varphi_n}{\hat{P}_z \vert \varphi_0} \left(\frac{\e^{-\i \omega_{n0}t}-\e^{\i \omega t}}{\omega_{n0}+\omega}-\frac{\e^{-\i \omega_{n0}t}-\e^{-\i \omega t}}{\omega_{n0}-\omega}\right) \ket{\varphi_n}
+    \\
+    \intertext{电偶极矩}
+    \left<D_z\right>(t)=\frac{2q^2 \mathscr{E}}{\hbar} \cos \omega t \sum_n \frac{\omega_{n0}|\inpro{\varphi_f}{\hat{Z} \vert \varphi_i}|^2}{\omega_{n0}^2-\omega^2}
+\end{gather*}
+与经典结果类似
+
+\subsection{共振激发}
+
+\begin{gather*}
+    P_{if}(t;\omega)=\frac{q^2 \mathscr{E}^2}{4\hbar^2} (\frac{\omega_{fi}}{\omega})^2 |\inpro{\varphi_f}{\hat{Z} \vert \varphi_i}|^2 \left(\frac{\sin\frac{(\omega_{fi}-\omega)t}{2}}{\frac{\omega_{fi}-\omega}{2}}\right)^2
+\end{gather*}
+设入射光单位面积单位角频率能量密度$\mathscr{J}(\omega)$，宽度$\Delta$，当$t \ll \frac{4\pi}{\Delta}$时，
+\begin{align*}
+    \bar{P}_{if}(t)&=\frac{q^2}{2\epsilon_0 c^2 \hbar^2} |\inpro{\varphi_f}{\hat{Z} \vert \varphi_i}|^2 \int (\frac{\omega_{fi}}{\omega})^2 \mathscr{J}(\omega) \left(\frac{\sin\frac{(\omega_{fi}-\omega)t}{2}}{\frac{\omega_{fi}-\omega}{2}}\right)^2 \d \omega
+    \\
+    &\approx \frac{q^2}{2\epsilon_0 c^2 \hbar^2} |\inpro{\varphi_f}{\hat{Z} \vert \varphi_i}|^2 \int (\frac{\omega_{fi}}{\omega})^2 \mathscr{J}(\omega) 2\pi t \delta(\omega-\omega_fi) \d \omega
+    \\
+    &=\frac{\pi q^2}{\epsilon_0 c^2 \hbar^2} |\inpro{\varphi_f}{\hat{Z} \vert \varphi_i}|^2 \mathscr{J}(\omega_{fi}) t
+\end{align*}
+
+\subsection{正弦微扰作用于双能级体系}
+
+Bloch方程
+\begin{gather*}
+    \dt{\bm{m}}{t}=n\bm{\mu}_0-\frac{1}{T_R} \bm{m}+\gamma \bm{m} \times \bm{B}
+    \\
+    \bm{B}(t)=B_0 \bm{e}_z+\bm{B}_1(t)
+\end{gather*}
+$\bm{B}_1(t)$为角频率$\omega$的电磁波
+\begin{itemize}
+    \item 当$\bm{B}_1(t)$为圆偏振时可以严格求解
+    \item 当$\bm{B}_1(t)$为线偏振时没有解析解
+\end{itemize}
+
+对线偏振近似求解
+\begin{gather*}
+    \bm{B}_1(t)=B_1 \cos \omega t \bm{e}_x
+    \\
+    \intertext{设}
+    \begin{cases}
+        \omega_0=-\gamma B_0
+        \\
+        \omega_1=-\gamma B_1
+        \\
+        m_{\pm}=m_x \pm \i m_y
+    \end{cases}
+    \\
+    \intertext{得到}
+    \begin{cases}
+        \dt{}{t} m_z=n\mu_0-\frac{m_z}{T_R}+\i \frac{\omega_1}{2} \cos\omega t(m_- - m_+)
+        \\
+        \dt{}{t} m_{\pm}=-\frac{m_{\pm}}{T_R} \pm \i \omega_0 m_{\pm} \mp \i \omega_1 \cos\omega t m_z
+    \end{cases}
+    \\
+    \intertext{按$\omega_1$幂级数展开}
+    \begin{cases}
+        m_z=\displaystyle \sum_{n=0}^{+\infty} m_z^{(n)} \omega_1^n
+        \\
+        m_{\pm}=\displaystyle \sum_{n=0}^{+\infty} m_{\pm}^{(n)} \omega_1^n
+    \end{cases}
+    \\
+    \intertext{Fourier展开}
+    \begin{cases}
+        m_z^{(n)}=\displaystyle \sum_{p=-\infty}^{+\infty} m_{zp}^{(n),p} \e^{\i p\omega t}
+        \\
+        m_{\pm}^{(n)}=\displaystyle \sum_{p=-\infty}^{+\infty} m_{\pm}^{(n),p} \e^{\i p\omega t}
+    \end{cases}
+    \\
+    \intertext{取条件}
+    \begin{cases}
+        m_{z}^{(n),p}=(m_{z}^{(n),-p})^*
+        \\
+        m_{\pm}^{(n),p}=(m_{\pm}^{(n),-p})^* 
+    \end{cases}
+    \\
+    \intertext{设}
+    \begin{cases}
+        m_z^{(0),0}=m_0
+        \\
+        \Gamma_R=\frac{1}{T_R}
+    \end{cases}
+\end{gather*}
+得到递推关系
+\begin{itemize}
+    \item $n=0$
+    \begin{gather*}
+        \begin{cases}
+            m_z^{(0),p}=
+            \begin{cases}
+                n \mu_0 T_R,\quad q=0
+                \\
+                0,\quad q \neq 0   
+            \end{cases}
+            \\
+            m_\pm^{(0),p}=0
+        \end{cases}
+    \end{gather*}
+    \item $n \neq 0$
+    \begin{gather*}
+        \begin{cases}
+            m_z^{(n),p}=\frac{1}{4(p\omega-\i \Gamma_R)}(m_-^{(n-1),p+1}+m_-^{(n-1),p-1}-m_+^{(n-1),p+1}+m_+^{(n-1),p-1})
+            \\
+            m_\pm^{(n),p}=\frac{1}{2(\omega_0 \mp p\omega+\pm \i \Gamma_R)}(m_z^{(n-1),p+1}+m_z^{(n-1),p-1})
+        \end{cases}
+    \end{gather*}
+\end{itemize}
+\begin{itemize}
+    \item $n$为奇数：只有横向修正，修正项只出现奇数倍频
+    \item $n$为偶数：只有纵向修正，修正项只出现偶数倍频
+\end{itemize}
+共振谱只出现奇数倍频，因为要保证角动量守恒，若线偏振有$z$方向分量，则会得到完整的共振谱
+
+\section{共振微扰下双能级振荡}
+
+当时间较长，不满足$t \ll \frac{\hbar}{|\lambda \hat{W}_{fi}|}$时，忽略$k \neq i,f$的$b_k(t)$分量，
+\begin{gather*}
+    \i \hbar \dt{}{t}b_i(t)=\frac{1}{2\i}\left[(\e^{\i \omega t}-\e^{-\i \omega t})W_{ii}b_i(t)+(\e^{\i (\omega-\omega_{fi}) t}-\e^{-\i (\omega+\omega_{fi}) t})W_{if}b_f(t)\right]
+    \\
+    \i \hbar \dt{}{t}b_f(t)=\frac{1}{2\i}\left[(\e^{\i (\omega+\omega_{fi}) t}-\e^{-\i (\omega-\omega_{fi}) t})W_{fi}b_i(t)+(\e^{\i \omega t}-\e^{-\i \omega t})W_{ff}b_f(t)\right]
+\end{gather*}
+在共振频率附近，当时间很长时，可以忽略非共振项
+\begin{gather*}
+    \dt{}{t} b_i(t)=-\frac{1}{2\hbar} \e^{\i(\omega-\omega_{fi})t}W_{if}b_f(t)
+    \\
+    \dt{}{t} b_f(t)=\frac{1}{2\hbar} \e^{-\i(\omega-\omega_{fi})t}W_{fi}b_i(t)
+\end{gather*}
+解得
+\begin{gather*}
+    P_{if}(t;\omega)=\frac{|W_{if}|^2}{|W_{if}|^2+\hbar^2(\omega-\omega_{fi})^2} \sin^2\left(\sqrt{\frac{|W_{fi}|^2}{\hbar^2}+(\omega-\omega_{fi})^2}\frac{t}{2}\right)
+\end{gather*}
+
+\section{与连续统末态相耦合的离散态的衰变}
+
+设未微扰Hamiltonian的谱为
+\begin{itemize}
+    \item 一个离散态$\ket{\varphi_i}$
+    \begin{gather*}
+        \hat{H}_0 \ket{\varphi_i}=E_i \ket{\varphi_i}
+    \end{gather*}
+    \item 连续统集合$\ket{\alpha}$
+    \begin{gather*}
+        \hat{H}_0 \ket{\alpha}=E \ket{\alpha}
+        \\
+        E \geq 0
+        \\
+        \d \alpha = \rho(\beta,E) \d \beta \d E
+    \end{gather*}
+    $E$的值域包含$E_i$
+\end{itemize}
+
+设耦合$\hat{W}$不含时，且只有矩阵元$\inpro{\alpha}{\hat{W} \vert \varphi_i}$不为$0$
+
+\begin{gather*}
+    \ket{\psi(t)}=b_i \e^{-\frac{\i}{\hbar} E_i t} \ket{\varphi_i}+\int b(\alpha,t)\e^{-\frac{\i}{\hbar} Et} \d \alpha
+    \\
+    \intertext{得到}
+    \begin{cases}
+        \i \hbar \dt{}{t}b_i(t)=\int \e^{\frac{\i}{\hbar}(E_i-E)t} \inpro{\varphi_i}{\hat{W} \vert \alpha}b(\alpha,t) \d \alpha
+        \\
+        \i \hbar \dt{}{t}b(\alpha,t)=\e^{\frac{\i}{\hbar}(E-E_i)t}\inpro{\alpha}{\hat{W} \vert \varphi_i} b_i(t)
+    \end{cases}
+    \\
+    \dt{}{t}b_i(t)=-\frac{1}{\hbar^2} \int_{0}^{+\infty} \int_{0}^{t} K(E)\e^{\frac{\i}{\hbar}(E_i-E)t}b_i(t')\d E \d t'
+\end{gather*}
+
+\subsection{一阶微扰理论}
+
+\begin{gather*}
+    \intertext{设}
+    K(E)=\int \rho(\beta,E) |\inpro{\beta,E}{\hat{W} \vert \varphi_i}|^2 \d \beta
+    \\
+    \Gamma=\frac{2\pi}{\hbar} \int \rho(\beta,E_i)|\inpro{\beta,E_i}{\hat{W} \vert \varphi_i}|^2 \d \beta
+    \\
+    \intertext{一阶微扰要求}
+    t \ll \frac{1}{\Gamma}
+    \\
+    \intertext{设$K(E)$展宽$\hbar \Delta$，若}
+    t \gg \frac{1}{\Delta}
+\end{gather*}
+则
+\begin{align*}
+    P_{if}(t)&=\frac{1}{\hbar^2} \int_{0}^{+\infty} K(E) \left(\frac{\sin\frac{(E-E_i)t}{2\hbar}}{\frac{E-E_i}{2\hbar}}\right)^2 \d E
+    \\
+    &\approx \frac{2\pi}{\hbar} t \int_{0}^{+\infty} K(E) \delta(E-E_i) \d E
+    \\
+    &=\Gamma t
+    \\
+    P_{ii}(t)=1-\Gamma t
+\end{align*}
+
+\subsection{短期近似}
+
+$t$足够小，使得微分方程右侧$b_i(t) \approx b_i(0)=1$，
+\begin{gather*}
+    \lim_{t \to +\infty} \int_{0}^{t} \e^{\frac{\i}{\hbar}(E_i-E)\tau} \d \tau=\pi \hbar \delta(E_i-E)+\i \hbar \mathscr{P}(\frac{1}{E_i-E})
+    \\
+    \intertext{设}
+    \delta E=\mathscr{P}\int_{0}^{+\infty} \frac{K(E)}{E_i-E} \d E
+    \\
+    \dt{}{t}b_i(t)=-\frac{\Gamma}{2}-\i \frac{\delta E}{\hbar}
+    \\
+    b_i(t)=1-(\frac{\Gamma}{2}+\i \frac{\delta E}{\hbar})t
+    \\
+    P_{ii}(t)\approx 1-\Gamma t
+    \\
+    \intertext{要求}
+    t \ll \frac{1}{\Gamma},\frac{\hbar}{\delta E}
+\end{gather*}
+
+\subsection{更精确的解法}
+
+\begin{gather*}
+    \intertext{设}
+    g(E_i,t-t')=-\frac{1}{\hbar^2} \int_{0}^{+\infty} K(E)\e^{\frac{\i}{\hbar}(E_i-E)t} \d E
+\end{gather*}
+若$t-t' \gg \frac{1}{\Delta}$，对$g(E_i,t-t')$的贡献可以忽略，因此考虑$t-t'<\frac{1}{\Delta}$部分即可，$b_i(t')$近似取为$b_i(t)$，积分得到
+\begin{gather*}
+    \dt{}{t}b_i(t)=-(\frac{\Gamma}{2}+\i \frac{\delta E}{\hbar})b_i(t)
+    \\
+    b_i(t)=\e^{-\frac{1}{2}\Gamma t}\e^{-\frac{\i}{\hbar}\delta E t}
+    \\
+    b(\alpha,t)=\frac{\inpro{\alpha}{\hat{W} \vert \varphi_i}}{\hbar} \frac{1-\e^{-\frac{1}{2}\Gamma t}\e^{\frac{\i}{\hbar}(E-E_i-\delta E) t}}{\frac{1}{\hbar}(E-E_i-\delta E)+\i \frac{\Gamma}{2}}
+    \\
+    P_{ii}(t)=\e^{-\Gamma t}
+\end{gather*}
+
+离散态能量因耦合而发生偏移$\delta E$
+
+当$t \gg \frac{1}{\Gamma}$时，末态能量分布
+\begin{gather*}
+    \d P(\beta,E,t)=\rho(\beta,E)|\inpro{\beta,E}{\hat{W} \vert \varphi_i}|^2 \frac{1}{(E-E_i-\delta E)^2+\frac{\hbar^2\Gamma^2}{4}} \d \beta \d E
+\end{gather*}
+有共振峰

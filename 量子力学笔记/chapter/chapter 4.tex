@@ -1,0 +1,607 @@
+\chapter{量子力学的简单应用}
+
+\section{自旋$\frac{1}{2}$粒子}
+
+\subsection{实验}
+
+Stern-Gerlach实验：基态银原子沿$y$轴射出，在$z$方向梯度磁场中偏转
+\begin{gather*}
+   \bm{m}=\gamma \bm{L}
+   \\
+   \bm{F}=\nabla (\bm{m} \cdot \bm{B})=m_z \nabla B_z
+\end{gather*}
+\begin{itemize}
+   \item 经典理论：$L_z=L \cos \theta$，结果为中心在$y$轴的一个斑点
+   \item 量子结果：$L_z=\pm \frac{1}{2} \hbar$，结果为关于$y$轴对称的两个斑点
+\end{itemize}
+
+\subsection{理论}
+
+\begin{enumerate}
+   \item Pauli矩阵
+   \begin{gather*}
+      \sigma_x=
+      \begin{bmatrix}
+         0 & 1 \\
+         1 & 0
+      \end{bmatrix}
+      \quad
+      \sigma_y=
+      \begin{bmatrix}
+         0 & -i \\
+         i & 0
+      \end{bmatrix}
+      \quad
+      \sigma_z=
+      \begin{bmatrix}
+         1 & 0 \\
+         0 & -1
+      \end{bmatrix}
+   \end{gather*}
+   特征值为$\pm 1$
+   
+   \begin{gather*}
+      \mathrm{det} \sigma_i=-1
+      \\
+      \Tr \sigma_i=0
+      \\
+      \sigma_j \sigma_k=\i \displaystyle \sum_l \epsilon_{jkl} \sigma_l + \delta_{jk} I
+      \\
+      \implies (\bm{\sigma} \cdot \bm{A})(\bm{\sigma} \cdot \bm{B})= \bm{A} \cdot \bm{B} I + \i \sigma \cdot (\bm{A} \times \bm{B})
+      \\
+      \intertext{对易关系}
+      [\sigma_j,\sigma_k]=2\i \epsilon_{jkl} \sigma_l
+   \end{gather*}
+   \item 角动量算符$\hat{S}$
+   \begin{gather*}
+      \begin{cases}
+         \hat{S}_z \ket{+}=+\frac{\hbar}{2} \ket{+} \\
+         \hat{S}_z \ket{-}=-\frac{\hbar}{2} \ket{-}
+      \end{cases}
+      \\
+      \begin{cases}
+         \inpro{+}{+}=\inpro{-}{-}=1 \\
+         \inpro{+}{-}=0\\
+         \ket{+}\bra{+}+\ket{-}\bra{-}=\hat{I}
+      \end{cases}
+   \end{gather*}
+   $\ket{+}$和$\ket{-}$构成自旋态空间的一组基，在这组基下，
+   \begin{gather*}
+      \bm{S}=[S_x\:S_y\:S_z]=\frac{\hbar}{2}[\sigma_x\:\sigma_y\:\sigma_z]
+   \end{gather*}
+   
+   对于角度$(\theta,\varphi)$的单位向量$\bm{u}$，
+   \begin{align*}
+      S_u&=\bm{S} \cdot \bm{u}
+      \\
+      &=\frac{\hbar}{2}
+      \begin{bmatrix}
+         \cos\theta & \sin\theta \e^{-\i \varphi} \\
+         \sin\theta \e^{\i \varphi} & -\cos\theta
+      \end{bmatrix}
+   \end{align*}
+   特征向量
+   \begin{gather*}
+      \begin{cases}
+         \ket{+}_u=\cos\frac{\theta}{2} \e^{-\i \frac{\varphi}{2}} \ket{+} + \sin\frac{\theta}{2} \e^{\i \frac{\varphi}{2}} \ket{-}
+         \\
+         \ket{-}_u=-\sin\frac{\theta}{2} \e^{-\i \frac{\varphi}{2}} \ket{+} + \cos\frac{\theta}{2} \e^{\i \frac{\varphi}{2}} \ket{-}
+      \end{cases}
+   \end{gather*}
+\end{enumerate}
+
+\subsection{量子理论对实验的分析}
+
+两套Stern-Gerlach装置，第一套用于态的制备，第二套用于态的测量
+\begin{enumerate}
+   \item 态的制备：制备$\bm{u}$方向的态，$\bm{B}_1$沿$\bm{u}$方向，则$\ket{\psi}$与$\ket{+}_u$共线，在屏上$+$处斑点开一小孔，透射粒子即为$\ket{+}_u$态
+   \item 态的测量：测量$\bm{u'}$方向的态，$\bm{B}_2$沿$\bm{u'}$方向
+\end{enumerate}
+
+测量自旋角动量的平均值
+\begin{gather*}
+   \begin{cases}
+      _u \inpro{+}{S_x \vert +}_u=\frac{\hbar}{2} \sin\theta \cos\varphi \\
+      _u \inpro{+}{S_y \vert +}_u=\frac{\hbar}{2} \sin\theta \sin\varphi \\
+      _u \inpro{+}{S_z \vert +}_u=\frac{\hbar}{2} \cos\theta
+   \end{cases}
+\end{gather*}
+
+均匀磁场中态的演化：\\
+均匀磁场$\bm{B}_0$沿$z$方向
+\begin{gather*}
+   \intertext{势能}
+   W=-\bm{m} \cdot \bm{B}_0=-\gamma B_0 L_z
+   \\
+   \intertext{设}
+   \omega_0=-\gamma B_0
+   \\
+   \hat{H}=\omega_0 S_z
+   \\
+   \intertext{特征值}
+   E_+=+\frac{\hbar \omega_0}{2}
+   \\
+   E_-=-\frac{\hbar \omega_0}{2}
+\end{gather*}
+Larmor进动
+\begin{align*}
+   \ket{\psi(0)}&=\cos\frac{\theta}{2} \e^{-\i \frac{\varphi}{2}} \ket{+} + \sin\frac{\theta}{2} \e^{\i \frac{\varphi}{2}} \ket{-}
+   \\
+   \ket{\psi(t)}&=\cos\frac{\theta}{2} \e^{-\i \frac{\varphi}{2}} \e^{-\i E_+ t /\hbar} \ket{+} + \sin\frac{\theta}{2} \e^{\i \frac{\varphi}{2}} \e^{-\i E_- t /\hbar} \ket{-}
+   \\
+   &=\cos\frac{\theta}{2} \e^{-\i \frac{\varphi+\omega_0 t}{2}} \ket{+} + \sin\frac{\theta}{2} \e^{\i \frac{\varphi+\omega_0 t}{2}} \ket{-}
+\end{align*}
+自旋一定为$+\frac{\hbar}{2}$的方向$\bm{u}(t)$以$z$轴为对称轴做进动
+
+\subsection{两个自旋$\frac{1}{2}$的粒子}
+
+\begin{gather*}
+   \ket{\varphi}=\alpha_1 \ket{+}_1 + \beta_1 \ket{-}_1 \in \mathscr{E}_{1S}
+   \\
+   \ket{\chi}=\alpha_2 \ket{+}_2 + \beta_2 \ket{-}_2 \in \mathscr{E}_{2S}
+   \\
+   \intertext{态空间}
+   \mathscr{E}_S=\mathscr{E}_{1S} \otimes \mathscr{E}_{2S}
+   \\
+   \intertext{选取态空间的正交归一完备基}
+   \begin{cases}
+      \ket{++}=\ket{+}_1 \ket{+}_2
+      \\
+      \ket{+-}=\ket{+}_1 \ket{-}_2
+      \\
+      \ket{-+}=\ket{-}_1 \ket{+}_2
+      \\
+      \ket{--}=\ket{-}_1 \ket{-}_2
+   \end{cases}
+\end{gather*}
+$S_{1i}$与$S_{2j}$都是对易的，$\{S_{1i},S_{2j}\}$构成ECOC
+
+\subsection{自旋$\frac{1}{2}$体系的密度矩阵}
+
+纯态
+\begin{gather*}
+   \ket{\psi}=\ket{+}_u=\cos\frac{\theta}{2} \e^{-\i \frac{\varphi}{2}} \ket{+} + \sin\frac{\theta}{2} \e^{\i \frac{\varphi}{2}} \ket{-}
+   \\
+   \hat{\rho}(\theta,\varphi)=
+   \begin{bmatrix}
+      \cos^2 \frac{\theta}{2} & \sin \frac{\theta}{2} \cos \frac{\theta}{2} \e^{-\i \varphi} \\
+      \sin \frac{\theta}{2} \cos \frac{\theta}{2} \e^{\i \varphi} & \sin^2 \frac{\theta}{2}
+   \end{bmatrix}
+\end{gather*}
+
+统计混合态
+\begin{align*}
+   \hat{\rho}&=\frac{1}{4\pi} \int_{0}^{\pi} \int_{0}^{2\pi} \hat{\rho}(\theta,\varphi) \sin \theta \d \theta \d \varphi
+   \\
+   &=\begin{bmatrix}
+      \frac{1}{2} & 0 \\
+      0 & \frac{1}{2}
+   \end{bmatrix}
+\end{align*}
+
+静磁场热力学平衡的自旋$\frac{1}{2}$体系
+\begin{gather*}
+   \hat{\rho}=Z^{-1}
+   \begin{bmatrix}
+      \e^{-\frac{\hbar \omega_0}{2kT}} & 0 \\
+      0 & \e^{\frac{\hbar \omega_0}{2kT}}
+   \end{bmatrix}
+   \\
+   Z=\e^{-\frac{\hbar \omega_0}{2kT}}+\e^{\frac{\hbar \omega_0}{2kT}}
+   \\
+   \omega_0=\gamma B_0
+   \\
+   \intertext{有}
+   \langle S_x \rangle = \langle S_y \rangle = 0
+   \\
+   \langle S_z \rangle = -\frac{\hbar}{2} \tanh\frac{\hbar \omega_0}{2kT}
+   \\
+   \langle M_z \rangle=\gamma \langle S_z \rangle = \chi B_0
+   \\
+   \intertext{磁化率}
+   \chi=\frac{\hbar \gamma}{2B_0} \tanh\frac{\hbar \gamma B_0}{2kT}
+\end{gather*}
+
+\section{二能级体系}
+
+微扰前Hamiltonian为$\hat{H}_0$
+\begin{gather*}
+   \hat{H}_0 \ket{\varphi_1}=E_1 \ket{\varphi_1}
+   \\
+   \hat{H}_0 \ket{\varphi_2}=E_1 \ket{\varphi_2}
+   \\
+   \inpro{\varphi_i}{\varphi_j}=\delta_{ij}
+\end{gather*}
+微扰后
+\begin{gather*}
+   \hat{H}=\hat{H}_0+\hat{W}
+   \\
+   \hat{H} \ket{\psi_+}=E_+ \ket{\psi_+}
+   \\
+   \hat{H} \ket{\psi_-}=E_- \ket{\psi_-}
+\end{gather*}
+以$\ket{\varphi_1}\ket{\varphi_2}$为基，
+\begin{gather*}
+   \hat{W}=\begin{bmatrix}
+      W_{11} & W_{12} \\
+      W_{21} & W_{22} \\
+   \end{bmatrix}
+   \\
+   \hat{H}=\begin{bmatrix}
+      E_1+W_{11} & W_{12} \\
+      W_{21} & E_2+W_{22} \\
+   \end{bmatrix}
+   \\
+   \intertext{特征值}
+   \begin{cases}
+      E_+=\frac{1}{2}(E_1+W_{11}+E_2+W_{22})+\frac{1}{2} \sqrt{(E_1+W_{11}-E_2-W_{22})^2+4|W_{12}|^2}
+      \\
+      E_-=\frac{1}{2}(E_1+W_{11}+E_2+W_{22})-\frac{1}{2} \sqrt{(E_1+W_{11}-E_2-W_{22})^2+4|W_{12}|^2}
+   \end{cases}
+   \\
+   \intertext{特征向量}
+   \begin{cases}
+      \ket{\psi_+}=\cos\frac{\theta}{2} \e^{-\i \frac{\varphi}{2}} \ket{\varphi_1} + \sin\frac{\theta}{2} \e^{\i \frac{\varphi}{2}} \ket{\varphi_2}
+      \\
+      \ket{\psi_-}=-\sin\frac{\theta}{2} \e^{-\i \frac{\varphi}{2}} \ket{\varphi_1} + \cos\frac{\theta}{2} \e^{\i \frac{\varphi}{2}} \ket{\varphi_2}
+   \end{cases}
+   \\
+   \intertext{其中}
+   \begin{cases}
+      \tan\theta=\frac{2|W_{12}|}{E_1+W_{11}-E_2-W_{22}}\quad(0\leq \theta < \pi)
+      \\
+      W_{21}=|W_21|\e^{\i \varphi}
+   \end{cases}
+\end{gather*}
+引入参量
+\begin{gather*}
+   E_m=\frac{1}{2}(E_1+W_{11}+E_2+W_{22})
+   \\
+   \Delta=\frac{1}{2}(E_1+W_{11}-E_2-W_{22})
+   \\
+   \intertext{则}
+   E_+=E_m+\sqrt{\Delta^2+|W_{12}|^2}
+   \\
+   E_-=E_m-\sqrt{\Delta^2+|W_{12}|^2}
+\end{gather*}
+对应双曲线的两支
+\begin{itemize}
+   \item 强耦合$\Delta=0$
+   \begin{gather*}
+      \ket{\psi_+}=\frac{\sqrt{2}}{2} (\e^{-\i \frac{\varphi}{2}} \ket{\varphi_1} + \e^{\i \frac{\varphi}{2}} \ket{\varphi_2})
+      \\
+      \ket{\psi_-}=\frac{\sqrt{2}}{2} (-\e^{-\i \frac{\varphi}{2}} \ket{\varphi_1} + \e^{\i \frac{\varphi}{2}} \ket{\varphi_2})
+   \end{gather*}
+   \item 弱耦合$\Delta \gg |W_{12}|$：做Taylor展开，
+   \begin{gather*}
+      \ket{\psi_+}=\e^{-\i \frac{\varphi}{2}}(\ket{\varphi_1}+\e^{\i \varphi} \frac{|W_{12}|}{2\Delta} \ket{\varphi_2}+\cdots)
+      \\
+      \ket{\psi_-}=\e^{\i \frac{\varphi}{2}}(\ket{\varphi_2}-\e^{-\i \varphi} \frac{|W_{12}|}{2\Delta} \ket{\varphi_1}+\cdots)
+   \end{gather*}
+\end{itemize}
+
+体系在未微扰特征态之间的振荡
+\begin{gather*}
+   \intertext{设$t=0$时，}
+   \ket{\psi(0)}=\ket{\varphi_1}=\e^{\i \frac{\varphi}{2}}(\cos \frac{\theta}{2} \ket{\psi_+}-\sin\frac{\theta}{2} \ket{\psi_-})
+   \\
+   \ket{\psi(t)}=\ket{\varphi_1}=\e^{\i \frac{\varphi}{2}}(\cos \frac{\theta}{2} \e^{-\i E_+ t /\hbar} \ket{\psi_+}-\sin\frac{\theta}{2} \e^{-\i E_- t /\hbar} \ket{\psi_-})
+   \\
+   \inpro{\varphi_2}{\psi(t)}=\e^{\i \varphi} \sin\frac{\theta}{2} \cos\frac{\theta}{2} (\e^{-\i E_+ t /\hbar}-\e^{-\i E_- t /\hbar})
+\end{gather*}   
+Rabi公式：体系处于$\ket{\varphi_2}$态的概率
+\begin{align*}
+   P_{12}(t)&=\sin^2 \theta \sin^2(\frac{E_+-E_-}{2\hbar} t)
+   \\
+   &=\frac{4|W_{12}|^2}{4|W_{12}|^2+(E_1+W_{11}-E_2-W_{22})^2} \sin^2 (\sqrt{4|W_{12}|^2+(E_1+W_{11}-E_2-W_{22})^2} \frac{t}{2\hbar})
+\end{align*}
+
+\subsection{磁场中的自旋$\frac{1}{2}$体系}
+
+\begin{enumerate}
+   \item 经典 
+   \begin{enumerate}
+      \item 静磁场：Larmor进动
+      \begin{gather*}
+         \dt{\bm{L}}{t}=\bm{m} \times \bm{B}_0
+         \\
+         \dt{\bm{m}}{t}=\gamma \bm{m} \times \bm{B}_0
+         \\
+         \implies \begin{cases}
+            \dt{(\bm{m}^2)}{t}=0 \\
+            \dt{(\bm{m} \cdot \bm{B_0})}{t}=0
+         \end{cases}
+      \end{gather*}
+      $\bm{m}$以角速度$-\gamma \bm{B}_0$进动
+      \item 旋转磁场 \\
+      静磁场$\bm{B}_0$和垂直于静磁场以角速度$\omega$旋转的磁场$\bm{B}_1$
+      \begin{gather*}
+         \intertext{设}
+         \omega_0=-\gamma B_0,\quad \omega_1=-\gamma B_1
+         \\
+         \dt{\bm{m}}{t}=\gamma \bm{m} \times (\bm{B}_0+\bm{B}_1)
+         \\
+         \intertext{取以$\omega$旋转的参考系$O-XYZ$，}
+         \left( \dt{\bm{m}}{t} \right)_{\mathrm{rot}}=\bm{m} \times (\Delta \omega \bm{e}_Z - \omega_1 \bm{e}_X)
+         \\
+         \Delta \omega=\omega-\omega_0
+      \end{gather*}
+      磁矩在旋转参考系中进动 \\
+      磁共振条件$\omega \approx \omega_0$，几乎沿静磁场方向进动
+   \end{enumerate}
+   \item 量子力学
+   \begin{gather*}
+      \ket{\psi(t)}=a_+(t)\ket{+}+a_-(t)\ket{-}
+      \\
+      \hat{H}(t)=-\hat{\bm{m}} \cdot \bm{B} = \gamma \hat{\bm{S}} \cdot (\bm{B}_0+\bm{B}_1)
+      \\
+      \intertext{以$\ket{+}$和$\ket{-}$为基表示为}
+      \hat{H}(t)=\frac{\hbar}{2} 
+      \begin{bmatrix}
+         \omega_0 & \omega_1 \e^{-\i \omega t} \\
+         \omega_1 \e^{\i \omega t} & \omega_0
+      \end{bmatrix}
+      \\
+      \intertext{代入Schödinger方程，做变换}
+      \begin{cases}
+         b_+(t)=\e^{\i \omega t} a_+(t) \\
+         b_-(t)=\e^{-\i \omega t} a_-(t) \\
+         \ket{\tilde{\psi}(t)}=b_+(t)\ket{+}+b_-(t)\ket{-}=\e^{\frac{\i}{\hbar} \hat{S}_z \omega t} \ket{\psi(t)} \\
+         \tilde{H}=\frac{\hbar}{2}
+         \begin{bmatrix}
+            -\Delta \omega & \omega_1 \\
+            \omega_1 & \Delta \omega
+         \end{bmatrix}
+      \end{cases}
+      \\
+      \intertext{得到}
+      \i \hbar \dt{}{t}\ket{\tilde{\psi}(t)}=\tilde{H} \ket{\tilde{\psi}(t)}
+   \end{gather*}
+   在保守系的Hamiltonian$\tilde{H}$下用二能级体系的方法求解，再逆变换回到原体系
+   \begin{gather*}
+      \intertext{Rabi公式：$t=0$时处于$\ket{+}$态，}
+      P_{+-}(t)=\frac{\omega_1^2}{\omega_1^2+(\Delta \omega)^2} \sin^2(\sqrt{\omega_1^2+(\Delta \omega)^2}\frac{t}{2})
+   \end{gather*}
+   磁共振条件$\omega \approx \omega_0$，存在某些时刻$P_{+-}(t)=1$ \\
+   稳定性：$\ket{+}$的寿命为$\tau$，设单位时间有$n$个原子激发到$\ket{+}$态，则$t=0$时刻单位时间脱离$\ket{-}$态的原子数
+   \begin{align*}
+      N&=\frac{1}{\tau} \int_{0}^{+\infty} \e^{-\frac{t}{\tau}} P_{+-}(t) \d t
+      \\
+      &=\frac{n}{2} \frac{\omega_1^2}{(\Delta \omega)^2+\omega_1^2+\frac{1}{\tau^2}}
+   \end{align*}
+   绘制曲线可以在实验上测量$\gamma$，$B$或$\tau$
+   \item 经典与量子的联系
+   \begin{gather*}
+      \intertext{由Ehrenfest定理，}
+      \i \hbar \dt{}{t} \langle \bm{m} \rangle=\langle [\hat{m},\hat{H}] \rangle
+      \\
+      \intertext{由对易关系得到}
+      \dt{}{t} \langle \bm{m} \rangle=\gamma \langle \bm{m} \rangle \times \bm{B}
+   \end{gather*}
+   $\langle \bm{m} \rangle$遵循经典方程
+   \item Bloch方程：通过原子起偏器产生磁矩$\mu_0=\gamma \frac{\hbar}{2} \bm{e}_z$原子，射入空腔，忽略原子间相互作用，认为腔壁对原子的偏振几乎没有影响，
+   \begin{gather*}
+      \bm{m}=\displaystyle \sum_{i=1}^{N} \inpro{\psi_i(t)}{\hat{\bm{m}} \vert \hat{\psi_i}(t)}
+      \\
+      \intertext{Bloch方程}
+      \dt{\bm{m}}{t}=n\bm{\mu}_0-\frac{1}{T_R} \bm{m}+\gamma \bm{m} \times \bm{B}
+   \end{gather*}
+   \begin{itemize}
+      \item 第一项为源项
+      \item 第二项为衰减项，表示单位时间消失的磁矩，可能因为离开空腔、碰撞、自发发射而消失，$T_R$为弛豫时间
+      \item 第三项为进动项
+   \end{itemize}
+   在旋转参考系下，$\bm{m}$的稳定解为
+   \begin{gather*}
+      m_X=-n\mu_0 T_R \frac{\omega_1 \Delta \omega}{(\Delta \omega)^2+\omega_1^2+\frac{1}{T_R^2}}
+      \\
+      m_Y=-n\mu_0 \frac{\omega_1}{(\Delta \omega)^2+\omega_1^2+\frac{1}{T_R^2}}
+      \\
+      m_Z=n\mu_0 T_R(1-\frac{\omega_1^2}{(\Delta \omega)^2+\omega_1^2+\frac{1}{T_R^2}})
+   \end{gather*}
+\end{enumerate}
+
+\subsection{氨分子的简单模型}
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=0.2 \textwidth]{figure/ammonia.jpeg}
+   \caption{氨分子结构 \label{fig:4.1}}
+\end{figure}
+
+认为氮原子是静止的，三个氢原子构成等边三角形，中心保持通过氮原子，体系唯一变量为氮原子在通过三角形中心且垂直于平面的轴上的坐标$x$，势能$V(x)$的近似图像如下
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=0.3 \textwidth]{figure/potential_energy_of_ammonia.jpg}
+   \caption{氨分子势能近似曲线 \label{fig:4.2}}
+\end{figure}
+
+与经典力学的差别
+\begin{itemize}
+   \item 分子能量无法取到势能极小值
+   \item 能量小于势垒$V_1$的分子也可以发生反转
+\end{itemize}
+
+\begin{enumerate}
+   \item 无限势垒$\tilde{V}(x)$：中心位于$x=\pm b$，宽度为$a$
+   \begin{gather*}
+      E_n=\frac{\hbar^2 k_n^2}{2m}
+      \\
+      k_n=\frac{n\pi}{a}
+      \\
+      \intertext{特征向量}
+      \varphi_1^n(x)=
+      \begin{cases}
+         \sqrt{\frac{2}{a}} \sin(k_n(b+\frac{a}{2}-x)),\quad b-\frac{a}{2} \leq x \leq b+\frac{a}{2} \\
+         0,\quad \text{else}
+      \end{cases}
+      \\
+      \varphi_2^n(x)=
+      \begin{cases}
+         \sqrt{\frac{2}{a}} \sin(k_n(b+\frac{a}{2}+x)),\quad -b-\frac{a}{2} \leq x \leq -b+\frac{a}{2} \\
+         0,\quad \text{else}
+      \end{cases}
+      \\
+      \intertext{组态反转的Bohr频率}
+      \nu=\frac{E_2-E_1}{h}
+   \end{gather*}
+   能级是简并的
+   \item 有限势垒：简化为方形势
+   \begin{gather*}
+      V(x)=
+      \begin{cases}
+         V_0,\quad -b+\frac{a}{2} \leq x \leq b-\frac{a}{2} \\
+         0 \quad -b-\frac{a}{2} \leq x < -b+\frac{a}{2} \text{或} b-\frac{a}{2} < x \leq b+\frac{a}{2} \\
+         + \infty \quad \text{else}
+      \end{cases}
+      \\
+      \intertext{波函数}
+      \chi_1(x)=A\sin(k_n(b+\frac{a}{2}-x)),\quad b-\frac{a}{2} \leq x \leq b+\frac{a}{2}
+      \\
+      \chi_2(x)=A'\sin(k_n(b+\frac{a}{2}+x)),\quad -b-\frac{a}{2} \leq x \leq -b+\frac{a}{2}
+      \\
+      \intertext{选定分别偶函数和奇函数的特征向量，对应特征值$E_s$和$E_a$，波矢$k_s$和$k_a$}
+      \ket{\chi_s} \to A_s=A'_s
+      \\
+      \ket{\chi_a} \to A_a=-A'_a
+      \\
+      \intertext{设}
+      V_0=\frac{\hbar^2 \alpha^2}{2m}
+      \\
+      \intertext{在$-b+\frac{a}{2} \leq x \leq b-\frac{a}{2}$上，对应波函数}
+      \chi_s(x)=B_s \cosh (\sqrt{\alpha^2-k_s^2} x)
+      \\
+      \chi_a(x)=B_a \sinh (\sqrt{\alpha^2-k_a^2} x)
+      \\
+      \intertext{求解$x=b-\frac{a}{2}$处边界条件，得到方程}
+      \tan(k_s a)=-\frac{k_s}{\sqrt{\alpha^2-k_s^2}} \coth(\sqrt{\alpha^2-k_s^2}(b-\frac{a}{2}))
+      \\
+      \tan(k_a a)=-\frac{k_a}{\sqrt{\alpha^2-k_a^2}} \tanh(\sqrt{\alpha^2-k_a^2}(b-\frac{a}{2}))
+   \end{gather*}
+   可以求解$E_a$和$E_s$，能级发生分离，反转频率
+   \begin{gather*}
+      \Omega_1=\frac{E_a^1-E_s^1}{\hbar}
+      \\
+      \Omega_2=\frac{E_a^2-E_s^2}{\hbar}
+      \\
+      \intertext{且有}
+      E_a^{n+1}-E_a^n \gg E_a^n-E_s^n
+   \end{gather*}
+   分子反转
+   \begin{gather*}
+      \intertext{设初态}
+      \ket{\psi(0)}=\frac{1}{\sqrt{2}}(\ket{\chi_s^1}+\ket{\chi_a^1})
+   \end{gather*}
+   波函数以$\Omega_1$在两态间振荡，对应电偶极子发出角频率$\Omega_1$的辐射
+   
+   二能级体系：忽略$n>1$的各能级，以$\ket{\varphi_1^1}$和$\ket{\varphi_2^1}$为基
+   \begin{gather*}
+      \intertext{Hamiltonian}
+      \hat{H}_0=E_1 \hat{I}
+      \\
+      \intertext{微扰项}
+      \hat{W}=-A
+      \begin{bmatrix}
+         0 & 1 \\
+         1 & 0
+      \end{bmatrix}
+      \\
+      \intertext{特征方程}
+      \hat{H} \ket{\varphi_a^1}=(E_1+A) \ket{\varphi_a^1}
+      \\
+      \hat{H} \ket{\varphi_s^1}=(E_1-A) \ket{\varphi_s^1}
+   \end{gather*}
+   以角频率$\frac{A}{\hbar}$振荡
+   \begin{gather*}
+      \intertext{加入沿轴的电场$E$影响，偶极矩}
+      \hat{D}=
+      \begin{bmatrix}
+         \eta & 0 \\
+         0 & -\eta
+      \end{bmatrix}
+      \\
+      \hat{W}'=-E \hat{D}
+      \\
+      \intertext{特征值}
+      E_+=E_1+\sqrt{A^2+\eta^2 E^2}
+      \\
+      E_-=E_1-\sqrt{A^2+\eta^2 E^2}
+      \\
+      \intertext{特征向量}
+      \ket{\psi_+}=\cos\frac{\theta}{2} \ket{\varphi_1^1} - \sin\frac{\theta}{2} \ket{\varphi_2^1}
+      \\
+      \ket{\psi_-}=\sin\frac{\theta}{2} \ket{\varphi_1^1} + \cos\frac{\theta}{2} \ket{\varphi_2^1}
+      \\
+      \intertext{其中}
+      \tan\theta=-\frac{A}{\eta E} \quad 0 \leq \theta < \pi
+      \\
+      \inpro{\psi_+}{\hat{D} \vert \psi_+}=-\inpro{\psi_-}{\hat{D} \vert \psi_-}=-\frac{\eta^2 E}{\sqrt{A^2+\eta^2 E^2}}
+      \\
+      \intertext{弱场条件下，}
+      \inpro{\psi_+}{\hat{D} \vert \psi_+}=-\inpro{\psi_-}{\hat{D} \vert \psi_-}=-\frac{\eta^2 E}{A}
+      \\
+      \intertext{极化率}
+      \chi_{e-}=-\chi_{e+}=\frac{\eta^2}{A}
+   \end{gather*}
+   如果电场很弱，但$E^2$梯度很大，分子受到梯度力，用于氨分子微波量子放大器，分离不同态的分子
+\end{enumerate}
+
+\subsection{稳态与不稳定态的耦合}
+
+二能级体系，无微扰时，不稳定激发态$\ket{\varphi_1}$，寿命$\tau_1$，稳定态$\ket{\varphi_2}$
+\begin{gather*}
+   \hat{H}_0=
+   \begin{bmatrix}
+      E_1-\i \frac{\hbar}{2\tau_1} & 0 \\
+      0 & E_2
+   \end{bmatrix}
+   \\
+   \intertext{微扰项}
+   \hat{W}=
+   \begin{bmatrix}
+      0 & W_{12} \\
+      W_{12}^* & 0
+   \end{bmatrix}
+   \\
+   \hat{H}=
+   \begin{bmatrix}
+      E_1-\i \frac{\hbar}{2\tau_1} & W_{12} \\
+      W_{12}^* & E_2
+   \end{bmatrix}
+   \\
+   \intertext{在$|W_{12}|\ll \sqrt{(E_2-E_1)^2+\frac{\hbar^2}{4\tau_1^2}}$条件下，解得特征值}
+   E'_1=E_1-\i \frac{\hbar}{2\tau_1}+\frac{|W_{12}|^2}{E_1-E_2-\i \frac{\hbar}{2\tau_1}}
+   \\
+   E'_2=E_2+\frac{|W_{12}|^2}{E_2-E_1+\i \frac{\hbar}{2\tau_1}}
+\end{gather*}
+
+若$E_1=E_2$，
+\begin{gather*}
+   \intertext{特征值}
+   \begin{cases}
+      E'_1=E_1-\i \frac{\hbar}{4\tau_1}+k \\
+      E'_2=E_1-\i \frac{\hbar}{4\tau_1}-k
+   \end{cases}
+   \\
+   \intertext{其中}
+   k^2=|W_{12}|^2-\frac{\hbar^2}{16\tau_1^2}
+   \\
+   \intertext{特征向量}
+   \ket{\psi'_1}=W_{12}\ket{\varphi_1}+(k+\i \frac{\hbar}{4\tau_1})\ket{\varphi_2}
+   \\
+   \ket{\psi'_2}=W_{12}\ket{\varphi_1}+(-k+\i \frac{\hbar}{4\tau_1})\ket{\varphi_2}
+   \\
+   \intertext{设}
+   \ket{\psi(0)}=\ket{\varphi_2}=\frac{1}{2k}(\ket{\psi'_1}-\ket{\psi'_2})
+   \\
+   P_{21}(t)=\frac{1}{4|k|^2}\e^{-\frac{t}{2\tau_1}}|W_{12}|^2 |\e^{-\frac{\i}{\hbar} k_1 t}-\e^{\frac{\i}{\hbar}k_1 t}|^2
+   \\
+   =\begin{cases}
+      \frac{|W_{12}|^2}{|W_{12}|^2-\frac{\hbar^2}{16\tau_1^2}}\e^{-\frac{t}{2\tau_1}}\sin^2(\sqrt{|W_{12}|^2-\frac{\hbar^2}{16\tau_1^2}}\frac{t}{\hbar}),\quad |W_{12}|>\frac{\hbar}{4\tau_1}
+      \\
+      \frac{|W_{12}|^2}{\frac{\hbar^2}{16\tau_1^2}-|W_{12}|^2}\e^{-\frac{t}{2\tau_1}}\sinh^2(\sqrt{\frac{\hbar^2}{16\tau_1^2}-|W_{12}|^2}\frac{t}{\hbar}),\quad |W_{12}|<\frac{\hbar}{4\tau_1}
+      \\
+      \frac{|W_{12}|^2}{\hbar^2}t^2\e^{-\frac{t}{2\tau_1}},\quad |W_{12}|=\frac{\hbar}{4\tau_1}
+   \end{cases}
+\end{gather*}

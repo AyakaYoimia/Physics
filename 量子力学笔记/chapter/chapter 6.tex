@@ -1,0 +1,502 @@
+\chapter{角动量}
+
+\begin{equation*}
+   \text{总角动量}\bm{J}
+   \begin{cases}
+      \text{轨道角动量}\bm{L} \\
+      \text{内禀角动量}\bm{S}
+   \end{cases}
+\end{equation*}
+
+\section{对易关系}
+
+\begin{equation*}
+   \begin{cases}
+      \text{轨道角动量：正则对易关系+量子化规则} \\
+      \text{内禀角动量：将对易关系作为定义（几何）}
+   \end{cases}
+\end{equation*}
+
+量子化
+\begin{gather*}
+   \hat{L}_x=\hat{Y} \hat{P}_z - \hat{Z} \hat{P}_y
+   \\
+   \hat{\bm{L}}=\hat{\bm{R}} \times \hat{\bm{P}}
+\end{gather*}
+
+对易关系
+\begin{gather*}
+   \begin{cases}
+      [\hat{L}_x,\hat{L}_y]=\i \hbar \hat{L}_z
+      \\
+      [\hat{L}_y,\hat{L}_z]=\i \hbar \hat{L}_x
+      \\
+      [\hat{L}_z,\hat{L}_x]=\i \hbar \hat{L}_y
+   \end{cases}
+\end{gather*}
+
+无自旋体系
+\begin{gather*}
+   \hat{\bm{L}}=\displaystyle \sum_{i=1}^{N} \hat{\bm{L}}_i
+\end{gather*}
+
+推广：将对易关系作为定义，称满足对易关系的物理量为角动量$\bm{J}$，则有
+\begin{gather*}
+   [\hat{\bm{J}}^2,\hat{\bm{J}}]=0
+\end{gather*}
+
+\section{角动量的谱}
+
+寻找$\hat{\bm{J}}^2$和$\hat{J}_z$的共同特征向量
+\begin{gather*}
+   \intertext{定义}
+   \begin{cases}
+      \hat{J}_+=\hat{J}_x+\i \hat{J}_y
+      \\
+      \hat{J}_-=\hat{J}_x-\i \hat{J}_y
+   \end{cases}
+   \\
+   \intertext{对易关系}
+   \begin{cases}
+      [\hat{J}_z,\hat{J}_+]=\hbar \hat{J}_+
+      \\
+      [\hat{J}_z,\hat{J}_-]=-\hbar \hat{J}_-
+      \\
+      [\hat{J}_+,\hat{J}_-]=2\hbar \hat{J}_z
+   \end{cases}
+   \\
+   \hat{\bm{J}}^2=\frac{1}{2}(\hat{J}_+ \hat{J}_- + \hat{J}_- \hat{J}_+)+\hat{J}_z^2
+\end{gather*}
+$\hat{\bm{J}}^2$半正定，特征值非负
+
+$\hat{\bm{J}}^2$与$\hat{J}_z$不构成ECOC，引入新的指标$k$，特征方程
+\begin{gather*}
+   \hat{\bm{J}}^2 \ket{k,j,m}=j(j+1)\hbar^2 \ket{k,j,m}
+   \\
+   \hat{J}_z \ket{k,j,m}=m\hbar \ket{k,j,m}
+\end{gather*}
+
+性质
+\begin{gather*}
+   -j \leq m \leq j
+   \\
+   \begin{cases}
+      m=-j \iff \hat{J}_- \ket{k,j,-j}=0
+      \\
+      m>-j \implies \text{$\hat{J}_- \ket{k,j,m}$是对应特征值$j(j+1)\hbar$和$(m-1)\hbar$的特征向量}
+   \end{cases}
+   \\
+   \begin{cases}
+      m=j \iff \hat{J}_+ \ket{k,j,j}=0
+      \\
+      m<j \implies \text{$\hat{J}_+ \ket{k,j,m}$是对应特征值$j(j+1)\hbar$和$(m+1)\hbar$的特征向量}
+   \end{cases}
+   \\
+   \begin{cases}
+      \text{$j$只能取正整数，正半整数或零} \\
+      \text{对于固定$j$，$m$有$2j+1$个取值，}m=-j,-j+1,\cdots,j-1,j
+   \end{cases}
+\end{gather*}
+
+不同$m$，子空间$\mathscr{E}(j,m)$的维数都相同，$\ket{k,j,m},k=1,2,\cdots,g(j)$构成正交归一基
+\begin{gather*}
+   \inpro{k,j,m}{k',j',m'}=\delta_{kk'} \delta_{jj'} \delta_{mm'}
+   \\
+   \displaystyle \sum_{j} \sum_{m=-j}^{j} \sum_{k=1}^{g(j)} \ket{k,j,m} \bra{k,j,m}=1
+\end{gather*}
+设$\hat{A}$与$\hat{\bm{J}}^2$、$\hat{J}_z$构成ECOC，
+\begin{gather*}
+   \hat{A} \ket{k,j,m}=a_{k,j} \ket{k,j,m}
+\end{gather*}
+特征值$a_{k,j}$与$m$无关
+
+将态空间分解为$\mathscr{E}(k,j)$的直和，基$\{\ket{k,j,m}\}_{m=-j}^{j}$
+\begin{enumerate}
+   \item $\mathscr{E}(k,j)$维数为$(2j+1)$
+   \item $\mathscr{E}(k,j)$是$\hat{\bm{J}}$的不变子空间
+\end{enumerate}
+$\hat{\bm{J}}$在这组基下表示矩阵是分块对角的，且矩阵元只与$j,m$有关 \\
+若满足下列条件，称为标准基
+\begin{gather*}
+   \begin{cases}
+      \hat{J}_+ \ket{k,j,m}=\hbar \sqrt{j(j+1)-m(m+1)} \ket{k,j,m+1}
+      \\
+      \hat{J}_- \ket{k,j,m}=\hbar \sqrt{j(j+1)-m(m-1)} \ket{k,j,m-1}
+   \end{cases}
+\end{gather*}
+
+\section{轨道角动量}
+
+选择$\ket{\bm{r}}$表象，球坐标下
+\begin{gather*}
+   \hat{L}_x=\i \hbar (\sin \phi \pt{}{\theta} + \frac{\cos\phi}{\tan \theta} \pt{}{\phi})
+   \\
+   \hat{L}_y=\i \hbar (-\cos \phi \pt{}{\theta} + \frac{\sin\phi}{\tan \theta} \pt{}{\phi})
+   \\
+   \hat{L}_z=\frac{\hbar}{\i} \pt{}{\phi}
+   \\
+   \hat{L}_+=\hbar \e^{\i \phi}(\pt{}{\theta}+\i \cot\theta \pt{}{\phi})
+   \\
+   \hat{L}_-=\hbar \e^{-\i \phi}(-\pt{}{\theta}+\i \cot\theta \pt{}{\phi})
+   \\
+   \hat{\bm{L}}^2=-\hbar^2(\pt{^2}{\theta^2}+\frac{1}{\tan\theta}\pt{}{\theta}+\frac{1}{\sin^2 \theta}\pt{^2}{\phi^2})
+\end{gather*}
+$\hat{\bm{L}}^2$和$\hat{L}_z$的共同特征函数$Y_{lm}(\theta,\phi)$
+\begin{gather*}
+   \hat{\bm{L}}^2 Y_{lm}(\theta,\phi)=l(l+1)\hbar^2 Y_{lm}(\theta,\phi)
+   \\
+   \hat{L}_z Y_{lm}(\theta,\phi)=m\hbar Y_{lm}(\theta,\phi)
+\end{gather*}
+由周期性边界条件，$m$是整数，$l$也是整数
+
+无自旋粒子的波函数空间的基
+\begin{gather*}
+   \psi_{klm}(\bm{r})=R_{kl}(r) Y_{lm}(\theta,\varphi)
+   \\
+   \int_{0}^{+\infty} R_{kl}^*(r) R_{k'l}(r) r^2 \d r=\delta_{kk'}
+\end{gather*}
+
+\section{角动量与旋转}
+
+几何旋转操作$R$，旋转算符$\hat{R}$
+
+旋转轴方向单位向量$\bm{u}$，旋转角$\alpha$，几何旋转$R_{\bm{u}}(\alpha)$可以用向量
+\begin{equation*}
+   \bm{\alpha}=\alpha \bm{u}
+\end{equation*}
+表示，旋转操作构成一个群，且不是Abel的，
+\begin{gather*}
+   R_{\bm{u}}(\alpha) R_{\bm{u'}}(\alpha') \neq R_{\bm{u'}}(\alpha') R_{\bm{u}}(\alpha)
+   \\
+   \intertext{但}
+   R_{\bm{u}}(\alpha) R_{\bm{u}}(\alpha') = R_{\bm{u}}(\alpha') R_{\bm{u}}(\alpha)=R_{\bm{u}}(\alpha+\alpha')
+\end{gather*}
+
+无穷小旋转
+\begin{gather*}
+   R_{\bm{u}}(\d \alpha) \bm{OM}=\bm{OM}+\d \alpha \bm{u} \times \bm{OM}
+   \\
+   R_{\bm{u}}(\alpha+\d \alpha)=R_{\bm{u}}(\alpha)R_{\bm{u}}(\d \alpha)
+   \\
+   R_{\bm{e}_y}(-\alpha') R_{\bm{e}_x}(\d \alpha) R_{\bm{e}_y}(\d \alpha') R_{-\bm{e}_x}(\d \alpha)=R_{\bm{e}_z}(\d \alpha \d \alpha')
+\end{gather*}
+
+无自旋粒子的旋转算符：设旋转操作$R$使$\bm{r} \to \bm{r}'$
+\begin{gather*}
+   \bm{r}'=R \bm{r}
+   \\
+   \psi'(\bm{r}')=\psi(\bm{r})=\psi(R^{-1} \bm{r}')
+   \\
+   \intertext{定义旋转算符$\hat{R}$}
+   \ket{\psi'}=\hat{R} \ket{\psi}
+   \\
+   \intertext{得到}
+   \inpro{\bm{r}}{\hat{R} \vert \psi}=\inpro{R^{-1} \bm{r}}{\psi}
+\end{gather*}
+性质
+\begin{itemize}
+   \item 线性算符
+   \item 幺正算符
+   \item 旋转算符集合构成一个旋转群的表示
+\end{itemize}
+旋转算符与角动量算符间的联系
+\begin{gather*}
+   \hat{R}_{\bm{u}}(\d \alpha)=\hat{I}-\frac{\i}{\hbar} \d \alpha \hat{\bm{L}} \cdot \bm{u}
+   \\
+   \hat{R}_{\bm{u}}(\alpha)=\e^{-\frac{\i}{\hbar} \alpha \hat{\bm{L}} \cdot \bm{u}}
+\end{gather*}
+代入无穷小旋转的非对易关系式，可以看出轨道角动量的对易关系是几何旋转群非对易结构的结果。体系的旋转周期性使得$\hat{L}_z$的特征值为整数而非半整数。对于无自旋多粒子体系，上述讨论可以推广。 
+
+对于有自旋粒子，仍满足
+\begin{gather*}
+   \hat{R}_{\bm{u}}(\d \alpha)=\hat{I}-\frac{\i}{\hbar} \d \alpha \hat{\bm{L}} \cdot \bm{u}
+   \\
+   \hat{R}_{\bm{u}}(\d \alpha)=\e^{-\frac{\i}{\hbar} \alpha \hat{\bm{L}} \cdot \bm{u}}
+\end{gather*}
+但无法保持旋转的周期性
+
+对可观察量的旋转
+\begin{gather*}
+   \hat{A}'=\hat{R} \hat{A} \hat{R}^{\dagger}
+\end{gather*}
+\begin{enumerate}
+   \item 标量算符：$[\hat{A},\bm{J}]=0$
+   \item 矢量算符
+\end{enumerate}
+
+旋转不变性：在整体旋转下，孤立体系的物理定律不变
+\begin{itemize}
+   \item 可观察量$\hat{A}'$与$\hat{A}$有相同的谱$\implies \hat{R}$是线性幺正或共轭线性幺正的
+   \item 体系演变不受旋转影响，$\hat{R}\ket{\psi(t)}$也是体系的一个解$\iff \hat{H}$是标量算符，方程具有对称性
+\end{itemize}
+可以导出角动量守恒
+\begin{gather*}
+   [\hat{H},\hat{\bm{J}}]=0
+   \\
+   \begin{cases}
+      H \ket{k,j,m}=E \ket{k,j,m}
+      \\
+      \hat{\bm{J}}^2 \ket{k,j,m}=j(j+1)\hbar^2 \ket{k,j,m}
+      \\
+      \hat{J}_z \ket{k,j,m}=m\hbar \ket{k,j,m}
+   \end{cases}
+\end{gather*}
+对于固定的$k$和$j$，$E$的简并度是$2j+1$
+
+\section{双原子分子的转动} \label{sec:6.5}
+
+两分子质量$m_1$和$m_2$，仅考虑转动自由度，到质心距离$r_1$和$r_2$保持不变，，约化质量$\mu=\frac{m_1 m_2}{m_1 + m_2}$，$r_e=r_1+r_2$
+\begin{enumerate}
+   \item 经典力学
+   \begin{gather*}
+      \intertext{转动惯量}
+      I=\mu r_e^2
+      \\
+      |\bm{L}|=\mu r_e^2 \omega
+      \\
+      H=\frac{\bm{L}^2}{2\mu r_e^2}
+   \end{gather*}
+   \item 量子力学
+   \begin{gather*}
+      \hat{H}=\frac{\hat{\bm{L}}^2}{2\mu r_e^2}
+      \\
+      \intertext{特征向量}
+      \ket{l,m} \leftrightarrow Y_{lm}(\theta,\varphi)
+      \\
+      \hat{H} \ket{l,m}=\frac{l(l+1)\hbar^2}{2\mu r_e^2} \ket{l,m}
+      \\
+      \intertext{正交归一完备性}
+      \inpro{l,m}{l',m'}=\delta_{ll'} \delta_{mm'}
+      \\
+      \displaystyle \sum_{l=0}^{+\infty} \sum_{m=-l}^{l} \ket{l,m} \bra{l,m}=\hat{I}
+   \end{gather*}
+   $\inpro{l',m'}{\hat{Z} \vert l,m}$只有$l'-l=\pm1$时才不为$0$，得到Bohr频率
+   \begin{gather*}
+      \nu_{l,l-1}=\frac{l\hbar}{2\pi \mu r_e^2}
+   \end{gather*}
+\end{enumerate}
+
+实验
+\begin{enumerate}
+   \item 异极分子：有固有电偶极矩，纯转动谱由一系列等间隔谱线构成，
+   \begin{itemize}
+      \item 谱线间隔远小于纯振动谱，波长位于远红外或微波波段，但振动-转动光谱（振动谱的精细结构）不在微波波段
+   \end{itemize}
+   应用
+   \begin{enumerate}
+      \item 求分子转动惯量
+      \item 由不同同位素构成的分子求同位素质量比
+      \item 在热力学平衡下，通过大量分子纯转动谱的谱线强度，求出介质温度
+   \end{enumerate}
+   \item 同极分子：没有固有电偶极矩 \\
+   Raman散射
+   \begin{enumerate}
+      \item 经典 \\
+      设入射波电场沿$z$轴，
+      \begin{gather*}
+         \bm{D}=(\chi_{\parallel} \bm{E}_{\parallel}+\chi_{\perp} \bm{E}_{\perp}) \cos\Omega t
+         \\
+         D_z=(\chi_{\perp}+(\chi_{\parallel}-\chi_{\perp})\cos^2\theta)E \cos\Omega t
+         \\
+         \intertext{分子转动$\omega$使得$\cos\theta$以相同频率振荡}
+         \cos\theta=\alpha \cos(\omega t + \beta)
+      \end{gather*}
+      $\alpha$和$\beta$为待定常数，由此可以得到散射波的三个角频率$\Omega$，$\Omega \pm 2\omega$
+      \item 量子
+      \begin{gather*}
+         \inpro{l',m'}{\hat{D}_z \vert l,m} \propto \int \d \Omega Y_{l'm'}^*(\theta,\varphi) (\chi_{\perp}+(\chi_{\parallel}-\chi_{\perp})\cos^2\theta) Y_{lm}(\theta,\varphi)
+      \end{gather*}
+      由球谐函数性质，只有在$l'-l=0,\pm2$时上式才不为$0$
+   \end{enumerate}
+\end{enumerate}
+
+\section{二维谐振子}
+
+势能
+\begin{equation*}
+   V(x,y)=\frac{m}{2} \omega^2(x^2+y^2)
+\end{equation*}
+
+\begin{enumerate}
+   \item 经典力学
+   \begin{gather*}
+      H=\frac{p_x^2+p_y^2}{2m} + \frac{1}{2}m\omega^2(x^2+y^2) + \frac{p_z^2}{2m}
+      \\
+      \begin{cases}
+         x=x_M \cos(\omega t+\varphi_x)
+         \\
+         y=y_M \cos(\omega t+\varphi_y)
+         \\
+         z=\frac{p_0}{m}t+z_0
+      \end{cases}
+      \\
+      \intertext{角动量}
+      L_z=m\omega x_M y_M \sin(\varphi_x-\varphi_y)
+   \end{gather*}
+   $xOy$平面运动的运动常量：$H_{xy}$、$H_x$、$H_y$、$L_z$
+   \item 量子力学
+   \begin{gather*}
+      \hat{H}=\hat{H}_{xy}+\hat{H}_z
+      \\
+      E=E_{xy}+E_z
+      \\
+      \hat{H} \ket{\varphi}=E \ket{\varphi}
+      \\
+      \ket{\varphi}=\ket{\varphi_{xy}} \otimes \ket{\varphi_z}
+      \\
+      \inpro{z}{\varphi_z}=\frac{1}{\sqrt{2\pi\hbar}}\e^{\frac{\i}{\hbar} p_z z}
+      \\
+      E_z=\frac{p_z^2}{2m}
+      \\
+      E_{xy}=(n+1)\hbar\omega
+   \end{gather*}
+   对于$\hat{H}_{xy}$的同一个量子数$n$，$E_{xy}$简并度为$n+1$，$\hat{H}_{xy}$不能单独构成ECOC
+   \begin{enumerate}
+      \item $\hat{H}_x$与$\hat{H}_y$构成一组ECOC，在$x$方向和$y$方向按谐振子处理
+      \item $[\hat{H}_{xy},\hat{L}_z]=0$，可以证明$\hat{H}_{xy}$和$\hat{L}_z$构成一组ECOC
+      \begin{gather*}
+         \intertext{定义右旋圆量子和左旋圆量子的湮没算符}
+         \begin{cases}
+            \hat{a}_d=\frac{1}{\sqrt{2}}(\hat{a}_x-\i \hat{a}_y)
+            \\
+            \hat{a}_g=\frac{1}{\sqrt{2}}(\hat{a}_x+\i \hat{a}_y)
+         \end{cases}
+         \\
+         \intertext{对易关系}
+         [\hat{a}_d,\hat{a}_d^{\dagger}]=[\hat{a}_g,\hat{a}_g^{\dagger}]=1
+         \\
+         \hat{H}_{xy}=(\hat{a}_d^{\dagger} \hat{a}_d + \hat{a}_g^{\dagger} \hat{a}_g + 1) \hbar \omega
+         \\
+         \hat{L}_z=\hbar(\hat{a}_d^{\dagger} \hat{a}_d-\hat{a}_g^{\dagger} \hat{a}_g)
+         \\
+         \intertext{设$\hat{a}_d^{\dagger} \hat{a}_d$特征值$n_d$，$\hat{a}_d^{\dagger} \hat{a}_d$特征值$n_g$，则有}
+         n=n_d+n_g
+         \\
+         m=n_d-n_g=n,n-2,\cdots,-n
+      \end{gather*}
+   \end{enumerate}
+\end{enumerate}
+
+\section{Landau能级}
+
+\begin{enumerate}
+   \item 经典
+   \begin{gather*}
+      \bm{f}=q\bm{v} \times \bm{B}(\bm{r})
+      \\
+      \begin{cases}
+         x=x_0+R \cos(\omega_c t+\varphi_0)
+         \\
+         y=y_0+R \sin(\omega_c t+\varphi_0)
+         \\
+         z=z_0+v_{0z}t
+      \end{cases}
+      \\
+      \intertext{回旋频率}
+      \omega_c=-\frac{qB}{m}
+      \\
+      \bm{p}=m\bm{v}+q\bm{A}(\bm{r})
+   \end{gather*}
+   运动常量：$H_{\perp}$、$H_{\parallel}$、$R^2=\frac{2}{m\omega_c^2}H_{\perp}$、相对圆心的角动量 \\
+   角动量$L_z$在匀强磁场$\bm{A}=-\frac{1}{2} \bm{r} \times \bm{B}$下是运动常量
+   \item 量子
+   \begin{gather*}
+      \hat{H}=\frac{1}{2m}(\hat{\bm{P}}-q\hat{\bm{A}}(\hat{\bm{R}}))^2
+      \\
+      \intertext{速度算符}
+      \hat{\bm{V}}=\frac{1}{m} (\hat{\bm{P}}-q\hat{\bm{A}}(\hat{\bm{R}}))
+      \\
+      \intertext{对易关系}
+      [\hat{X},\hat{P}_x]=[\hat{Y},\hat{P}_y]=[\hat{Z},\hat{P}_z]=\i\hbar
+      \\
+      \begin{cases}
+         [\hat{V}_x,\hat{V}_y]=\frac{\i q\hbar}{m^2} \hat{B}_z(\hat{\bm{R}})
+         \\
+         [\hat{V}_y,\hat{V}_z]=\frac{\i q\hbar}{m^2} \hat{B}_x(\hat{\bm{R}})
+         \\
+         [\hat{V}_z,\hat{V}_x]=\frac{\i q\hbar}{m^2} \hat{B}_y(\hat{\bm{R}})
+      \end{cases}
+      \\
+      [\hat{X},\hat{V}_x]=[\hat{Y},\hat{V}_y]=[\hat{Z},\hat{V}_z]=\frac{\i \hbar}{m}
+      \\
+      \text{机械角动量：}[\hat{\Lambda}_x,\hat{\Lambda}_y]=\i \hbar(\hat{\Lambda}_z+q\hat{Z} \hat{\bm{R}} \cdot \hat{\bm{B}}(\hat{\bm{R}}))
+   \end{gather*}
+   各可观察量的演变
+   \begin{gather*}
+      \intertext{由Ehrenfest定理}
+      \dt{}{t} \langle \hat{\bm{R}} \rangle=\langle \hat{\bm{V}} \rangle
+      \\
+      \intertext{定义}
+      \hat{\bm{F}}=\frac{q}{2}(\hat{\bm{V}} \times \hat{\bm{B}}-\hat{\bm{B}} \times \hat{\bm{V}})
+      \\
+      m \dt{}{t} \langle \hat{\bm{V}} \rangle=\langle \hat{\bm{F}} \rangle
+      \\
+      \dt{}{t} \langle \hat{\bm{\Lambda}} \rangle=\frac{1}{2}(\hat{\bm{R}} \times \hat{\bm{F}}-\hat{\bm{F}} \times \hat{\bm{R}})
+   \end{gather*}
+   \item 均匀磁场：将磁场方向取为$z$轴
+   \begin{gather*}
+      \begin{cases}
+         [\hat{V}_x,\hat{V}_y]=-\i \frac{\hbar \omega_c}{m^2}
+         \\
+         [\hat{V}_y,\hat{V}_z]=[\hat{V}_z,\hat{V}_x]=0
+      \end{cases}
+      \\
+      \hat{H}=\hat{H}_{\parallel}+\hat{H}_{\perp}
+      \\
+      [\hat{H}_{\parallel},\hat{H}_{\perp}]=0
+      \\
+      E=E_{\parallel}+E_{\perp}
+   \end{gather*}
+   \begin{itemize}
+      \item $H_{\parallel}$特征值$E_{\parallel}=\frac{m}{2} v_z^2$是连续谱
+      \item $H_{\perp}$特征值
+      \begin{gather*}
+         \intertext{归一化}
+         \begin{cases}
+            \hat{Q}=\sqrt{\frac{m}{\hbar \omega_c}} \hat{V}_y
+            \\
+            \hat{S}=\sqrt{\frac{m}{\hbar \omega_c}} \hat{V}_x
+         \end{cases}
+         \\
+         [\hat{Q},\hat{S}]=\i
+         \\
+         \hat{H}_{\perp}=\frac{1}{2}\hbar \omega_c(\hat{Q}^2+\hat{S}^2)
+      \end{gather*}
+      与一维谐振子形式相同
+      \begin{gather*}
+         E_{\perp}=(n+\frac{1}{2})\hbar \omega_c
+      \end{gather*}
+   \end{itemize}
+   Landau能级
+   \begin{equation*}
+      E(n,v_z)=(n+\frac{1}{2})\hbar \omega_c+\frac{1}{2}mv_z^2
+   \end{equation*}
+   每一个$n$都是无穷多重简并的，既来自于$v_z$的任意性，也来自于基态$\hat{V}_y+\i \hat{V}_x \ket{\varphi_0}=0$是偏微分方程，解有无穷多
+
+   在$\omega_c>0$条件下选定规范
+   \begin{gather*}
+      \begin{cases}
+         \hat{V}_x=\frac{\hat{P}_x}{m}-\frac{\omega_c}{2}Y
+         \\
+         \hat{V}_y=\frac{\hat{P}_y}{m}+\frac{\omega_c}{2}X
+         \\
+         \hat{V}_z=\frac{\hat{P}_z}{m}
+      \end{cases}
+      \\
+      \intertext{Hamiltonian}
+      \begin{cases}
+         \hat{H}_{\perp}=\frac{\hat{P}_x^2+\hat{P}_y^2}{2m}+\frac{\omega_c}{2}\hat{L}_z+\frac{1}{8}m\omega_c^2(\hat{X}^2+\hat{Y}^2)
+         \\
+         \hat{H}_{\parallel}=\frac{\hat{P}_z^2}{2m}
+      \end{cases}
+   \end{gather*}
+   $z$方向为自由粒子波函数，考虑$xOy$平面，
+   \begin{gather*}
+      \hat{H}_{\perp}=\hat{H}_{xy}+\frac{\omega_c}{2} \hat{L}_z
+   \end{gather*}
+   $\hat{H}_{xy}$为二维谐振子的Hamiltonian，$\hat{H}_{\perp}$与$\hat{H}_{xy}$有相同特征向量，类似计算得到
+   \begin{gather*}
+      E_{\perp}=(n_d+\frac{1}{2})\hbar\omega_c
+   \end{gather*}
+   与$n_g$无关，可以看出是无穷多重简并的
+\end{enumerate}

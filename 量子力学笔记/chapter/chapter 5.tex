@@ -1,0 +1,657 @@
+\chapter{谐振子}
+
+Hamilton算符
+\begin{gather*}
+   \hat{H}=\frac{\hat{P}^2}{2m}+\frac{1}{2} m\omega^2 \hat{X}^2
+\end{gather*}
+特征方程
+\begin{gather*}
+   \hat{H} \ket{\varphi_\nu^i}=E_\nu \ket{\varphi_\nu^i}=(\nu+\frac{1}{2}) \hbar \omega \ket{\varphi_\nu^i}
+\end{gather*}
+$\nu$标记不同特征值，$i$标记一个特征子空间中不同正交特征向量
+
+\section{特征值}
+
+\subsection{代数法}
+
+\begin{definition*}
+   湮没算符与产生算符
+\begin{gather*}
+   \hat{a}=\sqrt{\frac{m \omega}{2\hbar}}\hat{X}+\i \frac{1}{\sqrt{2m \hbar\omega}}\hat{P}
+   \\
+   \hat{a}^{\dagger}=\sqrt{\frac{m \omega}{2\hbar}}\hat{X}-\i \frac{1}{\sqrt{2m \hbar\omega}}\hat{P}
+   \\
+   [\hat{a},\hat{a}^{\dagger}]=1
+\end{gather*}
+\end{definition*}
+则有
+\begin{align*}
+   \hat{H}&=\hbar \omega (\hat{a}^{\dagger} \hat{a}+\frac{1}{2})
+   \\
+   &=\hbar \omega (\hat{a} \hat{a}^{\dagger}-\frac{1}{2})
+\end{align*}
+$\hat{a}^{\dagger} \hat{a}$与$\hat{H}$所有特征向量相同，对应特征值为$\nu$
+\begin{gather*}
+   ||\hat{a} \ket{\varphi_\nu^i}||^2=\inpro{\varphi_\nu^i}{\hat{a}^{\dagger} \hat{a} \vert \varphi_\nu^i}=\nu \inpro{\varphi_\nu^i}{\varphi_\nu^i}=\nu ||\ket{\varphi_\nu^i}||^2
+   \\
+   \implies \nu \geq 0
+\end{gather*}
+湮没产生算符
+的作用
+\begin{align*}
+   \nu = 0 & \implies  \hat{a} \ket{\varphi_\nu^i}=0
+   \\
+   \hat{a}^{\dagger} \ket{\varphi_\nu^i} &\neq 0,\quad \forall \nu
+   \\
+   \hat{H} (\hat{a} \ket{\varphi_\nu^i})&=\hbar \omega (\hat{a} \hat{a}^{\dagger}-\frac{1}{2})\hat{a} \ket{\varphi_\nu^i}
+   \\
+   &=\hbar \omega \hat{a} (\hat{a}^{\dagger}\hat{a} -\frac{1}{2})\ket{\varphi_\nu^i}
+   \\
+   &=\hat{a} (\hat{H}-1)\ket{\varphi_\nu^i}
+   \\
+   &=(\nu-\frac{1}{2}) \hbar \omega \hat{a} \ket{\varphi_\nu^i},\quad \nu > 0
+\end{align*}
+\begin{align*}
+   \hat{H} (\hat{a}^{\dagger} \ket{\varphi_\nu^i})&=\hbar \omega (\hat{a}^{\dagger} \hat{a}+\frac{1}{2}) \hat{a}^{\dagger} \ket{\varphi_\nu^i}
+   \\
+   &=\hbar \omega \hat{a}^{\dagger} (\hat{a} \hat{a}^{\dagger} + \frac{1}{2})\ket{\varphi_\nu^i}
+   \\
+   &=\hat{a}^{\dagger} (\hat{H}+1)\ket{\varphi_\nu^i}
+   \\
+   &=(\nu+\frac{3}{2}) \hbar \omega \hat{a} \ket{\varphi_\nu^i}
+\end{align*}
+\begin{proposition*}
+   $\nu$为非负整数$n$
+\end{proposition*}
+\begin{proof}
+   采用反证法，假设$\exists \nu$不是整数，则$\exists n \geq 0$，使得
+   \begin{gather*}
+      n<\nu<n+1
+   \end{gather*}
+   $\hat{a}^n \ket{\varphi_\nu^i}$是特征向量，且特征值$\nu-n>0$，则$\hat{a}^{n+1} \ket{\varphi_\nu^i}$也是特征向量，但$\hat{a}^{n+1} \ket{\varphi_\nu^i}$对应$\hat{a}^{\dagger}\hat{a}$的特征值$\nu-n-1 < 0$，矛盾\\
+   则$\nu$为非负整数$n$
+\end{proof}
+有
+\begin{gather*}
+   E_n=(n+\frac{1}{2}) \hbar \omega
+\end{gather*}
+所有能级都是非简并的
+\begin{enumerate}
+   \item 基态
+   \begin{gather*}
+      a{\ket{\varphi_0^i}}=0
+      \\
+      \intertext{在坐标表象下，}
+      \dt{}{x} \varphi_0^i(x)+\frac{m\omega}{\hbar} x\varphi_0^i(x)=0
+      \\
+      \varphi_0^i(x)=\sqrt[4]{\frac{m\omega}{\pi \hbar}} \e^{-\frac{1}{2} \frac{m\omega}{\hbar} x^2}
+   \end{gather*}
+   不是简并的
+   \item 由递推，若某个能级是非简并的，则更高的能级也是非简并的，故所有能级是非简并的
+\end{enumerate}
+
+\subsection{多项式法}
+
+Schrödinger方程
+\begin{equation*}
+   (-\frac{\hbar^2}{2m}\dt{^2}{x^2}+\frac{1}{2}m\omega^2 x^2)\varphi(x)=E\varphi(x)
+\end{equation*}
+无量纲化，
+\begin{gather*}
+   \begin{cases}
+      \xi=\sqrt{\frac{m \omega}{\hbar}}x
+      \\
+      \epsilon=\frac{E}{\hbar \omega}
+      \\
+      \phi(\xi)=\sqrt[4]{\frac{\hbar}{m \omega}} \varphi(\sqrt{\frac{\hbar}{m \omega}} \xi)
+   \end{cases}
+\end{gather*}
+得到
+\begin{equation*}
+   \dt{^2 \phi}{\xi^2}-(\xi^2-2\epsilon)\phi=0
+\end{equation*}
+当$x \to \infty$时，解有渐近形式$\e^{\pm \frac{\xi^2}{2}}$，平方可积性要求只能取$\e^{-\frac{\xi^2}{2}}$
+\begin{gather*}
+   \intertext{设}
+   \phi(\xi)=\e^{-\frac{\xi^2}{2}}h(\xi)
+   \\
+   \intertext{则有}
+   \dt{^2 h}{\xi^2}-2\xi \dt{h}{\xi}+(2\epsilon-1)h=0
+   \\
+   \intertext{设}
+   h(\xi)=\xi^p \langle \displaystyle \sum_{m=0}^{+\infty} a_{2m} \xi^{2m} \rangle
+   \\
+   \intertext{得到}
+   \begin{cases}
+      a_{2m+2}=\frac{(4m+2p-2\epsilon+1)}{(2m+p+2)(2m+p+1)}a_{2m}
+      \\
+      p(p-1)a_0=0
+   \end{cases}
+\end{gather*}
+$p=0$或$1$分别对应两种幂级数解
+
+由平方可积性，$h(\xi)$需要截断为多项式，即
+\begin{gather*}
+   \exists m_0,\:\text{设}2m_0+p=n,
+   \\
+   \text{有}\epsilon=n+\frac{1}{2}
+   \\
+   \intertext{即}
+   E_n=(n+\frac{1}{2})\hbar \omega
+\end{gather*}
+
+\subsection{$\{\ket{p}\}$表象}
+
+动量空间波函数$\bar{\varphi}(p)$，无量纲化
+\begin{gather*}
+   \begin{cases}
+      \zeta = \frac{p}{\sqrt{m\omega \hbar}} \\
+      \epsilon=\frac{E}{\hbar \omega} \\
+      \bar{\phi}(\zeta)=\sqrt[4]{m \omega \hbar}\bar{\varphi}(\sqrt{m\omega \hbar} \zeta)
+   \end{cases}
+   \\
+   \intertext{对Schrödinger方程进行Fourier变换得到}
+   \dt{^2 \bar{\phi}}{\zeta^2}-(\zeta^2-2\epsilon)\bar{\phi}=0
+\end{gather*}
+$\bar{\psi}$与$\psi$满足相同的方程，二者成比例，
+\begin{gather*}
+   \bar{\phi}_n(\zeta)=(-\i)^n \phi_n(\xi)
+   \\
+   \bar{\varphi}_n(p)=\frac{(-\i)^n}{\sqrt{m \omega}}\varphi_n(\frac{p}{m \omega})
+\end{gather*}
+
+\section{特征态}
+
+$\hat{H}$与$\hat{a} \hat{a}^{\dagger}$均为观察算符
+\begin{enumerate}
+   \item $\{\ket{\varphi_n}\}$表象
+   \begin{align*}
+      \ket{\varphi_n}&=c_n \hat{a}^{\dagger} \ket{\varphi_{n-1}}
+      \\
+      \inpro{\varphi_n}{\varphi_n}&=|c_n|^2 \inpro{\varphi_{n-1}}{\hat{a} \hat{a}^{\dagger} \vert \varphi_{n-1}}
+      \\
+      &=|c_n|^2 \inpro{\varphi_{n-1}}{\hat{a}^{\dagger} \hat{a} +1\vert \varphi_{n-1}}
+      \\
+      &=n|c_n|^2=1
+      \\
+      c_n=\frac{1}{\sqrt{n}}
+      \\
+      \ket{\varphi_n}&=\frac{1}{\sqrt{n!}} (\hat{a}^{\dagger})^n \ket{\varphi_0}
+   \end{align*}
+   产生湮没算符的作用
+   \begin{gather*}
+      \hat{a}^{\dagger} \ket{\varphi_n}=\sqrt{n+1} \ket{\varphi_{n+1}}
+      \\
+      \hat{a} \ket{\varphi_n}=\sqrt{n} \ket{\varphi_{n-1}}
+   \end{gather*}
+   \item $\{\ket{x}\}$表象
+   \begin{align*}
+      \varphi_0(x)&=\sqrt[4]{\frac{m\omega}{\pi \hbar}} \e^{-\frac{1}{2} \frac{m\omega}{\hbar} x^2}
+      \\
+      \varphi_n(x)&=\frac{1}{\sqrt{2^n n!}} [\sqrt{\frac{m\omega}{\hbar}}x-\sqrt{\frac{\hbar}{m\omega}} \dt{}{x}]^n \varphi_0(x)
+      \\
+      &=\frac{1}{\sqrt{2^n n!}} [\sqrt{\frac{m\omega}{\hbar}}x-\sqrt{\frac{\hbar}{m\omega}} \dt{}{x}]^n \sqrt[4]{\frac{m\omega}{\pi \hbar}} \e^{-\frac{1}{2} \frac{m\omega}{\hbar} x^2}
+   \end{align*}
+   考虑生成函数
+   \begin{align*}
+      K(\lambda,x)&=\displaystyle \sum_{n=0}^{+\infty} \frac{1}{\sqrt{n!}} \lambda^n \varphi_n(x)
+      \\
+      &=\sqrt[4]{\frac{m\omega}{\pi \hbar}} \e^{-\frac{m \omega x^2}{2\hbar}+\sqrt{2} \sqrt{\frac{m \omega}{\hbar}} \lambda x -\frac{\lambda^2}{2}}
+   \end{align*}
+   则有
+   \begin{gather*}
+      \varphi_n(x)=\sqrt[4]{\frac{m\omega}{\pi \hbar}} \frac{1}{\sqrt{2^n n!}} \e^{-\frac{1}{2} \frac{m\omega}{\hbar} x^2} H_n(\sqrt{\frac{m \omega}{\hbar}} x)
+   \end{gather*}
+\end{enumerate}
+
+\section{三维各向同性谐振子}
+
+\begin{gather*}
+   E_n=(n_x+n_y+n_z+\frac{3}{2})\hbar \omega=(n+\frac{3}{2})\hbar \omega
+   \\
+   \ket{\psi_{n_x n_y n_z}}=\frac{1}{n_x! n_y! n_z!} (a_x^{\dagger})^{n_x} (a_y^{\dagger})^{n_y} (a_z^{\dagger})^{n_z} \ket{\psi_{000}}
+   \\
+   \intertext{简并度}
+   g_n=\frac{(n+1)(n+2)}{2}
+\end{gather*}
+
+\section{匀强电场中的带电谐振子}
+
+\begin{gather*}
+   \hat{H}'=\frac{1}{2m}\hat{P}^2+\frac{1}{2}m\omega^2 \hat{X}^2-q E_0 \hat{X}
+   \\
+   \intertext{$\ket{x}$表象下Schrödinger方程}
+   (-\frac{\hbar^2}{2m}\dt{^2}{x^2}+\frac{1}{2}m\omega^2 x^2-qE_0 x)\varphi'(x)=E'\varphi'(x)
+   \\
+   (-\frac{\hbar^2}{2m}\dt{^2}{x^2}+\frac{1}{2}m\omega^2 (x-\frac{qE_0}{m \omega^2})^2)\varphi'(x)=(E'+\frac{q^2 E_0^2}{2m \omega^2})\varphi'(x)
+   \\
+   E'_n=(n+\frac{1}{2})\hbar \omega-\frac{q^2 E_0^2}{2m\omega^2}
+   \\
+   \varphi'(x)=\varphi(x-\frac{qE_0}{m\omega})
+\end{gather*}
+
+束缚电子可以近似为谐振子，电偶极矩
+\begin{gather*}
+   \langle D' \rangle=q\inpro{\varphi'_n}{\hat{X} \vert \varphi'_n}=\frac{q^2 E_0}{m \omega^2}
+   \\
+   \chi=\frac{q^2}{m\omega^2}
+\end{gather*}
+
+\section{准经典态}
+
+\begin{enumerate}
+   \item 经典力学
+   \begin{gather*}
+      \begin{cases}
+         \dt{x}{t}=\frac{p}{m} \\
+         \dt{p}{t}=-m \omega^2 x
+      \end{cases}
+      \\
+      \intertext{设}
+      \alpha=\sqrt{\frac{m\omega}{2\hbar}} x + \frac{\i}{\sqrt{2m\hbar \omega}} p
+      \\
+      \intertext{有}
+      \alpha=\alpha_0 \e^{-\i \omega t}
+      \\
+      H=\hbar \omega |\alpha_0|^2
+      \\
+      \intertext{经典条件}
+      |\alpha_0| \gg 1
+   \end{gather*}
+   \item 量子力学
+   \begin{gather*}
+      \intertext{由Ehrenfest定理}
+      \i \hbar \dt{}{t} \langle a \rangle (t)=\langle [\hat{a},\hat{H}] \rangle (t)
+      \\
+      \langle a \rangle (t)=\langle a \rangle (0) \e^{-\i \omega t}
+      \\
+      \intertext{准经典条件}
+      \begin{cases}
+         \langle a \rangle (0)=\alpha_0 \\
+         \langle H \rangle=H \iff \langle a^{\dagger}a \rangle = |\alpha_0|^2
+      \end{cases}
+      \\
+      \intertext{引入算符}
+      \hat{b}=\hat{a}-\alpha_0
+      \\
+      |\hat{b} \ket{\psi(0)}|^2=0
+      \\
+      \implies \hat{a} \ket{\psi(0)}=\alpha_0 \ket{\psi(0)}
+      \\
+      \intertext{$\alpha_0$是$\hat{a}$的特征值，改记为}
+      \hat{a} \ket{\alpha}=\alpha \ket{\alpha}
+      \\
+      \intertext{在$\ket{\varphi_n}$表象中，}
+      \ket{\alpha}=\e^{-\frac{|\alpha|^2}{2}} \displaystyle \sum_{n=0}^{+\infty} \frac{\alpha^n}{\sqrt{n!}} \ket{\varphi_n}
+   \end{gather*}
+\end{enumerate}
+
+\section{耦合谐振子}
+
+\subsection{有限个谐振子}
+
+\begin{enumerate}
+   \item 经典力学 \\
+   平衡位置$\pm a$
+   \begin{gather*}
+      U_0=\frac{1}{2}m\omega^2 (x_1-a)^2+\frac{1}{2}m\omega^2 (x_2+a)^2
+      \\
+      V=\lambda m \omega^2 (x_1-x_2)^2
+      \\
+      \intertext{势能}
+      U=U_0+V
+      \\
+      \intertext{简正模}
+      \begin{cases}
+         x_G=\frac{m_1 x_1 + m_2 x_2}{m_1+m_2} \\
+         p_G=p_1+p_2 \\
+         \mu_G=m_1+m_2
+      \end{cases}
+      \\
+      \begin{cases}
+         x_R=x_1-x_2 \\
+         p_R=\frac{m_2 p_1 - m_1 p_2}{m_1+m_2} \\
+         \mu_R=\frac{m_1 m_2}{m_1 + m_2}
+      \end{cases}
+      \\
+      H=\frac{p_G^2}{2\mu_G}+\frac{1}{2}\mu_G \omega_G^2 x_G^2+\frac{p_R^2}{2\mu_R}+\frac{1}{2}\mu_R \omega_R^2 (x_R-\frac{2a}{1+4\lambda})^2+m\omega^2 a^2 \frac{4\lambda}{1+4\lambda}
+      \\
+      \begin{cases}
+         \omega_G=\omega \\
+         \omega_R=\omega \sqrt{1+4\lambda} 
+      \end{cases}
+   \end{gather*}
+   \item 量子力学 \\
+   \begin{gather*}
+      [\hat{X}_G,\hat{P}_G]=[\hat{X}_R,\hat{P}_R]=\i \hbar
+      \\
+      \hat{H}=\hat{H}_G+\hat{H}_R+m\omega^2 a^2 \frac{4\lambda}{1+4\lambda}
+      \\
+      =\frac{\hat{P}_G^2}{2\mu_G}+\frac{1}{2}\mu_G \omega_G^2 \hat{X}_G^2+\frac{\hat{P}_R^2}{2\mu_R}+\frac{1}{2}\mu_R \omega_R^2 (\hat{X}_R-\frac{2a}{1+4\lambda})^2+m\omega^2 a^2 \frac{4\lambda}{1+4\lambda}
+      \\
+      \ket{\varphi}=\ket{\varphi_G}\ket{\varphi_R}
+      \\
+      E_{n,p}=E_n^G + E_p^R + m\omega^2 a^2 \frac{4\lambda}{1+4\lambda}
+      \\
+      =(n+\frac{1}{2})\hbar \omega_G+(p+\frac{1}{2})\hbar \omega_R+m\omega^2 a^2 \frac{4\lambda}{1+4\lambda}
+      \\
+      \intertext{Bohr频率}
+      \pm \omega_G,\pm \omega_R
+   \end{gather*}
+\end{enumerate}
+
+\subsection{无限长离散谐振子链}
+
+\begin{enumerate}
+   \item 经典力学 \\
+   粒子$M_q$位于$x=ql$处
+   \begin{gather*}
+      \intertext{势能}
+      U=\displaystyle \sum_{q=-\infty}^{+\infty} \frac{1}{2} m \omega^2 x_q^2 + \frac{1}{2}m \omega_1^2 (x_q-x_{q+1})^2
+      \\
+      \intertext{角频率$\Omega$的行波解，色散关系}
+      \Omega=\sqrt{\omega^2+4\omega_1^2 \sin^2\frac{kl}{2}}
+      \\
+      \intertext{取第一Brillouin区}
+      -\frac{\pi}{l} \leq k \leq \frac{\pi}{l}
+      \\
+      \intertext{容许能带}
+      \omega \leq \Omega \leq \sqrt{\omega^2+4\omega_1^2}
+      \\
+      \intertext{Fourier变换得到简正坐标}
+      \begin{cases}
+         \xi(k,t)=\displaystyle \sum_{q=-\infty}^{+\infty} x_q(t) \e^{-\i qkl} \\
+         x_q(t)=\frac{l}{2\pi} \int_{-\frac{\pi}{l}}^{\frac{\pi}{l}} \xi(k,t) \e^{\i kql} \d k
+      \end{cases}
+      \\
+      \begin{cases}
+         \pi(k,t)=\displaystyle \sum_{q=-\infty}^{+\infty} p_q(t) \e^{-\i qkl} \\
+         p_q(t)=\frac{l}{2\pi} \int_{-\frac{\pi}{l}}^{\frac{\pi}{l}} \pi(k,t) \e^{\i kql} \d k
+      \end{cases}
+      \\
+      \intertext{波矢空间的振子实际上也不独立，要求}
+      \begin{cases}
+         \xi^*(k,t)=\xi(-k,t) \\
+         \pi^*(k,t)=\pi(-k,t)
+      \end{cases}
+      \\
+      \intertext{有}
+      \begin{cases}
+         m\pt{}{t} \xi(k,t)=\pi(k,t) \\
+         \pi(k,t)=-m\Omega^2 \xi(k,t)
+      \end{cases}
+      \\
+      \intertext{变量$\alpha$是独立的，}
+      \alpha(k,t)=\sqrt{\frac{m\Omega}{2\hbar}} \xi(k,t) + \frac{\i}{\sqrt{2m\hbar \Omega}} \pi(k,t)
+      \\
+      \intertext{波矢空间}
+      h(k)=\frac{1}{2}m\Omega^2(k) |\xi(k,t)|^2+\frac{1}{2m}|\pi(k,t)|^2
+      \\
+      H=\frac{l}{2\pi} \int_{-\frac{\pi}{l}}^{\frac{\pi}{l}} h(k) \d k
+   \end{gather*}
+   代换得到
+   \begin{align*}
+      h'(k)&=\hbar \Omega(k) \alpha^*(k,t) \alpha(k,t)
+      \\
+      &=\hbar \Omega(k) \alpha^*(k,0) \alpha(k,0)
+      \\
+      H&=\frac{l}{2\pi} \int_{-\frac{\pi}{l}}^{\frac{\pi}{l}} h'(k) \d k
+   \end{align*}
+   \item 量子力学
+   \begin{gather*}
+      \hat{H}=\displaystyle \sum_{q=-\infty}^{+\infty} \frac{1}{2} m \omega^2 \hat{X}_q^2 + \frac{1}{2m} \hat{P}_q^2+\frac{1}{2}m \omega_1^2 (\hat{X}_q-\hat{X}_{q+1})^2
+      \\
+      \intertext{Fourier变换}
+      \begin{cases}
+         \hat{\Xi}(k)=\displaystyle \sum_{q=-\infty}^{+\infty} \hat{X}_q \e^{-\i qkl} \\
+         \hat{\Pi}(k)=\displaystyle \sum_{q=-\infty}^{+\infty} \hat{P}_q \e^{-\i qkl}
+      \end{cases}
+      \\
+      \intertext{要求}
+      \begin{cases}
+         \hat{\Xi}^{\dagger}(k)=\hat{\Xi}(-k) \\
+         \hat{\Pi}^{\dagger}(k)=\hat{\Xi}(-k)
+      \end{cases}
+      \\
+      \intertext{对易关系}
+      [\hat{\Xi}(k),\hat{\Pi}^{\dagger}(k')]=\i \hbar \frac{2\pi}{l} \delta(k-k')
+      \\
+      \intertext{引入算符}
+      \hat{a}(k)=\sqrt{\frac{m\Omega}{2\hbar}} \hat{\Xi}(k,t) + \frac{\i}{\sqrt{2m\hbar \Omega}} \hat{\Pi}(k,t)
+      \\
+      \intertext{对易关系}
+      \begin{cases}
+         [\hat{a}(k),\hat{a}(k')]=[\hat{a}^{\dagger}(k),\hat{a}^{\dagger}(k')]=0 \\
+         [\hat{a}(k),\hat{a}^{\dagger}(k')]=\frac{2\pi}{l}\delta
+      \end{cases}
+      \\
+      \hat{h}'(k)=\frac{1}{2}\hbar \Omega(k)(\hat{a}(k)\hat{a}^{\dagger}(k)+\hat{a}^{\dagger}(k)\hat{a}(k))
+      \\
+      [\hat{h}'(k),\hat{h}'(k')]=0
+   \end{gather*}
+   \item 声子 \\
+   Born-Oppenheimer近似，设电子基态能量$E_0$，认为原子只与相邻的原子有相互作用，原子自身不受回复力，$\omega=0$
+   \begin{gather*}
+      \Omega(k)=2\omega_1 \left| \sin\frac{kl}{2} \right|
+      \\
+      \intertext{长波极限下，声速}
+      v_s=\omega_1 l
+   \end{gather*}
+   每一种简正模式$k$对应一种声子
+\end{enumerate}
+
+\subsection{无限长连续体系}
+
+\begin{enumerate}
+   \item 经典力学 \\
+   一维弦，质量线密度$\lambda$，拉力$F$，波速$v=\sqrt{\frac{F}{\lambda}}$
+   \begin{gather*}
+      (\frac{1}{v^2}\pt{^2 }{t^2}-\pt{^2}{x^2})u(x,t)=0
+      \\
+      \intertext{引入正交归一基}
+      f_n(x)=\sqrt{\frac{2}{L}}\sin\frac{k\pi x}{L}
+      \\
+      u(x,t)=\displaystyle \sum_{k=1}^{+\infty} q_k(t) f_k(x)
+      \\
+      \intertext{简正坐标}
+      q_k(t)=\int_{0}^{L} u(x,t) f_k(x) \d x
+      \\
+      \intertext{满足}
+      (\dt{^2}{t^2}+\omega_n^2)q_k(t)=0
+      \\
+      \intertext{其中}
+      \omega_k=\frac{k\pi v}{L}
+      \\
+      q_k=A_k \cos(\omega_k t+\phi_k)
+      \\
+      \intertext{Hamiltonian}
+      H=\displaystyle \sum_{k=1}^{+\infty} (\frac{p_k^2}{2\lambda}+\frac{1}{2}\lambda \omega_k^2 q_k^2)
+   \end{gather*}
+   \item 量子力学
+   \begin{gather*}
+      \hat{H}_k=\frac{1}{2} \lambda \omega_k^2 \hat{Q}^2+\frac{1}{2m} \hat{P}^2
+      \\
+      \hat{H}=\displaystyle \sum_{k=1}^{+\infty} \hat{H}_k 
+      \\
+      E_{n_1,n_2,\cdots,n_k,\cdots}=\displaystyle \sum_{k=1}^{+\infty} n_k \hbar \omega_k
+      \\
+      u(x,t)\to \text{位移算符}\hat{U}(x)=\displaystyle \sum_{k=1}^{+\infty} f_k(x) \hat{Q}(k)
+   \end{gather*}
+   $\hat{Q}_k$与$\hat{H}_k$不对易
+   \item 光子
+   \begin{enumerate}
+      \item 经典 \\
+      标量场$U(\bm{r},t)$，三棱长分别为$L_1,L_2,L_3$的长方体导体空腔中，
+      \begin{gather*}
+         (\frac{1}{c^2}\pt{^2}{t^2}-\nabla^2)U(\bm{r},t)=0
+         \\
+         \intertext{引入正交归一基}
+         f_{klm}(x,y,z)=\sqrt{\frac{8}{L_1 L_2 L_3}} \sin\frac{k\pi x}{L} \sin\frac{l\pi y}{L} \sin\frac{m\pi z}{L}
+         \\
+         U(x,y,z,t)=\displaystyle \sum_{k,l,m} q_{klm}(t) f_{klm}(x,y,z)
+         \\
+         \intertext{简正坐标}
+         q_{klm}(t)=\int_{0}^{L_1} \d x \int_{0}^{L_2} \d y \int_{0}^{L_3} \d z f_{klm}(x,y,z)U(x,y,z,t)
+         \\
+         \intertext{得到}
+         q_{klm}(t)=A_{klm}\cos(\omega_{klm}t+\phi_{klm})
+         \\
+         \omega_{klm}^2=\pi^2 c^2(\frac{k^2}{L_1^2}+\frac{l^2}{L_2^2}+\frac{m^2}{L_3^2})
+      \end{gather*}
+      \item 量子力学
+      以真空态能量为零点，得到
+      \begin{gather*}
+         E_{n_{111},\cdots,n_{klm},\cdots}=\displaystyle \sum_{k,l,m}n_{klm} \hbar \omega_{klm}
+      \end{gather*}
+      每一个$\hbar \omega_{klm}$视为一个光子
+      \begin{gather*}
+         \intertext{场算符}
+         \hat{S}(\bm{r})=\displaystyle \sum_{k,l,m}f_{klm}(\bm{r}) \hat{Q}_{klm}
+      \end{gather*}
+      $\hat{S}(\bm{r})$与$\hat{Q}$不可对易
+      \begin{gather*}
+         \intertext{真空涨落}
+         \inpro{0}{\hat{S}(\bm{r}) \vert 0}=\frac{1}{2} \displaystyle \sum_{k,l,m} \frac{\hbar}{m \omega_{klm}} f_{klm}^2(\bm{r})
+      \end{gather*}
+      真空涨落引起原子自发发射和光谱的Lamb移位，量子电动力学对真空能量
+      \begin{equation*}
+         E_0=\displaystyle \sum_{k,l,m} \frac{1}{2}\hbar \omega_{klm}
+      \end{equation*}
+      进行重整化
+   \end{enumerate}
+\end{enumerate}
+
+\section{谐振子的实例}
+
+\subsection{双原子分子中核的振动} \label{sec:5.7.1}
+
+设两核之间距离为$r$
+
+Born-Oppenheimer近似： \\
+先固定$r$，求出电子的定态$E_n(r)$，考虑基态，认为电子浸渐地随着$r$变化，相互作用势能
+\begin{equation*}
+   V(r)=E_1(r)+\frac{Z_1 Z_2 q^2}{4\pi \epsilon_0 r}
+\end{equation*}
+
+转动惯量与$r$有关，平衡位置$r=r_e$，在小振动下振动与转动自由度分离，条件是
+\begin{equation*}
+   \sqrt{\frac{\hbar}{2m\omega}} \ll r_e
+\end{equation*}
+
+\begin{itemize}
+   \item 对于异极分子，偶极矩$D$与$r$有关，$\inpro{\psi_n}{D \vert \psi_{n'}}$在$n-n'=\pm 1$时才不为$0$，只有一个Bohr频率$\frac{\omega}{2\pi}$
+   \item 入射电磁波角频率$\Omega$，电子受迫振动发生Rayleigh散射 \\
+   分子振动，振幅受$\sin(\omega t+\varphi_1)$缓变因子调制，振动角频率$\Omega$，叠加得到角频率$\Omega-\omega$、$\Omega$、$\Omega+\omega$的谱线 \\
+   解释：电磁波入射到处于$\ket{\varphi_n}$态的分子上，发生Raman散射
+   \begin{itemize}
+      \item 弹性散射：能量守恒，得到$\Omega$谱线
+      \item 非弹性散射：分子吸收$\hbar \omega$能量，得到$\Omega-\omega$谱线，或分子释放能量，得到$\Omega+\omega$谱线
+   \end{itemize}
+\end{itemize}
+
+\subsection{晶体中核的振动}
+
+Einstein模型：第$q$个原子平衡位置$x_q^0=qd$
+\begin{gather*}
+   \intertext{势能}
+   U \approx U_0 + \displaystyle \sum_{q} \frac{1}{2} U_0^{''}(x_q-qd)^2
+\end{gather*}
+第$q$个核运动时，认为其余核不动，其余核与第$q$个核的相互作用势能只与$x_q$有关
+
+\subsection{分子的扭转振荡}
+
+乙烯保持键角不变，一侧的$CH_2$原子团绕$C$——$C$轴旋转$\alpha$，由$\alpha=0,\pi$均为平衡位置，势函数可以近似为
+\begin{equation*}
+   V(\alpha)=\frac{V_0}{2}(1-\cos2\alpha)
+\end{equation*}
+
+\begin{enumerate}
+   \item 经典力学 \\
+   设两个$CH_2$原子团角坐标分别为$\alpha_1$、$\alpha_2$，在小振动下，Lagrange函数
+   \begin{align*}
+      \mathcal{L}&=\frac{1}{2}I(\alpha_1^2+\alpha_2^2)+V_0 (\alpha_1-\alpha_2)^2
+      \\
+      &=\frac{1}{4}I((\alpha_1+\alpha_2)^2+(\alpha_1-\alpha_2)^2)+V_0 (\alpha_1-\alpha_2)^2
+   \end{align*}
+   可知$\alpha_1+\alpha_2$是循环坐标，$\alpha=\alpha_1-\alpha_2$以角频率$\sqrt{\frac{4V_0}{I}}$振动
+   \item 量子力学 \\
+   在小振动下，不考虑隧道效应，每个能级$E_n=(n+\frac{1}{2})\hbar \omega$都是二重简并的，对应$\ket{\varphi_n}$和$\ket{\varphi'_n}$，前者以$\alpha=0$为中心，后者以$\alpha=\pi$为中心 \\
+   考虑隧道效应，能级简并消除，得到两个定态$\ket{\psi_+^n}$和$\ket{\psi_-^n}$，能级差$\hbar \delta_n \ll \hbar \omega$，则$\langle \alpha \rangle$在以角频率$\omega$振荡基础上叠加角频率$\delta_n$的缓慢振荡
+\end{enumerate}
+
+\subsection{重$\mu$原子}
+
+$\mu$原子：$\mu_-$子代替电子与原子核作用形成的体系。对于$\mu$原子，若按照Bohr模型计算，波函数展延范围很小，因此不能将原子核视为点
+
+将原子核视为正电荷均匀分布的球体，半径$r_0$，势能
+\begin{equation*}
+   V(r)=
+   \begin{cases}
+      \frac{1}{2} \frac{Z q^2}{4 \pi \epsilon_0 r_0^3} r^2 - \frac{3}{2} \frac{Z q^2}{4\pi \epsilon_0 r_0},\quad 0<r<r_0 \\
+      \frac{Z q^2}{4 \pi \epsilon_0 r},\quad r>r_0
+   \end{cases}
+\end{equation*}
+可视为谐振子
+
+\section{热力学平衡的谐振子}
+
+温度恒为$T$
+\begin{align*}
+   \intertext{密度算符}
+   \hat{\rho}&=Z^{-1} \e^{-\frac{\hat{H}}{kT}}
+   \\
+   \intertext{配分函数}
+   Z&=\Tr(\e^{-\frac{\hat{H}}{kT}})
+   \\
+   &=\frac{\e^{-\frac{\hbar \omega}{2kT}}}{1-\e^{-\frac{\hbar \omega}{kT}}}
+\end{align*}
+平均能量
+\begin{gather*}
+   \langle H \rangle=\frac{1}{2}\hbar \omega + \frac{\hbar \omega}{\e^{\frac{\hbar \omega}{kT}}-1}
+   \\
+   \intertext{经典振子}
+   \langle H \rangle_{cl}=kT
+\end{gather*}
+
+应用
+\begin{enumerate}
+   \item 黑体辐射
+   \begin{gather*}
+      \intertext{能量密度}
+      u(\nu)=\frac{8\pi h \nu^3}{c^3} \frac{1}{\e^{\frac{h \nu}{kT}}-1}
+   \end{gather*}
+   \item Bose-Einstein分布
+   \begin{gather*}
+      \intertext{简并度}
+      a_n=\frac{1}{\e^{\frac{\epsilon-\mu}{kT}}-1}
+   \end{gather*}
+   \item 固体定容比热：设有$N$个原子，小振动频率$\omega_E$
+   \begin{gather*}
+      U=3N\langle H \rangle
+      \\
+      c_V=3Nk \frac{(\frac{\hbar \omega_E}{kT})^2 \e^{\frac{\hbar \omega_E}{kT}}}{(\e^{\frac{\hbar \omega_E}{kT}}-1)^2}
+   \end{gather*}
+\end{enumerate}
+
+\begin{align*}
+   \intertext{概率密度}
+   \rho(x)&=\inpro{x}{\hat{\rho} \vert x}
+   \\
+   &=\frac{1}{\xi \sqrt{\pi}} \e^{-\frac{x^2}{\xi^2}}
+   \\
+   \xi&=\sqrt{\frac{\hbar}{m\omega} \coth \frac{\hbar \omega}{2kT}}
+\end{align*}
+当$\sigma_X$约为$\eta d$时，固体熔化，熔点$T_f$近似满足
+\begin{gather*}
+   \frac{\xi^2}{2d^2} \approx \eta^2
+   \\
+   \intertext{渐近展开，近似有}
+   T_f \propto \omega^2
+\end{gather*}
+
+Bolch定理
+\begin{gather*}
+   G(\hat{X},\hat{P})=\lambda \hat{X}+\mu \hat{P}
+   \\
+   \langle \e^{-\i q G} \rangle = \e^{-\frac{q^2}{2} \langle G^2 \rangle}
+\end{gather*}

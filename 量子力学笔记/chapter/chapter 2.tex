@@ -1,0 +1,287 @@
+\chapter{数学工具}
+
+完备空间：空间中任意Cauchy列均收敛的内积空间
+
+Hilbert空间：完备的内积空间，对于函数空间，Hilbert空间$L^2$是平方可积复值可测函数集合
+
+线性空间$V$，对偶空间$V^*$，对偶空间的对偶空间$V^{**}$与$V$同构 \\
+$V$中元素$f$，则$V^*$中元素$<f,\cdot >$，映射$v:V \to V^*$满足单射，共轭线性
+\begin{itemize}
+   \item 在有限维情况下，$v$是双射
+   \item 在无限维情况下，$v$是单射但不是满射
+   \begin{itemize}
+      \item 对偶空间是Hilbert空间，为了使$v$成为双射，要将$V$完备化，即补足Cauchy列的收敛点 \\
+      Riez表示定理：$\forall \eta \in V^*,g \in V, \exists \text{唯一} f_\eta \in V, \eta(g)=<f_v,g>$
+   \end{itemize}
+\end{itemize}
+
+无穷维Hilbert空间：
+\[
+\text{基}\{e_n\}
+\begin{cases}
+   \text{正交归一：}<e_m,e_n>=\delta_mn \\
+   \text{完备：找不到与$e_n$正交的元素}
+\end{cases}
+\]
+\begin{itemize}
+   \item 对偶算符$A^*$：$f \in V, \eta = v(f)=<f,\cdot> \in V^*$
+   \begin{gather*}
+      f \mapsto Af,\eta \mapsto A^* \eta
+      \\
+      \text{有}(A^* \eta) f=\eta(Af)
+   \end{gather*}
+   算符的对偶运算满足线性
+   \item 伴随算符$A^{\dagger}$：$v^{-1}$无法将$A^* \eta$映射到$Af$，而是映射到伴随算符$A^{\dagger}$
+   \begin{gather*}
+      v^{-1}(A^* \eta)=A^{\dagger} f
+      \\
+      A^{\dagger}=v^{-1} \circ A^* \circ v
+      \\
+      v \circ A^{\dagger}=A^* \circ v
+      \\
+      v(A^{\dagger} f)=A^* v(f)\;\text{即}\;\eta_{A^{\dagger} f}=A^* \eta_f
+      \\
+      <A^{\dagger} f,g>=<f,Ag>
+   \end{gather*}
+   算符的伴随运算满足共轭线性
+\end{itemize}
+
+\section{波函数空间}
+
+波函数空间$\mathscr{F}$：Hilbert空间中充分正规的波函数构成的集合，$\mathscr{F}=L^2 \cap C^{\infty}$
+\begin{enumerate}
+   \item 矢量空间
+   \item 内积
+   \item 线性算符，对易子
+\end{enumerate}
+\begin{enumerate}
+   \item $\mathscr{F}$中的正交归一基$\{u_i(\bm{r})\}$
+   \begin{itemize}
+      \item 正交性：$<u_i,u_j>=\delta_{ij}$
+      \item 完备性：$\displaystyle \sum_i u_i(\bm{r})u_i^*(\bm{r'})=\delta(\bm{r}-\bm{r'})$
+   \end{itemize}
+   \item $\mathscr{F}$以外的正交归一基：连续基$w_{\alpha}(\bm{r})$
+   \begin{itemize}
+      \item 正交性：$<w_{\alpha},w_{\alpha'}>=\delta(\alpha-\alpha')$
+      \item 完备性：$\int w_{\alpha}(\bm{r})w_{\alpha}^*(\bm{r'}) \d \alpha=\delta(\bm{r}-\bm{r'})$
+   \end{itemize}
+\end{enumerate}
+
+\section{态空间}
+
+态空间$\mathscr{E}$：每个量子态所属的空间
+\begin{equation*}
+   \mathscr{F} \iff \mathscr{E}_{\bm{r}} \subset \mathscr{E}
+\end{equation*}
+
+\begin{enumerate}
+   \item $\mathscr{E}$中的元素：右矢$\ket{\psi}$
+   \item $\mathscr{E}$的对偶空间$\mathscr{E}^*$中的元素：左矢$\bra{\psi}$
+   \item 对应关系：$\inpro{\varphi}{\psi}=<\ket{\varphi},\ket{\psi}>$
+   \begin{itemize}
+      \item 每个右矢都对应一个左矢，且对应关系是共轭线性的
+      \item 每个左矢不一定有对应的右矢
+      \item $\mathscr{E}^*$与$(L^2)^*$同构，而$\mathscr{E}$是$L^2$的子集
+   \end{itemize}
+   \item 线性算符$A$
+   \begin{gather*}
+      \intertext{投影算符}
+      P_{\psi}=\ket{\psi}\bra{\psi}
+      \\
+      P_{\psi}^2=P_{\psi}
+      \\
+      \intertext{子空间上的投影算符}
+      P_q=\displaystyle \sum_{i=1}^{q} \ket{\psi_i}\bra{\psi_i}
+   \end{gather*}
+   \item 伴随算符$A^{\dagger}$
+   \item Hermite算符：$A=A^{\dagger}$
+\end{enumerate}
+
+\section{态空间中的表象}
+
+表象：选定的正交归一基\\
+离散基$\{\ket{u_i}\}$
+\begin{gather}
+   \inpro{u_i}{u_j}=\delta_{ij}
+   \\
+   \displaystyle \sum_i \ket{u_i}\bra{u_i}=\hat{I}
+\end{gather}
+连续基$\{\ket{w_{\alpha}}\}$
+\begin{gather*}
+   \inpro{w_{\alpha}}{w_{\alpha'}}=\delta(\alpha-\alpha')
+   \\
+   \int \ket{w_{\alpha}} \bra{w_{\alpha}} \d \alpha=\hat{I}
+\end{gather*}
+
+表象变换：$\{\ket{u_i}\} \to \{\ket{t_k}\}$
+\begin{gather*}
+   S_{ik}=\inpro{u_i}{t_k}
+   \\
+   \intertext{右矢变换}
+   \inpro{t_k}{\psi}=\displaystyle \sum_i S_{ki}^{\dagger} \inpro{u_i}{\psi}
+   \\
+   \inpro{u_i}{\psi}=\displaystyle \sum_k S_{ik} \inpro{t_k}{\psi}
+   \\
+   \intertext{左矢变换}
+   \inpro{\psi}{t_k}=\displaystyle \sum_i \inpro{\psi}{u_i} S_{ik}
+   \\
+   \intertext{算符变换}
+   \inpro{t_k}{A \vert t_l}=\displaystyle \sum_{i,j} S_{ki}^{\dagger} \inpro{u_i}{A \vert u_j} S_{jl}
+   \\
+   \inpro{u_i}{A \vert u_j}=\displaystyle \sum_{k,l} S_{ik} \inpro{t_k}{A \vert t_l} S_{lj}^{\dagger}
+\end{gather*}
+
+\section{特征值与观察算符}
+
+有限维空间Hermite算符的特征值均为实数，均可以酉对角化，不同特征值对应的特征向量正交
+
+观察算符：特征向量的正交归一系$\{\ket{\psi_n^i}\}$构成一组基的无限维Hermite算符
+\begin{gather*}
+   \inpro{\psi_n^i}{\psi_{n'}^{i'}}=\delta_{nn'}\delta_{ii'}
+   \\
+   \displaystyle \sum_{n=1}^{+\infty} \sum_{i=1}^{g_n} \ket{\psi_n^i}\bra{\psi_n^i}=\hat{I}
+\end{gather*}
+
+可对易观察算符
+\begin{itemize}
+   \item $A$和$B$可对易，$\ket{\psi}$是$A$的特征向量，则$B\ket{\psi}$也是$A$的特征向量，且对应相同的特征值
+   \item $A$和$B$可对易，$\ket{\psi_1}$和$\ket{\psi_2}$是$A$的对应不同特征值的特征向量，则$\inpro{\psi_1}{B \vert \psi_2}=0$
+   \item $A$和$B$可对易，则$A$和$B$的共同特征向量构成态空间的一组正交归一基
+   \item 可对易观察算符的完全集合：\\
+   对于可对易算符$A_1,A_2,\cdots,A_n$，
+   \begin{gather*}
+   \mathrm{dim}(V_{\lambda_1^{t_1}} \cap V_{\lambda_2^{t_2}} \cap \cdots \cap V_{\lambda_n^{t_n}})=1,\quad \forall t_1,t_2,\cdots,t_n 
+   \end{gather*}
+   其中$V_{\lambda_i}^{t_i}$是$A_i$的第$t_i$个特征子空间
+\end{itemize}
+
+\section{位置与动量}
+
+\subsection{位置表象与动量表象}
+
+\begin{gather*}
+   \ket{\bm{r}_0} \iff \xi_{r_0}(\bm{r})=\delta(\bm{r}-\bm{r}_0)
+   \\
+   \ket{\bm{p}_0} \iff v_{p_0}(\bm{r})=\frac{1}{(2\pi\hbar)^{\frac{3}{2}}} \e^{\frac{\i}{\hbar} \bm{p}_0 \cdot \bm{r}}
+\end{gather*}
+正交完备性
+\begin{gather*}
+   \inpro{\bm{r}}{\bm{r'}}=\delta^3(\bm{r}-\bm{r'})
+   \\
+   \int \ket{\bm{r}} \bra{\bm{r}} \d^3 \bm{r}=\hat{I}
+   \\
+   \inpro{\bm{p}}{\bm{p'}}=\delta^3(\bm{p}-\bm{p'})
+   \\
+   \int \ket{\bm{p}} \bra{\bm{p}} \d^3 \bm{p}=\hat{I}
+\end{gather*}
+右矢分量
+\begin{gather*}
+   \inpro{\bm{r}}{\psi}=\psi(\bm{r})
+   \\
+   \inpro{\bm{p}}{\psi}=\bar{\psi}(\bm{p})
+\end{gather*}
+$\ket{\bm{r}}$表象与$\ket{\bm{p}}$表象的变换：Fourier变换
+\begin{gather*}
+   \psi(\bm{r})=\frac{1}{(2\pi\hbar)^{\frac{3}{2}}} \int \bar{\psi}(\bm{p}) \e^{\frac{\i}{\hbar} \bm{p} \cdot \bm{r}} \d^3 \bm{p}
+   \\
+   \bar{\psi}(\bm{p})=\frac{1}{(2\pi\hbar)^{\frac{3}{2}}} \int \psi(\bm{r}) \e^{-\frac{\i}{\hbar} \bm{p} \cdot \bm{r}} \d^3 \bm{r}
+   \\
+   \inpro{\bm{p'}}{A \vert \bm{p}}=\frac{1}{(2\pi \hbar)^3} \int \d^3 \bm{r} \int \d^3 \bm{r'} \e^{\frac{\i}{\hbar} (\bm{p} \cdot \bm{r}-\bm{p'} \cdot \bm{r'})} \inpro{\bm{r'}}{A \vert \bm{r}}
+\end{gather*}
+
+\subsection{位置算符$\hat{R}$与动量算符$\hat{P}$}
+
+\begin{gather*}
+   \inpro{\bm{r}}{R_i \vert \psi}=r_i \inpro{\bm{r}}{\psi}
+   \\
+   \inpro{\bm{p}}{P_i \vert \psi}=p_i \inpro{\bm{p}}{\psi}
+\end{gather*}
+
+$P$在$\{\ket{\bm{r}}\}$表象下
+\begin{equation*}
+   \inpro{\bm{r}}{\hat{P} \vert \psi}=\frac{\hbar}{\i} \nabla \inpro{\bm{r}}{\psi}
+\end{equation*}
+
+正则对易关系式
+\begin{gather*}
+   [R_i,R_j]=0
+   \\
+   [P_i,P_j]=0
+   \\
+   [R_i,P_j]=\i \hbar \delta_{ij}
+\end{gather*}
+
+$\hat{R}$与$\hat{P}$均为Hermite算符，均为观察算符，特征方程
+\begin{gather*}
+   R_i \ket{\bm{r}}=r_i \ket{\bm{r}}
+   \\
+   P_i \ket{\bm{p}}=p_i \ket{\bm{p}}
+\end{gather*}
+
+\section{张量积}
+
+$\mathscr{E}=\mathscr{E}_1 \otimes \mathscr{E}_2$的条件：
+\begin{gather*}
+   \forall \ket{\psi} \in \mathscr{E}_1,\ket{\xi} \in \mathscr{E}_2
+   \\
+   \intertext{对应}
+   \ket{\psi} \otimes \ket{\xi} \in \mathscr{E}
+\end{gather*}
+满足
+\begin{itemize}
+   \item 线性性
+   \item 分配律
+   \item $\mathscr{E}_1$和$\mathscr{E}_2$的基的张量积构成$\mathscr{E}$的一组基
+\end{itemize}
+
+映射$\mathscr{E}_1 \times \mathscr{E}_2 \to \mathscr{E}$不一定是满射
+
+内积
+\begin{gather*}
+   \inpro{\varphi' \xi'}{\varphi \xi}=\inpro{\varphi'}{\varphi} \inpro{\xi'}{\xi}
+   \\
+   A \in \mathscr{E}_1, \quad B \in \mathscr{E}_2
+   \\
+   [A \otimes B] [\ket{\phi} \otimes \ket{\xi}]=[A\ket{\phi}] \otimes [B\ket{\xi}]
+\end{gather*}
+
+\section{宇称算符}
+
+宇称算符$\hat{\Pi}$
+\begin{equation*}
+   \hat{\Pi} \ket{\bm{r}}=\ket{-\bm{r}}
+\end{equation*}
+
+性质
+\begin{itemize}
+   \item $\hat{\Pi}^2=\hat{\Pi}$
+   \item $\hat{\Pi}$是幺正算符，是Hermite算符
+\end{itemize}
+
+$\hat{\Pi}$特征值为$\pm1$，定义
+\begin{gather*}
+   P_+=\frac{1}{2}(\hat{I}+\hat{\Pi})
+   \\
+   P_-=\frac{1}{2}(\hat{I}-\hat{\Pi})
+\end{gather*}
+则
+\begin{gather*}
+   P_+ P_-=P_- P_+=0
+   \\
+   P_+ + P_-=\hat{I}
+   \\
+   \forall \ket{\psi},
+   \\
+   \ket{\psi}=P_+ \ket{\psi}+P_- \ket{\psi}
+   \\
+   \hat{\Pi} P_+ \ket{\psi} = P_+ \ket{\psi}
+   \\
+   \hat{\Pi} P_- \ket{\psi} = -P_- \ket{\psi}
+\end{gather*}
+
+宇称变换算符$\tilde{B}=\hat{\Pi} B \hat{\Pi}$
+\begin{itemize}
+   \item 若$\tilde{B}=B$，即$[\hat{\Pi},B]=0$，则$B$为偶算符
+   \item 若$\tilde{B}=-B$，即$\hat{\Pi}B+B\hat{\Pi}=0$，则$B$为奇算符
+\end{itemize}
+$R_i,P_i$为奇算符，宇称算符为偶算符

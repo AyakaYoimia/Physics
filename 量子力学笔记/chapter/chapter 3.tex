@@ -1,0 +1,700 @@
+\chapter{量子力学的假设}
+
+\begin{enumerate}
+   \item 在确定时刻$t_0$的量子态由态空间$\mathscr{E}$中的右矢$\ket{\psi(t_0)}$确定
+   \item 每个物理量$A$由$\mathscr{E}$中作用的算符$\hat{A}$描述，$\hat{A}$是一个观察算符
+   \item 测量$A$得到的结果是$\hat{A}$的特征值之一
+   \item 谱分解原理
+   \begin{itemize}
+      \item 离散谱：归一化态$\ket{\psi}$，测量$A$得到特征值$a_n$的概率
+      \begin{equation*}
+         P(a_n)=\displaystyle \sum_{i=1}^{g_n} |\inpro{u_n^i}{\psi}|^2
+      \end{equation*}
+      $\{\ket{u_n^i}\}$为特征子空间$\mathscr{E}_n$中的一组正交归一基
+      \item 非简并连续谱：归一化态$\ket{\psi}$，测量$A$结果在$[\alpha,\alpha+\d \alpha]$中的概率
+      \begin{equation*}
+         \d P(\alpha)= |\inpro{v_{\alpha}}{\psi}|^2 \d \alpha
+      \end{equation*}
+      $\ket{v_{\alpha}}$为$\hat{A}$的属于特征值$\alpha$的特征向量
+      \item[$\circ$] {\color{red} 注意：} 对特征态添加相因子不改变量子态，但在叠加态下，对不同特征向量添加不同相因子一般会改变量子态，除非相位差为$2n\pi$
+   \end{itemize}
+   \item 波包的坍缩：对$\ket{\psi}$态测量$A$得到$a_n$，则观测后的态为
+   \begin{equation*}
+      \frac{P_n \ket{\psi}}{\sqrt{\inpro{\psi}{P_n \vert \psi}}}
+   \end{equation*}
+   投影算符
+   \begin{equation*}
+      P_n=\displaystyle \sum_{i=1}^{g_n} \ket{u_n^i} \bra{u_n^i}
+   \end{equation*}
+   \item 体系的演变：Schrödinger方程
+   \begin{equation*}
+      \i \hbar \dt{}{t} \ket{\psi(t)} = \hat{H}(t) \ket{\psi(t)} 
+   \end{equation*}
+\end{enumerate}
+量子化规则：经典物理量$A$对应算符$\hat{A}$可以在适当对称化后，将$\bm{r}$和$\bm{p}$替换为$\hat{R}$和$\hat{P}$得到
+
+\section{统计量的物理解释}
+\begin{enumerate}
+   \item 期望（对不同态的平均值）
+   \begin{equation*}
+      \langle A \rangle_{\psi}=\inpro{\psi}{\hat{A} \vert \psi}
+   \end{equation*}
+   \item 标准差
+   \begin{equation*}
+      \sigma_A=\sqrt{\langle (A-\langle A \rangle)^2 \rangle}=\sqrt{\langle A^2 \rangle-(\langle A \rangle)^2} 
+   \end{equation*}
+   \item 不确定性关系
+   \begin{align*}
+      \sigma_A^2 \sigma_B^2 &= \langle (A-\langle A \rangle)^2 \rangle \langle (B-\langle B \rangle)^2 \rangle
+      \\
+      & \geq |\inpro{(\hat{A}-\langle A \rangle) \psi}{(\hat{B}-\langle B \rangle) \psi}|^2
+      \\
+      & \geq  |\Im(\inpro{(\hat{A}-\langle A \rangle) \psi}{(\hat{B}-\langle B \rangle) \psi})|^2
+      \\
+      &= |\frac{\inpro{(\hat{A}-\langle A \rangle) \psi}{(\hat{B}-\langle B \rangle) \psi}-\inpro{(\hat{A}-\langle A \rangle) \psi}{(\hat{B}-\langle B \rangle) \psi}^*}{2\i}|^2
+      \\
+      &= \frac{1}{4} |\inpro{\psi}{[\hat{A}-\langle A \rangle,\hat{B}-\langle B \rangle] \vert \psi}|^2
+      \\
+      &= \frac{1}{4} |\inpro{\psi}{[\hat{A},\hat{B}] \vert \psi}|^2
+      \\
+      &= \frac{1}{4} |\langle [A,B] \rangle|^2
+      \\
+      \intertext{综上可得}
+      \sigma_A \sigma_B &\geq \frac{1}{2} |\langle [A,B] \rangle|
+   \end{align*}
+   特别地，有
+   \begin{equation*}
+      \Delta E \Delta t \geq \frac{\hbar}{2}
+   \end{equation*}
+\end{enumerate}
+
+相容性
+\begin{enumerate}
+   \item 相容的可观察量在同一时间不同测量顺序得到相同的结果
+   \item 不相容的可观察量在同一时间不同测量顺序得到不同的结果
+   \item 为了使体系的态在测量后由结果可以唯一确定，所测的可观察量必须是ECOC
+\end{enumerate}
+
+\section{Schrödinger方程的物理解释}
+
+概率守恒：
+\begin{equation*}
+   \dt{}{t} \inpro{\psi}{\psi}=0
+\end{equation*}
+
+概率流：考虑无自旋的单个粒子，
+\begin{gather*}
+   \intertext{概率密度}
+   \rho(\bm{r},t)=|\psi(\bm{r},t)|^2
+   \\
+   \intertext{概率流密度}
+   \bm{J}(\bm{r},t)=\frac{\hbar}{2m\i} (\psi^* \nabla \psi - \psi \nabla \psi^*)=\frac{1}{m} \Re(\psi^* \frac{\hbar}{\i} \nabla \psi)
+   \\
+   \intertext{概率流密度算符}
+   \hat{K}=\frac{1}{2m} (\ket{\bm{r}}\bra{\bm{r}} \hat{P}+\hat{P}\ket{\bm{r}}\bra{\bm{r}})
+\end{gather*}
+
+可观察量的平均值的演变:\\
+Ehrenfest定理：
+\begin{equation*}
+   \dt{}{t} \langle A \rangle = \frac{1}{\i \hbar} \langle [A,H(t)] \rangle + \langle \pt{A}{t} \rangle
+\end{equation*}
+对$\hat{R}$和$\hat{P}$的特例
+\begin{gather*}
+   \dt{}{t} \langle \bm{r} \rangle = \frac{1}{m} \langle \bm{p} \rangle
+   \\
+   \dt{}{t} \langle \bm{p} \rangle = - \langle \nabla V(\bm{r}) \rangle
+\end{gather*}
+波包中心不一定沿经典轨道，因为
+\begin{gather*}
+   \bm{F} = -\left. \nabla V(\bm{r}) \right|_{\bm{r}=\langle \bm{r} \rangle} \neq - \langle \nabla V(\bm{r}) \rangle
+\end{gather*}
+在宏观极限下，可以回归到经典力学的情况
+
+保守体系：$\hat{H}$不显含时间，特征方程
+\begin{equation*}
+   \hat{H} \ket{\varphi_{n\tau}}=E_n \ket{\varphi_{n\tau}}
+\end{equation*}
+$\tau$为ECOC中其他参数
+\begin{gather*}
+   \ket{\psi(t_0)}=\displaystyle \sum_{n} \sum_{\tau} c_{n\tau}(t_0) \ket{\varphi_{n\tau}}
+   \\
+   \ket{\psi(t)}=\displaystyle \sum_{n} \sum_{\tau} c_{n\tau}(t_0) \e^{-\i E_n(t-t_0) /\hbar} \ket{\varphi_{n\tau}}
+\end{gather*}
+称$\hat{H}$的特征态为定态，定态的物理性质随时间不变
+
+运动常量$A$满足
+\begin{gather*}
+   \begin{cases}
+      \pt{A}{t} = 0 
+      \\
+      [A,H]=0
+   \end{cases}
+\end{gather*}
+运动常量的特征值称为好量子数，定态保持为$A$的特征态，测量结果的概率不变
+
+对于不显含时间的、与$H$不对易的可观察量$B$，
+\begin{gather*}
+   \langle B \rangle(t)=\inpro{\psi(t)}{\hat{B} \vert \psi(t)}=\displaystyle \sum_n \sum_\tau \sum_{n'} \sum_{\tau'} c_{n'\tau'}^*(t_0) c_{n\tau}(t_0) \inpro{\varphi_{n'\tau'}}{\hat{B} \vert \varphi_{n\tau}} \e^{\i(E_{n'}-E_n)(t-t_0)/\hbar}
+   \\
+   \intertext{Bohr频率}
+   \nu_{nn'}=\frac{1}{2\pi} \frac{|E_{n'}-E_n|}{\hbar}
+\end{gather*}
+在一些情况下，$\nu_{nn'}$权重为$0$，给出选择定则
+
+\section{对物理体系一部分的测量}
+
+态空间$\mathscr{E}_1 \otimes \mathscr{E}_2$，测量的物理量的算符
+\begin{equation*}
+   \hat{A}_1 \to \tilde{A}_1 = \hat{A}_1 \otimes \hat{I}_2
+\end{equation*}
+
+$\{\ket{u_n^i}\}$是$\hat{A}$的正交归一特征向量，$\{\ket{v_k}\}$是$\mathscr{E}_2$中任意一组正交归一基
+\begin{align*}
+   \tilde{P}_{1,n}&=\hat{P}_{1,n} \otimes \hat{I}_2
+   \\
+   &=(\displaystyle \sum_{i=1}^{g_n} \ket{u_n^i}\bra{u_n^i}) \otimes \hat{I}_2
+   \\
+   &=\displaystyle \sum_{i=1}^{g_n} \sum_k \ket{u_n^i v_k}\bra{u_n^i v_k}
+\end{align*}
+测量后态矢量
+\begin{align*}
+   \ket{\psi'}=\frac{\tilde{P}_{1,n} \ket{\psi}}{\sqrt{\inpro{\psi}{\tilde{P}_{1,n} \vert \psi}}}
+\end{align*}
+
+\begin{enumerate}
+   \item $\hat{A}$构成ECOC，不论测量前是否是乘积态，测量后一定变为乘积态
+   \begin{gather*}
+      \ket{\psi'}=\ket{u_n} \otimes \ket{\chi'}
+      \\
+      \ket{\chi'}=\frac{\displaystyle \sum_{k} \ket{v_k} \inpro{u_n v_k}{\psi}}{\sqrt{\displaystyle \sum_k |\inpro{u_n v_k}{\psi}|^2}}
+   \end{gather*}
+   \item 测量前的态是乘积态
+   \begin{gather*}
+      \ket{\psi}=\ket{\varphi} \otimes \ket{\chi}
+      \\
+      \intertext{则测量后的态也是张量积}
+      \ket{\psi'}=\ket{\varphi'} \otimes \ket{\chi}
+      \\
+      \ket{\varphi'}=\frac{\hat{P}_{1,n} \ket{\varphi}}{\sqrt{\inpro{\varphi}{\hat{P}_{1,n} \vert \varphi}}}
+   \end{gather*}
+   代表两个子体系是独立的
+   \item 测量前的态不是乘积态：两个子体系不独立，两个体系之间存在相互作用，用密度算符描述子体系$1$
+\end{enumerate}
+
+\section{密度算符}
+
+统计混合态：对体系的初态了解并不完备，分布列为$\ket{\psi_k}$出现的概率为$p_k$\\
+与$\ket{\psi}=\displaystyle \sum_{k} c_k \ket{\psi_k}$不等价，因为后者会有干涉效应
+
+纯态：$p_k$中某一个为$1$，其余为$0$
+\begin{gather*}
+   \ket{\psi(t)}=\displaystyle \sum_{n} c_n(t) \ket{u_n}
+   \\
+   \intertext{引入密度算符}
+   \hat{\rho}(t)=\ket{\psi(t)} \bra{\psi(t)}
+   \\
+   \intertext{概率归一化}
+   \Tr \hat{\rho}(t)=1
+   \\
+   \langle A \rangle (t)=\Tr[\hat{\rho}(t) \hat{A}]
+   \\
+   \intertext{由Schrödinger方程，}
+   \dt{}{t} \hat{\rho}(t)=\frac{1}{\i \hbar} [\hat{H},\hat{\rho}]
+   \\
+   P(a_n)=\Tr[\hat{P}_n \hat{\rho}(t)]
+\end{gather*}
+纯态下体系可以用态矢量描述，也可以用密度算符描述
+
+统计混合态
+\begin{gather*}
+   \hat{\rho}_k = \ket{\psi_k} \bra{\psi_k}
+   \\
+   P_k(a_n)=\Tr[\hat{\rho}_k \hat{P_n}]
+   \\
+   P(a_n)=\displaystyle \sum_k p_k P_k(a_n)
+   \\
+   =Tr[\displaystyle \sum_k p_k \hat{\rho}_k P_n]
+   \\
+   \intertext{定义密度算符}
+   \hat{\rho}=\displaystyle \sum_k p_k \hat{\rho}_k
+   \\
+   \intertext{推广后仍有}
+   \Tr \hat{\rho}(t)=1
+   \\
+   \langle A \rangle (t)=\Tr[\hat{\rho}(t) \hat{A}]
+   \\
+   \intertext{假设$\hat{H}(t)$已知，则$\forall t,\ket{\psi_k(t)}$对应的概率为$p_k$}
+   \dt{}{t} \hat{\rho}(t)=\frac{1}{\i \hbar} [\hat{H},\hat{\rho}]
+\end{gather*}
+$\hat{\rho}$为正定算符
+
+$\hat{\rho}$的矩阵元
+\begin{itemize}
+   \item 对角元：布居数
+   \begin{gather*}
+      c_n^k=\inpro{u_n}{\psi_k}
+      \\
+      \hat{\rho}_{nn}=\displaystyle \sum_k p_k|c_n^k|^2
+   \end{gather*}
+   \item 非对角元：相干元
+   \begin{gather*}
+      \hat{\rho}_{np}=\displaystyle \sum_k p_k c_n^k {c_p^k}^*
+   \end{gather*}
+\end{itemize}
+
+应用
+\begin{enumerate}
+   \item 热力学平衡体系
+   \begin{gather*}
+      \intertext{密度算符}
+      \hat{\rho}=Z^{-1} \e^{-\frac{\hat{H}}{kT}}
+      \\
+      \intertext{配分函数}
+      Z=\Tr(\e^{-\frac{\hat{H}}{kT}})
+   \end{gather*}
+   在$\hat{H}$的特征向量组成的基下，$\hat{\rho}$是对角的
+   \item 对物理体系的一部分的描述 \\
+   $\hat{\rho}$作用于$\mathscr{E}=\mathscr{E}_1 \otimes \mathscr{E}_2$，定义作用于$\mathscr{E}_1$的密度算符
+   \begin{gather*}
+      \hat{\rho}(1)=\Tr_2 \hat{\rho}
+      \\
+      \hat{\rho}(1)_{nn'}=\displaystyle \sum_k (\bra{u_n} \bra{v_k}) \hat{\rho} (\ket{u_{n'}} \ket{v_p})
+      \\
+      \langle \tilde{A} \rangle = \Tr[\hat{\rho}(1) \hat{A}]
+   \end{gather*}
+   对于不可分解为张量积的密度算符，
+   \begin{equation*}
+      \hat{\rho} \neq \hat{\rho}(1) \otimes \hat{\rho}(2)
+   \end{equation*}
+\end{enumerate}
+
+\section{演变算符}
+
+演变算符$\hat{U}(t,t_0)$
+\begin{equation*}
+   \ket{\psi(t)}=\hat{U}(t,t_0)\ket{\psi(t_0)}
+\end{equation*}
+
+性质
+\begin{itemize}
+   \item 由Schrödinger方程，
+   \begin{gather*}
+      \i \hbar \pt{}{t} \hat{U}(t,t_0)=\hat{H}(t)\hat{U}(t,t_0)
+   \end{gather*}
+   \item \begin{gather*}
+      \hat{U}(t_n,t_1)=\hat{U}(t_n,t_{n-1})\cdots\hat{U}(t_3,t_2)\hat{U}(t_2,t_1)
+   \end{gather*}
+   \item \begin{gather*}
+      \hat{U}(t',t)=\hat{U}^{-1}(t,t')
+   \end{gather*}
+   \item 无穷小演变算符
+   \begin{gather*}
+      \hat{U}(t+\d t,t)=\hat{I}-\frac{\i}{\hbar} \hat{H}(t) \d t
+      \\
+      \implies \hat{U}(t,t_0) \text{是幺正算符}
+   \end{gather*}
+\end{itemize}
+
+\begin{enumerate}
+   \item $\hat{H}$与时间无关
+   \begin{equation*}
+      \hat{U}(t,t_0)=\e^{-\i \hat{H} (t-t_0) /\hbar}
+   \end{equation*}
+   \item $\hat{H}$与时间有关：一般而言，
+   \begin{equation*}
+      \hat{U}(t,t_0) \neq \e^{-\frac{\i}{\hbar} \int_{t_0}^{t} \hat{H}(t') \d t'}
+   \end{equation*}
+\end{enumerate}
+
+\section{绘景}
+
+Schrödinger绘景：可观察量与时间无关，体系的演变包含在态矢量$\ket{\psi_S(t)}$中
+
+Heisenberg绘景：通过幺正变换，使态矢量与时间无关，可观察量依赖于时间
+\begin{gather*}
+   \ket{\psi_H}=\ket{\psi_S(t_0)}
+   \\
+   \hat{A}_H(t)=\hat{U}^{\dagger}(t,t_0)\hat{A}_S(t)\hat{U}(t,t_0)
+   \\
+   \intertext{对于保守系，若$\hat{A}_S$与$\hat{H}_S$对易，则$\hat{A}_H$也与时间无关}
+   A_H=A_S
+   \\
+   \intertext{一般情况}
+   \i \hbar \dt{}{t} \hat{A}_H(t)=[\hat{A}_H(t),\hat{H}_H(t)]+\i \hbar \left ( \dt{}{t} \hat{A}_S(t) \right )_H
+   \\
+   \intertext{对于势场中的粒子，有Ehrenfest方程}
+   \dt{}{t} \hat{X}_H(t)=\frac{1}{m} \hat{P}_H(t)
+   \\
+   \dt{}{t} \hat{P}_H(t)=-\pt{V(\hat{X},t)}{\hat{X}}
+\end{gather*}
+下标$H$表示变换到Heisenberg绘景 \\
+
+\section{规范不变性}
+
+规范选择：选定一组电磁势
+
+规范变换
+\begin{equation*}
+   \begin{cases}
+      \bm{A}'=\bm{A}+\nabla \Lambda
+      \\
+      \Phi'=\Phi - \frac{\partial \Lambda}{\partial t}
+   \end{cases}
+\end{equation*}
+
+规范不变性：规范变换不改变物理结果
+\begin{enumerate}
+   \item 经典力学
+   \begin{enumerate}
+      \item Newton力学：$\bm{F}=q\bm{E}+q\bm{v} \times \bm{B}$仅涉及电磁场
+      \item Hamilton力学
+      \begin{gather*}
+         \intertext{机械动量}
+         \bm{p}_0=m\bm{v}
+         \\
+         \intertext{动量}
+         \bm{p}=m\bm{v}+q\bm{A}
+         \\
+         \begin{cases}
+            \bm{r'}=\bm{r}
+            \\
+            \bm{p'}=\bm{p}+q\nabla \Lambda
+         \end{cases}
+      \end{gather*}
+      \begin{itemize}
+         \item 真实物理量：与规范无关 \\
+         在原规范下对应$g(\bm{r},\bm{p},t)$，在新规范下对应$g'(\bm{r'},\bm{p'},t)$，则真实物理量的条件为
+         \begin{equation*}
+            g(\bm{r}(t),\bm{p}(t),t)=g'(\bm{r}(t),\bm{p}(t)+\nabla \Lambda(\bm{r}(t),t),t)
+         \end{equation*}
+         例如：位矢，机械动量，机械动能，机械角动量
+         \item 非物理量：在规范变换下会变化 \\
+         例如：$\frac{\bm{p}^2}{2m}$，角动量$\bm{r} \times \bm{p}$，Hamiltonian
+      \end{itemize}
+   \end{enumerate}
+   \item 量子力学
+   \begin{gather*}
+      \intertext{规范变换前后}
+      \begin{cases}
+         \hat{R}=\hat{R}'
+         \\
+         \hat{P}=\hat{P}'
+      \end{cases}
+      \\
+      \intertext{幺正变换}
+      \hat{T}_{\Lambda}(t)=\e^{\i \frac{q}{\hbar} \Lambda(\hat{R},t)}
+      \\
+      \ket{\psi'(t)}=\hat{T}_{\Lambda}(t) \ket{\psi(t)}
+      \\
+      \intertext{真实物理量对应的算符满足}
+      \hat{G}'(t)=\hat{T}_{\Lambda}(t) G(t) \hat{T}_{\Lambda}^{\dagger}(t)
+   \end{gather*}
+   而非物理量不满足上式 \\
+   在规范变换下，概率密度与概率流不变
+\end{enumerate}
+
+\section{Schrödinger方程的传播函数}
+
+\begin{gather*}
+   \psi(\bm{r}_2,t_2)=\int K(\bm{r_2},t_2;\bm{r_1},t_1) \psi(\bm{r}_1,t_1) \d^3 \bm{r},\quad t_2 > t_1
+   \\
+   \intertext{推迟传播函数}
+   K(2,1)=K(\bm{r_2},t_2;\bm{r_1},t_1)=\inpro{\bm{r_2}}{\hat{U}(t_2,t_1) \vert \bm{r}_1}\theta(t_2-t_1)
+\end{gather*}
+$K(2,1)$表示以$\ket{\psi(t_1)}$为初态的粒子，在$t_2$时位于$\bm{r}_2$的概率幅
+
+用保守系$\hat{H}$的特征态$\ket{\varphi_n}$表示$K(2,1)$
+\begin{gather*}
+   K(\bm{r_2},t_2;\bm{r_1},t_1)=\theta(t_2-t_1) \displaystyle \sum_n \varphi_n^*(\bm{r}_1) \varphi_n(\bm{r}_2) \e^{-\frac{\i}{\hbar} E_n(t_2-t_1)}
+\end{gather*}
+$K$满足
+\begin{gather*}
+   \begin{cases}
+      [\i \hbar \pt{}{t_2}-\hat{H}(\bm{r}_2,\frac{\hbar}{\i}\nabla_2)] K(\bm{r_2},t_2;\bm{r_1},t_1)= \i \hbar \delta(t_2-t_1) \delta^3(\bm{r}_2-\bm{r}_1)
+      \\
+      K(\bm{r_2},t_2;\bm{r_1},t_1)=0,\quad \text{若}t_2<t_1
+   \end{cases}
+\end{gather*}
+
+量子力学的Lagrange表述 \\
+在$(t_1,t_2)$插入$N$个点$(t_{\alpha_i},\bm{r}_{\alpha_i})$，当$N \to +\infty$时确定了一条两端点确定的时空路径$\bm{r}(t)$
+\begin{gather*}
+   \intertext{传播函数}
+   K(2,1)=\lim_{N \to +\infty} \int \d^3 \bm{r}_{\alpha_N} \int \d^3 \bm{r}_{\alpha_{N-1}} \cdots \int \d^3 \bm{r}_{\alpha_1} K(2,\alpha_N) K(\alpha_N,\alpha_{N-1}) \cdots K(\alpha_1,1)
+\end{gather*}
+
+Feymann假设
+\begin{itemize}
+   \item $1,2$之间每一条路径都对应一个概率幅，$K(2,1)$为概率幅总和
+   \item 对于路径$\Gamma$，经典作用量
+   \begin{gather*}
+      S_{\Gamma}=\int_{\Gamma} L(\bm{r},\bm{p},t) \d t
+      \\
+      K_{\Gamma}(2,1)=C \e^{\frac{\i}{\hbar} S_{\Gamma}}
+   \end{gather*}
+   在$\Delta S_{\Gamma} \ll \hbar$情况下，大部分路径相位变化迅速，对$K(2,1)$贡献抵消，但对于$\delta S_{\Gamma}=0$的路径，$K_{\Gamma}(2,1)$相位稳定，即为最小作用量原理确定的轨道
+\end{itemize}
+
+\section{不稳定性}
+
+氢原子激发态不稳定性来源于原子与电磁场合起来构成孤立体系，由于耦合很弱（为精细结构常数$\alpha$量级），在求解定态时可以忽略电磁场，但在稳定性问题上需要考虑电磁场
+
+初态为非稳态$\ket{\varphi_n}$，$t$时刻仍处于$\ket{\varphi_n}$的概率
+\begin{gather*}
+   P(t)=\e^{-\frac{t}{\tau}}
+   \\
+   \intertext{$N$个粒子的全同体系}
+   \dt{N}{t}=-\frac{N}{\tau}
+   \\
+   \intertext{体系脱离非稳态的概率}
+   \d P = \frac{\d t}{\tau}
+\end{gather*}
+$\tau$为平均停留时间，能级有自然展宽
+\begin{gather*}
+   \Delta E \approx \frac{\hbar}{\tau}
+\end{gather*}
+非稳定性唯象描述：将能量特征值替换为复数
+\begin{gather*}
+   E'_n=E_n-\i \frac{\hbar}{2\tau}
+\end{gather*}
+态矢量的模不为$1$，因为引入了非Hermite的Hamiltonian
+
+\section{一维问题的普遍讨论}
+
+\subsection{束缚态}
+
+能量是离散谱
+
+波函数的平方可积性决定特征态$E<0$，且只能取离散谱，设势阱$V(x)$最小值为$-V_0$，
+\begin{align*}
+   E&=\langle T \rangle + \langle V \rangle 
+   \\
+   &> \langle V \rangle
+   \\
+   &= \int_{-\infty}^{+ \infty} |\varphi(x)|^2 V(x) \d x
+   \\
+   &\geq \int_{-\infty}^{+ \infty} -V_0|\varphi(x)|^2 \d x
+   \\
+   &=-V_0
+\end{align*}
+综上，
+\begin{gather*}
+   -V_0<E<0
+\end{gather*}
+与经典力学不同，$E$的可能取值是离散的，且无法取到$-V_0$
+
+\subsection{散射态}
+
+能量是连续谱
+
+对于$[-\frac{l}{2},\frac{l}{2}]$上的势$V(x)$，考虑特征值$E$对应的定态$\varphi_k(x)$，
+\begin{gather*}
+   (\dt{^2}{x^2}+\frac{2m}{\hbar^2} (E-V(x)))\varphi_k(x)=0
+   \\
+   \intertext{设}
+   k=\sqrt{\frac{2mE}{\hbar^2}}
+   \\
+   \varphi_k(x)=
+   \begin{cases}
+      A\e^{\i kx}+A'\e^{-\i kx},\quad x<-\frac{l}{2} \\
+      \tilde{A}\e^{\i kx}+\tilde{A}'\e^{-\i kx},\quad x>\frac{l}{2}
+   \end{cases}
+   \\
+   \intertext{透射矩阵}
+   M(k)=\begin{bmatrix}
+      F(k) & F'(k) \\
+      G(k) & G'(k)
+   \end{bmatrix}
+   \\
+   \begin{bmatrix}
+      \tilde{A} \\
+      \tilde{A}'
+   \end{bmatrix}
+   =M(k)
+   \begin{bmatrix}
+      A \\
+      A'
+   \end{bmatrix}
+   \\
+   \begin{cases}
+      \e^{\i kx} \to F(k)\e^{\i kx}+G(k)\e^{-\i kx} \\
+      \e^{-\i kx} \to F'(k)\e^{\i kx}+G'(k)\e^{-\i kx}
+   \end{cases}
+   \\
+   \implies \begin{cases}
+      F^*(k)=G(k) \\
+      G^*(k)=F(k)
+   \end{cases}
+   \\
+   M(k)=\begin{bmatrix}
+      F(k) & G^*(k) \\
+      G(k) & F^*(k)
+   \end{bmatrix}
+   \\
+   \intertext{由概率守恒}
+   \mathrm{det}M(k)=|F(k)|^2-|G(k)|^2=1
+\end{gather*}
+若$V(x)$是偶函数，则$G(k)$是纯虚数
+
+引入矩阵$S(k)$，
+\begin{gather*}
+   \begin{bmatrix}
+      \tilde{A} \\
+      A'
+   \end{bmatrix}
+   =S(k)
+   \begin{bmatrix}
+      A \\
+      \tilde{A}'
+   \end{bmatrix}
+   \\
+   S(k)=\frac{1}{F(k)}
+   \begin{bmatrix}
+      1 & G^*(k) \\
+      -G^*(k) & 1
+   \end{bmatrix}
+\end{gather*}
+$S(k)$为幺正矩阵
+
+无论从哪个方向入射，有
+\begin{gather*}
+   R=|\frac{G(k)}{F(k)}|^2
+   \\
+   T=\frac{1}{|F(k)|^2}
+\end{gather*}
+
+\subsection{周期势}
+
+设有$N$个周期势，中心位于$x=0,l,\cdots,(N-1)l$处，周期长度$l$
+\begin{gather*}
+   \intertext{引入}
+   \alpha=\sqrt{\frac{2mE}{\hbar^2}}
+   \\
+   (\dt{^2}{x^2}+\frac{2m}{\hbar^2} (E-V(x)))\varphi_\alpha(x)=0
+   \\
+   \varphi_{\alpha}=
+   \begin{cases}
+      A_0 \e^{\i \alpha x} + A'_0 \e^{-\i \alpha x},\quad x \leq -\frac{l}{2} \\
+      A_n v_{\alpha}(x-(n-1)l) + A'_n v'_{\alpha}(x-(n-1)l),\quad (n-1)l-\frac{l}{2} \leq x \leq (n-1)l+\frac{l}{2},\quad n=1,2,\cdots,N \\
+      C_0 \e^{\i \alpha (x-(N-1)l)} + C'_0 \e^{-\i \alpha (x-(N-1)l)},\quad x \leq -\frac{l}{2},\quad x \geq (N-1)l+\frac{l}{2}
+   \end{cases}
+   \\
+   \intertext{则有}
+   \begin{bmatrix}
+      A_{n+1} \\
+      A'_{n+1}
+   \end{bmatrix}
+   =Q(\alpha)
+   \begin{bmatrix}
+      A_{n} \\
+      A'_{n}
+   \end{bmatrix}
+   \\
+   \begin{bmatrix}
+      C_0 \\
+      C'_0
+   \end{bmatrix}
+   =M(\alpha)[Q(\alpha)]^{N-1}
+   \begin{bmatrix}
+      A_{0} \\
+      A'_{0}
+   \end{bmatrix}
+   \\
+   \intertext{其中}
+   Q(\alpha)=\begin{bmatrix}
+      \e^{\i \alpha l} & 0 \\
+      0 & \e^{-\i \alpha l}
+   \end{bmatrix}
+   M(\alpha)
+   \\
+   =\begin{bmatrix}
+      \e^{\i \alpha l}F(k) & \e^{\i \alpha l}G^*(k) \\
+      \e^{-\i \alpha l}G(k) & \e^{-\i \alpha l}F^*(k)
+   \end{bmatrix}
+   \\
+   \intertext{特征方程}
+   \lambda^2-2X(\alpha)\lambda+1=0
+   \\
+   \intertext{其中}
+   X(\alpha)=\Re (\e^{\i \alpha l}F(\alpha))
+\end{gather*}
+\begin{itemize}
+   \item 若$|X(\alpha)|\leq 1$，称为容许能带
+   \begin{gather*}
+      X(\alpha)=\cos(k(\alpha)l),\quad 0 \leq k(\alpha) \leq \frac{\pi}{l}
+      \\
+      \lambda=\e^{\pm \i k(\alpha) l}
+   \end{gather*}
+   \item 若$|X(\alpha)|\geq 1$，称为禁止能带
+   \begin{gather*}
+      X(\alpha)=\epsilon \cosh(\rho(\alpha)l),\quad \rho(\alpha) \geq 0
+      \\
+      \epsilon=\mathrm{sgn} X(\alpha)
+      \\
+      \lambda=\epsilon \e^{\pm \rho(\alpha)l}
+   \end{gather*}
+   当$N$足够大时，总透射系数指数减小，透射波相干相消，反射波相干相长 \\
+   当$F(\alpha) \to 1$时，禁止能带非常狭窄，趋于孤立能级，得到反射的Bragg条件$l=n\frac{\lambda}{2}$
+\end{itemize}
+
+考虑如下情况，当$x \to \infty,V(x) \to V_e$，
+\begin{gather*}
+   \intertext{按特征值分解，}
+   \begin{cases}
+      A_n=f_1(\alpha)\lambda_1^{n-1}+f_2(\alpha)\lambda_2^{n-1} \\
+      A'_n=f'_1(\alpha)\lambda_1^{n-1}+f'_2(\alpha)\lambda_2^{n-1}
+   \end{cases}
+   \intertext{在左侧远处有}
+   \varphi_{\alpha}(x)=B\e^{\mu(\alpha)x}
+   \\
+   \mu(\alpha)=\sqrt{\frac{2m}{\hbar^2}(V_e-E)}
+   \\
+   \intertext{由概率流守恒，}
+   \frac{A_1}{A'_1}=\e^{\i \chi(\alpha)}
+   \\
+   \frac{A_{N+1}}{A'_{N+1}}=\e^{\i \chi'(\alpha)}
+   \\
+   \intertext{取定}
+   \begin{cases}
+      A_1=\e^{\i \frac{\chi(\alpha)}{2}}
+      \\
+      A_1'=\e^{\i \frac{-\chi(\alpha)}{2}}
+   \end{cases}
+   \\
+   A'_n=A_n^*   
+\end{gather*}
+\begin{itemize}
+   \item 容许能带
+   \begin{gather*}
+      \begin{cases}
+         A_n=f_1(\alpha)\e^{\i (n-1)k(\alpha)l}+f_2(\alpha)\e^{-\i (n-1)k(\alpha)l} \\
+         A'_n=A_n^*
+      \end{cases}
+      \\
+      \intertext{得到}
+      \frac{f_1(\alpha)\e^{2\i N k(\alpha)l}+f_2(\alpha)}{f_2^*(\alpha)\e^{2\i N k(\alpha)l}+f_1^*(\alpha)}=\e^{\i \chi'(\alpha)}
+      \\
+      \intertext{设}
+      \theta(\alpha)=\mathrm{Arg}\frac{f_1^*(\alpha)\e^{\i \frac{\chi'(\alpha)}{2}}-f_2(\alpha)\e^{-\i \frac{\chi'(\alpha)}{2}}}{f_1(\alpha)\e^{-\i \frac{\chi'(\alpha)}{2}}-f_2^*(\alpha)\e^{\i \frac{\chi'(\alpha)}{2}}}
+      \\
+      \intertext{得到关于能量的方程}
+      k(\alpha)=\frac{\theta(\alpha)}{2Nl}+p\frac{\pi}{Nl},\quad p=0,1,\cdots,(N-1)
+   \end{gather*}
+   当$N \gg 1$时，从离散能级变为连续能带，这时$\theta(\alpha)$所表征的边缘效应可忽略\\
+   若$T(\alpha)=0$，$|F(\alpha)| \gg 1,|G(\alpha)| \gg 1$，容许能带变为孤立能级
+   \item 禁止能带
+   \begin{gather*}
+      \begin{cases}
+         A_n=\epsilon^{n-1}(f_1(\alpha)\e^{(n-1)\rho(\alpha)l}+f_2(\alpha)\e^{-(n-1)\rho(\alpha)l}) \\
+         A'_n=A_n^*
+      \end{cases}
+      \\
+      \intertext{得到}
+      \frac{f_1(\alpha)+f_2(\alpha)\e^{-2N\rho(\alpha)l}}{f_1^*(\alpha)+f_2^*(\alpha)\e^{-2N\rho(\alpha)l}}=\e^{\i \chi'(\alpha)}
+      \\
+      \intertext{设}
+      L(\alpha)=-\frac{f_1^*(\alpha)\e^{\i \frac{\chi'(\alpha)}{2}}-f_1(\alpha)\e^{-\i \frac{\chi'(\alpha)}{2}}}{f_2^*(\alpha)\e^{\i \frac{\chi'(\alpha)}{2}}-f_2(\alpha)\e^{-\i \frac{\chi'(\alpha)}{2}}}
+   \end{gather*}
+   当$N \gg 1$时，$L(\alpha)=0$，能级与边缘效应有关，$(A_1,A'_1)$与某个$\lambda$对应的特征向量成正比，波函数定域在边缘，且禁止能带中只有有限个能级，可以认为所有能级都在容许能带中
+\end{itemize}

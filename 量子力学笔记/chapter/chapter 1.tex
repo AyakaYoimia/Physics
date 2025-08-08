@@ -1,0 +1,135 @@
+\chapter{量子力学入门：波粒二象性}
+
+\section{电磁波与光子}
+
+Plank-Einstein关系：
+\begin{gather*}
+   E=\hbar \omega
+   \\
+   \bm{p}=\hbar \bm{k}
+\end{gather*}
+
+波粒二象性：双缝干涉
+
+谱分解定理：分解到特征向量
+
+\section{物质粒子与物质波}
+
+De-Broglie关系：
+\begin{gather*}
+   E=\hbar \omega
+   \\
+   \bm{p}=\hbar \bm{k}
+\end{gather*}
+
+\section{波函数与Schrödinger方程}
+
+用波函数$\psi(\bm{r},t)$描述粒子的量子态
+\begin{equation*}
+   \d P(\bm{r},t)=|\psi(\bm{r},t)|^2 \d^3 \bm{r}
+\end{equation*}
+
+谱分解定理
+\begin{enumerate}
+   \item 测量结果在本征结果张成的空间内
+   \item 本征结果对应本征态
+\end{enumerate}
+
+Schrödinger方程
+\begin{equation*}
+   \i \hbar \pt{}{t} \psi(\bm{r},t)=-\frac{\hbar^2}{2m}\nabla^2\psi(\bm{r},t)+V(\bm{r},t)\psi(\bm{r},t)
+\end{equation*}
+\begin{enumerate}
+   \item 方程线性齐次$\implies$叠加原理
+   \item 方程一阶$\implies$初值决定演化
+\end{enumerate}
+
+经典态：由相空间6个参数确定
+
+量子态：由波函数确定
+
+非相对论量子力学中物质粒子不会产生或湮灭
+
+定态Schrödinger方程
+\begin{gather*}
+   \psi(\bm{r},t)=\psi(\bm{r})\e^{-\i E t/\hbar}
+   \\
+   -\frac{\hbar^2}{2m}\nabla^2\psi(\bm{r})+V(\bm{r})\psi(\bm{r})=E\psi(\bm{r})
+   \\
+   \hat{H} \psi(\bm{r})=E\psi(\bm{r})
+\end{gather*}
+
+\section{波包}
+
+用波包描述粒子
+
+\subsection{自由粒子}
+
+Schrödinger方程的解为平面波
+\begin{gather*}
+   \psi(\bm{r},t)=A\e^{\i(\bm{k}\cdot\bm{r}-\omega t)}
+   \\
+   \omega=\frac{\hbar k^2}{2m}
+\end{gather*}
+根据叠加原理，
+\begin{equation*}
+   \psi(\bm{r},t)=\frac{1}{(2\pi)^{\frac{3}{2}}} \int g(k)\e^{\i(\bm{k}\cdot\bm{r}-\omega(\bm{k}) t)} \d^3 \bm{k}
+\end{equation*}
+一维情况下，
+\begin{gather*}
+   \psi(x,t)=\frac{1}{(2\pi)^{\frac{1}{2}}} \int_{-\infty}^{+\infty} g(k)\e^{\i(kx-\omega(k) t)} \d k
+   \\
+   g(k)=\frac{1}{(2\pi)^{\frac{1}{2}}} \int_{-\infty}^{+\infty} \psi(x,0)\e^{-\i kx} \d x
+\end{gather*}
+
+单色平面波不是平方可积函数，不能表示量子态
+
+\subsection{波包的形状}
+
+方法1：
+\begin{gather*}
+   g(k)=|g(k)|\e^{\i\alpha(k)}
+   \\
+   \alpha(k)=\alpha_0+\left.\dt{\alpha}{k}\right|_{k=k_0} (k-k_0)
+   \\
+   \psi(x,0)=\frac{\e^{\i (k_0 x+\alpha(k_0))}}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} |g(k)|\e^{\i (k-k_0)(x-x_0)} \d k
+   \\
+   \intertext{其中}
+   x_0=-\left.\dt{\alpha}{k}\right|_{k=k_0}
+\end{gather*}
+波包中心在$x_0$处
+
+方法2：稳定相位\\
+波包中心相位对$k$的导数为$0$，$x+\dt{\alpha}{k}=0$
+\begin{equation*}
+   \Delta k \Delta x \geq 1
+\end{equation*}
+
+相速度
+\begin{equation*}
+   v_{\phi}=\frac{\omega}{k}
+\end{equation*}
+群速度
+\begin{equation*}
+   v_g=\dt{\omega}{k}
+\end{equation*}
+稳定相位：$g(k)$辐角$\alpha(k)-\omega(k)t$
+\begin{gather*}
+   x_M(t)=\left.\dt{\omega}{k}\right|_{k=k_0} t - \left.\dt{\alpha}{k}\right|_{k=k_0}
+   \\
+   v_g=\left.\dt{\omega}{k}\right|_{k=k_0}
+\end{gather*}
+
+\section{Heisenberg不确定性关系}
+
+\begin{gather*}
+   \psi(x,0)=\frac{1}{\sqrt{2\pi \hbar}} \int \bar{\psi}(p) \e^{\i(px/\hbar)} \d p
+   \\
+   \intertext{Bessel-Parseval关系}
+   \int_{-\infty}^{+\infty} |\psi(x,0)|^2 \d x=\int_{-\infty}^{+\infty} |\bar{\psi}(p)|^2 \d p
+\end{gather*}
+
+不确定性关系
+\begin{equation*}
+   \Delta x \Delta p \geq \frac{\hbar}{2}
+\end{equation*}

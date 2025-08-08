@@ -1,0 +1,33 @@
+\chapter{Hermite多项式}
+
+定义：
+\begin{gather*}
+   F(x)=\e^{-x^2}
+   \\
+   F^{(n)}(x)=(-)^n H_n(x) \e^{-x^2}
+\end{gather*}
+
+\begin{itemize}
+   \item 微分形式：Rodrigues公式
+   \begin{align*}
+      H_n(x)&=(-)^n \e^{x^2} \dt{^n}{x^n} \e^{-x^2}
+      \\
+      &=(2x-\dt{}{x})^n 1
+   \end{align*}
+   \item 生成函数：考虑$F(x+t)$的Taylor展开，
+   \begin{equation*}
+      \e^{-t^2+2tx}=\displaystyle \sum_{n=0}^{+\infty} \frac{t^n}{n!} H_n(x)
+   \end{equation*}
+   \item 递推关系
+   \begin{gather*}
+      H_n(x)=(2x-\dt{}{x})H_{n-1}(x)
+      \\
+      \dt{}{x}H_n(x)=2nH_{n-1}(x)
+      \\
+      H_n(x)=2xH_{n-1}(x)-2(n-1)H_{n-2}(x)
+   \end{gather*}
+   \item 微分方程
+   \begin{equation*}
+      (\dt{^2}{x^2}-2x \dt{}{x}+2n)H_n(x)=0
+   \end{equation*}
+\end{itemize}
