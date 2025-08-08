@@ -1,0 +1,260 @@
+\chapter{运动电荷的电磁场}
+
+\section{推迟势}
+
+Lorenz规范$\partial_{\mu} A^{\mu}=0$下，规范势满足
+\begin{gather*}
+    -\partial_{\nu} \partial^{\nu} A^{\mu}(x)=\mu_0 J^{\mu}(x)
+    \\
+    \intertext{定义Green函数$G(x,x')$}
+    -\partial_{\nu} \partial^{\nu} G(x,x')=\delta^4(x-x')
+    \\
+    \intertext{由时空平移对称性}
+    G(x,x')=G(x-x') \implies -\partial_{\nu} \partial^{\nu} G(x)=\delta^4(x)
+    \\
+    A^{\mu}(x)=\mu_0 \int \d^4 x' G(x-x') J^{\mu}(x')
+\end{gather*}
+由电荷守恒$\partial_{\mu} J^{\mu}=0$可以推出这样的解满足Lorenz规范
+
+进行Fourier变换
+\begin{gather*}
+    \delta^4(x)=\int \frac{\d^4 k}{(2\pi)^4} \e^{\i k_{\mu} x^{\mu}}
+    \\
+    G(x)=\int \frac{\d^4 k}{(2\pi)^4} \tilde{G}(k) \e^{\i k_{\mu} x^{\mu}}
+    \\
+    \tilde{G}(k)=\frac{1}{k_{\mu} k^{\mu}}=-\frac{1}{\omega^2-|\bm{k}|^2}
+    \\
+    G(x)=-\int \frac{\d^3 \bm{k}}{(2\pi)^3} \e^{\i \bm{k} \cdot \bm{x}} \int_{-\infty}^{+\infty} \frac{\d \omega}{2\pi} \frac{\e^{-\i \omega t}}{\omega^2-|\bm{k}|^2}
+\end{gather*}
+对$\omega$的积分，被积函数奇点$\omega=\pm |\bm{k}|$，选取从实轴上方绕过奇点的围道，得到推迟Green函数$G_{\text{ret}}(\bm{x},t)$
+\begin{itemize}
+    \item $t<0$时，选取上半平面无穷远半圆构成闭合围道，由Cauchy定理，
+    \begin{gather*}
+        G_{\text{ret}}(\bm{x},t)=0
+    \end{gather*}
+    \item $t>0$时，选取下半平面无穷远半圆构成闭合围道$C$，设$C_{\delta_1}$和$C_{\delta_2}$分别为以$\pm|\bm{k}|$为圆心的小圆弧由留数定理，
+    \begin{gather*}
+        \oint_C \frac{\d z}{2\pi} \frac{\e^{-\i z t}}{z^2-|\bm{k}|^2}=\frac{1}{2\pi} (-2\pi \i) \mathrm{Res} \left.\frac{\e^{-\i z t}}{z^2-|\bm{k}|^2}\right|_{z=\pm |\bm{k}|}=-\i \left[\frac{\e^{-\i |\bm{k}| t}}{2|\bm{k}|}-\frac{\e^{\i |\bm{k}| t}}{2|\bm{k}|}\right]
+        \\
+        \intertext{由大圆弧引理}
+        \lim_{R \to \infty} \int_{C_R} \frac{\d z}{2\pi} \frac{\e^{-\i z t}}{z^2-|\bm{k}|^2}=0
+        \\
+        \intertext{由小圆弧引理}
+        \int_{C_{\delta_1}} \frac{\d z}{2\pi} \frac{\e^{-\i z t}}{z^2-|\bm{k}|^2}= \i (-\pi) \frac{1}{2\pi} \frac{\e^{-\i |\bm{k}| t}}{2|\bm{k}|}=-\frac{\i \e^{-\i |\bm{k}| t}}{4|\bm{k}|}
+        \\
+        \int_{C_{\delta_2}} \frac{\d z}{2\pi} \frac{\e^{-\i z t}}{z^2-|\bm{k}|^2}= \i (-\pi)\left(-\frac{1}{2\pi} \frac{\e^{\i |\bm{k}| t}}{2|\bm{k}|}\right)=\frac{\i \e^{\i |\bm{k}| t}}{4|\bm{k}|}
+        \\
+        \implies \int_{-\infty}^{+\infty} \frac{\d \omega}{2\pi} \frac{\e^{-\i \omega t}}{\omega^2-|\bm{k}|^2}=-\i \left[\frac{\e^{-\i |\bm{k}| t}}{2|\bm{k}|}-\frac{\e^{\i |\bm{k}| t}}{2|\bm{k}|}\right]
+    \end{gather*}
+    \begin{align*}
+        G(x)&=\i \int \frac{\d^3 \bm{k}}{(2\pi)^3} \e^{\i \bm{k} \cdot \bm{x}} \left[\frac{\e^{-\i |\bm{k}| t}}{2|\bm{k}|}-\frac{\e^{\i |\bm{k}| t}}{2|\bm{k}|}\right]
+        \\
+        &=\frac{\i}{(2\pi)^3} \int_{0}^{+\infty} \int_{0}^{\pi} \int_{0}^{2\pi} \e^{\i |\bm{k}| r \cos \theta} \left[\frac{\e^{-\i |\bm{k}| t}}{2|\bm{k}|}-\frac{\e^{\i |\bm{k}| t}}{2|\bm{k}|}\right] |\bm{k}|^2 \sin \theta \d |\bm{k}| \d \theta \d \varphi
+        \\
+        &=\frac{\i}{(2\pi)^2} \int_{0}^{+\infty}  \frac{1}{\i |\bm{k}| r} \left[\frac{\e^{-\i |\bm{k}| t}}{2|\bm{k}|}-\frac{\e^{\i |\bm{k}| t}}{2|\bm{k}|}\right] \left(\e^{\i |\bm{k}|r}-\e^{-\i |\bm{k}|r}\right)|\bm{k}|^2 \d |\bm{k}|
+        \\
+        &=\frac{1}{8\pi^2 r} \int_{0}^{+\infty} \left(\e^{\i |\bm{k}|(r-t)}-\e^{\i |\bm{k}|(r+t)}-\e^{-\i |\bm{k}|(r+t)}+\e^{-\i |\bm{k}|(r-t)}\right) \d |\bm{k}|
+        \\
+        &=\frac{1}{8\pi^2 r} \int_{-\infty}^{+\infty} \left(\e^{\i |\bm{k}|(r-t)}-\e^{\i |\bm{k}|(r+t)}\right) \d |\bm{k}|
+        \\
+        &=\frac{1}{4\pi r} \left[\delta(r-t)-\delta(r+t)\right]
+        \\
+        &=\frac{1}{2\pi} \delta(t^2-r^2)
+        \\
+        &=\frac{1}{2\pi} \delta(x^2)=\frac{1}{4\pi r} \delta(t-r)
+    \end{align*}
+\end{itemize}
+综上所述，得到推迟Green函数
+\begin{gather*}
+    G_{\text{ret}}(\bm{x},t)=\frac{1}{2\pi} \delta(x^2) \theta(t)
+\end{gather*}
+\begin{align*}
+    A^{\mu}(x)&=\mu_0 \int \d^4 x' G_{\text{ret}}(x-x') J^{\mu}(x')
+    \\
+    &=\frac{\mu_0}{4\pi} \int \d^4 x' \frac{\delta(t-t'-R)}{R} J^{\mu}(x')
+    \\
+    &=\frac{\mu_0}{4\pi} \int \d^3 \bm{x'} \frac{J^{\mu}(\bm{x},t-R)}{R}
+\end{align*}
+
+\section{带电粒子电磁场}
+
+\subsection{Lienard-Wiechert势}
+
+设带电荷$q$的运动粒子，世界线$\tilde{x}^{\mu}(\tau)$，速度$\bm{v}=\dt{\tilde{\bm{x}}}{t}$
+\begin{gather*}
+    J^{\mu}(x)=q \int \d \tau \dt{\tilde{x}^{\mu}(\tau)}{\tau} \delta^4 (x-\tilde{x}(\tau))
+\end{gather*}
+\begin{align*}
+    A^{\mu}(x)&=\frac{\mu_0 q}{4\pi} \int \d^4 x' \frac{\delta(t-t'-R)}{R} \int \d \tau \dt{\tilde{x}^{\mu}(\tau)}{\tau} \delta^4 (x'-\tilde{x}(\tau))
+    \\
+    &=\frac{\mu_0 q}{4\pi} \int \d \tau \dt{\tilde{x}^{\mu}(\tau)}{\tau} \frac{\delta(t-\tilde{t}-R(\tilde{t}))}{R(\tilde{t})}
+\end{align*}
+推迟时间$t_{\text{ret}}$满足
+\begin{gather*}
+    t_{\text{ret}}=t-R(t_{\text{ret}})
+    \\
+    \intertext{注意到}
+    \delta(t-\tilde{t}-R(\tilde{t}))=\frac{\delta(\tilde{t}-t_{\text{ret}})}{\left|\pt{}{\tilde{t}} (t-\tilde{t}-R(\tilde{t}))\right|}
+    \\
+    \pt{}{\tilde{t}} (\tilde{t}+R(\tilde{t})-t)=1+\dt{R(\tilde{t})}{\tilde{t}}=1-\dt{\tilde{\bm{x}}}{\tilde{t}} \cdot \nabla R=1-\bm{v}(\tilde{t}) \cdot \bm{n} (\tilde{t})
+\end{gather*}
+还原到国际单位制，得到
+\begin{gather*}
+    \phi(\bm{x},t)=\frac{q}{4\pi \varepsilon_0} \left[\frac{1}{R-\frac{\bm{v}}{c} \cdot \bm{R}}\right]_{\text{ret}}
+    \\
+    \bm{A}(\bm{x},t)=\frac{\mu_0 q}{4\pi} \left[\frac{\bm{v}}{R-\frac{\bm{v}}{c} \cdot \bm{R}}\right]_{\text{ret}}
+\end{gather*}
+
+取世界线参数$\tau=\tilde{t}$，求出电磁场，注意到
+\begin{gather*}
+    \nabla \delta(t-\tilde{t}-R(\tilde{t}))=- \nabla R \pt{}{t}(\delta(t-\tilde{t}-R(\tilde{t})))=-\bm{n}(\tilde{t}) \pt{}{t}(\delta(t-\tilde{t}-R(\tilde{t})))
+\end{gather*}
+\begin{align*}
+    \bm{E}(\bm{x},t)&=-\nabla \phi -\pt{\bm{A}}{t}
+    \\
+    &=-\frac{q}{4\pi \varepsilon_0} \nabla \int \d \tilde{t} \frac{\delta(t-\tilde{t}-R(\tilde{t}))}{R(\tilde{t})}-\frac{\mu_0 q}{4\pi} \pt{}{t} \int \d \tilde{t} \bm{v}(\tilde{t}) \frac{\delta(t-\tilde{t}-R(\tilde{t}))}{R(\tilde{t})}
+    \\
+    &=\frac{q}{4\pi \varepsilon_0} \left\{\left[\frac{\bm{n}}{(1-\frac{\bm{v}}{c} \cdot \bm{n})R^2}\right]_{\text{ret}}+\frac{1}{c} \dt{}{t} \left[\frac{\bm{n}-\frac{\bm{v}}{c}}{(1-\frac{\bm{v}}{c} \cdot \bm{n})R}\right]_{\text{ret}}\right\}
+\end{align*}
+\begin{align*}
+    \bm{B}(\bm{x},t)&=\nabla \times \bm{A}
+    \\
+    &=\frac{\mu_0 q}{4\pi} \nabla \times \int \d \tilde{t} \bm{v}(\tilde{t}) \frac{\delta(t-\tilde{t}-R(\tilde{t}))}{R(\tilde{t})}
+    \\
+    &=\frac{\mu_0 q}{4\pi} \int \d \tilde{t} \left[\frac{\nabla \delta(t-\tilde{t}-R(\tilde{t}))}{R(\tilde{t})} \times \bm{v}(\tilde{t})-\frac{\bm{n}(\tilde{t})}{R^2(\tilde{t})} \delta(t-\tilde{t}-R(\tilde{t})) \times \bm{v}(\tilde{t}) \right]
+    \\
+    &=\frac{\mu_0 q}{4\pi} \int \d \tilde{t} \left[-\frac{\bm{n}(\tilde{t})}{R(\tilde{t})} \pt{}{t}(\delta(t-\tilde{t}-R(\tilde{t}))) \times \bm{v}(\tilde{t})-\frac{\bm{n}(\tilde{t})}{R^2(\tilde{t})} \delta(t-\tilde{t}-R(\tilde{t})) \times \bm{v}(\tilde{t}) \right]
+    \\
+    &=\frac{\mu_0 q}{4\pi} \left\{\left[\frac{\frac{\bm{v}}{c} \times \bm{n}}{(1-\frac{\bm{v}}{c} \cdot \bm{n})R^2}\right]_{\text{ret}}+\dt{}{t} \left[ \frac{\frac{\bm{v}}{c} \times \bm{n}}{(1-\frac{\bm{v}}{c} \cdot \bm{n})R}\right]_{\text{ret}} \right\}
+\end{align*}
+
+\subsection{Heaviside-Feynman公式}
+
+\begin{gather*}
+    \intertext{推迟时间}
+    t_{\text{ret}}=t-R(t_{\text{ret}})
+    \\
+    \dt{t}{t_{\text{ret}}}=1+\dt{R(t_{\text{ret}})}{t_{\text{ret}}}
+    \\
+    \intertext{注意到}
+    \dt{R}{t}=-\dt{\tilde{\bm{x}}}{t} \cdot \nabla R=-\bm{v} \cdot \bm{n}
+    \\
+    \dt{t}{t_{\text{ret}}}=\left[1-\bm{v} \cdot \bm{n}\right]_{\text{ret}}
+    \\
+    \implies \dt{t_{\text{ret}}}{t}=1-\dt{R(t_{\text{ret}})}{t}=\frac{1}{\left[1-\bm{v} \cdot \bm{n}\right]_{\text{ret}}}
+    \\
+    \bm{v}_{\text{ret}}=-\dt{\bm{R}_{\text{ret}}}{t_{\text{ret}}}=-\left[1-\bm{v} \cdot \bm{n}\right]_{\text{ret}} \dt{\bm{R}_{\text{ret}}}{t}
+    \\
+    \implies \left[\frac{\bm{v}}{1-\bm{v} \cdot \bm{n}}\right]_{\text{ret}}=-\dt{\bm{R}_{\text{ret}}}{t}
+    \\
+    \dt{\bm{n}}{t}=\frac{1}{R}\left[-\bm{v}+\bm{n}(\bm{v} \cdot \bm{n})\right]=\frac{\bm{n} \times (\bm{n} \times \bm{v})}{R}
+    \\
+    \bm{n}_{\text{ret}} \times \dt{\bm{n}_{\text{ret}}}{t}=\left[\frac{\bm{v} \times \bm{n}}{(1-\bm{v} \cdot \bm{n})R}\right]_{\text{ret}}
+\end{gather*}
+代入得到
+\begin{gather*}
+    \bm{E}(\bm{x},t)=\frac{q}{4\pi \varepsilon_0} \left\{\left[\frac{\bm{n}}{R^2}\right]_{\text{ret}}+\frac{R_{\text{ret}}}{c} \dt{}{t} \left[\frac{\bm{n}}{R^2}\right]_{\text{ret}}+\frac{1}{c^2} \dt{^2 \bm{n}_{\text{ret}}}{t^2}\right\}
+    \\
+    \bm{B}(\bm{x},t)=\frac{\mu_0 q}{4 \pi} \left\{\left[\frac{\bm{n}}{R}\right]_{\text{ret}} \times \dt{\bm{n}_{\text{ret}}}{t}+\frac{\bm{n}_{\text{ret}}}{c} \times \dt{^2 \bm{n}_{\text{ret}}}{t^2}\right\}
+    \\
+    \bm{B}=\bm{n}_{\text{ret}} \times \frac{\bm{E}}{c}
+\end{gather*}
+
+\subsection{运动电荷的电磁辐射}
+
+将电磁场表达式中对$t$的导数换成对$t_{\text{ret}}$的导数
+\begin{align*}
+    \bm{E}(\bm{x},t)&=\frac{q}{4\pi \varepsilon_0} \left[\frac{\bm{n}}{(1-\bm{v}\cdot \bm{n})R^2}+\frac{1}{1-\bm{v} \cdot \bm{n}} \dt{}{t} \left(\frac{\bm{n}-\bm{v}}{(1-\bm{v} \cdot \bm{n})R}\right)\right]_{\text{ret}}
+    \\
+    &=\frac{q}{4\pi \varepsilon_0} \left[\frac{\bm{n}}{(1-\bm{v}\cdot \bm{n})R^2}+\frac{\dot{\bm{n}}-\dot{\bm{v}}}{(1-\bm{v} \cdot \bm{n})^2 R}-\frac{\bm{n}-\bm{v}}{(1-\bm{v} \cdot \bm{n})^3 R^2} \left(R \dt{}{t}(1-\bm{v} \cdot \bm{n})+(1-\bm{v} \cdot \bm{n}) \dt{R}{t}\right)\right]_{\text{ret}}
+\end{align*}
+代入$\dt{R}{t}=-\bm{v} \cdot \bm{n},\dt{n}{t}=\frac{\bm{n} \times(\bm{n} \times \bm{v})}{R}$得到
+\begin{gather*}
+    \bm{E}(\bm{x},t)=\frac{q}{4\pi \varepsilon_0} \left[\frac{(\bm{n}-\frac{\bm{v}}{c})(1-\frac{\bm{v}^2}{c^2})}{(1-\frac{\bm{v}}{c} \cdot \bm{n})^3 R^2}+\frac{\bm{n} \times ((\bm{n}-\frac{\bm{v}}{c}) \times \dot{\bm{v}})}{c^2 (1-\frac{\bm{v}}{c} \cdot \bm{n})^3 R}\right]_{\text{ret}}
+\end{gather*}
+第二项为辐射项
+\begin{gather*}
+    \bm{E}_a=\frac{q}{4\pi \varepsilon_0}  \left[\frac{\bm{n} \times ((\bm{n}-\frac{\bm{v}}{c}) \times \bm{a})}{c^2 (1-\frac{\bm{v}}{c} \cdot \bm{n})^3 R}\right]_{\text{ret}}
+\end{gather*}
+能流密度
+\begin{gather*}
+    \frac{1}{\mu_0 c} \left[E^2 \bm{n}_{\text{ret}} - (\bm{E} \cdot \bm{n}_{\text{ret}} ) \bm{E} \right]
+\end{gather*}
+辐射场
+\begin{gather*}
+    \bm{S}=\frac{1}{\mu_0 c} E_a^2 \bm{n}_{\text{ret}}=\frac{1}{\mu_0 c} \left(\frac{q}{4\pi \varepsilon_0}\right)^2 \left[\frac{\bm{n} \times ((\bm{n}-\frac{\bm{v}}{c}) \times \bm{a})}{c^2 (1-\frac{\bm{v}}{c} \cdot \bm{n})^3 R}\right]_{\text{ret}}^2 \bm{n}_{\text{ret}}
+    \\
+    \intertext{发射的能流}
+    \d P(t)=\dt{W}{t}=R^2 \d \Omega \bm{S}(t) \bm{n}_{\text{ret}}
+    \\
+    \intertext{观察者接收的能流}
+    \d P(t_{\text{ret}})=\dt{W}{t_{\text{ret}}}=\dt{W}{t} \dt{t}{t_{\text{ret}}}=\frac{q^2}{16\pi^2 \varepsilon_0 c^3} \left[\frac{|\bm{n} \times ((\bm{n}-\frac{\bm{v}}{c}) \times \bm{a})|^2}{(1-\frac{\bm{v}}{c} \cdot \bm{n})^5}\right]_{\text{ret}} \d \Omega
+\end{gather*}
+\begin{enumerate}
+    \item 非相对论极限：Larmor公式
+    \begin{gather*}
+        \d P(t_{\text{ret}})=\frac{q^2}{16\pi^2 \varepsilon_0 c^3} \bm{a}_{\text{ret}}^2 \sin^2 \theta \d \Omega
+        \\
+        \intertext{积分得到}
+        P(t_{\text{ret}})=\frac{q^2}{6\pi \varepsilon_0 c^3} \bm{a}_{\text{ret}}^2
+    \end{gather*}
+    \item 相对论情形，直接计算很复杂，采取另一种方法\\
+    带电粒子本征系$S'$中，辐射动量$\d \bm{p'}=0,\d \bm{x'}=0$
+    \begin{gather*}
+        P(t)=\dt{W}{t}=\frac{\gamma (\d W'+\bm{v} \cdot \d \bm{p'})}{\gamma (\d t' + \bm{v} \cdot \frac{\d \bm{x'}}{c^2})}=\frac{\d W'}{\d t'}=P'(t')
+        \\
+        \dt{\bm{p}}{t}=\frac{\gamma (\d \bm{p'}+\bm{v} \frac{\d W}{c^2})}{\gamma (\d t' + \bm{v} \cdot \frac{\d \bm{x'}}{c^2})}=\frac{\bm{v}}{c^2} \dt{W'}{t'}=\frac{\bm{v}}{c^2} \dt{W}{t}
+    \end{gather*}
+    辐射功率是协变的，在本征系中为Larmor公式，推广为协变形式
+    \begin{gather}
+        P(t_{\text{ret}})=\frac{q^2}{6\pi \varepsilon_0 c^3} (a^{\mu} a_{\mu})_{\text{ret}}
+        \\
+        \dt{p^{\mu}}{\tau} \dt{p_{\mu}}{\tau}=\dt{\bm{p}}{\tau} \cdot \dt{\bm{p}}{\tau}-\frac{1}{c^2} \left(\dt{E}{\tau}\right)^2=(m\gamma)^2 \left[\dt{(\gamma \bm{v})}{t} \cdot \dt{(\gamma \bm{v})}{t}-c^2 \left(\frac{\gamma}{t}\right)^2\right]
+        \\
+        P(t)=\frac{q^2}{6\pi \varepsilon_0 c^3} \gamma^6 \left[\bm{a}^2-\left(\frac{\bm{v} \times \bm{a}}{c}\right)^2\right]
+    \end{gather}
+\end{enumerate}
+
+\section{低速带电粒子体系的有效作用量}
+
+\begin{gather*}
+    \intertext{Lagrangian}
+    L=\displaystyle \sum_{i} \left[-m_i \sqrt{1-\bm{v}_i^2}-q_i \phi+q_i \bm{A} \cdot \bm{v}_i\right]
+    \\
+    \intertext{按$\frac{\bm{v}}{c}$的幂次进行Taylor展开，忽略$m_i c^2$，零阶项}
+    L^{(0)}=\displaystyle \sum_{i} \frac{1}{2} m_i \bm{v}_i^2-\displaystyle \sum_{i>j} \frac{1}{4\pi \varepsilon_0} \frac{q_i q_j}{R_{ij}}
+\end{gather*}
+展开到$\frac{\bm{v}^2}{c^2}$项，需要考虑推迟效应
+\begin{align*}
+    \phi(\bm{x},t)&=\frac{1}{4\pi \varepsilon_0} \int \d^3 \bm{x'} \frac{\rho(\bm{x'},t-\frac{R}{c})}{R}
+    \\
+    &=\frac{1}{4\pi \varepsilon_0} \int \d^3 \bm{x'} \frac{\rho(\bm{x'},t)}{R}-\frac{1}{4\pi \varepsilon_0 c} \pt{}{t} \int \d^3 \bm{x'} \rho(\bm{x'},t)+\frac{1}{8\pi \varepsilon_0 c^2} \pt{^2}{t^2} \int \d^3 \bm{x'} R \rho(\bm{x'},t)
+    \\
+    &=\frac{1}{4\pi \varepsilon_0} \int \d^3 \bm{x'} \frac{\rho(\bm{x'},t)}{R}+\frac{1}{8\pi \varepsilon_0 c^2} \pt{^2}{t^2} \int \d^3 \bm{x'} R \rho(\bm{x'},t)
+    \\
+    \bm{A}(\bm{x},t)&=\frac{1}{4\pi \varepsilon_0 c^2} \int \d^3 \bm{x'} \frac{\bm{J}(\bm{x'},t-\frac{R}{c})}{R}
+\end{align*}
+如果只有一个电荷$q$，
+\begin{gather*}
+    \phi(\bm{x},t)=\frac{q}{4\pi \varepsilon_0 R}+\frac{q}{8 \pi \varepsilon_0 c^2} \pt{^2 R}{t^2}
+    \\
+    \bm{A}(\bm{x},t)=\frac{q \bm{v}}{4\pi \varepsilon_0 c^2 R}
+    \\
+    \intertext{取规范变换参数}
+    \varepsilon(\bm{x},t)=\frac{q}{8 \pi \varepsilon_0 c^2} \pt{R}{t}
+    \\
+    \phi'=\phi-\pt{\varepsilon}{t}=\frac{q}{4\pi \varepsilon_0 R}
+    \\
+    \bm{A'}=\bm{A}+\nabla \varepsilon=\frac{q \bm{v}}{4\pi \varepsilon_0 c^2 R}+\frac{q}{8\pi \varepsilon_0 c^2} \nabla \pt{R}{t}
+    \\
+    =\frac{q \bm{v}}{4\pi \varepsilon_0 c^2 R}+\frac{q}{8\pi \varepsilon_0 c^2} \pt{\bm{n}}{t}=\frac{q}{8\pi \varepsilon_0 c^2 R} \left[\bm{v}+(\bm{v} \cdot \bm{n}) \bm{n}\right]
+\end{gather*}
+这样就得到了电磁势，代入Lagrangian
+\begin{gather*}
+    L=\displaystyle \sum_{i} \left[\frac{1}{2} m_i \bm{v}_i^2 +\frac{1}{8} m_i \frac{\bm{v}_i^4}{c^2}\right]-\frac{1}{4\pi \varepsilon_0} \sum_{i>j} \frac{q_i q_j}{R_{ij}}+\frac{1}{8\pi \varepsilon_0 c^2} \sum_{i>j} \frac{q_i q_j}{R_{ij}} \left[\bm{v}_i \cdot \bm{v}_j+(\bm{v}_i \cdot \bm{n}_{ij})(\bm{v}_j \cdot \bm{n}_{ij})\right]
+    \\
+    \bm{p}=\pt{L}{\bm{v}} =\frac{m \bm{v}}{\sqrt{1-\bm{v}^2}} \approx m \bm{v}
+    \\
+    \intertext{Hamiltonian}
+    H=\displaystyle \sum_{i} \frac{\bm{p}_i^2}{2m_i}+\frac{1}{4\pi \varepsilon_0} \sum_{i>j} \frac{q_i q_j}{R_{ij}}-\sum_i \frac{\bm{p}_i^4}{8c^2m_i^3}-\frac{1}{8\pi \varepsilon_0 c^2} \sum_{i>j} \frac{q_i q_j}{m_i m_j R_{ij}} \left[\bm{p}_i \cdot \bm{p}_j+(\bm{p}_i \cdot \bm{n}_{ij})(\bm{p}_j \cdot \bm{n}_{ij})\right]
+\end{gather*}

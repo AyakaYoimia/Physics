@@ -1,0 +1,248 @@
+\chapter{磁单极子和$\theta$项}
+
+\section{电磁对偶}
+
+无源Maxwell方程组
+\begin{gather*}
+    \begin{cases}
+        \nabla \cdot \bm{E}=0
+        \\
+        \nabla \times \bm{B}=\pt{\bm{E}}{t}
+        \\
+        \nabla \cdot \bm{B}=0
+        \\
+        \nabla \times \bm{E}=-\pt{\bm{B}}{t}
+    \end{cases}
+\end{gather*}
+在如下变换下保持不变
+\begin{gather*}
+    \begin{cases}
+        \bm{E} \to \bm{B}
+        \\
+        \bm{B} \to -\bm{E}
+    \end{cases}
+\end{gather*}
+在外微分形式下容易看出
+\begin{gather*}
+    \d (\star F)=0,\quad \d F=0
+\end{gather*}
+
+有源Maxwell方程组需要引入磁荷$g$、磁荷密度$\rho_m$和磁流密度$\bm{J}_m$
+\begin{gather*}
+    \begin{cases}
+        \nabla \cdot \bm{E}=\rho_e
+        \\
+        \nabla \times \bm{B}=\pt{\bm{E}}{t}+\bm{J}_e
+        \\
+        \nabla \cdot \bm{B}=\rho_m
+        \\
+        \nabla \times \bm{E}=-\pt{\bm{B}}{t}-\bm{J}_m
+    \end{cases}
+\end{gather*}
+在如下变换下保持不变
+\begin{gather*}
+    \begin{cases}
+        \bm{E} \to \bm{B},\quad \rho_e \to \rho_m,\quad \bm{J}_e \to \bm{J}_m
+        \\
+        \bm{B} \to -\bm{E},\quad \rho_m \to -\rho_e,\quad \bm{J}_m \to -\bm{J}_e
+    \end{cases}
+\end{gather*}
+Lorentz力公式
+\begin{gather*}
+    \bm{F}=e(\bm{E}+\bm{v} \times \bm{B})+g(\bm{B}-\bm{v} \times \bm{E})
+\end{gather*}
+
+在场论中，引入磁荷需要引入带磁荷的物质场并与电磁场耦合，但带磁荷的场与带电荷的场不容易兼容，两者没有共同的基本场变量
+
+\section{Dirac理论}
+
+\begin{gather*}
+    \text{仅引入粒子而不引入带电荷或磁荷的场}
+\end{gather*}
+
+考虑一个位于原点的磁单极子，磁荷为$g$
+\begin{gather*}
+    \nabla \cdot \bm{B}=g\delta^3(\bm{x})
+    \\
+    \bm{B}=\frac{g}{4\pi r^2} \bm{e}_r
+\end{gather*}
+在$\mathbb{R}^3 \backslash \{\bm{0}\}$上，
+\begin{gather*}
+    \nabla \cdot \bm{B}=0
+\end{gather*}
+由Poincaré引理，在$\mathbb{R}^3 \backslash \{\bm{0}\}$的任何一个拓扑非平庸的开子集$U$上，可以找到矢势$\bm{A}^U$使$\bm{B}=\nabla \times \bm{A}^U$，因此可以分别在北半球和南半球定义
+\begin{gather*}
+    \bm{A}^N=\frac{g}{4\pi r} \frac{1-\cos \theta}{\sin \theta} \bm{e}_{\varphi}
+    \\
+    \bm{A}^S=-\frac{g}{4\pi r} \frac{1+\cos \theta}{\sin \theta} \bm{e}_{\varphi}
+\end{gather*}
+$\bm{A}^N$在$-z$轴没有定义，$\bm{A}^S$在$+z$轴没有定义
+\begin{gather*}
+    \intertext{协变导数}
+    \D_{\mu}=\partial_{\mu}-\i \frac{e}{\hbar} A_{\mu}
+    \\
+    \intertext{物质场$U(1)$规范变换}
+    \e^{\i \frac{e}{\hbar} \varepsilon(x)}
+    \\
+    \intertext{矢势规范变换}
+    \bm{A} \to \bm{A} + \nabla \varepsilon
+    \\
+    \intertext{在赤道上}
+    \bm{A}_{\varphi}^{N}=\bm{A}_{\varphi}^{S}+\frac{1}{r \sin \theta} \partial_{\varphi} \varepsilon,\quad \varepsilon=\frac{g\varphi}{2\pi}
+    \\
+    \implies \varepsilon(2\pi)=\varepsilon(0)+g
+    \\
+    \intertext{根据$U(1)$规范变换}
+    \frac{e}{\hbar}\varepsilon(2\pi)=\frac{e}{\hbar}\varepsilon(0)+2\pi n
+    \\
+    \implies \varepsilon(2\pi)=\varepsilon(0)+\frac{2\pi n \hbar}{e}
+    \\
+    \intertext{综上，得到Dirac量子化条件}
+    eg=2\pi n \hbar,\quad n \in \mathbb{Z}
+\end{gather*}
+\begin{itemize}
+    \item 若电荷是量子化的，则磁通也是量子化的
+    \begin{gather*}
+        \int_{S^2} \bm{B} \cdot \bm{S}=g=\frac{2\pi n \hbar}{e}
+        \\
+        \intertext{最小磁通}
+        \Phi_0=\frac{2\pi \hbar}{e}
+    \end{gather*}
+    \item 若电荷之间比例为无理数，则Dirac量子化条件无法满足，不存在磁单极子
+\end{itemize}
+
+对于包含多个磁单极子的情形，仍然有
+\begin{gather*}
+    \bm{A}^N=\bm{A}^S+\nabla \varepsilon
+    \\
+    \int_{S^2} \bm{B} \cdot \bm{S}=\varepsilon(2\pi)-\varepsilon(0)=\frac{2\pi n \hbar}{e}
+    \\
+    \intertext{易知对任意闭合曲面$\Sigma$均成立}
+    \int_{\Sigma} F=\frac{2\pi n \hbar}{e} \iff \int_{\Sigma} \frac{\frac{e}{\hbar} F}{2\pi}=n \in \mathbb{Z}
+\end{gather*}
+$c_1=\frac{\frac{e}{\hbar} F}{2\pi}$被称为第一陈类
+
+对于双荷子$(e_1,g_1)$和$(e_2,g_2)$，要满足Dirac-Zwanziger量子化条件
+\begin{gather*}
+    e_1g_2-e_2g_1 \in 2\pi \hbar \mathbb{Z}
+\end{gather*}
+
+\section{$\theta$项}
+
+最简单的电磁作用量
+\begin{gather*}
+    S=S_{\text{Maxwell}}+S_{\theta}
+    \\
+    S_{\text{Maxwell}}=-\frac{1}{4} \int \d^4 x F^{\mu \nu} F_{\mu \nu}
+\end{gather*}
+\begin{align*}
+    S_{\theta}&=\theta \frac{e^2}{4\pi^2 \hbar} \int \d^4 x \bm{E} \cdot \bm{B}
+    \\
+    &=\theta \frac{e^2}{4\pi^2 \hbar} \int \d^4 x \frac{1}{4} \tilde{F}^{\mu \nu} F_{\mu \nu}
+    \\
+    &=\theta \frac{e^2}{4\pi^2 \hbar} \int \d^4 x \frac{1}{8} \epsilon^{\mu \nu \rho \sigma} F_{\mu \nu} F_{\rho \sigma}
+    \\
+    &=\theta \frac{e^2}{\hbar} \frac{1}{2} \int \left(\frac{F}{2\pi}\right) \wedge \left(\frac{F}{2\pi}\right)
+\end{align*}
+四维时空$M$分解为两个二维曲面$\Sigma_1$和$\Sigma_2$的Cartesian积
+\begin{gather*}
+    M=\Sigma_1 \times \Sigma_2
+    \\
+    \int_{\Sigma_1} \frac{\frac{e}{\hbar}F}{2\pi}=n_1,\quad \int_{\Sigma_2} \frac{\frac{e}{\hbar}F}{2\pi}=n_2,\quad n_1,n_2 \in \mathbb{Z}
+    \\
+    \frac{1}{2} \int_M \left(\frac{F}{2\pi}\right) \wedge \left(\frac{F}{2\pi}\right)=\frac{1}{2} \left(\int_{\Sigma_1} \frac{F}{2\pi} \int_{\Sigma_2} \frac{F}{2\pi}+\int_{\Sigma_2} \frac{F}{2\pi}\int_{\Sigma_1} \frac{F}{2\pi}\right)=n_1 n_2 \left(\frac{\hbar}{e}\right)^2
+    \\
+    S_{\theta}=\hbar \theta n_1 n_2
+    \\
+    \intertext{根据量子场论路径积分表述，$\theta$项贡献}
+    \e^{\i \frac{S_{\theta}}{\hbar}}=\e^{\i \theta n_1 n_2}
+\end{gather*}
+由单值性，$\theta$为周期$2\pi$的角变量
+
+\subsection{轴子电动力学}
+
+假设$\theta$依赖于时空坐标$x$，称为轴子场
+\begin{gather*}
+    S=\int \d^4 x\left[-\frac{1}{4} \int \d^4 x F^{\mu \nu} F_{\mu \nu}+\frac{e^2}{32\pi^2 \hbar} \theta(x) \epsilon^{\mu \nu \rho \sigma} F_{\mu \nu} F_{\rho \sigma}\right]
+\end{gather*}
+\begin{align*}
+    \delta S&=\int \d^4 x\left[\partial_{\mu} F^{\mu \nu} \delta A_{\nu}+\frac{e^2}{16\pi^2 \hbar} \theta(x) \epsilon^{\mu \nu \rho \sigma} F_{\mu \nu} \delta F_{\rho \sigma}\right]
+    \\
+    &=\int \d^4 x\left[\partial_{\mu} F^{\mu \nu} \delta A_{\nu}+\frac{e^2}{4\pi^2 \hbar} \theta(x) \tilde{F}^{\rho \sigma} \partial_{\rho}(\delta A_{\sigma})\right]
+    \\
+    &=\int \d^4 x \left[\partial_{\mu} F^{\mu \nu}-\frac{e^2}{4\pi^2 \hbar} \partial_{\mu}(\theta(x)\tilde{F}^{\mu \nu})\right] \delta A_{\nu}
+\end{align*}
+得到轴子电动力学场方程
+\begin{gather*}
+    \partial_{\mu} \left[F^{\mu \nu}-\frac{e^2}{4\pi^2 \hbar} \theta(x)\tilde{F}^{\mu \nu}\right]=0
+    \\
+    \intertext{注意到}
+    \partial_{\mu} \tilde{F}^{\mu \nu}=0
+    \\
+    \implies \partial_{\mu} F^{\mu \nu}=\frac{e^2}{4\pi^2 \hbar} (\partial_{\mu} \theta) \tilde{F}^{\mu \nu}
+\end{gather*}
+\begin{itemize}
+    \item 将$\frac{e^2}{4\pi^2 \hbar} \theta(x)\tilde{F}^{\mu \nu}$看作磁化极化张量$M^{\mu \nu}$
+    \begin{gather*}
+        \intertext{本构关系}
+        \begin{cases}
+            \bm{D}=\bm{E}+\frac{\alpha}{\pi} \theta \bm{B}
+            \\
+            \bm{H}=\bm{B}-\frac{\alpha}{\pi} \theta \bm{E}
+        \end{cases}
+        \\
+        \intertext{场方程$\partial_{\mu} H^{\mu \nu}=0$给出}
+        \nabla \cdot \bm{D}=0,\quad \nabla \times \bm{H}=\pt{\bm{D}}{t}
+        \\
+        \intertext{$\partial_{\mu} \tilde{F}^{\mu \nu}=0$给出}
+        \nabla \cdot \bm{B}=0,\quad \nabla \times \bm{E}=-\pt{\bm{B}}{t}
+    \end{gather*}
+    \item 将$-\frac{e^2}{4\pi^2 \hbar} (\partial_{\mu} \theta) \tilde{F}^{\mu \nu}$看作电流四矢量$J_I^{\nu}$
+    \begin{gather*}
+        J_I^{\nu}=-\frac{\alpha}{\pi} (\partial_{\mu} \theta) \tilde{F}^{\mu \nu}
+        \\
+        \begin{cases}
+            \rho_I=-\frac{\alpha}{\pi} \nabla \theta \cdot \bm{B}
+            \\
+            \bm{J}_I=\frac{\alpha}{\pi} (\dot{\theta} \bm{B}+\nabla \theta \times \bm{E})
+        \end{cases}
+        \\
+        \intertext{场方程给出}
+        \nabla \cdot \bm{E}=\rho_I,\quad \nabla \times \bm{B}-\pt{\bm{E}}{t}=\bm{J}_I
+        \\
+        \intertext{$\partial_{\mu} \tilde{F}^{\mu \nu}=0$给出}
+        \nabla \cdot \bm{B}=0,\quad \nabla \times \bm{E}=-\pt{\bm{B}}{t}
+    \end{gather*}
+\end{itemize}
+
+\subsection{拓扑绝缘体}
+
+拓扑绝缘体内部可以实现轴子电动力学，如$Bi_2 Se_3$和$Bi_2 Te_3$，在拓扑绝缘体内部$\theta=\pi$，外部$\theta=0$
+
+拓扑绝缘体有拓扑磁电效应，考虑填满$z<0$空间的拓扑绝缘体材料，在材料内部施加电场$\bm{E}=E\bm{e}_y$，电流密度$J_x=-\frac{\alpha}{\pi} \partial_z \theta E_y$，面电流密度
+\begin{gather*}
+    K_x=\int J_x \d z=\alpha E_y
+    \\
+    \intertext{Hall电导}
+    \sigma_{xy}=\alpha=\frac{1}{2} \frac{e^2}{2\pi \hbar}
+\end{gather*}
+而量子Hall效应结果指出，Hall电导为$\frac{e^2}{2\pi \hbar}$的有理数倍
+
+也可以用边值关系求解
+
+\subsection{Witten效应}
+
+将磁荷$g$的磁单极子放到真空中，在外侧球对称地包裹$\theta \neq 0$的介质，在介质中既有电场又有磁场，则对于介质，相当于磁单极子携带电荷
+\begin{gather*}
+    q=\int \d^3 \bm{x} \rho_I=-\frac{e^2}{4\pi^2 \hbar} \frac{\theta}{\pi} g
+\end{gather*}
+取最小磁荷$g=\frac{2\pi \hbar}{e}$
+\begin{gather*}
+    q=-\frac{\theta}{2\pi} e
+\end{gather*}
+
+$\bm{E}$在空间反演下是奇的，在时间反演下是偶的，而$\bm{B}$在空间反演下是偶的，在时间反演下是奇的
+\begin{gather*}
+    S_{\theta}=\theta \frac{e^2}{4\pi^2 \hbar} \int \d^4 x \bm{E} \cdot \bm{B}
+\end{gather*}
+在空间和时间反演下都是奇的，除非$\theta=0,\pi$，因此拓扑绝缘体分为这两种

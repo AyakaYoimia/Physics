@@ -1,0 +1,194 @@
+\chapter{介质中的电磁场与偶极辐射}
+
+\section{偶极耦合}
+
+考虑质量$m$、电荷$+q$、位于$x_1^{\mu}$的粒子，绕着电荷$-q$、位于$x_2^{\mu}$的核运动
+\begin{gather*}
+    \intertext{作用量}
+    S_I=-q \int \bm{A}_{\mu} \d x_2^{\mu}+q \int \bm{A}_{\mu} \d x_1^{\mu}=\int \d t \left[q \phi(x_2)-q \bm{A}(x_2) \cdot \dot{\bm{x}}_2 \right]+\int \d t \left[-q \phi(x_1)+q \bm{A}(x_1) \cdot \dot{\bm{x}}_1 \right]
+\end{gather*}
+假设核和粒子只在空间原点附近微小运动，在空间原点处做Taylor展开
+\begin{gather*}
+    S_I \approx \int \d t \left[q \bm{A}(t,0) \cdot (\dot{\bm{x}}_1-\dot{\bm{x}}_2)\right]+\int \d t \left[-q \nabla \phi(t,0) \cdot (\bm{x}_1-\bm{x}_2)\right]+\int \d t \left[q \partial_i A_j(t,0)(x_1^i \dot{x}_1^j-x_2^i \dot{x}_2^j)\right]
+\end{gather*}
+对第一项分部积分，得到
+\begin{gather*}
+    \int \bm{E}(t,0) \cdot \bm{p}
+\end{gather*}
+对第三项进行规范变换，
+\begin{gather*}
+    A_j \to A_j-\partial_j \varepsilon
+    \\
+    \varepsilon=\frac{1}{2} A_i(t,\bm{x}) x^i
+    \\
+    \int \d t \partial_i A_j(t,0) x^i \dot{x}^j \to \frac{1}{2} \int \d t F_{ij}(t,0) x^i \dot{x}^j=\int \d t \frac{1}{2} \epsilon_{ijk} B^k(t,0) x^i \dot{x}^j
+    \\
+    \intertext{磁矩}
+    m_k=\frac{1}{2} q \epsilon_{ijk} (x_1^i \dot{x}_1^j-x_2^i \dot{x}_2^j)
+\end{gather*}
+总作用量
+\begin{gather*}
+    S_I \approx \int \d t \left[\bm{p} \cdot \bm{E}(t,0)+\bm{m} \cdot \bm{B}(t,0)\right]
+\end{gather*}
+容易推广到多粒子体系
+\begin{gather*}
+    \intertext{定义极化-磁化张量}
+    M^{\mu \nu} \to \begin{bmatrix}
+        0 & -cP_1 & -cP_2 & -cP_3 \\
+        cP_1 & 0 & M_3 & -M_2 \\
+        cP_2 & -M_3 & 0 & M_1 \\
+        cP_3 & M_2 & -M_1 & 0
+    \end{bmatrix}
+    \\
+    S_I=\int \d^4 x \left[\bm{P} \cdot \bm{E}+\bm{M} \cdot \bm{B}\right]=\frac{1}{2} \int \d^4 x M_{\mu \nu} F^{\mu \nu}
+\end{gather*}
+
+\section{介质中的电磁场}
+
+\begin{gather*}
+    S_I=\frac{1}{2} \int \d^4 x M_{\mu \nu} F^{\mu \nu}
+    \\
+    \intertext{对$A_{\mu}$进行变分并分部积分得到}
+    \delta S_I=-\int \d^4 x (\partial_{\mu} M^{\mu \nu}) \delta A_{\nu}
+    \\
+    \intertext{诱导出电流}
+    J_I^{\nu}=-\partial_{\mu} M^{\mu \nu}
+    \\
+    \rho_I=-\nabla \cdot \bm{P},\quad \bm{J}_I=\pt{\bm{P}}{t}+\nabla \times \bm{M}
+\end{gather*}
+自由电流$J_f^{\mu}$与电磁场耦合作用量$S_f$，电磁场自身作用量$S_{em}=-\frac{1}{4\mu_0} \int \d^4 x F_{\mu \nu} F^{\mu \nu}$，整个系统作用量
+\begin{gather*}
+    S=S_{em}+S_I+S_f
+    \\
+    \intertext{对$A_{\mu}$变分得到Maxwell方程}
+    -\partial_{\mu} F^{\mu \nu}=\mu_0(J_f^{\nu}+J_I^{\nu})
+    \\
+    \intertext{定义}
+    H^{\mu \nu}=\frac{1}{\mu_0} F^{\mu \nu}-M^{\mu \nu}
+    \\
+    \intertext{得到}
+    -\partial_{\mu} H^{\mu \nu}=J_f^{\nu}
+    \\
+    \intertext{加上Bianchi恒等式就得到Maxwell方程组}
+    \partial_{\mu} F_{\nu \rho} + \partial_{\nu} F_{\rho \mu} + \partial_{\rho} F_{\mu \nu}=0
+    \\
+    \intertext{定义电位移矢量和磁场强度}
+    H^{0i}=cD_i,\quad H^{ij}=\epsilon^{ijk} H_k
+    \\
+    \bm{D}=\varepsilon_0 \bm{E}+\bm{P},\quad \bm{H}=\frac{1}{\mu_0} \bm{B}-\bm{M}
+    \\
+    \intertext{矢量形式Maxwell方程组}
+    \begin{cases}
+        \nabla \cdot \bm{D}=\rho_f
+        \\
+        \nabla \times \bm{H}=\pt{\bm{D}}{t} + \bm{J}_f
+        \\
+        \nabla \cdot \bm{B}=0
+        \\
+        \nabla \times \bm{E}=-\pt{\bm{B}}{t}
+    \end{cases}
+    \\
+    \intertext{本构关系}
+    \bm{D}=\bm{D}(\bm{E},\bm{B}),\quad \bm{H}=\bm{H}(\bm{E},\bm{B})
+\end{gather*}
+\begin{itemize}
+    \item 对于均匀各向同性线性介质，在介质参考系内
+    \begin{gather*}
+        \bm{P}=\varepsilon_0 \chi \bm{E},\quad \bm{D}=\varepsilon \bm{E}
+        \\
+        \bm{M}=\kappa \bm{H},\quad \bm{B}=\mu \bm{H}
+    \end{gather*}
+    \item 对于导电介质，还有欧姆定律
+    \begin{gather*}
+        \bm{J}_f=\sigma \bm{E}
+    \end{gather*}
+\end{itemize}
+
+\subsection{线性介质中电磁场的能量和动量}
+
+\begin{gather*}
+    \intertext{能量-动量张量}
+    T_{\text{em}}^{\mu \nu}=\frac{1}{\mu_0} \left[{F^{\mu}}_{\rho} F^{\nu \rho}-\frac{1}{4} \eta^{\mu \nu} F_{\rho \sigma} F^{\rho \sigma}\right]
+    \\
+    \partial_{\mu} T_{\text{em}}^{\mu \nu}=-{F^{\nu}}_{\rho} J^{\rho}
+    \\
+    \intertext{假设没有自由电流}
+    \partial_{\mu} T_{\text{em}}^{\mu \nu}=-{F^{\nu}}_{\rho} J_I^{\rho}
+\end{gather*}
+\begin{align*}
+    \partial_{\mu} T_{\text{em}}^{\mu \nu}&={F^{\nu}}_{\rho} \partial_{\mu} M^{\mu \rho}
+    \\
+    &=\partial_{\mu} ({F^{\nu}}_{\rho} M^{\mu \rho})-(\partial^{\mu} F^{\nu \rho}) M_{\mu \rho}
+    \\
+    &=\partial_{\mu} ({F^{\nu}}_{\rho} M^{\mu \rho})-\frac{1}{2} (\partial^{\mu} F^{\nu \rho}-\partial^{\rho} F^{\nu \mu})M_{\mu \rho}
+    \\
+    &=\partial_{\mu} ({F^{\nu}}_{\rho} M^{\mu \rho})=\frac{1}{2} (\partial^{\mu} F^{\rho \nu}+\partial^{\rho} F^{\nu \mu})M_{\mu \rho}
+\end{align*}
+\begin{gather*}
+    \partial_{\mu} \left[T_{\text{em}}-{F^{\nu}}_{\rho} M^{\mu \rho}\right]=-\frac{1}{2}(\partial^{\nu} F^{\mu \rho}) M_{\mu \rho}=-\frac{1}{4} \partial^{\nu} (F^{\mu \rho} M_{\mu \rho})+\frac{1}{4}F^{\mu \rho} (\partial^{\nu} M_{\mu \rho})-\frac{1}{4}(\partial^{\nu} F^{\mu \rho}) M_{\mu \rho}
+    \\
+    \partial_{\mu} \left[T_{\text{em}}-{F^{\nu}}_{\rho} M^{\mu \rho}\right]+\frac{1}{4} \partial^{\nu} (F^{\mu \rho} M_{\mu \rho})=\frac{1}{4}\left[F^{\mu \rho} (\partial^{\nu} M_{\mu \rho})-(\partial^{\nu} F^{\mu \rho}) M_{\mu \rho}\right]
+\end{gather*}
+
+\section{偶极子的场}
+
+\subsection{静态偶极子的场}
+
+假设偶极子位于原点
+\begin{align*}
+    L&=\int \d^3 \bm{x} \left[\frac{1}{2} \varepsilon_0 \bm{E}^2-\frac{1}{2\mu_0} \bm{B}^2+(\bm{p} \cdot \bm{E}) \delta^3(\bm{x})+(\bm{m} \cdot \bm{B}) \delta^3(\bm{x})\right]
+    \\
+    &=\int \d^3 \bm{x} \left[\frac{1}{2} \varepsilon_0 (\nabla \phi)^2-\frac{1}{2\mu_0} (\nabla \times \bm{A})^2-(\bm{p} \cdot \nabla \phi) \delta^3(\bm{x})+(\bm{m} \cdot (\nabla \times \bm{A})) \delta^3(\bm{x})\right]
+\end{align*}
+对$\phi$和$\bm{A}$变分，得到
+\begin{gather*}
+    \varepsilon_0 \nabla^2 \phi=\bm{p} \cdot \nabla \delta^3(\bm{x})
+    \\
+    -\frac{1}{\mu_0} \nabla \times (\nabla \times \bm{A})=\bm{m} \times \nabla \delta^3(\bm{x})
+    \\
+    \intertext{取Coulomb规范}
+    \frac{1}{\mu_0} \nabla^2 \bm{A}=\bm{m} \times \nabla \delta^3(\bm{x})
+    \\
+    \intertext{注意到}
+    \delta^3(\bm{x})=-\nabla^2 \left(\frac{1}{4\pi |\bm{x}|}\right)
+    \\
+    \intertext{得到}
+    \phi=\frac{\bm{p} \cdot \bm{x}}{4\pi \varepsilon_0 |\bm{x}|^3}
+    \\
+    \bm{A}=\frac{\mu_0}{4\pi} \frac{\bm{m} \times \bm{x}}{|\bm{x}|^3}
+    \\
+    \bm{E}=\frac{1}{4\pi \varepsilon_0} \frac{3(\bm{p} \cdot \bm{n})\bm{n}-\bm{p}}{|\bm{x}|^3}
+    \\
+    \bm{B}=\frac{\mu_0}{4\pi} \frac{3(\bm{m} \cdot \bm{n})\bm{n}-\bm{m}}{|\bm{x}|^3}
+\end{gather*}
+
+\subsection{偶极辐射}
+
+假设电偶极矩与磁偶极矩随时间变化，诱导电流
+\begin{gather*}
+    \rho_I(\bm{x},t)=-\bm{p}(t) \cdot \nabla \delta^3(\bm{x})
+    \\
+    \bm{J}_I(\bm{x},t)=\dot{\bm{p}}(t) \delta^3(\bm{x})-\bm{m}(t) \times \nabla \delta^3(\bm{x})
+\end{gather*}
+代入推迟势公式
+\begin{align*}
+    \phi(\bm{x},t)&=\frac{1}{4\pi \varepsilon_0} \int \d^3 \bm{x'} \frac{-\bm{p}(t-\frac{|\bm{x}-\bm{x'}|}{c}) \cdot \nabla' \delta^3(\bm{x'})}{|\bm{x}-\bm{x'}|}
+    \\
+    &=\frac{1}{4\pi \varepsilon_0} \int \d^3 \bm{x'} \delta^3(\bm{x'}) \nabla' \cdot \frac{\bm{p}(t-\frac{|\bm{x}-\bm{x'}|}{c})}{|\bm{x}-\bm{x'}|}
+    \\
+    &=-\frac{1}{4\pi \varepsilon_0} \int \d^3 \bm{x'} \delta^3(\bm{x'}) \nabla \cdot \frac{\bm{p}(t-\frac{|\bm{x}-\bm{x'}|}{c})}{|\bm{x}-\bm{x'}|}
+    \\
+    &=-\frac{1}{4\pi \varepsilon_0} \nabla \cdot \frac{\bm{p}(t-\frac{|\bm{x}|}{c})}{|\bm{x}|}
+\end{align*}
+\begin{align*}
+    \bm{A}(\bm{x},t)&=\frac{\mu_0}{4\pi} \int \d^3 \bm{x'} \frac{\dot{\bm{p}}(t-\frac{|\bm{x}-\bm{x'}|}{c}) \delta^3(\bm{x'})-\bm{m}(t-\frac{|\bm{x}-\bm{x'}|}{c}) \times \nabla' \delta^3(\bm{x'})}{|\bm{x}-\bm{x'}|}
+    \\
+    &=\frac{\mu_0}{4\pi|\bm{x}|}\dot{\bm{p}}(t-\frac{|\bm{x}|}{c})+\frac{\mu_0}{4\pi} \nabla \times \frac{\bm{m}(t-\frac{|\bm{x}|}{c})}{|\bm{x}|}
+\end{align*}
+\begin{gather*}
+    \intertext{记$\bm{p}(t-\frac{|\bm{x}|}{c}=[\bm{p}]$)}
+    \partial_i [p_j]=-[\dot{p}_j] \partial_i \frac{|\bm{x}|}{c}=-\frac{1}{c} n_i [\dot{p}_j]
+    \\
+    \intertext{保留到$\frac{1}{|\bm{x}|}$阶}
+    \bm{E}=\frac{\mu_0}{4\pi} \frac{(\bm{n} \cdot [\ddot{\bm{p}}])\bm{n}-[\ddot{\bm{p}}]}{|\bm{x}|}
+\end{gather*}

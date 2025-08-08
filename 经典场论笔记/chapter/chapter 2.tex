@@ -1,0 +1,23 @@
+\chapter{相对性原理与场论}
+
+由于Lorentz协变性，作用量是标量；由于局域性，作用量可以写成
+\begin{gather*}
+    S=\int \d^4 x \mathscr{L}
+\end{gather*}
+$\mathscr{L}$是标量
+
+考虑标量场论，场变量$\phi$，$\mathscr{L}=\mathscr{L}(\phi,\partial_{\mu}\phi)$，场方程
+\begin{gather*}
+    \partial_{\mu} \left(\pt{\mathscr{L}}{(\partial_\mu \phi)}\right)=\pt{\mathscr{L}}{\phi}
+\end{gather*}
+
+最简单Lagrangian密度
+\begin{gather*}
+    \mathscr{L}=-\frac{1}{2}\partial_\mu \phi \partial^\mu \phi-\mathscr{U}(\phi)
+    \\
+    \intertext{对于复标量场}
+    \mathscr{L}=-\partial_\mu \overline{\phi} \partial^\mu \phi-\mathscr{U}(\overline{\phi}\phi)
+    \\
+    \intertext{满足$U(1)$对称性，在如下变换下不变}
+    \phi \to \e^{\i \theta} \phi,\quad \overline{\phi} \to \e^{-\i \theta} \overline{\phi}
+\end{gather*}

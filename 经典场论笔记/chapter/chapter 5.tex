@@ -1,0 +1,241 @@
+\chapter{超导的有效理论以及涡旋解}
+
+\section{Ginzburg-Landau理论}
+
+Ginzburg-Landau理论原始版本是非相对论理论，在静态场位形下无需区分非相对论与相对论，考虑相对论性的复标量场与电磁场耦合系统
+\begin{gather*}
+    S=\int \d^4 x \left[-\frac{1}{4} F_{\mu \nu} F^{\mu \nu}-\overline{\D_\mu \phi} \D^\mu \phi-\frac{g}{2}(|\phi|^2-u)^2\right] \quad u>0
+    \\
+    T^{\mu \nu}={F^{\mu}}_{\rho} F^{\nu \rho}-\frac{1}{4} \eta^{\mu \nu} F_{\rho \sigma} F^{\rho \sigma}+\overline{\D^{\mu} \phi} \D^{\nu} \phi+\D^{\mu} \phi \overline{\D^{\nu} \phi}-\eta^{\mu \nu} \left[\overline{\D_\rho \phi} \D^\rho \phi+\frac{g}{2} (|\phi|^2-u)^2\right]
+    \\
+    \intertext{能量密度}
+    \mathscr{H}=T^{00}=\frac{1}{2}(\bm{E}^2+\bm{B}^2)+|\D_0 \phi|^2+\displaystyle \sum_{i=1}^{3}|\D_i \phi|^2+\frac{g}{2} (|\phi|^2-u)^2
+    \\
+    \intertext{选取轴规范}
+    A^0=0
+    \\
+    \intertext{静态场位形下，$\bm{E}=0,\D_0 \phi=0$，Ginzburg-Landau能量泛函}
+    H=\int \d^3 \bm{x} \left[\frac{1}{2}\bm{B}^2+\displaystyle \sum_{i=1}^{3}|\D_i \phi|^2+\frac{g}{2} (|\phi|^2-u)^2\right]
+    \\
+    \intertext{最小作用量原理}
+    \delta H=0
+\end{gather*}
+$\phi$称为序参量，耦合常数$e=\frac{q_{cp}}{\hbar}$，$q_{cp}$为Cooper对的电荷量
+\begin{gather*}
+    \intertext{记除磁能之外的能量为}
+    H_m=\int \d^3 \bm{x} \left[+\displaystyle \sum_{i=1}^{3}|\D_i \phi|^2+\frac{g}{2} (|\phi|^2-u)^2\right]
+    \\
+    \delta H_m=-\int \d^3 \bm{x} \bm{J}_A \cdot \delta \bm{A}
+    \\
+    J_A^i=\i e(\phi \overline{\D_i \phi}-\overline{\phi} \D_i \phi)
+    \\
+    \intertext{设}
+    \phi(x)=|\phi| \e^{\i \theta(x)}
+    \\
+    H_m=\int \d^3 \bm{x}\left[(\partial_i |\phi|)^2+|\phi|^2 (\partial_i \theta-e A_i)^2+\frac{g}{2}(|\phi|^2-u)^2\right]
+    \\
+    \bm{J}_A=2e|\phi|^2(\nabla \theta-e\bm{A})
+    \\
+    \delta H=-\int \d^3 \bm{x} J_A^i \delta A_i=\frac{1}{e} \int \d^3 \bm{x} J_A^i \delta (\partial_i \theta)=-\frac{1}{e} \int \d^3 \bm{x} (\partial_i J_A^i) (\delta \theta)=0
+\end{gather*}
+固定$|\phi|$
+\begin{align*}
+    \delta H &=\int \d^3 \bm{x} \left[B_i \delta B^i+\frac{1}{e} J_A^i \delta(\partial_i \theta)-J_A^i \delta A_i\right]
+    \\
+    &=\int \d^3 \bm{x} \left[B_i \epsilon^{ijk} \delta (\partial_j A_k)-J_A^i \delta A_i+\frac{1}{e} J_A^i \delta(\partial_i \theta)\right]
+    \\
+    &=\int \d^3 \bm{x} \left[-\epsilon^{ijk} (\partial_j B_i) \delta A_k - J_A^i \delta A_i+\frac{1}{e} J_A^i \delta(\partial_i \theta)\right]
+    \\
+    &=\int \d^3 \bm{x} \left[(\epsilon^{ijk} \partial_j B_k-J_A^i) \delta A_i+\frac{1}{e} J_A^i \delta(\partial_i \theta)\right]
+    \\
+    \implies & \quad \nabla \cdot \bm{J}_A=0,\quad \nabla \times \bm{B}=\bm{J}_A
+\end{align*}
+
+系统能量最小时，
+\begin{gather*}
+    |\phi|=\sqrt{u},\quad \partial_i \theta-e A_i=0
+    \\
+    \bm{J}_A=0,\quad \bm{B}=\nabla \times \bm{A}=\frac{1}{e} \nabla \times \nabla \theta=0
+\end{gather*}
+此时称为超导相，而$|\phi|=0,\partial_i \theta \neq e A_i$的相称为正常相
+
+\begin{enumerate}
+    \item 对相位场和磁矢势场微扰
+    \begin{gather*}
+        \nabla \cdot \delta \bm{J}_A=0,\quad \nabla \times \delta \bm{B}=\delta \bm{J}_A
+        \\
+        \implies 
+        \begin{cases}
+            \nabla^2 \delta \theta=e\nabla \cdot \delta \bm{A}
+            \\
+            \nabla \times (\nabla \times \delta \bm{A})=2eu(\nabla \delta \theta-e\delta \bm{A})
+        \end{cases}
+        \\
+        \intertext{选取规范}
+        \nabla \cdot \delta \bm{A}=2eu \delta \theta
+        \\
+        \begin{cases}
+            \nabla^2 \delta \theta=2e^2 u\delta \theta
+            \\
+            \nabla^2 \delta \bm{A}=2e^2 u\delta \bm{A}
+        \end{cases}
+    \end{gather*}
+    解为指数衰减，特征长度为穿透深度
+    \begin{gather*}
+        \lambda=\frac{1}{\sqrt{2e^2 u}}
+    \end{gather*}
+    \item 对模长场微扰
+    \begin{gather*}
+        |\phi|=\sqrt{u}+\rho
+        \\
+        H_m \approx \int \d^3 \bm{x} \left[(\partial_i \rho)^2+2gu\rho^2\right]
+        \\
+        \implies \nabla^2 \rho=2gu \rho
+        \\
+        \intertext{解为指数衰减，特征长度为关联长度}
+        \xi=\frac{1}{\sqrt{2gu}}
+    \end{gather*}
+    \item 引入第三个参数
+    \begin{gather*}
+        \kappa=\frac{\lambda}{\xi}=\sqrt{\frac{g}{e^2}}
+    \end{gather*}
+    $\kappa<1$为第一类超导体，$\kappa>1$为第二类超导体
+\end{enumerate}
+
+正常相变为超导相能量密度减少
+\begin{gather*}
+    \Delta=\frac{1}{2}gu^2=\frac{1}{8e^2\lambda^2 \xi^2}
+\end{gather*}
+若正常相下存在外磁场$B$，当$\frac{1}{2} B^2 < \Delta$时系统才会倾向于处于超导相
+
+\section{涡旋解}
+
+超导体中，可能存在管状区域，中心处于正常态，超导体内部绕管状区域的闭合回路上
+\begin{gather*}
+    \Phi=\oint_L \bm{A} \cdot \d \bm{l}=\frac{1}{e} \oint_L \nabla \theta \d \bm{l}=\frac{\Delta \theta}{e}=\frac{2N\pi}{e}
+    \\
+    \intertext{得到磁通量子化，量子化单位为}
+    \Phi_0=\frac{2\pi}{e}
+\end{gather*}
+
+Bogomolnyi证明了仅对于第二类超导体，通量$N\Phi_0$的涡旋线在分解为$N$个通量为$\Phi_0$的涡旋线时更加稳定。设单位横截面积涡旋线数密度为$n$，在半径$\xi$的管状区域内接近正常态，为了使管状区域不重叠，限制$n<\frac{1}{\pi \xi^2}$，产生涡旋线单位体积需要能量$n \pi \xi^2 \Delta$，
+\begin{gather*}
+    \intertext{单位体积涡旋态能量}
+    W_V=\begin{cases}
+        n\pi \xi^2 \Delta+\frac{1}{2} B^2(1-n\pi \lambda^2),\quad n<\frac{1}{\pi \lambda^2}
+        \\
+        n\pi \xi^2 \Delta,\quad n>\frac{1}{\pi \lambda^2}
+    \end{cases}
+    \\
+    \intertext{正常态单位体积比超导态多出的能量}
+    W_N \approx \Delta
+    \\
+    \intertext{超导态为了排除磁场，单位体积需要能量}
+    W_S=\frac{1}{2} B^2
+\end{gather*}
+\begin{itemize}
+    \item 对于第一类超导体，$n<\frac{1}{\pi \xi^2}<\frac{1}{\pi \lambda^2}$
+    \begin{itemize}
+        \item 当$B<\sqrt{2\Delta}$时，$W_V>\frac{1}{2}B^2+n\pi(\xi^2-\lambda^2)\Delta>W_S$
+        \item 当$B>\sqrt{2\Delta}$时，$W_V>\Delta[1+n\pi(\xi^2-\lambda^2)]>W_N$
+    \end{itemize}
+    不存在涡旋态
+    \item 对于第二类超导体，磁场分为三个区域，临界值
+    \begin{gather*}
+        B_{c1}=\sqrt{2\Delta} \frac{\xi}{\lambda},\quad B_{c2}=\sqrt{2\Delta} \frac{\lambda}{\xi}
+    \end{gather*}
+    根据Bogomolnyi证明的结论，$n=\frac{B}{\Phi_0}$
+    \begin{itemize}
+        \item 当$B<B_{c1}$时，$n<\frac{B_{c1}}{\Phi_0}=\frac{1}{4\pi \lambda^2} \sim \frac{1}{\pi \lambda^2}$
+        \begin{gather*}
+            W_V = n\pi \xi^2 \Delta+\frac{1}{2} B^2(1-n\pi \lambda^2)=\frac{1}{2} B^2+n\pi(\xi^2 \Delta-\frac{1}{2} B^2 \lambda^2)>\frac{1}{2}B^2=W_S
+            \\
+            W_N=\Delta=\frac{1}{2} B_{c1}^2 \frac{\lambda^2}{\xi^2}>\frac{1}{2} B^2=W_S
+        \end{gather*}
+        系统处于超导态
+        \item 当$B>B_{c1}$时，$n>\frac{B_{c1}}{\Phi_0}=\frac{1}{4\pi \lambda^2} \sim \frac{1}{\pi \lambda^2}$
+        \begin{gather*}
+            W_V = n\pi \xi^2 \Delta =\frac{1}{2}eB\xi^2 \Delta \sim \frac{B}{B_{c2}}W_N \sim \frac{B_{c1}}{B} W_S
+        \end{gather*}
+        \begin{itemize}
+            \item 当$B_{c1}<B<B_{c2}$时，$W_V<W_N,W_V<W_S$，系统处于涡旋态
+            \item 当$B>B_{c2}$时，$W_V<W_S,W_V>W_N$，系统处于正常态
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+考虑在$x_3$方向上具有对称性的涡旋解，只考虑第二类超导体，
+\begin{gather*}
+    \intertext{静态场位形能量}
+    H=\int \d^2 x \left[\frac{1}{2} B^2+\displaystyle \sum_{i=1}^{2} |\D_i \phi|^2 + \frac{g}{2} (|\phi|^2-u)^2\right]
+\end{gather*}
+\begin{align*}
+    |\D_1 \phi|^2+|\D_2 \phi|^2&=|(\D_1 \pm \i \D_2)\phi|^2 \mp \i \overline{\D_1 \phi} \D_2 \phi \pm \i \overline{\D_2 \phi} \D_1 \phi
+    \\
+    &=|(\D_1 \pm \i \D_2)\phi|^2 \mp \i \epsilon^{ij} \overline{\D_i \phi} \D_j \phi
+    \\
+    \mp \i \epsilon^{ij} \overline{\D_i \phi} \D_j \phi &=\mp \i \epsilon^{ij} (\partial_i \overline{\phi})\D_j \phi \pm \epsilon^{ij} e A_i \overline{\phi} \D_j \phi
+    \\
+    &=\mp \i \epsilon^{ij} \partial_i (\overline{\phi}\D_j \phi) \pm \i \epsilon^{ij} \overline{\phi} (\partial_i \D_j \phi) \pm \epsilon^{ij} e A_i \overline{\phi} \D_j \phi
+    \\
+    &=\mp \i \epsilon^{ij} \partial_i (\overline{\phi}\D_j \phi) \pm \i \epsilon^{ij} \overline{\phi} (\D_i \D_j \phi)
+    \\
+    \epsilon^{ij} \D_i \D_j&=\frac{1}{2} \epsilon^{ij} [\D_i,\D_j]=-\i e B
+\end{align*}
+\begin{align*}
+    H=&\int \d^2 x \left[|(\D_1 \pm \i \D_2)\phi|^2 \pm eB(|\phi|^2-u)+\frac{1}{2}B^2+\frac{g}{2}(|\phi|^2-u)^2\right]
+    \\
+    &+\int \d^2 x \left[\pm euB \mp \i \epsilon^{ij} \partial_i(\overline{\phi} \D_j \phi)\right]
+    \\
+    =&\int \d^2 x \left[|(\D_1 \pm \i \D_2)\phi|^2+\frac{1}{2}\left(B\pm e(|\phi^2-u)^2\right)^2+\frac{g-e^2}{2}(|\phi|^2-u)^2\right]
+    \\
+    &+\int \d^2 x \left[\pm euB \mp \i \epsilon^{ij} \partial_i(\overline{\phi} \D_j \phi)\right]
+\end{align*}
+\begin{gather*}
+    \int \d^2 x \epsilon^{ij} \partial_i(\overline{\phi} \D_j \phi)=\int \partial_i(\overline{\phi} \D_j \phi) \d x^i \wedge \d x^j=\int \d (\overline{\phi} \D_j \phi \d x^j)=\oint \overline{\phi} \D_j \phi \d x^j
+    \\
+    \intertext{无穷远处，$|\phi| \to \sqrt{u},\D_i \phi \to 0$}
+    \int \d^2 x \epsilon^{ij} \partial_i(\overline{\phi} \D_j \phi)=0
+    \\
+    H=\int \d^2 x \left[|(\D_1 \pm \i \D_2)\phi|^2+\frac{1}{2}\left(B\pm e(|\phi^2-u)^2\right)^2+\frac{g-e^2}{2}(|\phi|^2-u)^2\right] \pm 2\pi N u
+    \\
+    \intertext{Bogomolny能限}
+    H \geq 2 \pi |N| u
+\end{gather*}
+
+对于临界超导体$g=e^2$
+\begin{gather*}
+    H=\int \d^2 x \left[|(\D_1 \pm \i \D_2)\phi|^2+\frac{1}{2}\left(B\pm e(|\phi^2-u)^2\right)^2\right] \pm 2\pi N u
+    \\
+    \intertext{能量最小时满足BPS方程}
+    (\D_1 + \i \D_2) \phi=0,\quad B+e(|\phi|^2-u)=0
+\end{gather*}
+引入极坐标$(r,\alpha)$，在无穷远处$\theta$变化$N$圈，可取$\theta(x)=N\alpha$，假设$|\phi|$只与$r$有关，得到
+\begin{align*}
+    A_i&=\frac{1}{e}\left[\epsilon_{ij} \partial_j \ln |\phi|(r)+\partial_i \theta\right]
+    \\
+    B&=\epsilon_{ij} \partial_i A_j
+    \\
+    &=\frac{1}{e}\epsilon_{ij} \epsilon_{jk} \partial_i \partial_k \ln |\phi|+\frac{1}{e} \epsilon_{ij} \partial_i \partial_j \theta
+    \\
+    &=-\frac{1}{e} \partial_i^2 \ln |\phi|+\frac{1}{e} \epsilon_{ij} \partial_i \partial_j \theta
+    \\
+    \intertext{由$\epsilon_{ij} \partial_i \partial_j \alpha=2\pi \delta^2(x)$得}
+    B&=-\frac{1}{e} \partial_i^2 \ln |\phi|+\frac{1}{e} 2\pi N \delta^2(x)
+\end{align*}
+\begin{gather*}
+    \intertext{代入另一个方程得到}
+    \nabla^2 \ln |\phi|(r)=2\pi N \delta^2(x)+e^2(|\phi|^2-u)
+\end{gather*}
+\begin{itemize}
+    \item $r \to \infty$
+    \begin{gather*}
+        |\phi| \to \sqrt{u},\quad A_i \to \frac{1}{e} \partial_i \theta
+    \end{gather*}
+    \item $r \to 0$
+    \begin{gather*}
+        \nabla^2 \ln |\phi|(r)=2\pi N \delta^2(x) \implies |\phi| \to A r^N
+        \\
+        B \to eu
+    \end{gather*}
+\end{itemize}

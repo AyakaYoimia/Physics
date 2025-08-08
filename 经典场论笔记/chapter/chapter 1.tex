@@ -1,0 +1,135 @@
+\chapter{初识经典场论}
+
+狭义相对论相互作用有上限$\implies$近距作用$\implies$场
+
+\section{从粒子到场}
+
+\begin{gather*}
+    \intertext{对于$n$自由度粒子}
+    \begin{cases}
+        S(q_i(t),p_i(t))=\int \d t \left[\displaystyle \sum_{i=1}^{n} p_i \dot{q}_i-H(q_i,p_i)\right]
+        \\
+        \dot{q}_i=\pt{H}{p_i},\quad \dot{p}_i=-\pt{H}{q_i}
+        \\
+        [A,B]=\displaystyle \sum_{i=1}^{n} \left(\pt{A}{q_i} \pt{B}{p_i} - \pt{A}{p_i} \pt{B}{q_i}\right)
+    \end{cases}
+    \\
+    \intertext{连续化指标，$S$和$H$成为泛函}
+    \begin{cases}
+        S[q_\sigma(t),p_\sigma(t)]=\int \d t \left[\int \d \sigma p_\sigma \dot{q}_\sigma-H[q_\sigma,p_\sigma]\right]
+        \\
+        \dot{q}_\sigma=\frac{\delta H}{\delta p_\sigma},\quad \dot{p}_\sigma=-\frac{\delta H}{\delta q_\sigma}
+        \\
+        [A,B]=\int \d \sigma \left(\frac{\delta A}{\delta q_\sigma} \frac{\delta B}{\delta p_\sigma} - \frac{\delta A}{\delta p_\sigma} \frac{\delta B}{\delta q_\sigma}\right)
+    \end{cases}
+    \\
+    \intertext{改写得到标量场}
+    \phi(\sigma,t)=q_\sigma(t),\quad \pi(\sigma,t)=p_\sigma(t)
+    \\
+    \begin{cases}
+        S[\phi(\sigma,t),\pi(\sigma,t)]=\int \d t \d \sigma \pi(\sigma,t) \dot{\phi}(\sigma,t)-\int \d t H[\phi(\sigma),\pi(\sigma)]
+        \\
+        \dot{\phi}(\sigma,t)=\frac{\delta H}{\delta \pi(\sigma)},\quad \dot{\pi}(\sigma,t)=-\frac{\delta H}{\delta \phi(\sigma)}
+        \\
+        [A,B]=\int \d \sigma \left(\frac{\delta A}{\delta \phi(\sigma)} \frac{\delta B}{\delta \pi(\sigma)} - \frac{\delta A}{\delta \pi(\sigma)} \frac{\delta B}{\delta \phi(\sigma)}\right)
+    \end{cases}
+\end{gather*}
+将$\sigma$取为空间位置$\bm{x}$
+
+局域性要求Hamiltonian能够写成如下形式
+\begin{gather*}
+    H=\int \d^3 \bm{x} \mathscr{H}(\pi,\phi,\nabla \phi)
+    \\
+    S[\phi(x),\pi(x)]=\int \d^4 x \left[\pi(x) \dot{\phi}(x)-\mathscr{H}(\pi,\phi,\nabla \phi)\right]
+    \\
+    \intertext{从$\dot{\phi}(x)=\pt{\mathscr{H}}{\pi}$反解出$\phi(x)$，代入$S[\phi(x),\pi(x)]$}
+    S[\phi(x)]=\int \d^4 x \mathscr{L}(\phi,\dot{\phi},\nabla \phi)
+\end{gather*}
+
+根据最小作用量原理，
+\begin{gather*}
+    \delta S[\phi(x)]=0
+    \\
+    \intertext{认为无穷远时间和无穷远处$\delta \phi=0$，得到场方程}
+    \pt{}{t}\left(\pt{\mathscr{L}}{\dot{\phi}}\right) + \nabla \cdot \left(\pt{\mathscr{L}}{\nabla\phi}\right)=\pt{\mathcal{L}}{\phi}
+\end{gather*}
+
+\begin{example}
+    场的相互作用势能$\mathscr{U}(\phi)$
+    \begin{gather*}
+        \mathscr{H}=\frac{1}{2} \left[\pi^2+(\nabla \phi)^2\right]+\mathscr{U}(\phi)
+        \\
+        \mathscr{L}=\frac{1}{2} \left[(\partial_t \phi)^2-(\nabla \phi)^2\right]-\mathscr{U}(\phi)
+        \\
+        \intertext{场方程}
+        \partial_t^2 \phi - \nabla^2 \phi=-\pt{\mathscr{U}}{\phi}
+    \end{gather*}
+\end{example}
+
+\section{粒子作为场方程的解}
+
+考虑$1+1$维时空$(t,\sigma)$
+\begin{gather*}
+    \partial_t^2 \phi - \partial_\sigma^2 \phi=-\pt{\mathscr{U}}{\phi}
+    \end{gather*}
+    假设$\mathscr{U}(\phi)$有最小值且最小值为$0$，定义真空场位形
+    \begin{gather*}
+        \Omega=\left\{\phi \vert \partial_t \phi=\partial_\sigma \phi = 0,\quad \mathscr{U}(\phi)=0\right\}
+    \end{gather*}
+    总能量有限，要求无穷远处为真空场位形
+    \begin{gather*}
+        \phi_{\pm}= \lim_{\sigma \to \pm \infty} \phi(\sigma) \in \Omega
+    \end{gather*}
+    \begin{itemize}
+        \item 若$\phi_+=\phi_-$，场位形拓扑上等价于真空场位形
+        \item 若$\phi_+ \neq \phi_-$，场位形不能连续变形成真空场位形，拓扑上不等价于真空场位形，每对$(\phi_-,\phi_+)$给出场位形的一个拓扑等价类，这样的场位形称为扭结，场方程的扭结解是一种孤立子，对应粒子
+    \end{itemize}
+
+    静态场下能量
+    \begin{align*}
+        E&=V[\phi(\sigma)]
+        \\
+        &=\int_{-\infty}^{+\infty} \d \sigma \left[\frac{1}{2}(\partial_\sigma \phi)^2+\mathscr{U}(\phi)\right]
+        \\
+        &\geq \int_{-\infty}^{+\infty} \sqrt{2\mathscr{U}(\phi)} \partial_\sigma \phi \d \sigma
+        \\
+        \implies E &\geq \left| \int_{\phi_-}^{\phi_+} \sqrt{2\mathscr{U}(\phi)} \d \phi \right|
+        \\
+        \intertext{引入$W(\phi)$使}
+        \mathscr{U}&(\phi)=\frac{1}{2} \left(\dt{W}{\phi}\right)^2
+        \\
+        E &\geq \left|W(\phi_+)-W(\phi_-)\right|
+    \end{align*}
+    该能量下界称为Bogomolny能限，对应静态场位形满足Bogomolny方程
+    \begin{gather*}
+        \partial_{\sigma} \phi=\pm \sqrt{2\mathscr{U}(\phi)}
+    \end{gather*}
+
+\begin{example}[\quad sine-Gordon模型]
+    \begin{gather*}
+        \mathscr{U}(\phi)=1-\cos \phi
+    \end{gather*}
+    真空场位形
+    \begin{gather*}
+        \phi=2\pi n,\quad n \in \mathbb{Z}
+    \end{gather*}
+    每个拓扑等价类由拓扑荷$N$标记
+    \begin{gather*}
+        N=\frac{\phi_+-\phi_-}{2\pi} \in \mathbb{Z}
+    \end{gather*}
+    Bogomolny能限
+    \begin{gather*}
+        E \geq 8|N|
+    \end{gather*}
+    Bogomolny方程
+    \begin{gather*}
+        \begin{cases}
+            \partial_\sigma \phi=2\sin\frac{\phi}{2} \implies \phi(\sigma)=4\arctan\e^{\sigma-a},\quad N=1
+            \\
+            \partial_\sigma \phi=-2\sin\frac{\phi}{2} \implies \phi(\sigma)=4\arctan\e^{-\sigma-a},\quad N=-1
+            \\
+            \text{特解}\phi=2\pi n,\quad n \in \mathbb{Z},\quad N=0
+        \end{cases}
+    \end{gather*}
+    对于$N$为其他值的解，由于扭结之间有相互作用能，无法达到Bogomolny能限，解是不稳定的。$1+1$维sine-Gordon模型是可积场论，可以精确得到所有的多扭结解
+\end{example}

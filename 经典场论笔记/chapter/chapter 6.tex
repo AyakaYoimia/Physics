@@ -1,0 +1,108 @@
+\chapter{带电粒子与电磁场的耦合}
+
+\section{多自由粒子系统}
+
+考虑$N$个相对论性自由粒子组成的系统，作用量
+\begin{gather*}
+    S[x(s)]=-\displaystyle \sum_{n} m_n \int \d \tau_n=-\displaystyle \sum_{n} m_n \int \d s_n \sqrt{-\eta_{\mu \nu} \dt{x_n^{\mu}}{s_n} \dt{x_n^{\nu}}{s_n}}
+\end{gather*}
+仿射参数选为$s_n=\tau_n$
+\begin{gather*}
+    \delta S=-\displaystyle \sum_{n} m_n \int \delta(\d \tau_n)=\displaystyle \sum_{n} m_n \dt{x_n^{\mu}}{\tau_n} \eta_{\mu \nu} \d (\delta x_n^\nu)=-\displaystyle \sum_{n} m_n \int \d \tau_n \dt{^2 x_n^{\mu}}{\tau_n^2} \eta_{\mu \nu} \delta x_n^\nu=0
+    \\
+    \implies m_n \dt{^2 x_n^{\mu}}{\tau_n^2}=0
+\end{gather*}
+
+在时空平移$x_n^\mu \to x_n^{'\mu}=x_n^\mu+a^\mu$下系统不变，取无穷小变换
+\begin{gather*}
+    a^\mu=\varepsilon^\mu(x_n^\mu)
+\end{gather*}
+\begin{align*}
+    \delta S&=\displaystyle \sum_{n} m_n \int \dt{x_n^{\mu}}{\tau_n} \eta_{\mu \nu} \d (\delta x_n^\nu)
+    \\
+    &=\displaystyle \sum_{n} m_n \int \dt{x_n^{\mu}}{\tau_n} \eta_{\mu \nu} \partial_{\rho} \varepsilon^\nu \d x_n^\rho
+    \\
+    &=\displaystyle \sum_{n} m_n \int \dt{x_n^{\mu}}{\tau_n} \partial_{\rho} \varepsilon_\mu \d x_n^\rho
+    \\
+    &=\displaystyle \sum_{n} m_n \int \dt{x_n^{\mu}}{\tau_n} \dt{x_n^{\nu}}{\tau_n} \partial_{\nu} \varepsilon_\mu \d \tau_n
+    \\
+    &=\int \d^4 x \left[\displaystyle \sum_{n} m_n \int \d \tau_n \dt{x_n^{\mu}}{\tau_n} \dt{x_n^{\nu}}{\tau_n} \partial_{\nu} \varepsilon_\mu \delta^4(x-x_n(\tau_n))\right] \partial_{\nu} \varepsilon_\mu(x)
+\end{align*}
+\begin{align*}
+    \intertext{能动张量}
+    T^{\mu \nu}&=\displaystyle \sum_{n} m_n \int \d \tau_n \dt{x_n^{\mu}}{\tau_n} \dt{x_n^{\nu}}{\tau_n} \delta^4(x-x_n(\tau_n))
+    \\
+    &=\displaystyle \sum_{n} m_n \int \d s_n \dt{x_n^{\mu}}{s_n} \dt{x_n^{\nu}}{\tau_n} \partial_{\nu} \delta^4(x-x_n(s_n))
+    \\
+    &=\displaystyle \sum_n \frac{p_n^\mu p_n^\nu}{p_n^0} \delta^3(\bm{x}-\bm{x}_n(t))
+\end{align*}
+\begin{align*}
+    \partial_\mu T^{\mu \nu}&=\displaystyle \sum_{n} m_n \int \d \tau_n \dt{x_n^{\mu}}{\tau_n} \dt{x_n^{\nu}}{\tau_n} \partial_{\mu} \delta^4(x-x_n(\tau_n))
+    \\
+    &=-\displaystyle \sum_{n} m_n \int \d \tau_n \dt{x_n^{\mu}}{\tau_n} \dt{x_n^{\nu}}{\tau_n} \pt{}{x_n^{\mu}} \delta^4(x-x_n(\tau_n))
+    \\
+    &=-\displaystyle \sum_{n} \int \d \tau_n p_n^{\nu} \dt{}{\tau_n} \delta^4(x-x_n(\tau_n))
+    \\
+    &=\displaystyle \sum_{n} \int \d \tau_n \dt{p_n^\nu}{\tau_n} \delta^4(x-x_n(\tau_n))
+\end{align*}
+
+\section{带电粒子与电磁场的耦合}
+
+若前述粒子是带电粒子，与电磁场耦合的作用量
+\begin{gather*}
+    S[x(s)]=-\displaystyle \sum_{n} m_n \int \d \tau_n+\displaystyle \sum_{n} q_n \int A_{\mu} \d x_n^{\mu}
+\end{gather*}
+\begin{align*}
+    \displaystyle \sum_{n} q_n \delta \int A_{\mu} \d x_n^{\mu} &= \displaystyle \sum_{n} q_n \int \left[(\delta A_{\nu}) \d x_n^{\nu} + A_{\mu} \d (\delta x_n^{\mu})\right]
+    \\
+    &=\displaystyle \sum_{n} q_n \int \left[(\partial_{\mu} A_{\nu}) \delta x_n^{\mu} \d x_n^{\nu} - \d A_{\mu} (\delta x_n^{\mu})\right]
+    \\
+    &=\displaystyle \sum_{n} q_n \int \left[\partial_{\mu} A_{\nu} \delta x_n^{\mu} \d x_n^{\nu} - \partial_{\nu} A_{\mu} \d x_n^{\nu} \delta x_n^{\mu}\right]
+    \\
+    &=\displaystyle \sum_{n} q_n \int \d \tau_n F_{\mu \nu} \dt{x_n^{\nu}}{\tau_n} \delta x_n^{\mu}
+\end{align*}
+\begin{gather*}
+    \delta S=\displaystyle \sum_{n} \int \d \tau_n \left[-m_n \dt{^2 x_n^{\mu}}{\tau_n^2}+q_n {F^{\mu}}_{\nu} \dt{x_n^{\nu}}{\tau_n} \right] \delta (x_n)_{\mu}
+    \\
+    \implies \dt{p_n^{\mu}}{\tau_n}=q_n {F^{\mu}}_{\nu} \dt{x_n^{\nu}}{\tau_n}
+\end{gather*}
+
+对规范势$A_{\mu}$变分
+\begin{align*}
+    \delta S&=\displaystyle \sum_{n} q_n \int \d \tau_n \dt{x_n^{\mu}}{\tau_n} \delta A_{\mu}
+    \\
+    &= \int \d^4 x \left[\displaystyle \sum_{n} q_n \int \d \tau_n \dt{x_n^{\mu}}{\tau_n} \delta^4(x-x_n(\tau_n))\right] \delta A_{\mu}
+\end{align*}
+\begin{align*}
+    J^{\mu}(x)&=\displaystyle \sum_{n} q_n \int \d \tau_n \dt{x_n^{\mu}}{\tau_n} \delta^4(x-x_n(\tau_n))
+    \\
+    &=\displaystyle \sum_{n} q_n \int \d s_n \dt{x_n^{\mu}}{s_n} \delta^4(x-x_n(s_n))
+    \\
+    &=\displaystyle \sum_{n} q_n \int \d x_n^0 \dt{x_n^{\mu}}{x_n^0} \delta^4(x-x_n(x_n^0))
+    \\
+    &=\displaystyle \sum_{n} q_n u_n^{\mu} \delta^3(\bm{x}-\bm{x}_n(t))
+\end{align*}
+
+多粒子系统能动张量
+\begin{gather*}
+    \partial_{\mu} T^{\mu \nu}=\displaystyle \sum_{n} \int \d \tau_n q_n {F^{\nu}}_{\rho} \dt{x_n^{\rho}}{\tau_n} \delta^4(x-x_n(\tau_n))={F^{\nu}}_{\rho} J^{\rho}
+\end{gather*}
+电磁场能动张量
+\begin{gather*}
+    T^{\mu \nu}_{\text{em}}={F^{\mu}}_{\rho} F^{\nu \rho}-\frac{1}{4} \eta^{\mu \nu} F_{\rho \sigma} F^{\rho \sigma}
+\end{gather*}
+\begin{align*}
+    \partial_{\mu} T^{\mu \nu}_{\text{em}}&=\partial_{\mu} {F^{\mu}}_{\rho} F^{\nu \rho} + F_{\mu \rho} \partial^{\mu} F^{\nu \rho}-\frac{1}{4} \partial^{\nu} (F_{\mu \rho} F^{\mu \rho})
+    \\
+    &=\partial_{\mu} {F^{\mu}}_{\rho} F^{\nu \rho}+\frac{1}{2} F_{\mu \rho} (\partial^{\mu} F^{\nu \rho}-\partial^{\rho} F^{\nu \mu})-\frac{1}{2} F_{\mu \rho} \partial^{\nu} F^{\mu \rho}
+    \\
+    &=\partial_{\mu} {F^{\mu}}_{\rho} F^{\nu \rho}+\frac{1}{2} F_{\mu \rho} (\partial^{\mu} F^{\nu \rho}+\partial^{\rho} F^{\mu \nu}+\partial^{\nu} F^{\rho \mu})
+    \\
+    &=\partial_{\mu} {F^{\mu}}_{\rho} F^{\nu \rho}
+    \\
+    &=-{F^{\nu}}_{\rho} J^{\rho}
+\end{align*}
+总能动张量守恒
+\begin{gather*}
+    \partial_{\mu} T^{\mu \nu}=0
+\end{gather*}
