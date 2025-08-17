@@ -1,0 +1,150 @@
+\chapter{对称性与对称性自发破缺}
+
+\section{Noether定理}
+
+考虑$n$个标量场$\phi^a(x),a=1,\cdots,n$组成的系统，作用量$S[\phi]$在连续对称变换$g(\theta)$下保持不变，考察$\theta=\varepsilon(x)$的无穷小变换
+\begin{gather*}
+    \phi^a(x) \to \tilde{\phi}^a(x)=\phi^a(x)+\varepsilon(x) F^a(\phi(x))
+    \\
+    \delta S=\int \d^4 x J^\mu \partial_{\mu} \varepsilon=-\int \d^4 x \varepsilon \partial_{\mu} J^{\mu}
+    \\
+    \intertext{真实场位形满足最小作用量原理}
+    \delta S=-\int \d^4 x \varepsilon \partial_{\mu} J^{\mu}=0
+    \\
+    \intertext{由$\varepsilon(x)$任意性，得到四维流守恒方程}
+    \partial_{\mu} J^{\mu}(x)=0
+    \\
+    \intertext{守恒荷}
+    Q=\int \d^3 \bm{x} \rho(\bm{x},t)
+\end{gather*}
+
+\section{对称性}
+
+\subsection{内部对称性}
+
+\begin{enumerate}
+    \item \textbf{$U(1)$对称性}\\
+    考虑复标量场系统
+    \begin{gather*}
+        S[\phi]=-\int \d^4 x[\partial_\mu \overline{\phi} \partial^\mu \phi+\mathscr{U}(\overline{\phi}\phi)]
+        \\
+        \intertext{在如下变换下不变}
+        \phi(x) \to \e^{\i \theta} \phi(x),\quad \overline{\phi}(x) \to \e^{-\i \theta} \overline{\phi}(x)
+        \\
+        \intertext{取无穷小变换$\theta=\varepsilon(x)$}
+        \delta S=-\i \int \d^4 x[\phi \partial^{\mu} \overline{\phi}-\overline{\phi} \partial^\mu \phi] \partial_\mu \varepsilon
+        \\
+        \intertext{守恒流}
+        J^{\mu}=\i [\overline{\phi} \partial^\mu \phi-\phi \partial^{\mu} \overline{\phi}]
+    \end{gather*}
+    \item \textbf{$U(N)$对称性}\\
+    考虑有$N$个复标量场$\phi^i(x),i=1,\cdots,N$的系统，组成列向量
+    \begin{gather*}
+        \Phi=
+        \begin{bmatrix}
+            \phi^1 \\
+            \phi^2 \\
+            \cdots \\
+            \phi^N
+        \end{bmatrix}
+        \\
+        \intertext{在幺正矩阵$U$变换下不变}
+        \Phi(x) \to U\Phi(x),\cdots \Phi^{\dagger}(x) \to \Phi^{\dagger}(x) U^{\dagger}
+        \\
+        U=\e^{\i \theta^a T_a},\quad a=1,2,\cdots,N^2
+        \\
+        \intertext{$\theta^a$为参数，$T_a$为Hermite矩阵。取无穷小变换$\theta^a=\varepsilon^a(x)$}
+        \delta S=\i \int \d^4 x \left[\Phi^{\dagger} T_a \partial^{\mu} \Phi-(\partial^{\mu} \Phi) T_a \Phi\right] \partial_\mu \varepsilon^a
+        \\
+        \intertext{守恒流}
+        J_a^\mu=\i \left[\Phi^{\dagger} T_a \partial^{\mu} \Phi-(\partial^{\mu} \Phi) T_a \Phi\right]
+    \end{gather*}
+\end{enumerate}
+
+\section{时空平移对称性}
+
+考虑实标量场构成的系统，时空平移
+\begin{gather*}
+    x^{\mu} \to x'^{\mu}=x^{\mu}+a^{\mu}
+\end{gather*}
+场变换
+\begin{gather*}
+    \phi(x) \to \phi'(x)=\phi(x')
+\end{gather*}
+取无穷小变换$a^{\mu}=\varepsilon^\mu(x)$，Jacobian
+\begin{gather*}
+    \left|\pt{x'}{x}\right|=1+\partial_{\mu} \varepsilon^{\mu}(x),\quad \left|\pt{x}{x'}\right|=1-\partial_{\mu} \varepsilon^{\mu}(x)
+    \\
+    \delta S=\int \d^4 x \left[\pt{\mathscr{L}}{(\partial_{\nu} \phi)} \partial_{\mu} \phi - {\delta^{\nu}}_{\mu} \mathscr{L}\right] \partial_{\nu} \epsilon^{\mu}
+    \\
+    \intertext{守恒流为能动张量}
+    {T^{\nu}}_{\mu}=-\left[\pt{\mathscr{L}}{(\partial_{\nu} \phi)} \partial_{\mu} \phi - {\delta^{\nu}}_{\mu} \mathscr{L}\right]
+    \\
+    \intertext{流守恒方程}
+    \partial_{\mu} {T^{\nu}}_{\mu}=0
+\end{gather*}
+
+\section{Lorentz对称性}
+
+考虑实标量场构成的系统，Lorentz变换
+\begin{gather*}
+    x^{\mu} \to x'^{\mu}={\Lambda^\mu}_\nu x^{\nu}
+\end{gather*}
+取无穷小变换${\varepsilon^\mu}_\nu(x)$
+\begin{gather*}
+    {\Lambda^\mu}_\nu={\delta^\mu}_\nu+{\varepsilon^\mu}_\nu
+    \\
+    \det \Lambda=0 \implies {\varepsilon^\mu}_\mu=0
+    \\
+    \eta_{\alpha \beta}=\eta_{\mu \nu} {\Lambda^\mu}_\alpha {\Lambda^\nu}_\beta
+    \\
+    \implies \varepsilon^{\mu \nu} \text{反对称}
+    \\
+    \delta S=\frac{1}{2} \int \d^4 x \left[(T^{\mu \nu}-T^{\nu \mu})\varepsilon_{\mu \nu}\right]+\frac{1}{2} \int \d^4 x \left[(x^{\mu}T^{\rho \nu}-x^{\nu}T^{\rho \mu})\partial_{\rho} \varepsilon_{\mu \nu}\right]
+    \\
+    \varepsilon_{\mu \nu} \text{为常数时} \delta S=0 \implies T^{\mu \nu}=T^{\nu \mu}
+    \\
+    \delta S=\frac{1}{2} \int \d^4 x \left[(x^{\mu}T^{\rho \nu}-x^{\nu}T^{\rho \mu})\partial_{\rho} \varepsilon_{\mu \nu}\right]
+    \\
+    \intertext{守恒流}
+    M^{\rho \mu \nu}=x^{\mu}T^{\rho \nu}-x^{\nu}T^{\rho \mu}
+    \\
+    \intertext{流守恒方程}
+    \partial_{\rho} M^{\rho \mu \nu}=0
+\end{gather*}
+
+\section{对称性自发破缺}
+
+连续对称性自发破缺后的系统中，存在以光速传播的波动，量子化后得到零质量粒子，称为Nambu-Goldstone玻色子
+
+考虑如下复标量场模型
+\begin{gather*}
+    \mathscr{L}=-\partial_\mu \overline{\phi} \partial^\mu \phi-\mathscr{U}(\overline{\phi}\phi),\quad \mathscr{U}(\overline{\phi}\phi)=\frac{g}{4}(|\phi|^2-u)^2
+\end{gather*}
+系统具有$U(1)$对称性
+
+真空场位形满足
+\begin{gather*}
+    \partial_t \phi=\nabla \phi=0
+\end{gather*}
+且$\mathscr{U}(\overline{\phi}\phi)$取最小值
+\begin{itemize}
+    \item $u<0$：$\mathscr{U}(\overline{\phi}\phi)$只有唯一的最小值点$\phi=0$
+    \item $u>0$：$\mathscr{U}(\overline{\phi}\phi)$有无穷多最小值点，满足$|\phi|=\sqrt{u}$，即$\phi=\sqrt{u}\e^{\i \alpha}$，而真空场位形只会处于其中一个点，真空不再具有$U(1)$对称性，称为对称破缺相
+\end{itemize}
+二者之间发生相变
+\begin{gather*}
+    \intertext{$u>0$下，设真空场位形}
+    \phi_0=\sqrt{u}
+    \\
+    \phi=(\sqrt{u}+\rho)\e^{\i \theta}
+    \\
+    \mathscr{L}=-(\sqrt{u}+\rho)^2 \partial_{\mu} \theta \partial^{\mu} \theta-\partial_{\mu} \rho \partial^{\mu} \rho-gu\rho^2(x)-g\sqrt{u}\rho^3(x)-\frac{g}{4}\rho^4(x)
+    \\
+    \intertext{在真空上$\rho=0$}
+    \mathscr{L}=-u \partial_{\mu} \theta \partial^{\mu} \theta
+    \\
+    \intertext{由场方程}
+    \partial_{\mu} \partial^{\mu} \theta=0
+\end{gather*}
+$\theta(x)$以光速传播

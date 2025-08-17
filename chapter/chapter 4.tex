@@ -1,0 +1,143 @@
+\chapter{规范对称性和Maxwell方程}
+
+\begin{gather*}
+    \text{整体对称性} \overset{\text{局域化}}{\rightarrow} \text{规范对称性}
+\end{gather*}
+
+\section{局域化$U(1)$整体对称性}
+
+考虑$U(1)$不变的复标量场论
+\begin{gather*}
+    \mathscr{L}=-\partial_\mu \overline{\phi} \partial^\mu \phi-\mathscr{U}(\overline{\phi}\phi)
+    \\
+    J^{\mu}=\i [\phi \partial^{\mu} \overline{\phi} - \overline{\phi} \partial^\mu \phi]
+\end{gather*}
+为了使$U(1)$对称性局域化，引入矢量场$A_{\mu}$使得作用量变为
+\begin{gather*}
+    S[\phi]=-\int \d^4 x\left[\partial_\mu \overline{\phi} \partial^\mu \phi+\mathscr{U}(\overline{\phi}\phi)\right] + \int \d^4 x J^{\mu} A_{\mu}
+\end{gather*}
+$A_{\mu}$的规范变换为
+\begin{gather*}
+    A_{\mu} \to A_{\mu} + \partial_{\mu} \varepsilon(x)
+\end{gather*}
+从而可以使$\delta S=0$
+
+守恒流需要修正
+\begin{gather*}
+    J_{A}^{\mu}=\i e (\phi \overline{\D_{\mu} \phi}-\overline{\phi} \D_{\mu} \phi)
+    \\
+    \intertext{协变导数}
+    \D_{\mu} \phi=(\partial_{\mu}-\i e A_{\mu})\phi
+    \\
+    \intertext{作用量}
+    S_{m}=--\int \d^4 x[\overline{\D_\mu \phi} \D^\mu \phi+\mathscr{U}(\overline{\phi}\phi)]
+    \\
+    \delta S_m=\int \d^4 x J_A^{\mu} \delta A_{\mu}
+\end{gather*}
+可以看出$A_{\mu}$为仿射联络
+
+\section{规范场的动力学：Maxwell方程}
+
+如下$F_{\mu \nu}$在规范变换下不变
+\begin{gather*}
+    F_{\mu \nu}=\partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}
+    \\
+    \intertext{利用$F_{\mu \nu}$构造最简单标量，取作用量为}
+    S_g=-\int \d^4 x \frac{1}{4} F_{\mu \nu} F^{\mu \nu}
+    \\
+    \delta S_g=\int \d^4 x \partial_{\mu} F^{\mu \nu} \delta A_{\nu}
+    \\
+    \intertext{整个系统}
+    S=S_m+S_g=-\int \d^4 x\left[\overline{\D \phi} \D^\mu \phi+\mathscr{U}(\overline{\phi}\phi)+\frac{1}{4} F_{\mu \nu} F^{\mu \nu}\right]
+    \\
+    \delta S=\int \d^4 x \left[\partial_{\mu} F^{\mu \nu} + J_A^\nu\right] \delta A_{\nu}=0
+    \\
+    \intertext{得到}
+    -\partial_{\mu} F^{\mu \nu}=J_A^\nu
+    \\
+    \partial_{\mu} F_{\nu \rho} + \partial_{\nu} F_{\rho \mu} + \partial_{\rho} F_{\mu \nu}=0
+\end{gather*}
+即为Maxwell方程组
+
+引入Lorenz规范
+\begin{gather*}
+    \partial_\mu A^\mu=0
+\end{gather*}
+自由空间中，$A^\mu$满足
+\begin{gather*}
+    \partial_{\mu} \partial^{\mu} A^{\nu}=0
+\end{gather*}
+证明光是电磁波
+
+\section{可观测量规范不变性}
+
+如下非局域量规范不变
+\begin{gather*}
+    \overline{\phi}(b) \e^{\i e \int_{a}^{b} A_{\mu} \d x^{\mu}} \phi(a)
+    \\
+    \intertext{a、b重合时为}
+    \e^{\i e \oint A_{\mu} \d x^{\mu}}
+\end{gather*}
+
+\section{电磁场的能量、动量、角动量}
+
+\subsection{实标量场}
+
+\begin{gather*}
+    \intertext{能动张量}
+    T^{\mu \nu}=-\left[\pt{\mathscr{L}}{(\partial_{\mu} \phi)} \partial^{\nu} \phi(x)-\eta^{\mu \nu} \mathscr{L}\right]
+    \\
+    T^{0i}(x)=-\pi(x) \partial^i (x)
+    \\
+    \pi(x)=\pt{\mathscr{L}}{(\partial_0 \phi)}
+    \\
+    J^{ij}=\int \d^3 \bm{x} \left[x^i T^{0j}-x^j T^{0i}\right]
+    \\
+    \intertext{角动量矢量}
+    L_i=\frac{1}{2} \epsilon_{ijk} J^{jk}
+    \\
+    \bm{L}=-\int \d^3 \bm{x} \left[\pi(x) (\bm{x} \times \nabla)\phi(x)\right]
+\end{gather*}
+称为轨道角动量
+
+\subsection{电磁场}
+
+\begin{gather*}
+    T^{\mu \nu}=-\left[\pt{\mathscr{L}}{(\partial_{\mu} A^{\rho})} \partial^{\nu} A^{\rho}-\eta^{\mu \nu} \mathscr{L}\right]={F^{\mu}}_{\rho} \partial^{\nu} A^{\rho}-\frac{1}{4} \eta^{\mu \nu} F_{\rho \sigma} F^{\rho \sigma}
+    \\
+    \intertext{添加一项$\partial^{\rho} (-{F^{\mu}}_{\rho} A^{\nu})=-{F^{\mu}}_{\rho} \partial^{\rho} A^{\nu}$进行对称化}
+    T^{\mu \nu}={F^{\mu}}_{\rho} F^{\nu \rho}-\frac{1}{4} \eta^{\mu \nu} F_{\rho \sigma} F^{\rho \sigma}
+\end{gather*}
+角动量矢量
+\begin{align*}
+    L_i&=\int \d^3 \bm{x} \left[{\epsilon_i}^{jk} x_j {\epsilon_k}^{lm} E_l {\epsilon_m}^{no} \partial_n A_o\right]
+    \\
+    &=\int \d^3 \bm{x} {\epsilon_i}^{jk} x_j \left[E_l \partial_k A^l-E_l \partial^l A_k\right]
+    \\
+    &=\int \d^3 \bm{x} \left[E_l (\bm{x} \times \nabla)_i A^l-{\epsilon_i}^{jk} x_j E_l \partial^l A_k\right]
+    \\
+    \intertext{分部积分，结合$\partial^l E_l=0$得到}
+    L_i&=\int \d^3 \bm{x} \left[E_l (\bm{x} \times \nabla)_i A^l+(\bm{E} \times \bm{A})_i \right]
+\end{align*}
+第二项称为内禀角动量
+
+\subsection{电磁场与复标量场耦合系统}
+
+\begin{gather*}
+    \mathscr{L}=-\left[\overline{\D_\mu \phi} \D^\mu \phi+\mathscr{U}(\overline{\phi}\phi)+\frac{1}{4} F_{\mu \nu} F^{\mu \nu}\right]
+    \\
+    T^{\mu \nu}={F^{\mu}}_{\rho} \partial^{\nu} A^{\rho}-\frac{1}{4} \eta^{\mu \nu} F_{\rho \sigma} F^{\rho \sigma}+\overline{\D^{\mu} \phi} \D^{\nu} \phi+\D^{\mu} \phi \overline{\D^{\nu} \phi}-\eta^{\mu \nu} \left[\overline{\D_\rho \phi} \D^\rho \phi+\mathscr{U}(\overline{\phi}\phi)\right]+J_a^{\mu} A^{\nu}
+    \\
+    \intertext{添加修正$\partial^{\rho} (-{F^{\mu}}_{\rho} A^{\nu})=-J_A^{\mu} A^{\nu}-{F^{\mu}}_{\rho} \partial^{\rho} A^{\nu}$}
+    T^{\mu \nu}={F^{\mu}}_{\rho} F^{\nu \rho}-\frac{1}{4} \eta^{\mu \nu} F_{\rho \sigma} F^{\rho \sigma}+\overline{\D^{\mu} \phi} \D^{\nu} \phi+\D^{\mu} \phi \overline{\D^{\nu} \phi}-\eta^{\mu \nu} \left[\overline{\D_\rho \phi} \D^\rho \phi+\mathscr{U}(\overline{\phi}\phi)\right]
+\end{gather*}
+
+\section{外微分形式Maxwell方程组}
+
+\begin{gather*}
+    \begin{cases}
+        \d F=0
+        \\
+        \star \d (\star F)=J_A
+    \end{cases}
+\end{gather*}

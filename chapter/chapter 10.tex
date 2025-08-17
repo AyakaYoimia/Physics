@@ -1,0 +1,244 @@
+\chapter{Yang-Mills理论与't Hooft-Polyakov磁单极}
+
+Yang-Mills理论即非Abel规范场论，而't Hooft-Polyakov磁单极是一类非Abel规范场的孤子解
+
+\section{Yang-Mills理论}
+
+$U(1)$整体对称性局域化得到电磁场理论，$U(N)$整体对称性局域化得到Yang-Mills理论，是非线性的
+
+$SU(N)$群的元素$U$可以写成
+\begin{gather*}
+    U=\e^{\i \theta^a T_a}
+    \\
+    \intertext{Hermite矩阵$T_a$满足}
+    \mathrm{Tr}(T_a)=0
+    \\
+    \intertext{归一化条件}
+    \mathrm{Tr}(T_a T_b)=\frac{1}{2} \delta_{ab}
+\end{gather*}
+独立Hermite矩阵又$N^2-1$个
+\begin{gather*}
+    \mathrm{Tr}([T_a,T_b])=0
+    \\
+    \implies [-\i T_a, -\i T_b]=C_{abc} (-\i T_c)
+    \\
+    C_{abc}=-2 \i \mathrm{Tr}([T_a, T_b] T_c)
+\end{gather*}
+
+\begin{itemize}
+    \item 称物质场取$SU(N)$规范群的基础表示，若物质场为$N$维复标量场$\Phi$，局域$SU(N)$规范变换
+    \begin{gather*}
+        \Phi \to \Phi'=U(x) \Phi=\e^{\i \epsilon_a(x) T_a} \Phi
+    \end{gather*}
+    协变导数
+    \begin{gather*}
+        \D_{\mu}=\partial_{\mu}+A_{\mu},\quad A_{\mu}=-\i T_a A_{\mu}^a
+    \end{gather*}
+    规范势$A_{\mu}$变换规则
+    \begin{gather*}
+        A_{\mu} \to A'_{\mu}=U A_{\mu} U^{-1}+U \partial_{\mu} U^{-1}
+    \end{gather*}
+    当规范变换参数$\epsilon_a(x)$为无穷小量时，
+    \begin{gather*}
+        \delta A_{\mu}=A'_{\mu}-A_{\mu}=\partial_{\mu} \varepsilon+[A_{\mu},\varepsilon],\quad \varepsilon=-\i T_a \epsilon_a(x)
+    \end{gather*}
+    定义规范场强
+    \begin{gather*}
+        F_{\mu \nu}=-\i T_a F_{\mu \nu}^a=[\D_{\mu}, \D_{\nu}]=\partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}+[A_{\mu}, A_{\nu}]
+        \\
+        F_{\mu \nu}^c=\partial_{\mu} A_{\nu}^c - \partial_{\nu} A_{\mu}^c + C_{abc} A_{\mu}^a A_{\nu}^b
+        \\
+        F=\d A+A \wedge A
+        \\
+        \intertext{变换规则}
+        F_{\mu \nu} \to F'_{\mu \nu} = U F_{\mu \nu} U^{-1}
+    \end{gather*}
+    \item 称物质场取$SU(N)$规范群的伴随表示，若物质场为$N \times N$矩阵$\phi$
+    \begin{gather*}
+        \phi(x)=-\i T_a \phi^a(x)
+        \\
+        \intertext{变换规则}
+        \phi(x) \to U(x) \phi(x) U^{-1}(x)
+        \\
+        \intertext{协变导数}
+        \D_{\mu} \phi=\partial_{\mu} \phi + [A_{\mu}, \phi]
+    \end{gather*}
+    \end{itemize}
+
+规范场作用量取为
+\begin{gather*}
+    S_g=a \int \d^4 x \frac{1}{2} \mathrm{Tr}(F_{\mu \nu} F^{\mu \nu}) + b \int \d^4 x \mathrm{Tr}(F \wedge F)
+\end{gather*}
+$a=\frac{1}{e^2}$，$e$为规范场耦合常数，注意到
+\begin{gather*}
+    \mathrm{Tr}(F \wedge F)= \d \mathrm{Tr}(A \wedge \d A + \frac{2}{3} A \wedge A \wedge A)
+\end{gather*}
+第二项积分无贡献
+\begin{gather*}
+    S_g=\int \d^4 x \frac{1}{2e^2} \mathrm{Tr}(F_{\mu \nu} F^{\mu \nu})=-\int \d^4 x \frac{1}{4e^2} F^a_{\mu \nu} F^{a \mu \nu}
+\end{gather*}
+对$A_{\mu}$变分
+\begin{gather*}
+    \delta F_{\mu \nu} = \D_{\mu} \delta A_{\nu} - \D_{\nu} \delta A_{\mu}
+    \\
+    \D_{\mu} \delta A_{\nu}=\partial_{\mu} \delta A_{\nu} + [A_{\mu}, \delta A_{\nu}]
+    \\
+    \partial_{\mu} \mathrm{Tr}(A_1 A_2)=\mathrm{Tr}((\D_{\mu} A_1) A_2)+\mathrm{Tr}(A_1 \D_{\mu} A_2)
+    \\
+    \intertext{分部积分得到}
+    \delta S_g=\frac{2}{e^2} \int \d^4 x \mathrm{Tr}(-\D_{\mu} F^{\mu \nu} \delta A_{\nu})=\frac{1}{e^2} \int \d^4 x (\D_{\mu} F^{\mu \nu})^a \delta A_{\nu}^a
+\end{gather*}
+
+\begin{itemize}
+    \item 若物质场取基础表示，作用量
+    \begin{gather*}
+        S_m=-\int \d^4 x \left[(\D_{\mu} \Phi)^{\dagger} \D^{\mu} \Phi+ \mathscr{U}(\Phi^{\dagger} \Phi)\right]
+    \end{gather*}
+    对$A_{\mu}^a$变分
+    \begin{gather*}
+        \delta S_m=\i \int \d^4 x \left[(\D^{\mu} \Phi)^{\dagger} T_a \Phi-\Phi^{\dagger} T_a \D^{\mu} \Phi\right] \delta A_{\mu}^a
+    \end{gather*}
+    得到规范场场方程
+    \begin{gather*}
+        -\frac{1}{e^2} (\D_{\mu} F^{\mu \nu})^a=\i \left[(\D^{\mu} \Phi)^{\dagger} T_a \Phi-\Phi^{\dagger} T_a \D^{\mu} \Phi\right]
+    \end{gather*}
+    对$\Phi$变分得到物质场场方程
+    \begin{gather*}
+        \D_{\mu} \D^{\mu} \Phi=\pt{\mathscr{U}}{\Phi^{\dagger}}
+        \\
+        \D_{\mu} \D^{\mu} \Phi^{\dagger}=\pt{\mathscr{U}}{\Phi}
+    \end{gather*}、
+    \item 若物质场取伴随表示，作用量
+    \begin{gather*}
+        S_m=\int \d^4 \left[\frac{1}{e^2} \mathrm{Tr}(\D_{\mu} \phi \D^{\mu} \phi)-\mathscr{U}(\phi^a \phi^a)\right]
+        \\
+        \delta S_m=\frac{2}{e^2} \int \d^4 \mathrm{Tr}([\phi, \D^{\mu} \phi] \delta A_{\mu}) + \int \d^4 \left[\frac{1}{e^2} (\D_{\mu} \D^{\mu} \phi)^a-\pt{\mathscr{U}}{\phi^a}\right] \delta \phi^a
+        \\
+        \intertext{得到规范场场方程和物质场场方程}
+        \D_{\mu} F^{\mu \nu}=[\phi, \D^{\nu} \phi]
+        \\
+        \frac{1}{e^2} (\D_{\mu} \D^{\mu} \phi)^a=\pt{\mathscr{U}}{\phi^a}
+    \end{gather*}
+\end{itemize}
+
+\section{'t Hooft-Polyakov磁单极}
+
+考虑具有$SU(2)$规范对称性的系统，作用量
+\begin{gather*}
+    S=\int \d^4 x \left[\frac{1}{2e^2} \mathrm{Tr}(F_{\mu \nu} F^{\mu \nu})+\frac{1}{e^2} \mathrm{Tr}(\D_{\mu} \phi \D^{\mu} \phi) - \frac{\lambda}{4}(|\phi|^2-\nu^2)^2 \right]
+    \\
+    \intertext{能动量张量}
+    T^{\mu \nu}=\frac{1}{e^2} \left[{F^{a\mu}}_{\rho} F^{a\nu \rho}-\frac{1}{4} \eta^{\mu \nu} F_{\rho \sigma}^a F^{a \rho \sigma}\right]+\frac{1}{e^2} (\D^{\mu} \phi)^a (\D^{\nu} \phi)^a + \eta^{\mu \nu} \left[\frac{1}{e^2} \mathrm{Tr}(\D_{\mu} \phi \D^{\mu} \phi) - \frac{\lambda}{4}(|\phi|^2-\nu^2)^2\right]
+    \\
+    \mathscr{H}=T^{00}=\frac{1}{2e^2} \left[\bm{E}^a \cdot \bm{E}^a + \bm{B}^a \cdot \bm{B}^a + (\D_0 \phi)^a (\D_0 \phi)^a + (\D_i \phi)^a (\D_i \phi)^a\right] + \mathscr{U}(|\phi|)
+    \\
+    \mathscr{U}(|\phi|)=\frac{\lambda}{4}(|\phi|^2-\nu^2)^2,\quad E_i^a=F^{a0i},\quad B_i^a=\frac{1}{2} \varepsilon_{ijk} F^{ajk}
+\end{gather*}
+$\phi$称为Higgs场
+
+\begin{itemize}
+    \item 真空场位形
+    \begin{gather*}
+        \mathscr{H}=0 \iff F^{a \mu \nu}=\D^{\mu} \phi=\mathscr{U}(|\phi|)=0
+        \\
+        \intertext{真空解$\phi$为常数}
+        |\phi|^2=\nu^2
+        \\
+        \intertext{在$U(1)$变换下，真空解保持不变}
+        \e^{-\alpha \frac{\phi}{\nu}} \phi \e^{\alpha \frac{\phi}{\nu}} = \phi
+    \end{gather*}
+    在$SU(2)$规范变换下，真空解不能保持不变，形成一个解的等价类
+    \item 有限能量解\\
+    定义Higgs真空
+    \begin{gather*}
+        \mathscr{M}_{H}=\{\phi \vert \mathscr{U}(|\phi|)=0\}=S^2
+    \end{gather*}
+    对于有限能量解，在无穷远处场位形趋于Higgs真空，$\phi$构成了两者之间的映射
+    \begin{gather*}
+        \phi:S_{\infty}^2 \to \mathscr{M}_H=S^2
+    \end{gather*}
+    根据覆盖$S^2$的次数，可以进行拓扑学分类，称为$S^2$的第二同伦群$\pi_2(S^2)=\mathbb{Z}$，覆盖次数
+    \begin{gather*}
+        n=\frac{1}{8\pi \nu^3} \int_{S_{\infty}^2} \varepsilon_{abc} \phi^a \d \phi^b \wedge \d \phi^c
+    \end{gather*}
+    在无穷远处，同样有$U(1)$对称性
+    \begin{gather*}
+        U(1)=\e^{-\alpha \frac{\phi}{\nu}}
+    \end{gather*}
+    覆盖$n \neq 0$时，$A_{\mu}$必须取非0场位形，总能量有限，
+    \begin{gather*}
+        (D_{\mu} \phi)^a=\partial_{\mu} \phi^a + \varepsilon_{abc} A_{\mu}^b \phi^c \sim 0
+        \\
+        \intertext{无穷远处}
+        \phi^a \phi^a \sim \nu^2, \quad \phi^a \partial_{\mu} \phi^a \sim 0
+        \\
+        A_{\mu}^a \sim \frac{1}{\nu^2} \varepsilon_{abc} \phi^b \partial_{\mu} \phi^c + \frac{1}{\nu} \phi^a a_{\mu}(x)
+        \\
+        \mathscr{F}_{\mu \nu}=\frac{\phi^a}{\nu} F_{\mu \nu}^a \sim \partial_{\mu} a_{\nu} - \partial_{\nu} a_{\mu} + \frac{1}{\nu^3} \varepsilon_{abc} \phi^a \partial_{\mu} \phi^b \partial_{\nu} \phi^c
+        \\
+        \intertext{最后一项额外项带来磁荷}
+        g=\int_{S_{\infty}^2} \mathscr{F}=4 \pi n
+    \end{gather*}
+    $\mathscr{F}^{\mu \nu}$满足无源Maxwell方程组，从无穷远处的$U(1)$对称性看来，这样的解为磁单极子，称为't Hooft-Polyakov磁单极
+    \item 求解磁单极解\\
+    在$n=1$时才有静态解，考虑$n=1$情形，选取$A_0=D_0 \phi=E_i^a=0$
+    \begin{gather*}
+        \mathscr{H}=\frac{1}{2e^2} \left[\bm{B}^a \cdot \bm{B}^a+(\D_i \phi)^a (\D_i \phi)^a\right] + \mathscr{U}(|\phi|)
+        \\
+        \intertext{Higgs场取如下形式}
+        \phi^a=\frac{x^a}{r^2} h(r)
+        \\
+        h(r)=
+        \begin{cases}
+            0,\quad r \to 0
+            \\
+            \nu r,\quad r \to \infty
+        \end{cases}
+        \\
+        \intertext{相应的规范场取如下形式}
+        A_i^a=-\varepsilon_{aij} \frac{x^j}{r^2}(1-k(r))
+        \\
+        k(r)=
+        \begin{cases}
+            0,\quad r \to 0
+            \\
+            1,\quad r \to \infty
+        \end{cases}
+    \end{gather*}
+    代入场方程即可求解
+    \item Bogomolnyi能限
+    \begin{gather*}
+        \intertext{能量密度}
+        \mathscr{H}=\frac{1}{2e^2} \left[(E_i^a-\D_i \phi^a \sin \theta)^2+(B_i^a - \D_i \phi^a \cos \theta)^2+(\D_0 \phi)^2\right]+\mathscr{U}(|\phi|)+\frac{1}{e^2} \left[E_i^a \D_i \phi^a \sin \theta + B_i^a \D_i \phi^a \cos \theta\right]
+    \end{gather*}
+    注意到$\D_i B_i=0$
+    \begin{gather*}
+        \frac{1}{\nu} \int \d^3 \bm{x} B_i^a \D_i \phi^a=\frac{1}{\nu} \int_{S_{\infty}^2} (\bm{B}^a \phi^a) \cdot \d \bm{S}=g
+        \\
+        \frac{1}{\nu} \int \d^3 \bm{x} E_i^a \D_i \phi^a=\frac{1}{\nu} \int_{S_{\infty}^2} (\bm{E}^a \phi^a) \cdot \d \bm{S}=q
+    \end{gather*}
+    总能量
+    \begin{align*}
+        \mathscr{E}&=\int \d^3 \bm{x} \mathscr{H}
+        \\
+        &=\frac{\nu}{e^2} \left[q \sin \theta + g \cos \theta\right]+\int \d^3 \bm{x}\left\{\frac{1}{2e^2}\left[(E_i^a-\D_i \phi^a \sin \theta)^2+(B_i^a - \D_i \phi^a \cos \theta)^2+(\D_0 \phi)^2\right] + \mathscr{U}(|\phi|) \right\}
+        \\
+        & \geq \frac{\nu}{e^2} \left[q \sin \theta + g \cos \theta\right]
+        \\
+        & \geq \frac{\nu}{e^2} \sqrt{q^2+g^2}
+    \end{align*}
+    在Bogomolnyi能限下有如下BPS方程
+    \begin{gather*}
+        E_i^a=\D_i \phi^a \sin \theta_m,\quad B_i^a=\D_i \phi^a \cos \theta_m,\quad \D_0 \phi^a=0
+        \\
+        \tan \theta_m=\frac{q}{g}
+    \end{gather*}
+    对于't Hooft-Polyakov磁单极，$q=\theta_m=0$，BPS方程化为
+    \begin{gather*}
+        E_i^a=0,\quad \D_0 \phi^a=0,\quad B_i^a=D_i \phi^a
+    \end{gather*}
+    对于$n=1$的磁单极子，解得
+    \begin{gather*}
+        h(r)=\nu r \coth(\nu r)-1,\quad k(r)=\frac{\nu r}{\sinh(\nu r)}
+    \end{gather*}
+\end{itemize}

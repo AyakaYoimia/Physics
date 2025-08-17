@@ -1,0 +1,66 @@
+\documentclass[lang=cn,newtx,12pt,scheme=chinese]{elegantbook}
+
+\title{经典场论笔记}
+
+\author{温晨煜}
+\institute{清华大学致理书院}
+\version{1.0}
+\bioinfo{封面}{John Atkinson Grimshaw, \emph{Whitby}}
+
+\setcounter{tocdepth}{3}
+
+\logo{THU logo.jpg}
+\cover{cover.jpg}
+
+% 本文档命令
+\usepackage{array, tikz, pgfplots}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+\def\d{\mathrm{d}}
+\def\D{\mathrm{D}}
+\def\e{\mathrm{e}}
+\def\i{\mathrm{i}}
+\def\pdd{\partial}
+\def\Tr{\mathrm{Tr}}
+\newcommand{\bra}[1]{\langle #1 \vert}
+\newcommand{\ket}[1]{\vert #1 \rangle}
+\newcommand{\inpro}[2]{\langle #1 \vert #2 \rangle}
+\newcommand{\pt}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dt}[2]{\frac{\d #1}{\d #2}}
+
+% 修改标题页的橙色带
+\definecolor{customcolor}{RGB}{32,178,170}
+\colorlet{coverlinecolor}{customcolor}
+\usepackage{cprotect}
+
+\addbibresource[location=local]{reference.bib} % 参考文献，不要删除
+
+\begin{document}
+
+\maketitle
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+\input{chapter/chapter 1.tex}
+
+\input{chapter/chapter 2.tex}
+
+\input{chapter/chapter 3.tex}
+
+\input{chapter/chapter 4.tex}
+
+\input{chapter/chapter 5.tex}
+
+\input{chapter/chapter 6.tex}
+
+\input{chapter/chapter 7.tex}
+
+\input{chapter/chapter 8.tex}
+
+\input{chapter/chapter 9.tex}
+
+\input{chapter/chapter 10.tex}
+
+\end{document}
