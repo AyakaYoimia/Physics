@@ -1,0 +1,304 @@
+\chapter{相变的热力学理论}
+
+\section{热动平衡判据}
+
+\begin{itemize}
+    \item 熵判据
+    \begin{gather*}
+        \begin{cases}
+            \delta S = 0
+            \\
+            \delta^2 S < 0
+            \\
+            \delta U = 0,\;\delta V = 0,\;\delta N = 0
+        \end{cases}
+    \end{gather*}
+    \item 自由能判据
+    \begin{gather*}
+        \begin{cases}
+            \delta F = 0
+            \\
+            \delta^2 F > 0
+            \\
+            \delta T = 0,\;\delta V = 0,\;\delta N = 0
+        \end{cases}
+    \end{gather*}
+    要求$T$均匀
+    \item Gibbs函数判据
+    \begin{gather*}
+        \begin{cases}
+            \delta G = 0
+            \\
+            \delta^2 G > 0
+            \\
+            \delta T = 0,\;\delta p = 0,\;\delta N = 0
+        \end{cases}
+    \end{gather*}
+    要求$T, p$均匀
+    \item 内能判据
+    \begin{gather*}
+        \begin{cases}
+            \delta U = 0
+            \\
+            \delta^2 U > 0
+            \\
+            \delta S = 0,\;\delta V = 0,\;\delta N = 0
+        \end{cases}
+    \end{gather*}
+\end{itemize}
+
+\section{粒子数可变系统}
+
+单元系的热力学基本微分方程
+\begin{gather*}
+    \d U = T \d S - p \d V + \mu \d N
+\end{gather*}
+化学势
+\begin{gather*}
+    \mu = \frac{G}{N}
+\end{gather*}
+Gibbs-Duhem关系
+\begin{gather*}
+    \d \mu = -s \d T + v \d p
+\end{gather*}
+$u, s, v$分别表示1mol物质的内能、熵、体积
+
+定义巨势
+\begin{gather*}
+    \Psi = F - G = U - TS - \mu N
+    \\
+    \d \Psi = -S \d T - p \d V - N \d \mu
+\end{gather*}
+
+\section{热动平衡条件}
+
+考虑单元系
+\begin{itemize}
+    \item 热平衡条件：温度相等
+    \item 力学平衡条件：压强相等
+    \item 相变平衡条件：化学势相等
+    \item 化学平衡条件
+\end{itemize}
+
+粒子数可变系统的化学势为$0$
+
+\section{平衡的稳定条件}
+
+由热动平衡判据可以推出平衡稳定条件
+\begin{gather*}
+    \delta T \delta s - \delta p \delta v > 0
+\end{gather*}
+
+选取$(T, v)$为独立变量
+\begin{gather*}
+    \begin{cases}
+        c_v >0
+        \\
+        \left(\pt{p}{v}\right)_T < 0
+    \end{cases}
+\end{gather*}
+
+\section{单元系的复相平衡}
+
+两相$\alpha, \beta$的平衡条件统一为
+\begin{gather*}
+    \mu^{\alpha}(T, p) = \mu^{\beta}(T, p)
+\end{gather*}
+从而确定了$T-p$相图上的相平衡曲线
+
+相图
+\begin{itemize}
+    \item 相平衡曲线
+    \item 三相点
+    \item 临界点：气液平衡曲线的终点
+\end{itemize}
+
+\subsection{气液相变}
+
+Van der Waals方程
+\begin{gather*}
+    p = \frac{RT}{v - b} - \frac{a}{v^2}
+\end{gather*}
+在$T < T_c$时的等温线与实际的气液相变曲线不同
+
+Maxwell等面积法则：设液相终点$P$，气相终点$Q$，共同压强$p^*$，
+\begin{gather*}
+    \mu_P = \mu_Q
+    \\
+    f_P - f_Q = p^*(v_Q - v_P)
+    \\
+    \intertext{利用Van der Waals方程可得}
+    f_P - f_Q = \int_{v_P}^{v_Q} p \d v
+    \\
+    \therefore \int_{v_P}^{v_Q} p \d v = p^*(v_Q - v_P)
+\end{gather*}
+
+临界点
+\begin{gather*}
+    \left(\pt{p}{v}\right)_{T_c} = 0
+    \\
+    \left(\pt{^2 p}{v^2}\right)_{T_c} = 0
+    \\
+    \intertext{解得}
+    \begin{cases}
+        v_c = 3b
+        \\
+        p_c = \frac{a}{27 b^2}
+        \\
+        T_c = \frac{8a}{27 R b}
+    \end{cases}
+\end{gather*}
+
+\subsection{正常-超导相变}
+
+超导体性质
+\begin{itemize}
+    \item 完全抗磁性
+    \item 临界磁场
+    \begin{gather*}
+        \mathscr{H}_c(T) = \mathscr{H}_c(0) \left[1 - \left(\frac{T}{T_c}\right)^2\right],\quad T \leq T_c
+    \end{gather*}
+\end{itemize}
+
+用$N$和$S$分别标记正常态和超导态
+\begin{gather*}
+    \d U = T \d S - p \d V + V \mathscr{H} \d \mathscr{B}
+    \\
+    \intertext{忽略体积变化，取单位体积}
+    \d G = -S \d T - \mathscr{B} \d \mathscr{H}
+    \\
+    G = U - TS - \mathscr{H} \mathscr{B}
+    \\
+    \left(\pt{G}{\mathscr{H}}\right)_T = -\mathscr{B}
+    \\
+    G(T, \mathscr{H}) - G(T, 0) = - \int_0^{\mathscr{H}} \mathscr{B} \d \mathscr{H}
+    \\
+    G_N(T, \mathscr{H}) - G_N(T, 0) = -\frac{1}{2} \mu_0 \mathscr{H}^2
+    \\
+    G_S(T, \mathscr{H}) - G_S(T, 0) = 0
+    \\
+    G_S(T, \mathscr{H}) - G_N(T, \mathscr{H}) = G_S(T, 0) - G_N(T, 0) + \frac{1}{2} \mu_0 \mathscr{H}^2
+    \\
+    \intertext{相变平衡条件}
+    G_S(T, \mathscr{H}_c) = G_N(T, \mathscr{H}_c)
+    \\
+    \therefore G_S(T, 0) - G_N(T, 0) = -\frac{1}{2} \mu_0 \mathscr{H}_c^2
+    \\
+    G_S(T, \mathscr{H}) - G_N(T, \mathscr{H}) = \frac{1}{2} \mu_0 (\mathscr{H}^2 - \mathscr{H}_c^2(T))
+\end{gather*}
+
+Clapeyron方程
+\begin{gather*}
+    s_S - s_N = \mu_0 \mathscr{H}_c \dt{\mathscr{H}_c}{T}
+    \\
+    L_{SN} = T (s_S - s_N) = \mu_0 T \mathscr{H}_c \dt{\mathscr{H}_c}{T} < 0
+\end{gather*}
+\begin{itemize}
+    \item $\mathscr{H}_c \neq 0$，$L_{SN} \neq 0$，一级相变
+    \item $\mathscr{H}_c = 0$，$L_{SN} = 0$，$T = T_c$，比热有跃变，二级相变
+\end{itemize}
+
+\section{相变的分类}
+
+n级相变：化学势在$n-1$阶导数连续而在$n$阶导数不连续或发散
+\begin{itemize}
+    \item 一级相变：Clapeyron方程
+    相变潜热$\lambda_{\alpha \beta}$为1 mol物质从$\alpha$相变为$\beta$相时吸收的热量
+    \begin{gather*}
+        \dt{p}{T} = \frac{\lambda_{\alpha \beta}}{T (v^{\alpha} - v^{\beta})}
+    \end{gather*}
+    \item 二级相变：应用L'Hopital法则，得到Ehrenfest方程
+    \begin{gather*}
+        \dt{p}{T} = \frac{\left(\pt{s^{\alpha}}{T}\right)_p-\left(\pt{s^{\beta}}{T}\right)_p}{\left(\pt{v^{\alpha}}{T}\right)_p-\left(\pt{v^{\beta}}{T}\right)_p} = \frac{\Delta c_p}{T v \Delta \alpha}
+        \\
+        \dt{p}{T} = \frac{\left(\pt{s^{\alpha}}{p}\right)_T-\left(\pt{s^{\beta}}{p}\right)_T}{\left(\pt{v^{\alpha}}{p}\right)_T-\left(\pt{v^{\beta}}{p}\right)_T} = \frac{\Delta \alpha}{\Delta \kappa_T}
+    \end{gather*}
+    二级相变的相变点称为临界点，二级相变宏观状态连续，但对称性破缺
+\end{itemize}
+
+\section{Landau二级相变理论}
+
+Landau相变理论是平均场理论，包含了序参量、对称性破缺、普适性等重要概念。
+
+以顺磁-铁磁相变为例，
+\begin{itemize}
+    \item $T>T_c$，顺磁相，自旋磁矩热运动导致各向同性，总磁矩平均值为0，称为无序相
+    \item $T<T_c$，铁磁相，自旋磁矩自发排列，发生对称性自发破缺，总磁矩平均值不为0，称为有序相
+\end{itemize}
+选取磁化强度$\mathscr{M}$为序参量，在$T \sim T_c, \mathscr{H} = 0$区域，系统的自由能泛函展开为
+\begin{gather*}
+    F(T, \mathscr{M})=\displaystyle \sum_{n=0}^{\infty} a_n(T) \mathscr{M}^n
+\end{gather*}
+$\mathscr{H}=0$，有对称性$F$是$\mathscr{M}$的偶函数
+\begin{gather*}
+    F(T, \mathscr{M})=\displaystyle \sum_{n=0}^{\infty} a_{2n}(T) \mathscr{M}^{2n}
+\end{gather*}
+$a_0(T)=F(T, 0)$对应晶格部分的自由能，截断到四阶项，选取
+\begin{gather*}
+    \begin{cases}
+        a_2(T) = a(T - T_c),\quad a > 0
+        \\
+        a_4(T) = a_4 > 0
+    \end{cases}
+\end{gather*}
+稳定解条件
+\begin{gather*}
+    \begin{cases}
+        \left(\pt{F}{\mathscr{M}}\right)_T = 0
+        \\
+        \left(\pt{^2 F}{\mathscr{M}^2}\right)_T > 0
+    \end{cases}
+    \\
+    \intertext{解}
+    \mathscr{M}=0,\quad \pm \sqrt{-\frac{a_2(T)}{2a_4}}
+    \\
+    \intertext{稳定解}
+    \mathscr{M}=\begin{cases}
+        0,\quad T>T_c
+        \\
+        \pm \sqrt{\frac{a(T_c - T)}{2a_4}},\quad T<T_c
+    \end{cases}
+    \\
+    \intertext{熵}
+    S=-\left(\pt{F}{T}\right)_{\mathscr{M}} = \begin{cases}
+        S_0(T),\quad T>T_c
+        \\
+        S_0(T)- \frac{a^2}{2 a_4}(T_c - T),\quad T<T_c
+    \end{cases}
+\end{gather*}
+在$T=T_c, \mathscr{H} \sim 0$区域，考察Gibbs函数
+\begin{gather*}
+    G(T, \mathscr{H}, \mathscr{M}(T, \mathscr{H}))=F(T, \mathscr{M}) - \mu_0 \mathscr{M} \mathscr{H}
+    \\
+    \intertext{平衡条件}
+    \left(\pt{G}{\mathscr{M}}\right)_{T, \mathscr{H}} = 0
+    \\
+    2a_2(T) \mathscr{M} + 4a_4 \mathscr{M}^3 = \mu_0 \mathscr{H}
+    \\
+    \chi = \left(\pt{\mathscr{M}}{\mathscr{H}}\right)_{T}
+    \\
+    \chi^0=\left.\chi\right|_{\mathscr{H} \to 0} = \mu_0 \left(\pt{\mathscr{M}}{\mathscr{H}}\right)_T = \begin{cases}
+        \frac{\mu_0^2}{2a(T - T_c)},\quad T>T_c
+        \\
+        \frac{\mu_0^2}{4a(T_c - T)},\quad T<T_c
+    \end{cases}
+    \\
+    C_{\mathscr{M}}=-T \left(\pt{^2 F}{T^2}\right)_{\mathscr{M}}
+    \\
+    C_{\mathscr{H}} - C_{\mathscr{M}} = -\mu_0 T \left(\pt{\mathscr{H}}{T}\right)_{\mathscr{M}} \left(\pt{\mathscr{M}}{T}\right)_{\mathscr{H}}=-2aT\mathscr{M} \left(\pt{M}{T}\right)_{\mathscr{H}}
+\end{gather*}
+$C_{\mathscr{M}}$只与晶格部分有关，取$\mathscr{H} \to 0, T \to T_c$极限，
+\begin{gather*}
+    C_{\mathscr{H}}^0=\begin{cases}
+        C_{\mathscr{M}}^0,\quad T \to T_c^+
+        \\
+        C_{\mathscr{M}}^0 + \frac{a^2 T_c}{2 a_4},\quad T \to T_c^-
+    \end{cases}
+\end{gather*}
+有跃变
+
+Landau相变理论适用条件：Ginzburg判据
+\begin{gather*}
+    \left(\frac{\xi}{\xi_0}\right)^{d-4} = \left|\frac{T-T_c}{T_c}\right|^{\frac{4-d}{2}} > \frac{A_d}{2\Delta c_v \xi_0^d}
+\end{gather*}
+$d$为空间维数，$\xi$为涨落关联的关联长度，$\xi_0$为相干长度，$\Delta c_v$为平均场理论求出的比热跃变，$A_d$为与维数有关的常数

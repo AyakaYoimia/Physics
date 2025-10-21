@@ -1,0 +1,152 @@
+\chapter{多元系的复相平衡与化学平衡\\热力学第三定律}
+
+\section{多元均匀系}
+
+\begin{itemize}
+    \item 化学变量：$k$个组元的物质的量$\{N_i\}_{i=1}^k$
+    \item 偏摩尔量：由于$N_i$是广延量，
+    \begin{gather*}
+        U(T, p, N_1, \cdots, N_k) = \sum_{i=1}^k N_i \left(\frac{\partial U}{\partial N_i}\right)_{T, p, \{N_{j\neq i}\}} = \sum_{i=1}^k N_i u_i
+        \\
+        \intertext{类似有}
+        V = \sum_{i=1}^k N_i v_i, \quad S = \sum_{i=1}^k N_i s_i, \quad G = \sum_{i=1}^k N_i \mu_i
+    \end{gather*}
+    组元的$i$偏摩尔量不一定等于纯$i$组元的摩尔量，因为不同分子间有相互作用
+    \item 热力学基本微分方程
+    \begin{gather*}
+        \d U = T \d S - p \d V + \sum_{i=1}^k \mu_i \d N_i
+    \end{gather*}
+    定义巨势
+    \begin{gather*}
+        \Phi = F - G
+        \\
+        \d \Psi = -S \d T - V \d p - \sum_{i=1}^k N_i \d \mu_i
+    \end{gather*}
+    \item Gibbs-Duhem关系
+    \begin{gather*}
+        S \d T - V \d p + \sum_{i=1}^k N_i \d \mu_i = 0
+    \end{gather*}
+\end{itemize}
+
+\section{多元系的复相平衡}
+
+复相平衡条件：设有两个相$\alpha$和$\beta$，且不存在化学反应
+\begin{gather*}
+    T^{\alpha} = T^{\beta}
+    \\
+    p^{\alpha} = p^{\beta}
+    \\
+    \mu_i^{\alpha} = \mu_i^{\beta}, \quad i = 1, 2, \cdots, k
+\end{gather*}
+
+化学反应可以表示为
+\begin{gather*}
+    \sum_{i=1}^k \nu_i A_i = 0
+\end{gather*}
+其中$\nu_i$为化学计量数，$A_i$为第$i$组元，化学平衡条件
+\begin{gather*}
+    \sum_{i=1}^k \nu_i \mu_i = 0
+\end{gather*}
+
+Gibbs相律
+\begin{gather*}
+    f = k + 2 - \sigma
+\end{gather*}
+$f$为热力学自由度，即独立强度变量的个数，$k$为独立组元数，$2$来自强度量$T$和$p$，$\sigma$为独立共存相数
+
+\section{混合理想气体}
+
+设有$k$个理想气体组元，物态方程
+\begin{gather*}
+    pV=(N_1 + N_2 + \cdots + N_k)RT
+\end{gather*}
+Dalton分压定律
+\begin{gather*}
+    p = \sum_{i=1}^k p_i
+    \\
+    p_i = \frac{N_i RT}{V} = \frac{N_i}{N} p
+\end{gather*}
+
+利用对第$i$组元的半透壁，一侧为混合理想气体，另一侧为纯$i$组元理想气体，平衡条件
+\begin{gather*}
+    p_i = p'_i
+    \\
+    \mu_i = \mu'_i
+\end{gather*}
+得到混合理想气体的Gibbs函数
+\begin{gather*}
+    G = \sum_{i=1}^k N_i \mu_i = \sum_{i=1}^k N_i \mu'_i = \sum_{i=1}^k N_i RT (\varphi_i(T) + \ln(\frac{N_i}{N} p))
+    \\
+    \varphi_i(T) = \frac{h_{i0} - T s_{i0}}{RT} + \frac{1}{RT} \int c_{p_i} \d T - \frac{1}{R} \int c_{p_i} \frac{\d T}{T}
+    \\
+    \intertext{熵}
+    S = -\left(\frac{\partial G}{\partial T}\right)_{p, \{N_i\}} = \sum_{i=1}^k N_i \left(\int \frac{c_{p_i}}{T} \d T - R \ln (\frac{N_i}{N} p) + s_{i0}\right)
+    \\
+    \intertext{内能}
+    U = G + TS - pV = \sum_{i=1}^k N_i \left(\int c_{v_i} \d T + u_{i0}\right)
+\end{gather*}
+
+化学反应平衡时，
+\begin{gather*}
+    \sum_{i=1}^k \nu_i (\varphi_i(T) + \ln p_i) = 0
+    \\
+    \intertext{定压平衡常数}
+    K_p(T)= \e^{-\sum_{i=1}^k \nu_i \varphi_i(T)} = \prod_{i=1}^k (p_i)^{\nu_i}
+\end{gather*}
+比较$\prod_{i=1}^k (p_i)^{\nu_i}$与$K_p(T)$，可以判断反应进行的方向
+
+\section{热力学第三定律}
+
+热力学第三定律是量子效应的宏观表现，需要用量子统计理论解释，有三种表述
+\begin{itemize}
+    \item Nernst定理：系统的熵在等温过程中的改变随绝对温度趋于零而趋于零
+    \begin{gather*}
+        \lim_{T \to 0} (\Delta S)_T = 0
+    \end{gather*}
+    推导：对等温等压过程，
+    \begin{gather*}
+        \intertext{定义化学亲和势}
+        A = -\Delta G
+        \\
+        H = G - T \pt{G}{T}
+        \\
+        \intertext{定义反应热}
+        Q = -\Delta H
+        \\
+        Q = A - T \pt{A}{T}
+        \\
+        \intertext{可得}
+        \lim_{T \to 0} Q = \lim_{T \to 0} A
+        \\
+        \pt{A}{T} = \frac{A-Q}{T}
+        \\
+        \lim_{T \to 0} \pt{A}{T} = \lim_{T \to 0} \frac{A-Q}{T} = \lim_{T \to 0} \left(\pt{A}{T} - \pt{Q}{T}\right)
+        \\
+        \Delta S = \pt{A}{T}
+        \\
+        \intertext{Nernst假设}
+        \lim_{T \to 0} \pt{A}{T} = \lim_{T \to 0} \pt{Q}{T}
+        \\
+        \intertext{从而}
+        \lim_{T \to 0} (\Delta S)_T = \lim_{T \to 0} \pt{A}{T} = 0
+    \end{gather*}
+    定理不适用于冻结的非平衡态
+    \item 绝对熵：对于$y$不变过程，
+    \begin{gather*}
+        S(T, y) = S(T_0, y) + \int_{T_0}^T \frac{C_y}{T} \d T
+        \\
+        (\Delta S)_T = S(0, y_2) - S(0, y_1) + \int_{0}^{T} \frac{C_{y_2} - C_{y_1}}{T} \d T
+        \\
+        \lim_{T \to 0} (\Delta S)_T = S(0, y_2) - S(0, y_1) = 0
+        \\
+        \intertext{取}
+        S(0, y) = 0
+        \\
+        S(T, y) = \int_0^T \frac{C_y}{T} \d T
+    \end{gather*}
+    由$C_y$随$T$趋于$0$，所有物质在绝对零度时的熵为零，即
+    \begin{gather*}
+        \lim_{T \to 0} S = 0
+    \end{gather*}
+    \item 不可达原理：不可能通过有限次的热力学过程将系统的温度降低到绝对零度
+\end{itemize}

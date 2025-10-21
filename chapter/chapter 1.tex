@@ -1,0 +1,192 @@
+\chapter{热力学的基本概念与基本规律}
+
+\begin{gather*}
+    \begin{cases}
+        \text{传统热力学：准静态过程} \\
+        \text{非平衡态热力学（线性理论）：热力学流与热力学力之间有线性关系} \\
+        \text{非平衡态热力学（非线性理论）}
+    \end{cases}
+\end{gather*}
+
+热力学系统：大量微观粒子组成的宏观物体
+
+\section{平衡态}
+
+术语
+\begin{itemize}
+    \item 绝热壁、导热壁
+    \item 刚性壁
+    \item 热接触
+    \item 孤立系
+    \item 闭系、开系
+\end{itemize}
+
+\begin{gather*}
+    \begin{cases}
+        \text{平衡态：在没有外界影响下，物体的各部分性质长时间内不发生任何变化的状态}
+        \\
+        \text{稳恒态：存在外界影响下，物体的各部分性质长时间内不发生任何变化的状态}
+    \end{cases}
+\end{gather*}
+
+\begin{itemize}
+    \item 动态平衡
+    \item 在一定条件下，初始不处于平衡态的系统，经过弛豫时间，必将趋于平衡态
+    \begin{itemize}
+        \item 孤立系
+        \item 维持不变的外界条件
+        \begin{itemize}
+            \item 恒等温度：热库
+            \item 恒定压强
+            \item 开系：粒子库
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+平衡态的描写：宏观状态变量
+\begin{itemize}
+    \item 几何变量
+    \item 力学变量
+    \item 电磁变量
+    \item 化学变量
+    \item 热力学变量：温度
+\end{itemize}
+对于均匀系，分为广延量和强度量
+
+\begin{itemize}
+    \item 准静态过程：在过程中系统始终处于平衡态，外界变化的特征时间远大于弛豫时间
+    \item 可逆过程：每一步都可以在相反方向进行而不引起外界其他变化的过程
+\end{itemize}
+
+\section{物态方程}
+
+温度与独立状态变量$(x_1, x_2, \ldots, x_n)$之间的关系
+\begin{gather*}
+    f(T; x_1, x_2, \ldots, x_n) = 0
+\end{gather*}
+
+对于$p-V-T$系统
+\begin{itemize}
+    \item 膨胀系数
+    \begin{gather*}
+        \alpha = \frac{1}{V} \left( \frac{\partial V}{\partial T} \right)_p
+    \end{gather*}
+    \item 压强系数
+    \begin{gather*}
+        \beta = \frac{1}{p} \left( \frac{\partial p}{\partial T} \right)_V
+    \end{gather*}
+    \item 等温压缩系数
+    \begin{gather*}
+        \kappa_T = -\frac{1}{V} \left( \frac{\partial V}{\partial p} \right)_T
+    \end{gather*}
+\end{itemize}
+满足
+\begin{gather*}
+    \alpha = \beta \kappa_T p
+\end{gather*}
+
+\section{热力学第一定律}
+
+\begin{gather*}
+    \d U = \d Q + \d W
+\end{gather*}
+$Q$为吸热，$W$为外界对系统做功
+
+\subsection{温度}
+
+\begin{itemize}
+    \item 热平衡：热接触后状态不发生变化
+    \item 热平衡定律$\implies$一切互为热平衡的物体的温度相等
+\end{itemize}
+
+\subsection{内能}
+
+初末态不同绝热过程的功相等，因此定义态函数内能
+\begin{gather*}
+    \Delta U = W_{ad}
+\end{gather*}
+
+\subsection{功}
+
+外界对系统做功
+\begin{itemize}
+    \item 准静态过程的功
+    \begin{itemize}
+        \item 流体体积变化
+        \begin{gather*}
+            \d W = -p \d V
+        \end{gather*}
+        \item 表面膜面积变化
+        \begin{gather*}
+            \d W = \sigma \d A
+        \end{gather*}
+        \item 细弹性丝长度变化
+        \begin{gather*}
+            \d W = F \d L
+        \end{gather*}
+        \item 电介质极化
+        \begin{gather*}
+            \d W = V \vec{\mathscr{E}} \cdot \d \vec{\mathscr{D}} = V \d \left(\frac{1}{2} \varepsilon_0 \mathscr{E}^2 \right) + V \vec{\mathscr{E}} \cdot \d \vec{\mathscr{P}}
+        \end{gather*}
+        第一项为真空电场能量变化，第二项为极化功
+        \item 磁介质磁化
+        \begin{gather*}
+            \d W = V \vec{\mathscr{H}} \cdot \d \vec{\mathscr{B}} = V \d \left(\frac{1}{2\mu_0} \mathscr{B}^2 \right) + \mu_0 V \vec{\mathscr{H}} \cdot \d \vec{\mathscr{M}}
+        \end{gather*}
+    \end{itemize}
+    \item 非准静态过程的功
+    \begin{itemize}
+        \item 等容过程
+        \begin{gather*}
+            W = 0
+        \end{gather*}
+        \item 等压过程
+        \begin{gather*}
+            W = -p_{ex} \Delta V
+        \end{gather*}
+        $p_{ex}$为外界压强
+    \end{itemize}
+\end{itemize}
+
+\subsection{热容}
+
+过程$y$中吸收的热量为$Q_y$，定义热容
+\begin{gather*}
+    C_y = \frac{\d Q_y}{\d T}
+\end{gather*}
+
+\section{热力学第二定律}
+
+\begin{itemize}
+    \item Clausius表述
+    \begin{gather*}
+        \text{不可能有一种循环过程，其唯一结果是将热量从低温物体传递到高温物体}
+    \end{gather*}
+    \item Kelvin表述
+    \begin{gather*}
+        \text{不可能有一种循环过程，其唯一结果是从单一热源吸收热量并将其全部转化为功}
+    \end{gather*}
+\end{itemize}
+
+\begin{itemize}
+    \item Carnot定理：工作于两个热库之间的热机，可逆热机效率$\eta$最大
+    \item Clausius不等式：从$n$个热库吸收热量$Q_i$，温度$T_i$，对任意循环过程
+    \begin{gather*}
+        \sum_{i=1}^{n} \frac{Q_i}{T_i} \leq 0
+    \end{gather*}
+    连续化，对于任意循环过程，
+    \begin{gather*}
+        \int \frac{\d Q}{T} \leq 0
+    \end{gather*}
+    \item 熵：
+    \begin{gather*}
+        S_B - S_A = \int_A^B \frac{\d Q_{rev}}{T}
+    \end{gather*}
+    积分路径为任一可逆过程
+    \begin{gather*}
+        \d S \geq \frac{\d Q}{T}
+    \end{gather*}
+    $T$代表热源温度
+    \item 熵增加原理：系统的熵在绝热过程中永不减少，在可逆绝热过程中不变，在不可逆绝热过程中增加
+    \item 最大功原理：可逆过程输出的功最大
+\end{itemize}

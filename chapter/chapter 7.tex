@@ -1,0 +1,839 @@
+\chapter{近独立子系组成的系统}
+
+\section{分布与系统的微观态}
+
+\begin{itemize}
+    \item 近独立子系：组成系统的粒子之间相互作用很弱，因此系统总能量为各个粒子能量之和
+\end{itemize}
+
+粒子能级$\{\varepsilon_{\lambda}\}$，简并度$\{g_{\lambda}\}$，各个能级上的粒子数$\{a_{\lambda}\}$称为粒子按能级的微观分布。考虑处于平衡态的孤立系统，允许出现的微观分布需要满足
+\begin{gather*}
+    \sum_{\lambda} a_{\lambda} = N
+    \\
+    \sum_{\lambda} \varepsilon_{\lambda} a_{\lambda} = E
+\end{gather*}
+根据等概率原理，微观分布出现的概率与该分布对应的微观态数成正比。设$W(\{a_{\lambda}\})$为微观分布$\{a_{\lambda}\}$对应的微观态数，即热力学概率，则
+\begin{gather*}
+    P(\{a_{\lambda}\}) = \frac{W(\{a_{\lambda}\})}{\displaystyle \sum_{\{a_{\lambda}\}} W(\{a_{\lambda}\})}
+\end{gather*}
+
+平均分布
+\begin{gather*}
+    \bar{a}_{\lambda} = \sum_{\{a_{\lambda}\}} a_{\lambda} P(\{a_{\lambda}\})
+\end{gather*}
+最概然分布$\{\tilde{a}_{\lambda}\}$是出现概率最大的分布，当组成系统的粒子数$N$很大时，最概然分布等于平均分布。最概然分布满足
+\begin{gather*}
+    \delta \ln W(\{a_{\lambda}\}) = 0
+    \\
+    \delta^2 \ln W(\{a_{\lambda}\}) > 0
+    \\
+    \delta N = 0
+    \\
+    \delta E = 0
+\end{gather*}
+
+\section{定域子系\quad Maxwell-Boltzmann分布}
+
+定域子系粒子可分辨，
+\begin{gather*}
+    W_{MB}(\{a_{\lambda}\}) = \frac{N!}{\displaystyle \prod_{\lambda} a_{\lambda}!} \prod_{\lambda} g_{\lambda}^{a_{\lambda}}
+\end{gather*}
+利用Lagrange乘子法，
+\begin{gather*}
+    \delta \ln W_{MB} - \alpha \delta N - \beta \delta E = 0
+    \\
+    \tilde{a}_{\lambda} = g_{\lambda} \e^{-\alpha - \beta \varepsilon_{\lambda}}
+\end{gather*}
+子系配分函数
+\begin{gather*}
+    Z = \sum_{\lambda} g_{\lambda} \e^{-\beta \varepsilon_{\lambda}}
+    \\
+    \alpha = \ln \frac{Z}{N}
+    \\
+    \beta = \frac{1}{kT}
+    \\
+    \intertext{内能}
+    U = \bar{E} = -N\pt{\ln Z}{\beta}
+    \\
+    \intertext{广义外界作用力}
+    Y_l = \pt{E}{y_l}
+    \\
+    \intertext{对于近独立子系}
+    Y_l = \sum_{\lambda} \pt{\varepsilon_{\lambda}}{y_l} \tilde{a}_{\lambda}
+    \\
+    \bar{Y}_l = -\frac{N}{\beta} \pt{\ln Z}{y_l}
+    \\
+    \intertext{吸收热量}
+    \d Q = \displaystyle \sum_{\lambda} \varepsilon_{\lambda} \d \overline{a}_{\lambda}
+    \\
+    \intertext{熵}
+    S = Nk \left( \ln Z - \beta \pt{\ln Z}{\beta} \right)
+\end{gather*}
+Boltzmann关系
+\begin{gather*}
+    S = k \ln W(\{\overline{a}_{\lambda}\}) = k \ln W_{max}
+    \\
+    S = k \ln \Omega
+\end{gather*}
+$\Omega$为系统量子态总数，
+\begin{gather*}
+    \ln \Omega = \ln W_{max} + O(\ln N)
+\end{gather*}
+$\ln W_{max} \sim N$，在$N$很大时两式等价
+
+\subsection{二能级系统}
+
+$N$个近独立定域子系组成系统，处于平衡态，$\varepsilon_1 = -\varepsilon, \varepsilon_2 = \varepsilon, g_1 = g_2 = 1$，如稀磁系统，若磁性原子总自旋$\frac{1}{2} \hbar$，$\varepsilon = \mu \mathscr{B}$，子系配分函数
+\begin{gather*}
+    Z = \e^{\beta \varepsilon} + \e^{-\beta \varepsilon} = 2 \cosh(\beta \varepsilon)
+    \\
+    U = -N \pt{\ln Z}{\beta} = -N \varepsilon \tanh(\beta \varepsilon)
+    \\
+    C = \pt{U}{T} = Nk (2 \beta \varepsilon)^2 \frac{1}{(\e^{\beta \varepsilon} + \e^{-\beta \varepsilon})^2}
+\end{gather*}
+
+\subsection{热辐射的Planck理论}
+
+采取波的观点，将电磁场分解为简正模，每一个简正模相当于一个谐振子，视为近独立子系
+
+辐射场与空窖形状无关，设空窖为边长$L$的立方体，并选取周期性边界条件，得到$\bm{k}$的取值
+\begin{gather*}
+    \bm{k} = \frac{2\pi}{L} (n_1, n_2, n_3), \quad n_1, n_2, n_3 \in \mathbb{Z}
+\end{gather*}
+频谱$g(\nu)$表示单位频率内的简正模数目，$(0, \nu)$内的简正模数目
+\begin{gather*}
+    G(\nu) = 2 \times \frac{4}{3} \pi (\frac{L}{c} \nu)^3 = \frac{8\pi V}{3c^3} \nu^3
+    \\
+    g(\nu) = \dt{G(\nu)}{\nu} = \frac{8\pi V}{c^3} \nu^2
+\end{gather*}
+$G(\nu)$中因子2表示每个$\bm{k}$对应两个正交的偏振方向
+
+单位频率内能密度
+\begin{gather*}
+    u(\nu, T) = \overline{\varepsilon} \frac{g(\nu)}{V}
+\end{gather*}
+\begin{itemize}
+    \item Rayleigh-Jeans公式：利用经典能均分定理，$\overline{\varepsilon} = kT$
+    \begin{gather*}
+        u(\nu, T) = \frac{8\pi}{c^3} kT \nu^2
+    \end{gather*}
+    高频时偏离实验结果，且导致内能密度发散
+    \item Wien公式：认为谐振子是经典粒子，服从Maxwell-Boltzmann分布
+    \begin{gather*}
+        \overline{\varepsilon} = h \nu \e^{-\frac{h \nu}{k T}}
+        \\
+        u(\nu, T) = \frac{8\pi^2 h}{c^3} \nu^3 \e^{-\frac{h \nu}{k T}}
+    \end{gather*}
+    \item Planck公式：利用量子化假设，$\varepsilon_n = n h \nu, n \in \mathbb{N}$，认为谐振子服从Maxwell-Boltzmann分布
+    \begin{gather*}
+        Z = \sum_{n=0}^{\infty} \e^{-\beta n h \nu} = \frac{1}{1 - \e^{-\frac{h \nu}{kT}}}
+        \\
+        \overline{\varepsilon} = -\pt{\ln Z}{\beta} = \frac{h \nu}{\e^{\frac{h\nu}{k T}} - 1}
+        \\
+        u(\nu, T) = \frac{8\pi h}{c^3} \frac{\nu^3}{\e^{\frac{h\nu}{kT}} - 1}
+        \\
+        \intertext{内能密度}
+        u = \int_0^{\infty} u(\nu, T) \d \nu = a T^4, \quad a = \frac{8\pi^5 k^4}{15 h^3 c^3}
+    \end{gather*}
+\end{itemize}
+
+\subsection{固体热容的统计理论}
+
+考虑理想固体模型，各个原子在平衡位置附近做简谐振动，总原子数为$N$，视为近独立子系，系统总自由度为$3N-6 \approx 3N$
+\begin{gather*}
+    E = \sum_{i=1}^{3N} \varepsilon_i + E_0
+\end{gather*}
+$E_0 = E_0(V)$是固体原子处于平衡位置时的总能量，即结合能
+
+\begin{itemize}
+    \item 经典统计理论：根据能均分定理，
+    \begin{gather*}
+        \overline{E} = 3N k T + E_0
+        \\
+        C_V = \left(\pt{\overline{E}}{T}\right)_{V} = 3N k
+    \end{gather*}
+    即Dulong-Petit定律
+    \item Einstein模型：假设所有原子振动频率$\nu$相同
+    \begin{gather*}
+        \varepsilon_n = (n + \frac{1}{2}) h \nu, \quad n \in \mathbb{N}
+        \\
+        Z = \sum_{n=0}^{\infty} \e^{-\beta \varepsilon_n} = \frac{\e^{-\frac{1}{2} \beta h \nu}}{1 - \e^{-\beta h \nu}}
+        \\
+        \overline{\varepsilon} = -\pt{\ln Z}{\beta} = \frac{h \nu}{\e^{\frac{h \nu}{k T}} - 1} + \frac{1}{2} h \nu
+        \\
+        E = 3N \overline{\varepsilon} = 3N \frac{h \nu}{\e^{\frac{h \nu}{k T}} - 1} + \frac{3}{2} N h \nu
+        \\
+        \intertext{结合能}
+        E_0 = \frac{3}{2} N h \nu
+        \\
+        C_V = \left(\pt{E}{T}\right)_{V} = 3N k \left(\frac{h \nu}{k T}\right)^2 \frac{\e^{\frac{h \nu}{k T}}}{(\e^{\frac{h \nu}{k T}} - 1)^2}
+    \end{gather*}
+\end{itemize}
+
+Debye理论：将固体视为连续弹性介质，横波波速$c_t$，纵波波速$c_l$，单位频率简正模数目
+\begin{gather*}
+    g(\nu) = \frac{4\pi V}{3} \left(\frac{2}{c_t^3}+\frac{1}{c_l^3}\right) \nu^2
+\end{gather*}
+总自由度数为$3N$，存在最高频率$\nu_D$
+\begin{gather*}
+    3N = \int_{0}^{\nu_{D}} g(\nu) \d \nu
+    \\
+    \nu_D = \sqrt[3]{\frac{27N}{4\pi V \left(\frac{2}{c_t^3}+\frac{1}{c_l^3}\right)}}
+    \\
+    \overline{\varepsilon}(\nu) = \frac{h \nu}{\e^{\frac{h \nu}{k T}} - 1} + \frac{1}{2} h \nu
+    \\
+    \overline{E} = \int_{0}^{\nu_{D}} \overline{\varepsilon}(\nu) g(\nu) \d \nu = 9N \frac{(kT)^4}{h^3 \nu_D^3} \int_{0}^{x} \frac{y^3 \d y}{\e^y - 1} + E_0(V)=3NkT D(x) + E_0(V)
+    \\
+    C_V = \left(\pt{\overline{E}}{T}\right)_{V} = 9Nk D(x) = 3Nk \left(4D(x)-\frac{3x}{\e^x-1}\right)
+    \\
+    x = \frac{h \nu_D}{k T} = \frac{\theta_D}{T}
+    \\
+    \intertext{Debye温度}
+    \theta_D = \frac{h \nu_D}{k}
+    \\
+    \intertext{Debye函数}
+    D(x) = \frac{3}{x^3} \int_{0}^{x} \frac{y^3 \d y}{\e^y - 1}
+\end{gather*}
+低温下长波模起主要贡献，因此晶格的不连续结构可以忽略，当作连续弹性介质
+
+\subsection{负绝对温度}
+
+条件
+\begin{enumerate}
+    \item 系统的能量有上限
+    \item 系统内部达到平衡的弛豫时间$\tau_s$远小于系统与环境之间达到平衡的弛豫时间$\tau_E$
+\end{enumerate}
+如$\mathrm{LiF}$晶体的核自旋系统
+
+\subsection{定域子系的经典极限条件}
+
+\begin{gather*}
+    \frac{\Delta \varepsilon_n}{kT} \ll 1,\quad \forall n
+\end{gather*}
+在经典极限下，
+\begin{gather*}
+    \text{子系的一个量子态} \Leftrightarrow \text{大小$h^r$的相空间体积}
+\end{gather*}
+对量子态的求和可以改为对相空间的积分
+
+\section{非定域子系\quad Bose-Einstein分布与Fermi-Dirac分布}
+
+\begin{gather*}
+    \intertext{非定域Fermion}
+    W_{FD}(\{a_{\lambda}\}) = \prod_{\lambda} \frac{g_{\lambda}!}{a_{\lambda}! (g_{\lambda} - a_{\lambda})!}
+    \\
+    \delta \ln W - \alpha \delta N - \beta \delta E = 0
+    \\
+    \intertext{服从Fermi-Dirac分布}
+    \tilde{a}_{\lambda} = \frac{g_{\lambda}}{\e^{\alpha + \beta \varepsilon_{\lambda}} + 1}
+    \\
+    \intertext{非定域Boson}
+    W_{BE}(\{a_{\lambda}\}) = \prod_{\lambda} \frac{(g_{\lambda} + a_{\lambda}-1)!}{a_{\lambda}! (g_{\lambda}-1)!}
+    \\
+    \delta \ln W - \alpha \delta N - \beta \delta E = 0
+    \\
+    \intertext{服从Bose-Einstein分布}
+    \tilde{a}_{\lambda} = \frac{g_{\lambda}}{\e^{\alpha + \beta \varepsilon_{\lambda}} - 1}
+\end{gather*}
+Lagrange乘子
+\begin{gather*}
+    \alpha = -\frac{\mu}{kT}
+    \\
+    \beta = \frac{1}{kT}
+\end{gather*}
+
+近独立的非定域子系称为理想气体
+\begin{gather*}
+    \intertext{平均分布}
+    \overline{a}_{\lambda} = \frac{g_{\lambda}}{\e^{\alpha+\beta \varepsilon_{\lambda}}\pm 1}
+    \\
+    \intertext{巨配分函数}
+    \Xi = \prod_{\lambda} (1 \pm \e^{-\alpha - \beta \varepsilon_{\lambda}})^{\pm g_{\lambda}}
+    \\
+    \overline{N} = -\pt{\ln \Xi}{\alpha}
+    \\
+    \overline{E} = -\pt{\ln \Xi}{\beta}
+    \\
+    \overline{Y}_l = -\frac{1}{\beta} \pt{\ln \Xi}{y_l}
+    \\
+    S = k (\ln \Xi - \alpha \pt{}{\alpha} \ln \Xi - \beta \pt{}{\beta} \ln \Xi)
+\end{gather*}
+以上各式中上号为Fermi-Dirac分布，下号为Bose-Einstein分布
+
+\subsection{非简并条件\quad 经典极限条件}
+
+非简并条件
+\begin{gather*}
+    \e^{\alpha} \gg 1
+\end{gather*}
+满足非经典条件时，Bose-Einstein分布与Fermi-Dirac分布均退化为Maxwell-Boltzmann分布
+\begin{gather*}
+    W_{BE} = W_{FD} = \frac{1}{N!} W_{MB}
+    \\
+    \ln \Xi \approx \e^{-\alpha} Z
+    \\
+    \overline{N} = \e^{-\alpha} Z
+    \\
+    \overline{E} = -\overline{N} \pt{\ln Z}{\beta}
+    \\
+    \overline{Y}_l = -\frac{\overline{N}}{\beta} \pt{\ln Z}{y_l}
+\end{gather*}
+但熵与Maxwell-Boltzmann分布不同
+\begin{gather*}
+    S = k \ln W_{MB} - k \ln \overline{N}!
+\end{gather*}
+
+非简并理想气体分子能量分为平动、转动、振动、束缚电子能量四部分
+\begin{gather*}
+    \varepsilon = \varepsilon^t + \varepsilon^r + \varepsilon^v + \varepsilon^e
+    \\
+    Z = Z^t Z^r Z^v Z^e
+\end{gather*}
+\begin{itemize}
+    \item 质心平动：$\Delta \varepsilon^t \ll kT$，满足经典极限
+    \begin{gather*}
+        Z^t = \frac{1}{h^3} \iiint_V \d x \d y \d z \iiint_{-\infty}^{+\infty} \e^{-\beta \frac{p^2}{2m}} \d p_x \d p_y \d p_z = V \left(\frac{2\pi m k T}{h^2}\right)^{\frac{3}{2}}
+    \end{gather*}
+    \item 束缚电子：基态能量$\varepsilon_0^e$与激发态能量差远大于$kT$，只考虑基态
+    \begin{gather*}
+        Z^e = g_0^e \e^{-\beta \varepsilon_0^e}
+    \end{gather*}
+    \item 双原子分子：除质心平动和束缚电子外，
+    \begin{itemize}
+        \item 转动
+        \begin{gather*}
+            \varepsilon_{\lambda}^r = \frac{\hbar^2}{2I} \lambda(\lambda+1), \quad \lambda \in \mathbb{N}
+            \\
+            g_{\lambda}^r = 2\lambda + 1
+            \\
+            \intertext{对异核双原子分子}
+            Z^r = \sum_{\lambda=0}^{\infty} (2\lambda + 1) \e^{-\frac{\hbar^2}{2IkT} \lambda(\lambda+1)}
+        \end{gather*}
+        对同核双原子分子，需要考虑波函数对称性，配分函数只取$\lambda$为偶数项或奇数项
+        \begin{itemize}
+            \item 高温极限：满足经典极限
+            \begin{gather*}
+                \varepsilon^r = \frac{1}{2I} \left(p_{\theta}^2+\frac{1}{\sin^2 \theta} p_{\phi}^2\right)
+                \\
+                Z^r = \frac{1}{h^2} \int_{0}^{\pi} \d \theta \int_{0}^{2\pi} \d \phi \int_{-\infty}^{\infty} \e^{-\beta \varepsilon^r} \d p_{\theta} \d p_{\phi} = \frac{2I}{\hbar^2 \beta}
+                \\
+                \overline{\varepsilon}^r = kT
+                \\
+                C_V^r = Nk
+            \end{gather*}
+            \item 低温极限
+            \begin{gather*}
+                Z^r \approx 1 + 3 \e^{-\frac{\hbar^2}{IkT}}
+                \\
+                \overline{\varepsilon}^r \approx 3 \frac{\hbar^2}{I} \e^{-\frac{\hbar^2}{IkT}}
+                \\
+                C_V^r \approx 3Nk \left(\frac{\hbar^2}{IkT}\right)^2 \e^{-\frac{\hbar^2}{IkT}}
+            \end{gather*}
+        \end{itemize}
+        \item 振动
+        \begin{gather*}
+            \varepsilon_n^v = (n + \frac{1}{2}) h \nu, \quad n \in \mathbb{N}
+            \\
+            g_n^v = 1
+            \\
+            Z^v = \sum_{n=0}^{\infty} \e^{-\beta \varepsilon_n^v} = \frac{\e^{-\frac{1}{2} \beta h \nu}}{1 - \e^{-\beta h \nu}}
+            \\
+            \overline{\varepsilon}^v = \frac{h \nu}{\e^{\frac{h \nu}{k T}} - 1} + \frac{1}{2} h \nu
+            \\
+            C_V^v = Nk \left(\frac{h \nu}{k T}\right)^2 \frac{\e^{\frac{h \nu}{k T}}}{(\e^{\frac{h \nu}{k T}} - 1)^2}
+        \end{gather*}
+    \end{itemize}
+    \item 特点
+    \begin{itemize}
+        \item 质心平动均满足经典极限，大多数分子的转动满足经典极限，振动不满足经典极限，束缚电子一般只需要考虑基态
+        \item 非简并理想气体物态方程
+        \begin{gather*}
+            p = nkT
+        \end{gather*}
+        \item 非简并理想气体内能只与温度有关
+    \end{itemize}
+\end{itemize}
+
+经典极限条件
+\begin{gather*}
+    \e^{\alpha} \gg 1
+    \\
+    \frac{\Delta \varepsilon_n}{kT} \ll 1, \quad \forall n
+\end{gather*}
+
+\subsubsection{Maxwell速度分布}
+
+满足非简并条件的理想气体，分子质心运动速度分布，即单位体积内速度在$\d v_x \d v_y \d v_z$内的分子数目
+\begin{gather*}
+    \d n = f(v_x, v_y, v_z) \d v_x \d v_y \d v_z = n \left(\frac{m}{2\pi k T}\right)^{\frac{3}{2}} \e^{-\frac{m(v_x^2 + v_y^2 + v_z^2)}{2kT}} \d v_x \d v_y \d v_z
+\end{gather*}
+坐标变换为球坐标$(v, \theta, \phi)$并对角度积分，得到速率分布
+\begin{gather*}
+    \d n = f(v) \d v = 4\pi n \left(\frac{m}{2\pi k T}\right)^{\frac{3}{2}} v^2 \e^{-\frac{m v^2}{2kT}} \d v
+    \\
+    \intertext{最概然速率}
+    v_m = \sqrt{\frac{2kT}{m}}
+    \\
+    \intertext{平均速率}
+    \bar{v} = \sqrt{\frac{8kT}{\pi m}}
+    \\
+    \intertext{方均根速率}
+    v_s = \sqrt{\frac{3kT}{m}}
+\end{gather*}
+
+\subsubsection{能量均分定理}
+
+满足经典极限条件时，系统微观能量表达式中每一个平方项的平均值为$\frac{1}{2} k T$，如
+\begin{itemize}
+    \item 非简并理想气体分子质心平动动能
+    \item 非简并理想气体分子转动动能
+    \item 理想固体模型中原子的振动
+\end{itemize}
+
+\subsection{弱简并理想气体\quad 统计关联}
+
+弱简并理想气体满足$\e^{\alpha} > 1$，
+\begin{itemize}
+    \item Bose气体：设自旋为$0$，平动能量满足$\Delta \varepsilon \ll kT$
+    \begin{gather*}
+        \intertext{态密度}
+        D(\varepsilon) = \frac{1}{h^3} \iiint_V \d x \d y \d z \iiint_{\d \varepsilon} \d p_x \d p_y \d p_z = \frac{2\pi V}{h^3} (2m)^{\frac{3}{2}} \varepsilon^{\frac{1}{2}} \d \varepsilon
+        \\
+        \ln \Xi = -\frac{2\pi V}{h^3} (2m)^{\frac{3}{2}} \int_{0}^{\infty} \varepsilon^{\frac{1}{2}} \ln(1 - \e^{-\alpha - \beta \varepsilon}) \d \varepsilon = \frac{2\pi V}{h^3} (\frac{2m}{\beta})^{\frac{3}{2}} \frac{2}{3} \int_{0}^{+\infty} \frac{x^{\frac{3}{2}}}{\e^{\alpha + x} - 1} \d x
+        \\
+        \intertext{设}
+        z = \e^{-\alpha}
+        \\
+        \intertext{定义}
+        g_{\nu}(z) = \frac{1}{\Gamma(\nu)} \int_{0}^{+\infty} \frac{x^{\nu - 1}}{z^{-1} \e^x - 1} \d x
+        \\
+        \intertext{其中}
+        \begin{cases}
+            0 \leq z <1,\quad \nu > 0
+            \\
+            z = 1,\quad \nu > 1
+        \end{cases}
+        \\
+        \intertext{当$z^{-1} \e^x >1$时，级数展开}
+        g_{\nu}(z) = \sum_{l=1}^{\infty} \frac{z^l}{l^{\nu}}
+        \\
+        \ln \Xi = \frac{V}{\lambda_T^3} g_{\frac{5}{2}}(z)
+        \\
+        \intertext{热波长}
+        \lambda_T = \frac{h}{\sqrt{2\pi m k T}}
+        \\
+        \intertext{由总粒子数条件确定$z$}
+        N = \frac{1}{\lambda_T^3} g_{\frac{5}{2}}(z) \iff y = n \lambda_T^3 = g_{\frac{3}{2}}(z)
+        \\
+        \intertext{反解出$z$关于$y$的表达式}
+        p = \frac{kT}{\lambda_T^3} g_{\frac{5}{2}}(z)
+        \\
+        \overline{E} = \frac{3}{2} kT \frac{V}{\lambda_T^3} g_{\frac{5}{2}}(z)
+    \end{gather*}
+    \item Fermi气体：设自旋为$\frac{1}{2}$，平动能量满足$\Delta \varepsilon \ll kT$
+    \begin{gather*}
+        \ln \Xi = 2 \times \frac{2\pi V}{h^3} (2m)^{\frac{3}{2}} \int_{0}^{\infty} \varepsilon^{\frac{1}{2}} \ln(1 + \e^{-\alpha - \beta \varepsilon}) \d \varepsilon = 2 \times \frac{2\pi V}{h^3} (\frac{2m}{\beta})^{\frac{3}{2}} \frac{2}{3} \int_{0}^{+\infty} \frac{x^{\frac{3}{2}}}{\e^{\alpha + x} + 1} \d x
+        \\
+        \intertext{因子$2$来源于两种自旋的简并，定义}
+        f_{\nu}(z) = \frac{1}{\Gamma(\nu)} \int_{0}^{+\infty} \frac{x^{\nu - 1}}{z^{-1} \e^x + 1} \d x
+        \\
+        \intertext{其中}
+        z \geq 0, \quad \nu > 0
+        \\
+        f_{\nu}(z) = \sum_{l=1}^{\infty} (-1)^{l-1} \frac{z^l}{l^{\nu}}
+        \\
+        \ln \Xi = \frac{V}{\lambda_T^3} f_{\frac{5}{2}}(z)
+        \\
+        N = \frac{2}{\lambda_T^3} f_{\frac{3}{2}}(z) \iff y = \frac{1}{2} n \lambda_T^3 = f_{\frac{3}{2}}(z)
+        \\
+        p = \frac{2kT}{\lambda_T^3} f_{\frac{5}{2}}(z)
+        \\
+        \overline{E} = \frac{3}{2} kT \frac{2V}{\lambda_T^3} f_{\frac{5}{2}}(z)
+    \end{gather*}
+\end{itemize}
+统计关联：Fermi气体存在等效排斥作用，Bose气体存在等效吸引作用，内能与温度和密度均有关
+
+\subsection{理想Bose气体的Bose-Einstein凝聚}
+
+强简并区$\e^{\alpha}$接近$1$但仍大于$1$
+
+弱简并区公式
+\begin{gather*}
+    N = \frac{V}{h^3} (2\pi m k T)^{\frac{3}{2}} g_{\frac{3}{2}}(z) = \frac{V}{h^3} (2\pi m k T_c)^{\frac{3}{2}} g_{\frac{3}{2}}(1)
+    \\
+    T_c = \frac{h^2}{2\pi m k} \left(\frac{n}{g_{\frac{3}{2}}(1)}\right)^{\frac{2}{3}}
+\end{gather*}
+由于$z$取值有上限，当$T<T_c$时上述公式不适用，在弱简并区态密度忽略了基态，需要在态密度中补回基态贡献，设$g_0 = 1$，
+\begin{gather*}
+    \ln \Xi = -\ln (1-\e^{-\alpha}) - \int_{\varepsilon_1}^{+\infty} \ln(1-\e^{-\alpha-\beta \varepsilon})D(\varepsilon) \d \varepsilon = -\ln(1 - z) + \frac{V}{\lambda_T^3} g_{\frac{5}{2}}(z)
+    \\
+    N = -\pt{\ln \Xi}{\alpha} = \overline{N}_0 + \overline{N}_{exc}
+    \\
+    \overline{N}_0 = \frac{z}{1-z}
+    \\
+    \overline{N}_{exc} = \frac{V}{h^3} (2\pi m kT)^{\frac{3}{2}} g_{\frac{3}{2}}(z)
+\end{gather*}
+
+当$T>T_c$时，$\overline{N}_{exc} \sim N$；当$T \leq T_c$时，
+\begin{gather*}
+    N = \frac{V}{h^3} (2\pi m k T_c)^{\frac{3}{2}} g_{\frac{3}{2}}(1)
+    \\
+    \overline{N}_{exc} = \frac{V}{h^3} (2\pi m k T)^{\frac{3}{2}} g_{\frac{3}{2}}(1)
+    \\
+    \overline{N}_0 = N - \overline{N}_{exc} = N \left[1 - \left(\frac{T}{T_c}\right)^{\frac{3}{2}}\right]
+\end{gather*}
+
+改写成等温压缩形式
+\begin{gather*}
+    N = \frac{V_c}{h^3} (2\pi m k T)^{\frac{3}{2}} g_{\frac{3}{2}}(1)
+    \\
+    \intertext{比容$v=\frac{V}{N}$}
+    v_c = \frac{V_c}{N} = \frac{\lambda_T^3}{g_{\frac{3}{2}}(1)}
+\end{gather*}
+
+综上，$T$与$v$的变化范围可以分为两个区域
+\begin{gather*}
+    \begin{cases}
+        \text{两相共存区：}\frac{\lambda_T^3}{v} \geq g_{\frac{3}{2}}(1), \quad T \leq T_c\text{或}=v \leq v_c,\quad z = 1
+        \\
+        \text{气相区：}\frac{\lambda_T^3}{v} < g_{\frac{3}{2}}(1), \quad T > T_c\text{或}v > v_c,\quad z \text{由} g_{\frac{3}{2}}(z) = \frac{\lambda_T^3}{v} \text{确定}
+    \end{cases}
+\end{gather*}
+
+\begin{gather*}
+    p =
+    \begin{cases}
+        \frac{kT}{\lambda_T^3} g_{\frac{5}{2}}(1), \quad v \leq v_c
+        \\
+        \frac{kT}{\lambda_T^3} g_{\frac{5}{2}}(z), \quad v > v_c
+    \end{cases}
+    \\
+    \intertext{$p-v$图水平段}
+    p_0(T) = \frac{kT}{\lambda_T^3} g_{\frac{5}{2}}(1), \quad v \leq v_c
+    \\
+    \intertext{相变曲线}
+    p_0v_c^{\frac{5}{3}} = \frac{h^2}{2\pi m} \frac{g_{\frac{5}{2}}(1)}{(g_{\frac{3}{2}}(1))^{\frac{5}{3}}}
+    \\
+    \intertext{气相比容为$0$，两相比容之差}
+    \Delta v = v_c
+    \\
+    \dt{p_0(T)}{T} = \frac{1}{T \Delta v} \left[\frac{5}{2} kT \frac{g_{\frac{5}{2}}(1)}{g_{\frac{3}{2}}(1)}\right]
+    \\
+    \intertext{相变潜热}
+    L = \frac{5}{2} kT \frac{g_{\frac{5}{2}}(1)}{g_{\frac{3}{2}}(1)}
+    \\
+    \intertext{内能}
+    \overline{E} =
+    \begin{cases}
+        \frac{3}{2} NkT \frac{v}{\lambda_T^3} g_{\frac{5}{2}}(1), \quad T \leq T_c
+        \\
+        \frac{3}{2} NkT \frac{v}{\lambda_T^3} g_{\frac{5}{2}}(z), \quad T > T_c
+    \end{cases}
+    \\
+    \intertext{熵}
+    S = Nk \left(\frac{5}{2} \frac{v}{\lambda_T^3} g_{\frac{5}{2}}(z) - \frac{\ln(1-z)}{N}-\ln z\right)
+    \\
+    \intertext{第二项可忽略}
+    S = 
+    \begin{cases}
+        Nk \frac{5}{2} \frac{v}{\lambda_T^3} g_{\frac{5}{2}}(1), \quad T \leq T_c
+        \\
+        Nk \left(\frac{5}{2} \frac{v}{\lambda_T^3} g_{\frac{5}{2}}(z) - \ln z\right), \quad T > T_c
+    \end{cases}
+    \\
+    \dt{g_{\frac{5}{2}}(z)}{z} = \frac{1}{z} g_{\frac{3}{2}}(z)
+    \\
+    \left(\pt{z}{v}\right)_T = \frac{\left(\pt{g_{\frac{3}{2}}(z)}{v}\right)_T}{\dt{g_{\frac{3}{2}}(z)}{z}}=\frac{-\frac{\lambda_T^3}{v^2}}{\frac{1}{z} g_{\frac{1}{2}}(z)}=-\frac{\lambda_T^3 z}{v^2 g_{\frac{1}{2}}(z)}
+    \\
+    \intertext{对$v > v_c$区域}
+    \left(\pt{p}{v}\right)_T = \frac{kT}{\lambda_T^3} \dt{g_{\frac{5}{2}}(z)}{z} \left(\pt{z}{v}\right)_T = -\frac{kT}{v^2} \frac{g_{\frac{3}{2}}(z)}{g_{\frac{1}{2}}(z)}
+    \\
+    \intertext{压缩率}
+    \kappa_T = -\frac{1}{v} \left(\pt{v}{p}\right)_T = \frac{v}{kT} \frac{g_{\frac{1}{2}}(z)}{g_{\frac{3}{2}}(z)}
+\end{gather*}
+$v \to v_c^+$时，$\kappa_T \to +\infty$
+\begin{gather*}
+    \intertext{对$T > T_c$区域}
+    \left(\pt{z}{T}\right)_v = \frac{\left(\pt{g_{\frac{3}{2}}(z)}{T}\right)_v}{\dt{g_{\frac{3}{2}}(z)}{z}} = \frac{-\frac{3}{2} \frac{1}{T} \frac{\lambda_T^3}{v}}{\frac{1}{z} g_{\frac{1}{2}}(z)} = -\frac{3z}{2T} \frac{g_{\frac{3}{2}}(z)}{g_{\frac{1}{2}}(z)}
+    \\
+    \intertext{热容}
+    C_V = Nk \left[\pt{}{T} \left(\frac{3}{2} NkT \frac{v}{\lambda_T^3} g_{\frac{5}{2}}(z)\right)\right] = \frac{15}{4} Nk \frac{v}{\lambda_T^3} g_{\frac{5}{2}}(z) + \frac{3}{2} NkT \frac{v}{\lambda_T^3} \dt{g_{\frac{5}{2}}(z)}{z} \left(\pt{z}{T}\right)_v
+    \\
+    C_V = 
+    \begin{cases}
+        \frac{15}{4} Nk \frac{v}{\lambda_T^3} g_{\frac{5}{2}}(1), \quad T \leq T_c
+        \\
+        \frac{15}{4} Nk \frac{v}{\lambda_T^3} g_{\frac{5}{2}}(z) -\frac{9}{4} \frac{g_{\frac{3}{2}}^2(z)}{g_{\frac{1}{2}}(z)}, \quad T > T_c
+    \end{cases}
+\end{gather*}
+
+\subsection{超冷稀薄原子气体的Bose-Einstein凝聚}
+
+假设
+\begin{itemize}
+    \item 气体原子是无内部结构的Boson
+    \item 总原子数$N \gg 1$
+    \item 磁阱势能
+    \begin{gather*}
+        V(x,y,z) = \frac{1}{2} m (\omega_1^2 x^2 + \omega_2^2 y^2 + \omega_3^2 z^2)
+    \end{gather*}
+    \item 忽略原子间相互作用
+    \item 气体处于平衡态
+\end{itemize}
+
+能量
+\begin{gather*}
+    \varepsilon_{l_1, l_2, l_3} = \left(l_1+\frac{1}{2}\right)\hbar \omega_1 + \left(l_2+\frac{1}{2}\right)\hbar \omega_2 + \left(l_3+\frac{1}{2}\right)\hbar \omega_3, \quad l_1, l_2, l_3 \in \mathbb{N}
+    \\
+    \intertext{基态}
+    \varepsilon_0 = \frac{1}{2} \hbar (\omega_1 + \omega_2 + \omega_3)
+    \\
+    \intertext{基态波函数}
+    \psi_0(x,y,z) = \prod_{i=1}^{3} \sqrt[4]{\frac{m \omega_i}{\pi \hbar}} \e^{-\frac{m \omega_i}{2 \hbar} x_i^2} = \frac{1}{\pi^{\frac{3}{4}} (a_1 a_2 a_3)^{\frac{1}{2}}} \e^{-\sum_{i=1}^{3} \frac{x_i^2}{2 a_i^2}}
+    \\
+    a_i = \sqrt{\frac{\hbar}{m \omega_i}}
+    \\
+    \intertext{能量近似连续，$0$到$\varepsilon$量子态数}
+    G(\varepsilon) = \frac{1}{\hbar^3 \omega_1 \omega_2 \omega_3} \int_{0}^{\varepsilon} \d \varepsilon_1 \int_{0}^{\varepsilon - \varepsilon_1} \d \varepsilon_2 \int_{0}^{\varepsilon - \varepsilon_1 - \varepsilon_2} \d \varepsilon_3 = \frac{\varepsilon^3}{6\hbar^3 \omega_1 \omega_2 \omega_3}
+    \\
+    \intertext{态密度}
+    D(\varepsilon) = \dt{G(\varepsilon)}{\varepsilon} = \frac{\varepsilon^2}{2\hbar^3 \omega_1 \omega_2 \omega_3}
+    \\
+    N - \overline{N}_0 = \overline{N}_{exc} = \int_{0}^{+\infty} \frac{D(\varepsilon)}{\e^{\beta(\varepsilon - \mu)} - 1} \d \varepsilon
+\end{gather*}
+由于$N \gg 1$，$\mu = 0$，
+\begin{gather*}
+    \overline{N}_{exc, max} = N = \frac{k^3 T^3}{\hbar^3 \omega_1 \omega_2 \omega_3} \zeta(3)
+    \\
+    \overline{N}_{exc} = N \left(\frac{T}{T_c}\right)^3
+    \\
+    \overline{N}_0 = N \left[1 - \left(\frac{T}{T_c}\right)^3\right]
+\end{gather*}
+
+\begin{itemize}
+    \item $0 < T \leq T_c$：气体处于两相共存区，$\mu = 0$，凝聚部分能量和熵为$0$
+    \begin{gather*}
+        \intertext{内能}
+        \overline{E} = 3NkT \frac{\zeta(4)}{\zeta(3)} \left(\frac{T}{T_c}\right)^3
+        \\
+        C = \pt{\overline{E}}{T} = 12 Nk \frac{\zeta(4)}{\zeta(3)} \left(\frac{T}{T_c}\right)^3
+        \\
+        S = 4Nk \frac{\zeta(4)}{\zeta(3)} \left(\frac{T}{T_c}\right)^3
+    \end{gather*}
+    \item 正常相$T>T_c$：考虑高温经典极限的一级修正
+    \begin{gather*}
+        N = \int_{0}^{+\infty} \frac{D(\varepsilon)}{\e^{\beta(\varepsilon - \mu)} - 1} \d \varepsilon \approx \int_{0}^{+\infty} D(\varepsilon) \left[\e^{-\beta(\varepsilon - \mu)} + \e^{-2\beta(\varepsilon - \mu)}\right] \d \varepsilon = \frac{k^3 T^3}{\hbar^3 \omega_1 \omega_2 \omega_3} \left[\e^{\frac{\mu}{kT}} + \frac{1}{8} \e^{\frac{2\mu}{kT}}\right]
+        \\
+        \e^{\frac{\mu}{kT}} \approx \zeta(3) \frac{T_c^3}{T^3} - \frac{1}{8} \zeta^2(3) \frac{T_c^6}{T^6}
+        \\
+        \overline{E} = \int_{0}^{+\infty} \frac{\varepsilon D(\varepsilon)}{\e^{\beta(\varepsilon - \mu)} - 1} \d \varepsilon \approx \int_{0}^{+\infty} \varepsilon D(\varepsilon) \left[\e^{-\beta(\varepsilon - \mu)} + \e^{-2\beta(\varepsilon - \mu)}\right] \d \varepsilon = 3NkT \left[1-\frac{\zeta(3)}{16} \left(\frac{T_c}{T}\right)^3\right]
+        \\
+        C = \pt{E}{T} = 3Nk \left[1 + \frac{\zeta(3)}{8} \left(\frac{T_c}{T}\right)^3\right]
+    \end{gather*}
+    \item 热容跃变
+    \begin{gather*}
+        \d \overline{E} = \left(\pt{\overline{E}}{T}\right)_{\mu} \d T + \left(\pt{\overline{E}}{\mu}\right)_T \d \mu
+    \end{gather*}
+    第一项系数连续，第二项跃变
+    \begin{gather*}
+        \Delta \left(\pt{\mu}{T}\right) = \left(\pt{\mu}{T}\right)_{T_c^+} = -\left(\pt{\mu}{N}\right)_T \left(\pt{N}{T}\right)_{\mu} = -\frac{\left(\pt{N}{T}\right)_{\mu}}{\left(\pt{N}{\mu}\right)_T}=-3\frac{\zeta(3)}{\zeta(2)}k
+        \\
+        \left(\pt{\overline{E}}{T}\right)_{\mu} = \frac{1}{2\hbar^3 \omega_1 \omega_2 \omega_3} \int_{0}^{+\infty} \varepsilon^3 \left[\pt{}{\mu} \frac{1}{\e^{\beta(\varepsilon - \mu)} - 1}\right] \d \varepsilon = -\frac{1}{2\hbar^3 \omega_1 \omega_2 \omega_3} \int_{0}^{+\infty} \varepsilon^3 \left[\pt{}{\varepsilon} \frac{1}{\e^{\beta(\varepsilon - \mu)} - 1}\right] \d \varepsilon = 3N
+        \\
+        \Delta C = \left(\pt{\overline{E}}{\mu}\right)_T \Delta \left(\pt{\mu}{T}\right) = -9Nk \frac{\zeta(3)}{\zeta(2)}
+    \end{gather*}
+\end{itemize}
+
+\subsection{光子气体}
+
+光子数不守恒，$\mu = 0$，态密度$g(\nu)$，
+\begin{gather*}
+    g(\nu) \d \nu = 2 \int_{\d \nu} \frac{\d \omega}{h^3} = \frac{8\pi V}{c^3} \nu^2 \d \nu
+\end{gather*}
+因子$2$来源于两种偏振态，单位频率内能密度
+\begin{gather*}
+    u(\nu) = \frac{8\pi}{c^3} \frac{h \nu^3}{\e^{\frac{h \nu}{k T}} - 1}
+    \\
+    \ln \Xi = - \int_{0}^{\infty} g(\nu) \ln(1-\e^{-\beta h \nu})\d \nu = \frac{8\pi^5 V}{45} \left(\frac{kT}{hc}\right)^3
+    \\
+    \overline{E} = aVT^4
+    \\
+    p = \frac{1}{3} a T^4
+    \\
+    S = \frac{4}{3} a V T^3
+    \\
+    a = \frac{8\pi^5 k^4}{15 h^3 c^3}
+    \\
+    \intertext{平均光子数}
+    \overline{N} = \int_{0}^{+\infty} \frac{g(\nu)}{\e^{\beta h \nu} - 1} \d \nu = 16 \pi \zeta(3) V \left(\frac{kT}{hc}\right)^3
+\end{gather*}
+
+\subsection{强简并Fermi气体}
+
+设粒子为质点，自旋$\frac{1}{2}\hbar$，不存在外磁场，能级上粒子平均数量
+\begin{gather*}
+    f(\varepsilon_{\lambda}) = \frac{\overline{a}_{\lambda}}{g_{\lambda}} = \frac{1}{\e^{\frac{\varepsilon_{\lambda}-\mu}{kT}}-1}
+\end{gather*}
+对于宏观系统，能级间距远小于$kT$，能级可视为连续
+\begin{gather*}
+    f(\varepsilon) = \frac{1}{\e^{\frac{\varepsilon - \mu}{kT}} + 1}
+    \\
+    \varepsilon = \frac{p^2}{2m}
+\end{gather*}
+
+\begin{itemize}
+    \item $T = 0 \mathrm{K}$时，
+    \begin{gather*}
+        f(\varepsilon) =
+        \begin{cases}
+            1, \quad \varepsilon < \mu_0
+            \\
+            0, \quad \varepsilon > \mu_0
+        \end{cases}
+        \\
+        \intertext{最大能量Fermi能}
+        \varepsilon_F = \mu_0
+        \\
+        N = \int_{0}^{\varepsilon_F} f(\varepsilon) D(\varepsilon) \d \varepsilon
+        \\
+        D(\varepsilon) \d \varepsilon = 2 \times \frac{2\pi V}{h^3} (2m)^{\frac{3}{2}} \varepsilon^{\frac{1}{2}} \d \varepsilon
+        \\
+        \varepsilon_F = \mu_0 = \frac{\hbar^2}{2m} \left(3\pi^2 n\right)^{\frac{2}{3}}
+        \\
+        \intertext{在动量空间中填充粒子的区域是半径为$p_F$的球体，称为Fermi球}
+        p_F = \hbar (3\pi^2 n)^{\frac{1}{3}}
+        \\
+        E_0 = \int_{0}^{\mu_0} \varepsilon D(\varepsilon) \d \varepsilon = \frac{3}{5} N \varepsilon_F
+        \\
+        \intertext{简并压}
+        p_0 = -\pt{E_0}{V} = \frac{2}{5} n \varepsilon_F
+    \end{gather*}
+    \item 有限温度$T \neq 0 \mathrm{K}$
+    \begin{gather*}
+        \intertext{化学势由总粒子数确定}
+        N = \frac{4\pi}{h^3} (2m)^{\frac{3}{2}} V \int_{0}^{+\infty} \frac{\varepsilon^{\frac{1}{2}} \d \varepsilon}{\e^{\frac{\varepsilon-\mu}{kT}}+1}
+    \end{gather*}
+    考虑积分
+    \begin{align*}
+        I &= \int_{0}^{+\infty} \frac{\eta(\varepsilon) \d \varepsilon}{\e^{\frac{\varepsilon-\mu}{kT}}+1}
+        \\
+        \intertext{设$y=\frac{\varepsilon-\mu}{kT}$}
+        I &= kT \int_{-\frac{\mu}{kT}}^{+\infty} \frac{\eta(\mu+kTy) \d y}{\e^{y}+1}
+        \\
+        &= kT \int_{-\frac{\mu}{kT}}^{0} \frac{\eta(\mu+kTy) \d y}{\e^{y}+1} + kT \int_{0}^{+\infty} \frac{\eta(\mu+kTy) \d y}{\e^{y}+1}
+        \\
+        &= kT \int_{0}^{\frac{\mu}{kT}} \eta(\mu - kTy) \left(1 - \frac{1}{\e^{y}+1}\right) \d y + kT \int_{0}^{+\infty} \frac{\eta(\mu+kTy) \d y}{\e^{y}+1}
+        \\
+        &= \int_{0}^{\mu} \eta(\varepsilon) \d \varepsilon + kT \int_{0}^{+\infty} \frac{\eta(\mu+kTy) - \eta(\mu - kTy)}{\e^{y}+1} \d y
+        \\
+        \intertext{$\frac{\mu}{kT} \ll 1$，近似将积分上限改为无穷}
+        I &= \int_{0}^{\mu} \eta(\varepsilon) \d \varepsilon + kT \int_{0}^{+\infty} \frac{\eta(\mu+kTy) - \eta(\mu - kTy)}{\e^{y}+1} \d y
+        \\
+        &= \int_{0}^{\mu} \eta(\varepsilon) \d \varepsilon + \displaystyle \sum_{l=0}^{\infty} \frac{2}{(2l+1)!} (kT)^{2l+2} \eta^{(2l+1)}(\mu) \int_{0}^{+\infty} \frac{y^{2l+1}}{\e^{y}+1} \d y
+    \end{align*}
+    保留到$\left(\frac{kT}{\mu}\right)^2$项
+    \begin{gather*}
+        N = \frac{8\pi}{3h^3} (2m)^{\frac{3}{2}} V \mu^{\frac{3}{2}} \left[1 + \frac{\pi^2}{8} \left(\frac{kT}{\mu}\right)^2\right]
+        \\
+        \mu = \varepsilon_F \left[1 + \frac{\pi^2}{8} \left(\frac{kT}{\mu}\right)^2 \right]^{-\frac{2}{3}}
+        \\
+        \mu \approx \varepsilon_F \left[1 + \frac{\pi^2}{8} \left(\frac{kT}{\mu_0}\right)^2 \right]^{-\frac{2}{3}} \approx \varepsilon_F \left[1 - \frac{\pi^2}{12} \left(\frac{kT}{\varepsilon_F}\right)^2\right]
+    \end{gather*}
+    \begin{align*}
+        \overline{E} &= \frac{4\pi}{h^3} (2m)^{\frac{3}{2}} V \int_{0}^{+\infty} \frac{\varepsilon^{\frac{3}{2}} \d \varepsilon}{\e^{\frac{\varepsilon-\mu}{kT}}+1}
+        \\
+        &= \frac{8\pi^2}{5h^3} (2m)^{\frac{3}{2}} V \mu^{\frac{5}{2}} \left[1 + \frac{5\pi^2}{8} \left(\frac{kT}{\mu}\right)^2\right]
+        \\
+        &= \frac{3}{5} N \mu \left[1 - \frac{\pi^2}{12} \left(\frac{kT}{\mu}\right)^2\right]^{\frac{5}{2}} \left[1 + \frac{5\pi^2}{8} \left(\frac{kT}{\mu}\right)^2\right]
+        \\
+        &= \frac{3}{5} N \varepsilon_F \left[1 + \frac{5\pi^2}{12} \left(\frac{kT}{\varepsilon_F}\right)^2\right]
+    \end{align*}
+    \begin{gather*}
+        C_V = \left(\pt{E}{T}\right)_V = \frac{\pi^2}{2} Nk \frac{kT}{\varepsilon_F}
+    \end{gather*}
+\end{itemize}
+
+电子气密度越大，平均动能相对于相互作用能越大，越接近理想气体
+
+\subsection{元激发理想气体}
+
+相互作用多粒子系统，低激发态可以看作元激发（准粒子）的集合，从而可以视为近独立子系组成的系统
+
+晶体原子振动的元激发：声子\\
+在简谐近似下，晶体振动可以视为一系列单色平面波的叠加，偏振$s$，波矢$\bm{k}$
+\begin{gather*}
+    \intertext{能量}
+    \varepsilon_s(\bm{k}) = (n_{\bm{k}s} + \frac{1}{2})\hbar \omega_s(\bm{k}),\quad n_{\bm{k}s} \in \mathbb{N}
+    \\
+    E_{\{n_{\bm{k}s}\}} = \sum_{\bm{k},s} (n_{\bm{k}s} + \frac{1}{2})\hbar \omega_s(\bm{k})
+\end{gather*}
+当温度足够低时，元激发密度低，相互作用很弱，元激发寿命很长，才可以使用
+\begin{itemize}
+    \item Boson组成的系统只能有Bose元激发
+    \item Fermion组成的系统可以有Fermi元激发和Bose元激发
+\end{itemize}
+
+性质
+\begin{itemize}
+    \item 平衡性质：需要元激发色散关系，统计性质
+    \item 非平衡性质：需要元激发之间的散射机制，通过两种途径确定
+    \begin{itemize}
+        \item 唯象理论
+        \item 微观理论：从系统的微观Hamiltonian出发，确定色散关系和统计性质
+    \end{itemize}
+\end{itemize}
+
+液氦$^4\textrm{He}$超流态（液$\textrm{He II}$）的元激发：Landau超流理论
+\begin{itemize}
+    \item 液$\textrm{He II}$由正常流体和超流体组成，超流成分没有黏性与熵，正常成分有黏性与熵，总质量密度
+    \begin{gather*}
+        \rho = \rho_s + \rho_n
+    \end{gather*}
+    \item $T = 0 \mathrm{K}$时，液$\textrm{He II}$全部为超流成分；$T = T_{\lambda}$时，液$\textrm{He II}$全部为正常成分
+\end{itemize}
+液$\textrm{He II}$有两种不同的元激发，分别是声子和旋子，均为Boson，且化学势为$0$
+\begin{itemize}
+    \item 小动量时元激发是声子
+    \begin{gather*}
+        \varepsilon(p) = c_1 p
+        \\
+        \intertext{能量准连续，态密度}
+        g(\varepsilon) = \frac{4\pi V}{h^3 c_1^3} \varepsilon^2
+        \\
+        \intertext{巨配分函数}
+        \ln \Xi = -\int_{0}^{\infty} g(\varepsilon) \ln(1 - \e^{-\beta \varepsilon}) \d \varepsilon=\frac{4\pi^5 V}{45} \left(\frac{kT}{h c_1}\right)^3
+        \\
+        F = -kT \ln \Xi = -\frac{4\pi^5 V}{45} \left(\frac{kT}{h c_1}\right)^3 kT
+        \\
+        S = -\left(\pt{F}{T}\right)_{V} = \frac{16\pi^5 kV}{45} \left(\frac{kT}{h c_1}\right)^3
+        \\
+        C_V = T \left(\pt{S}{T}\right)_{V} = \frac{16\pi^5 kV}{15} \left(\frac{kT}{h c_1}\right)^3
+        \\
+        \intertext{平均声子数}
+        \overline{N} = \int_{0}^{\infty} \frac{g(\varepsilon)}{\e^{\beta \varepsilon} - 1} \d \varepsilon = 8\pi \zeta(3) V \left(\frac{kT}{h c_1}\right)^3
+    \end{gather*}
+    \item 较大动量时元激发为旋子
+    \begin{gather*}
+        \varepsilon(p) = \Delta + \frac{(p - p_0)^2}{2m^{*}}
+        \\
+        \intertext{对于$T<T_{\lambda}$，$\beta \varepsilon \ll 1$，}
+        \ln \Xi = -\frac{4\pi V}{h^3} \int_{0}^{+\infty} p^2 \ln(1 - \e^{-\beta \varepsilon}) \d p \approx \frac{4\pi V}{h^3} \e^{-\beta \Delta} \int_{0}^{+\infty} p^2 \e^{-\beta \frac{(p - p_0)^2}{2m^{*}}} \d p
+        \\
+        \intertext{设}
+        p = p_0 + \sqrt{2m^{*} k T} x
+        \\
+        \ln \Xi = \frac{4\pi p_0^2 V}{h^3} \e^{-\beta \Delta} \sqrt{2m^{*} k T} \int_{-\frac{p_0}{\sqrt{2m^{*} k T}}}^{+\infty} (1 + \frac{\sqrt{2m^{*} k T} x}{p_0})^2 \e^{-x^2} \d x
+    \end{gather*}
+    $\frac{p_0}{\sqrt{2m^{*} k T}} \gg 1$，积分下限可近似为$-\infty$，积分中第二项可以忽略
+    \begin{gather*}
+        \ln \Xi \approx \frac{4\pi p_0^2 V}{h^3} \sqrt{2\pi m^{*} k T} \e^{-\frac{\Delta}{kT}}
+        \\
+        \overline{N} = \ln \Xi
+        \\
+        F = -kT \ln \Xi \propto -T^{\frac{3}{2}} \e^{-\frac{\Delta}{kT}}
+        \\
+        S = -\left(\pt{F}{T}\right)_V = \overline{N} k \left(\frac{\Delta}{kT} + \frac{3}{2}\right)
+        \\
+        C_V = T \left(\pt{S}{T}\right)_V = \overline{N} k \left[\frac{3}{4}+\frac{\Delta}{kT}+\left(\frac{\Delta}{kT}\right)^2\right]
+    \end{gather*}
+\end{itemize}

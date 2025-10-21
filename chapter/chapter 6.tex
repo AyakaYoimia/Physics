@@ -1,0 +1,61 @@
+\chapter{统计物理学的基本概念}
+
+\begin{gather*}
+    \text{统计物理学}
+    \begin{cases}
+        \text{平衡态统计理论}
+        \\
+        \text{非平衡态统计理论}
+        \\
+        \text{涨落理论}
+        \begin{cases}
+            \text{围绕平均值的涨落}
+            \\
+            \text{Brownian运动}
+            \\
+            \text{量子涨落}
+        \end{cases}
+    \end{cases}
+\end{gather*}
+统计物理从系统的微观性质出发，研究和计算宏观性质
+
+\section{微观状态的描写}
+
+\begin{itemize}
+    \item 微观状态的经典描写：正则形式
+    \begin{itemize}
+        \item 子系：组成宏观物体的基本单元
+        \item 子相空间，子相体元：对有$r$个自由度的子系，
+        \begin{gather*}
+            \d \omega = \d q_1 \cdots \d q_r \d p_1 \dots \d p_r
+        \end{gather*}
+        \item 相空间，相体元：对有$N$个子系的系统，总自由度$s=Nr$
+        \begin{gather*}
+            \d \Omega = \d q_1 \cdots \d q_s \d p_1 \cdots \d p_s
+        \end{gather*}
+    \end{itemize}
+    \item 微观状态的量子描写：
+    \begin{itemize}
+        \item 全同性原理：全同粒子的交换不引起新的量子态
+        \begin{itemize}
+            \item Boson：波函数是对称的，自旋为整数，遵从Bose-Einstein统计
+            \item Fermion：波函数是反对称的，自旋为半整数，遵从Fermi-Dirac统计
+            \item Pauli不相容原理：每一个单粒子量子态最多只能被一个费米子占据
+        \end{itemize}
+        \item 定域子系：各个粒子的波函数不会重叠，可以通过位置分辨粒子，遵从Boltzmann统计
+    \end{itemize}
+\end{itemize}
+
+\section{宏观量}
+
+\begin{itemize}
+    \item 宏观量是相应微观量的统计平均值，对于没有直接对应微观量的宏观量，可以通过与热力学的对比来确定
+    \item 统计规律：在一定的宏观条件下，某一时刻系统以一定的概率处于某一微观运动状态
+    \begin{itemize}
+        \item 宏观状态由少数几个变量确定，而微观粒子数巨大，因此允许出现许多种微观状态
+        \item 系统与外部环境之间存在随机的相互作用
+    \end{itemize}
+    统计规律联系了微观与宏观，解释了热力学过程的不可逆性
+    \item \textbf{平衡态统计理论的基本假设}：等概率原理\\
+    对于处于平衡态下的孤立系，对于给定的宏观条件（能量，体积，总粒子数），系统各个可能的微观状态出现的概率相等
+\end{itemize}

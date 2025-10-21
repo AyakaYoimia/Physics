@@ -1,0 +1,385 @@
+\chapter{非平衡态统计理论}
+
+\begin{itemize}
+    \item 研究非平衡态的物性
+    \begin{itemize}
+        \item 研究输运过程的性质，计算输运系数
+        \item 研究弛豫过程的速率
+        \item 系统在随时间变化的电磁场作用下的动态响应率
+        \item 非平衡相变和相变动力学
+    \end{itemize}
+    \item 研究热现象的不可逆性
+\end{itemize}
+
+\section{Boltzmann积分微分方程}
+
+经典稀薄气体，分子之间的相互作用力是短程力，忽略分子内部结构
+\begin{itemize}
+    \item 满足非简并条件
+    \item 分子间平均距离远大于相互作用力力程，运动和碰撞引起的变化可以分开计算
+    \item 多体碰撞概率很小
+\end{itemize}
+单粒子分布函数$f(\bm{r}, \bm{v}, t)$随时间变化可以分为漂移项和碰撞项
+\begin{gather*}
+    \pt{f}{t} = \left(\pt{f}{t}\right)_{d} + \left(\pt{f}{t}\right)_{c}
+\end{gather*}
+\begin{itemize}
+    \item 漂移项
+    \begin{align*}
+        \left(\pt{f}{t}\right)_{d} = -\bm{v} \cdot \nabla_{\bm{r}} f - \frac{\bm{F}}{m} \cdot \nabla_{\bm{v}} f
+    \end{align*}
+    \item 碰撞项\\
+    暂时分为两种分子，设$\d t$时间碰入$\d^3 \bm{v}_1$的分子数$\Delta f_1^+$，碰出$\d^3 \bm{v}_1$的分子数$\Delta f_1^-$，则
+    \begin{gather*}
+        \left(\pt{f_1}{t}\right)_c \d t \d^3 \bm{r} \d^3 \bm{v}_1 = \Delta f_1^+ - \Delta f_1^-
+    \end{gather*}
+    发生碰撞时，分子2位于直径为$d_{12}=\frac{d_1+d_2}{2}$的球内，设相对速度$\bm{g}_{21} = \bm{v}_2 - \bm{v}_1$，气体满足分子混沌性假设，速度分布独立，则
+    \begin{gather*}
+        \intertext{元碰撞数}
+        \delta f_1^- = f_1 \d^3 \bm{r} \d^3 \bm{v}_1 f_2 \d^3 \bm{v}_2 d_{12}^2 \d \Omega g_12 \cos \theta \d t
+        \\
+        \Delta f_1^- = \left(\iint f_1 f_2 \Lambda_{12} \d \Omega \d^3 \bm{v}_2\right) \d t \d^3 \bm{r} \d^3 \bm{v}_1
+        \\
+        \Lambda_{12} = d_{12}^2 g_{12} \cos \theta
+        \\
+        \intertext{同理}
+        \delta f_1^+ = f_1' \d^3 \bm{r} \d^3 \bm{v'}_1 f_2' \d^3 \bm{v'}_2 d_{12}^2 \d \Omega' g_{12}' \cos \theta' \d t
+        \\
+        \intertext{弹性碰撞}
+        \Lambda_{12}' = \Lambda_{12},\quad \d \Omega' = d \Omega
+        \\
+        \delta f_1^+ = f_1' f_2' \d^3 \bm{v'}_1 \d^3 \bm{v'}_2 \Lambda_{12} \d \Omega \d t \d^3 \bm{r} = f_1' f_2' \d^3 \bm{v}_1 \d^3 \bm{v}_2 \Lambda_{12} \d \Omega \d t \d^3 \bm{r}
+        \\
+        \left(\pt{f_1}{t}\right)_c = \iint (f_1' f_2' - f_1 f_2) \Lambda_{12} \d \Omega \d^3 \bm{v}_2
+    \end{gather*}
+    $\d \Omega$积分范围为$\theta \in (0, \frac{\pi}{2})$，作变量代换
+    \begin{gather*}
+        f_1 \to f,\quad f_2 \to f_1
+    \end{gather*}
+\end{itemize}
+Boltzmann积分微分方程
+\begin{gather*}
+    \pt{f}{t} + \bm{v} \cdot \nabla_{\bm{r}} f + \frac{\bm{F}}{m} \cdot \nabla_{\bm{v}} f = \iint (f' f_1' - f f_1) \Lambda \d \Omega \d^3 \bm{v}_1
+\end{gather*}
+
+\section{H函数}
+
+定义H函数
+\begin{gather*}
+    H(t) = \iint f(\bm{r}, \bm{v}, t) \ln f(\bm{r}, \bm{v}, t) \d^3 \bm{r} \d^3 \bm{v}
+\end{gather*}
+
+考察孤立系
+\begin{align*}
+    \dt{H}{t} =& \iint (1 + \ln f) \pt{f}{t} \d^3 \bm{r} \d^3 \bm{v}
+    \\
+    =& - \iint (1+ \ln f) \left(\bm{v} \cdot \nabla_{\bm{r}} f\right) \d^3 \bm{r} \d^3 \bm{v} 
+    \\
+    &- \iint (1 + \ln f) \left(\frac{\bm{F}}{m} \cdot \nabla_{\bm{v}} f\right) \d^3 \bm{r} \d^3 \bm{v}
+    \\
+    &- \iiiint (1 + \ln f) (f f_1 - f' f'_1) \Lambda \d \Omega \d^3 \bm{v}_1 \d^3 \bm{r} \d^3 \bm{v}
+\end{align*}
+\begin{itemize}
+    \item 第一项
+    \begin{gather*}
+        \int (1+ \ln f) \left(\bm{v} \cdot \nabla_{\bm{r}} f\right) \d^3 \bm{r}
+        \\
+        = \int \nabla_{\bm{r}} \cdot \left(\bm{v}f \ln f\right) \d^3 \bm{r}
+        \\
+        = \oiint \bm{v} f \ln f \cdot \d \bm{\Sigma} = 0
+    \end{gather*}
+    \item 第二项
+    \begin{gather*}
+        \int (1 + \ln f) \left(\frac{\bm{F}}{m} \cdot \nabla_{\bm{v}} f\right) \d^3 \bm{v}
+        \\
+        = \int \nabla_{\bm{v}} \cdot \left(\frac{\bm{F}}{m} f \ln f\right) \d^3 \bm{v}
+        \\
+        = \oiint \frac{\bm{F}}{m} f \ln f \cdot \d \bm{\Sigma}_{\bm{v}} = 0
+    \end{gather*}
+\end{itemize}
+因此
+\begin{align*}
+    \dt{H}{t} =& - \iiiint (1+\ln f_1) (f_1 f_2 - f_1' f_2') \d^3 \bm{v}_1 \d^3 \bm{v}_2 \Lambda \d \Omega \d^3 \bm{r}
+    \\
+    =& - \frac{1}{2} \iiiint \left[2+\ln f_1 f_2\right] (f_1 f_2 - f_1' f_2') \d^3 \bm{v}_1 \d^3 \bm{v}_2 \Lambda \d \Omega \d^3 \bm{r}
+    \\
+    =& -\frac{1}{2} \iiiint \left[2+\ln f'_1 f'_2\right] (f'_1 f'_2 - f_1 f_2) \d^3 \bm{v'}_1 \d^3 \bm{v'}_2 \Lambda' \d \Omega' \d^3 \bm{r}
+    \\
+    =& -\frac{1}{4} \iiiint \left(\ln f_1 f_2 - \ln f'_1 f'_2\right) (f_1 f_2 - f'_1 f'_2) \d^3 \bm{v}_1 \d^3 \bm{v}_2 \Lambda \d \Omega \d^3 \bm{r}
+    \\
+    \leq& 0
+\end{align*}
+等号成立当且仅当
+\begin{gather*}
+    f_1 f_2 = f'_1 f'_2
+\end{gather*}
+称为细致平衡
+
+由细致平衡，
+\begin{gather*}
+    \ln f(\bm{v}_1) + \ln f(\bm{v}_2) = \ln f(\bm{v'}_1) + \ln f(\bm{v'}_2)
+\end{gather*}
+上式类似于碰撞守恒量的形式，因此$\ln f$必为碰撞守恒量的线性组合
+\begin{gather*}
+    \ln f(\bm{v}) = \alpha + \bm{\beta} \cdot m \bm{v} + \gamma \frac{1}{2} m v^2
+    \\
+    f = c_0 \e^{-c_4 \frac{1}{2} m (\bm{v} - \bm{c}_2)^2}
+    \\
+    \intertext{约束条件}
+    n = \int f \d^3 \bm{v}
+    \\
+    \bm{v}_0 = \frac{1}{n} \int \bm{v} f \d^3 \bm{v}
+    \\
+    \frac{3}{2} k T = \frac{1}{n} \int \frac{1}{2} m (\bm{v} - \bm{v}_0)^2 f \d^3 \bm{v}
+    \\
+    f = n \left(\frac{m}{2 \pi k T}\right)^{3/2} \e^{-\frac{m (\bm{v} - \bm{v}_0)^2}{2 k T}}
+\end{gather*}
+平衡态下，
+\begin{gather*}
+    \pt{f}{t} = 0
+    \\
+    \bm{v} \cdot \nabla \left\{\ln n + \frac{3}{2} \ln \frac{m}{2 \pi k T} - \frac{m}{2kT} \left(\bm{v} - \bm{v}_0\right)^2\right\}-\frac{1}{kT} \bm{F} \cdot (\bm{v} - \bm{v}_0) = 0
+\end{gather*}
+由于上式对任意$\bm{v}$成立，对比$\bm{v}$的各阶项系数
+\begin{gather*}
+    \nabla T = 0
+    \\
+    \bm{v} \cdot \nabla(\bm{v} \cdot \bm{v}_0) = 0 \implies \bm{v}_0 = \bm{a} + \bm{\omega} \times \bm{r},\quad \bm{a}, \bm{\omega}\text{是常矢量}
+    \\
+    \nabla \left(\ln n - \frac{m}{2kT} \bm{v}_0^2\right) = \frac{\bm{F}}{kT} 
+    \\
+    \bm{v}_0 \cdot \bm{F} =0
+\end{gather*}
+设$\bm{v}_0 = 0$，则
+\begin{gather*}
+    H = N \left[\ln n + \frac{3}{2} \ln \left(\frac{m}{2 \pi k T}\right) - \frac{3}{2}\right]
+    \\
+    S = -k H + \text{常数}
+\end{gather*}
+
+\section{非平衡态的熵}
+
+经典稀薄气体非平衡态熵
+\begin{gather*}
+    S = -kH
+\end{gather*}
+引入熵密度
+\begin{gather*}
+    S = \int s(\bm{r}, t) \d^3 \bm{r}
+    \\
+    s(\bm{r}, t) = -k \int f(\bm{r}, \bm{v}, t) \ln f(\bm{r}, \bm{v}, t) \d^3 \bm{v}
+\end{gather*}
+\begin{align*}
+    \pt{s}{t} =& -k \int (1 + \ln f) \pt{f}{t} \d^3 \bm{v}
+    \\
+    =& k \int (1 + \ln f) \left(\bm{v} \cdot \nabla_{\bm{r}} f\right) \d^3 \bm{v}
+    \\
+    &+ k \int (1 + \ln f) \left(\frac{\bm{F}}{m} \cdot \nabla_{\bm{v}} f\right) \d^3 \bm{v}
+    \\
+    &-k \int (1+\ln f) \left(\pt{f}{t}\right)_c \d^3 \bm{v}
+\end{align*}
+第二项为0，设
+\begin{gather*}
+    \intertext{熵流密度}
+    \bm{J}_s = -k \int \bm{v} f \ln f \d^3 \bm{v}
+    \\
+    \intertext{熵产生率}
+    \theta = -k \int (1 + \ln f) \left(\pt{f}{t}\right)_c \d^3 \bm{v}= \frac{1}{4} k \iiiint \left(\ln f_1 f_2 - \ln f'_1 f'_2\right) (f_1 f_2 - f'_1 f'_2) \d^3 \bm{v}_1 \d^3 \bm{v}_2 \Lambda \d \Omega
+    \\
+    \theta \geq 0
+\end{gather*}
+得到
+\begin{gather*}
+    \pt{s}{t} + \nabla \cdot \bm{J}_s = \theta
+\end{gather*}
+
+\section{简并气体的Boltzmann方程}
+
+条件
+\begin{itemize}
+    \item 热波长$\lambda_T$与分子平均距离$\overline{\delta r}$接近
+    \item 相空间描述成立：宏观不均匀尺度$\Lambda$
+    \begin{gather*}
+        \Lambda \gg \d r \gg \lambda_T,\overline{\delta r}
+    \end{gather*}
+    \item 粒子间的相互作用相比于动能可以忽略
+    \item 多体碰撞概率很小
+\end{itemize}
+
+\begin{align*}
+    & \pt{f}{t} + \frac{\bm{p}}{m} \cdot \nabla_{\bm{r}} f + \bm{F} \cdot \nabla_{\bm{p}} f 
+    \\
+    = &\iiint W(\bm{p}, \bm{p}_1 | \bm{p'}, \bm{p'}_1) \delta(\bm{p} + \bm{p}_1 - \bm{p'} - \bm{p'}_1) \delta\left(\frac{p^2}{2m} + \frac{p_1^2}{2m} - \frac{p'^2}{2m} - \frac{p_1'^2}{2m}\right)
+    \\
+    &\left[f' f_1' (1 \pm f)(1 \pm f_1) - f f_1 (1 \pm f')(1 \pm f_1')\right] \d^3 \bm{p}_1 \d^3 \bm{p'} \d^3 \bm{p'}_1
+\end{align*}
+$W(\bm{p}, \bm{p}_1 | \bm{p'}, \bm{p'}_1)$为单位时间内$(\bm{p}, \bm{p}_1) \to (\bm{p'}, \bm{p'}_1)$的碰撞概率，$+$对应Boson，$-$对应Fermion
+
+H函数
+\begin{gather*}
+    H = \iint \left(f \ln f - \eta (1+\eta f) \ln(1+\eta f)\right) \frac{\d^3 \bm{r} \d^3 \bm{p}}{h^3}
+\end{gather*}
+\begin{align*}
+    \dt{H}{t} =& -\frac{1}{4} \iiiint \int \left\{\ln\left[f_1 f_2 (1+\eta f_1)(1+\eta f_2)\right]-\ln\left[f'_1 f'_2 (1+\eta f'_1)(1+\eta f'_2)\right]\right\}
+    \\
+    & \times \left\{f_1 f_2 (1+\eta f'_1)(1+\eta f'_2)-f'_1 f'_2 (1+\eta f_1)(1+\eta f_2)\right\}
+    \\
+    &W(\bm{p}, \bm{p}_1 | \bm{p'}, \bm{p'}_1) \delta(\bm{p} + \bm{p}_1 - \bm{p'} - \bm{p'}_1) \delta\left(\frac{p^2}{2m} + \frac{p_1^2}{2m} - \frac{p'^2}{2m} - \frac{p_1'^2}{2m}\right)
+    \\
+    & \times \d^3 \bm{p}_1 \d^3 \bm{p}_2 \d^3 \bm{p'}_1 \d^3 \bm{p'}_2 \d^3 \bm{r}
+\end{align*}
+\begin{gather*}
+    \dt{H}{t} \leq 0
+\end{gather*}
+等号成立当且仅当
+\begin{gather*}
+    f_1 f_2 (1+\eta f'_1)(1+\eta f'_2) = f'_1 f'_2 (1+\eta f_1)(1+\eta f_2)
+    \\
+    \frac{f_1}{1+\eta f_1} \frac{f_2}{1+\eta f_2} = \frac{f'_1}{1+\eta f'_1} \frac{f'_2}{1+\eta f'_2}
+\end{gather*}
+
+熵流密度
+\begin{gather*}
+    \bm{J}_s = -k \int \frac{\bm{p}}{m} \left[f \ln f - \eta (1+\eta f) \ln(1+\eta f)\right] \frac{\d^3 \bm{p}}{h^3}
+\end{gather*}
+熵产生率
+\begin{gather*}
+    \theta = -k\int \left\{\left[1+\ln f\right]-\left[1+\ln(1+\eta f)\right]\right\} \left(\pt{f}{t}\right)_c \frac{\d^3 \bm{p}}{h^3} \geq 0
+\end{gather*}
+
+\section{弛豫时间近似}
+
+当分子平均自由时间$\tau$远小于宏观系统弛豫时间$\tau_A$时，平均自由程$\lambda$远小于宏观变化的特征长度$\Lambda$
+\begin{gather*}
+    \tau \ll \tau_A
+    \\
+    \lambda \ll \Lambda
+\end{gather*}
+系统满足局域平衡近似，分布函数近似为
+\begin{gather*}
+    f^{(0)}(\bm{r}, \bm{v}, t) = n(\bm{r}, t) \left(\frac{m}{2 \pi k T(\bm{r}, t)}\right)^{3/2} \e^{-\frac{m}{2 k T(\bm{r}, t)}(\bm{v} - \bm{v}_0(\bm{r}, t))^2}
+\end{gather*}
+
+\subsection{Enskog方法}
+
+在Boltzmann方程中，引入导数算符
+\begin{gather*}
+    D = \pt{}{t} + \bm{v} \cdot \nabla_{\bm{r}} + \frac{\bm{F}}{m} \cdot \nabla_{\bm{v}}
+    \\
+    C(ff_1) = \iint (f' f_1' - f f_1) \Lambda \d \Omega \d^3 \bm{v}_1
+    \\
+    D f = C(ff_1)
+    \\
+    \intertext{按$\frac{\lambda}{\Lambda}$展开}
+    f = f^{(0)} + f^{(1)} + f^{(2)} + \cdots
+    \\
+    \intertext{由于}
+    \frac{D(f)}{C(ff_1)} \sim \frac{\lambda}{\Lambda}
+    \\
+    C(f^{(0)} f_1^{(0)}) = 0
+    \\
+    D f^{(0)} = C(f^{(0)} f_1^{(1)}) + C(f^{(1)} f_1^{(0)})
+    \\
+    \cdots
+\end{gather*}
+得到
+\begin{gather*}
+    f^{(0)}(\bm{v'}) f^{(0)} (\bm{v'}_1) = f^{(0)}(\bm{v}) f^{(0)} (\bm{v}_1)
+    \\
+    \intertext{类比之前细致平衡分布函数的推导可得}
+    f^{(0)}(\bm{r}, \bm{v}, t) = n(\bm{r}, t) \left(\frac{m}{2 \pi k T(\bm{r}, t)}\right)^{3/2} \e^{-\frac{m}{2 k T(\bm{r}, t)}(\bm{v} - \bm{v}_0(\bm{r}, t))^2}
+\end{gather*}
+
+\subsection{弛豫时间近似}
+
+\begin{gather*}
+    \left(\pt{f}{t}\right)_c = -\frac{f - f^{(0)}}{\tau}
+\end{gather*}
+对于空间均匀无外力的系统，
+\begin{gather*}
+    \pt{f}{t} = -\frac{f - f^{(0)}}{\tau}
+    \\
+    f(\bm{v}, t) = f^{(0)}(\bm{v}) + \left[f(\bm{v}, 0) - f^{(0)}(\bm{v})\right] \e^{-\frac{t}{\tau}}
+\end{gather*}
+
+\subsection{金属自由电子气体}
+
+局域平衡分布
+\begin{gather*}
+    f^{(0)}(\bm{p}) = \frac{1}{\e^{\frac{\varepsilon(\bm{p})-\mu}{k T}} + 1}
+\end{gather*}
+在弛豫时间近似下，对均匀稳恒状态，Boltzmann积分微分方程化为
+\begin{gather*}
+    -e \bm{\mathscr{E}} \cdot \nabla_{\bm{p}} f = -\frac{f-f^{(0)}}{\tau}
+    \\
+    \intertext{展开到一阶}
+    f^{(1)}=e\tau \pt{f^{(0)}}{\varepsilon} \bm{\mathscr{E}} \cdot \bm{v}
+    \\
+    f \approx f^{(0)}(\varepsilon+e\mathscr{E} \tau v_x)
+    \\
+    \frac{1}{2} m v_x^2 = \frac{1}{3} \varepsilon
+    \\
+    \intertext{电流密度}
+    J_e = -e \int v_x f \frac{2\d^3 \bm{p}}{h^3}=e^2 \mathscr{E} \int \tau v_x^2 \left(-\pt{f^{(0)}}{\varepsilon}\right)D(\varepsilon) \d \varepsilon = \frac{2e^2}{3m} \mathscr{E} \int \tau(\varepsilon) \varepsilon \left(-\pt{f^{(0)}}{\varepsilon}\right)D(\varepsilon) \d \varepsilon
+    \\
+    \intertext{在$T \to 0$时}
+    -\left(\pt{f^{(0)}}{\varepsilon}\right) \approx \delta(\varepsilon - \mu_0)
+    \\
+    J_e \approx \frac{2e^2 \tau_F}{3m} \mu_0 D(\mu_0) \mathscr{E} = \frac{ne^2 \tau_F}{m} \mathscr{E}
+    \\
+    \intertext{电导率}
+    \sigma = \frac{ne^2 \tau_F}{m}
+\end{gather*}
+
+若存在温度梯度，对稳恒状态，Boltzmann积分微分方程化为
+\begin{gather*}
+    \bm{v} \cdot \nabla_{\bm{r}} f - e \bm{\mathscr{E}} \cdot \nabla_{\bm{p}} f = - \frac{f - f^{(0)}}{\tau}
+    \\
+    \intertext{弱场近似下}
+    f = f^{(0)} - \tau \left\{\bm{v} \cdot \nabla_{\bm{r}} f^{(0)} - e \bm{\mathscr{E}} \cdot \nabla_{\bm{p}} f^{(0)}\right\}
+    \\
+    \nabla_{\bm{p}} f^{(0)} = \pt{f^{(0)}}{\varepsilon} \bm{v}
+    \\
+    \nabla_{\bm{r}} f^{(0)}=\pt{f^{(0)}}{\varepsilon}kT \nabla_{\bm{r}} \left(\frac{\varepsilon-\mu}{kT}\right)=\pt{f^{(0)}}{\varepsilon} \left[-\varepsilon \nabla_{\bm{r}} \ln T - T \nabla_{\bm{r}} \left(\frac{\mu}{T}\right)\right]
+\end{gather*}
+设温度梯度和电场均在$x$方向，
+\begin{gather*}
+    f = f^{(0)}+\pt{f^{(0)}}{\varepsilon} \tau v_x \left\{\varepsilon \pt{\ln T}{x} + T \pt{}{x} \left(\frac{\mu}{T}\right)+e\mathscr{E}\right\}
+    \\
+    \intertext{定义}
+    L_n = \frac{2}{3m} \int_{0}^{+\infty} \left(-\pt{f^{(0)}}{\varepsilon}\right) \tau(\varepsilon) \varepsilon^n D(\varepsilon) \d \varepsilon
+    \\
+    J_e = -e\int v_x f D(\varepsilon) \d \varepsilon = eL_1 \mathscr{E} - eL_2 \left(-\pt{\ln T}{x}\right)-eL_1 \left[-T \pt{}{x} \left(\frac{\mu}{T}\right)\right]
+    \\
+    \intertext{热流密度}
+    J_q=\int \varepsilon v_x f \frac{2\d^3 \bm{p}}{h^3}=-eL_2 \mathscr{E}+L_3 \left(-\pt{\ln T}{x}\right)+L_2\left[-T \pt{}{x} \left(\frac{\mu}{T}\right)\right]
+\end{gather*}
+考虑单纯温度梯度引起的热传导，$\varepsilon=0$，$J_e = 0$
+\begin{gather*}
+    T \pt{}{x} \left(\frac{\mu}{T}\right)=-\frac{L_2}{L_1} \pt{\ln T}{x}
+    \\
+    J_q = -\frac{L_1 L_3-L_2^2}{L_1 T} \pt{T}{x}
+    \\
+    \intertext{热导率}
+    \kappa = \frac{L_1 L_3 - L_2^2}{L_1 T}
+\end{gather*}
+对$\left(-\pt{f^{(0)}}{\varepsilon}\right)$近似到一阶，$\tau(\varepsilon) \approx \tau(\mu_0)=\tau_F$
+\begin{gather*}
+    L_n \approx \frac{2\tau_F}{3m} \int_{0}^{+\infty} \left(-\pt{f^{(0)}}{\varepsilon}\right) \varepsilon^n D(\varepsilon) \d \varepsilon
+    \\
+    \intertext{设}
+    g(\varepsilon) = \varepsilon^n D(\varepsilon)
+    \\
+    I_n = \int_{0}^{+\infty} \left(-\pt{f^{(0)}}{\varepsilon}\right) \varepsilon^n D(\varepsilon) \d \varepsilon
+    \\
+    I_n = \int_{0}^{+\infty} f^{(0)} g'(\varepsilon) \d \varepsilon
+\end{gather*}
+展开到$\left(\frac{kT}{\mu}\right)^2$
+\begin{gather*}
+    I_n \approx 4\pi \frac{(2m)^{\frac{3}{2}}}{h^3} \mu^{n+\frac{1}{2}} \left[1+\left[n+\frac{1}{2}\right]\left[n-\frac{1}{2}\right]\frac{\pi^2}{6}\left(\frac{kT}{\mu}\right)^2\right]
+    \\
+    \kappa = \frac{2\tau_F}{3m} \frac{1}{T} \frac{I_1 I_3-I_2^2}{I_1} \approx \frac{2\tau_F}{3m} \frac{1}{T} 4\pi \frac{(2m)^{\frac{3}{2}}}{h^3} \mu_0^{\frac{3}{2}} \frac{\pi^2}{3}(kT)^2
+    \\
+    \intertext{得到Wiedemann-Franz定律}
+    \frac{\kappa}{T \sigma} =\frac{\pi^2 k^2}{3e^2}
+\end{gather*}

@@ -1,0 +1,228 @@
+\chapter{统计系综理论}
+
+\section{经典统计系综}
+
+\begin{itemize}
+    \item 相空间
+    \item 微观状态数密度$\rho$，力学量的宏观观测值等于相应微观量对微观状态的统计平均
+    \begin{gather*}
+        O_{macro} = \overline{O} = \frac{\int O(q, p) \rho(q, p, t) \d \Omega}{\int \rho(q, p, t) \d \Omega}
+    \end{gather*}
+    \item 系综：一组假想的、和所研究系统在同一宏观状态下的、彼此独立、各自处于某一微观状态的大量系统的集合
+    \begin{itemize}
+        \item $\rho(q, p, t)$可以解释为相空间中系统代表点数密度
+        \item 统计平均等价于系综平均
+    \end{itemize}
+    \item Liouville定理：对于保守孤立系，
+    \begin{gather*}
+        \dt{\rho}{t} = 0
+        \\
+        \intertext{即}
+        \pt{\rho}{t} + \left\{\rho, H\right\} = 0
+    \end{gather*}
+\end{itemize}
+
+\section{微正则系综}
+
+对于平衡态下的孤立系，$(E, V, N)$确定，$H(q, p) = E$确定了一个超曲面，但由于不可能完全消除外部环境的干扰（在量子系统中受到不确定性原理影响），能量存在涨落$\Delta E \ll E$，根据等概率原理
+\begin{gather*}
+    \rho = \begin{cases}
+        C, & E \leq H(q, p) \leq E + \Delta E
+        \\
+        0, & \text{其他}
+    \end{cases}
+    \\
+    C = \frac{1}{\lim\limits_{\Delta E \to 0} \int_{\Delta E} \d \Omega}
+\end{gather*}
+
+由于各态历经假说不成立，长时间平均定义为
+\begin{gather*}
+    \overline{O} = \lim_{T \to \infty} \frac{1}{T} \int_0^T O(q(t), p(t)) \d t
+\end{gather*}
+$O(t)$是$t$时刻系统所处微观态的力学量取值。对于平衡态下的孤立系，时间$T$够长，系统将遍历所有允许的微观态，系统处于$\d \Omega$内的概率
+\begin{gather*}
+    \lim_{T \to \infty} \frac{\d t_{\d \Omega}}{T} = \rho \frac{\d \Omega}{\int \rho \d \Omega}
+\end{gather*}
+从而长时间平均等于系综平均
+
+\section{正则系综}
+
+宏观条件：系统与热库接触达到平衡，$(T, V, N)$确定，概率分布
+\begin{gather*}
+    \rho_s(E_s) = \frac{1}{Z_N} e^{-\beta E_s}
+    \\
+    \intertext{配分函数}
+    Z_N = \int_s e^{-\beta E_s} \d \Omega
+\end{gather*}
+$s$用来标记量子态
+
+\begin{gather*}
+    \intertext{能量}
+    \overline{E} = -\pt{\ln Z_N}{\beta}
+    \\
+    \intertext{广义力}
+    \overline{Y}_l = -\frac{1}{\beta} \pt{\ln Z_N}{y_l}
+    \\
+    \intertext{熵}
+    S = k\left(\ln Z_N - \beta \pt{\ln Z_N}{\beta}\right)
+    \\
+    \intertext{自由能}
+    F = -kT \ln Z_N
+\end{gather*}
+
+经典极限下，
+\begin{gather*}
+    \rho(q, p) = \frac{1}{N! h^s Z_N} e^{-\beta H(q, p)}
+    \\
+    Z_N = \frac{1}{N! h^s} \int e^{-\beta H(q, p)} \d \Omega
+\end{gather*}
+
+\section{非理想气体的状态方程}
+
+作简化假设
+\begin{enumerate}
+    \item 气体分子满足经典极限条件
+    \item 分子间相互作用为两两作用
+    \item 分子是球对称，相互作用是短程的，不考虑电磁作用
+    \item 忽略分子内部自由度
+\end{enumerate}
+
+\subsection{集团展开方法}
+
+\begin{gather*}
+    \intertext{总能量}
+    E = K + \Phi = \sum_{i=1}^N \frac{p_i^2}{2m} + \sum_{i<j} \varphi_{ij}
+    \\
+    \intertext{配分函数}
+    Z_N = \frac{1}{N! h^{3N}} \int e^{-\beta E} \d \Omega = \frac{1}{N! \lambda_T^{3N}} Q_N(\beta, V)
+    \\
+    \lambda_T = \frac{h}{\sqrt{2 \pi m k T}}
+    \\
+    \intertext{位形积分}
+    Q_N(\beta, V) = \int \cdots \int e^{-\beta \displaystyle \sum_{i<j} \phi_{ij}} \d^3 \bm{r}_1 \cdots \d^3 \bm{r}_N = \int \cdots \int \prod_{i<j} (1+f_{ij}) \d^3 \bm{r}_1 \cdots \d^3 \bm{r}_N
+    \\
+    f_{ij} = f(r_{ij}) = e^{-\beta \varphi_{ij}} - 1
+    \\
+    \begin{cases}
+        \lim_{r \to 0} f(r) = -1
+        \\
+        r > r_0,\quad f \to 0
+    \end{cases}
+    \\
+    Q_N = \int \cdots \int \left(1 + \displaystyle \sum_{i<j} f_{ij} + \sum_{i<j} \sum_{i'<j'} f_{ij} f_{i'j'} + \cdots\right) \d^3 \bm{r}_1 \cdots \d^3 \bm{r}_N
+\end{gather*}
+可以取$Q_N$的前若干项进行计算
+
+\subsection{约化分布函数方法}
+
+可以处理稠密气体或液体
+\begin{gather*}
+    \intertext{位形概率密度}
+    \rho_{N}(\bm{r}_1, \cdots, \bm{r}_N) = \frac{e^{-\beta \Phi}}{Q_N(\beta, V)}
+\end{gather*}
+\begin{itemize}
+    \item 单粒子分布函数
+    \begin{gather*}
+        F_1(\bm{r}_1) = N\int \cdots \int \rho_N(\bm{r}_1, \cdots, \bm{r}_N) \d^3 \bm{r}_2 \cdots \d^3 \bm{r}_N
+    \end{gather*}
+    对于均匀系，在热力学极限下，$F_1 = N/V = n$
+    \item 二粒子分布函数
+    \begin{gather*}
+        F_2(\bm{r}_1, \bm{r}_2) = N(N-1) \int \cdots \int \rho_N(\bm{r}_1, \cdots, \bm{r}_N) \d^3 \bm{r}_3 \cdots \d^3 \bm{r}_N
+    \end{gather*}
+    对于均匀系，$F_2$仅与$r_{12}$有关，定义约化分布函数$g(\bm{r})$
+    \begin{gather*}
+        F_2(\bm{r}_1, \bm{r}_2) = n^2 g(\bm{r}_2 - \bm{r}_1)
+        \\
+        \intertext{积分得}
+        N(N-1) = n^2 \iint g(\bm{r}_2 - \bm{r}_1) \d^3 \bm{r}_1 \d^3 \bm{r}_2 = n^2 V \int g(\bm{r}) \d^3 \bm{r}
+        \\
+        \int g(\bm{r}) \d^3 \bm{r} = V \left(1-\frac{1}{N}\right) \approx V
+    \end{gather*}
+\end{itemize}
+
+\section{巨正则系综}
+
+宏观条件：系统与热库和粒子库接触达到平衡，$(T, V, \mu)$确定，概率分布
+\begin{gather*}
+    \rho_{Ns} = \frac{1}{\Xi} e^{-\alpha N - \beta E_{Ns}}
+    \\
+    \intertext{巨配分函数}
+    \Xi = \sum_{N=0}^{\infty} \sum_{s} e^{-\alpha N - \beta E_{Ns}} = \sum_{N=0}^{\infty} e^{-\alpha N} Z_N
+\end{gather*}
+
+\begin{gather*}
+    \intertext{能量}
+    \overline{E} = -\pt{\ln \Xi}{\beta}
+    \\
+    \intertext{粒子数}
+    \overline{N} = -\pt{\ln \Xi}{\alpha}
+    \\
+    \intertext{熵}
+    S = k\left(\ln \Xi - \beta \pt{\ln \Xi}{\beta} - \alpha \pt{\ln \Xi}{\alpha}\right)
+    \\
+    \intertext{广义力}
+    \overline{Y}_l = -\frac{1}{\beta} \pt{\ln \Xi}{y_l}
+    \\
+    \intertext{自由能}
+    F = -kT \ln \Xi + kT \alpha \pt{\ln \Xi}{\alpha}
+    \\
+    \intertext{巨势}
+    \Psi = -kT \ln \Xi
+\end{gather*}
+
+经典极限下，
+\begin{gather*}
+    \rho_N(q, p) = \frac{1}{N! h^{Nr} \Xi} e^{-\alpha N - \beta E_N(q, p)}
+    \\
+    \Xi = \sum_{N=0}^{\infty} \e^{-\alpha N} Z_N
+    \\
+    Z_N = \frac{1}{N! h^{Nr}} \int e^{-\beta E_N(q, p)} \d \Omega
+\end{gather*}
+
+\subsection{巨正则系综推导Bose-Einstein分布和Fermi-Dirac分布}
+
+巨配分函数
+\begin{align*}
+    \Xi &= \sum_{N=0}^{\infty} \sum_{s} e^{-\alpha N - \beta E_{Ns}}
+    \\
+    &= \sum_{N=0}^{\infty} \sum_{E_N} \sum_{s}^{'} e^{-\alpha N - \beta E_N}
+    \\
+    &= \sum_{N=0}^{\infty} \sum_{E_N} \sum_{\{a_{\lambda}\}}^{'} W(\{a_{\lambda}\}) e^{-\alpha \sum_{\lambda} a_{\lambda} - \beta \sum_{\lambda} a_{\lambda} \varepsilon_{\lambda}}
+\end{align*}
+$\sum_{s}^{'}$表示在能量$E$与粒子数$N$一定的条件下对量子态求和
+
+固定能量和粒子数
+\begin{align*}
+    \Xi &= \sum_{\{a_{\lambda}\}}^{'} W(\{a_{\lambda}\}) \e^{-\alpha \sum_{\lambda} a_{\lambda} - \beta \sum_{\lambda} a_{\lambda} \varepsilon_{\lambda}}
+    \\
+    &= \sum_{\{a_{\lambda}\}}^{'} \prod_{\lambda} W_{\lambda} \e^{-\sum_{\lambda} a_{\lambda} (\alpha + \beta \varepsilon_{\lambda})}
+    \\
+    &= \prod_{\lambda} \left[\sum_{a_{\lambda}} W_{\lambda} \e^{-a_{\lambda} (\alpha + \beta \varepsilon_{\lambda})}\right]
+    \\
+    &= \prod_{\lambda} \Xi_{\lambda}
+\end{align*}
+\begin{gather*}
+    W_{\lambda} = 
+    \begin{cases}
+        \frac{g_{\lambda}!}{a_{\lambda}! (g_{\lambda} - a_{\lambda})!}, & \text{Fermion} \\
+        \frac{(g_{\lambda} + a_{\lambda} - 1)!}{a_{\lambda}! (g_{\lambda} - 1)!}, & \text{Boson} \\
+    \end{cases}
+    \\
+    \Xi_{\lambda} = \left[1 \pm \e^{-\alpha - \beta \varepsilon_{\lambda}}\right]^{\pm g_{\lambda}}
+    \\
+    \ln \Xi = \sum_{\lambda} \ln \Xi_{\lambda} = \pm \sum_{\lambda} g_{\lambda} \ln\left[1 \pm \e^{-\alpha - \beta \varepsilon_{\lambda}}\right]
+\end{gather*}
+平均分布
+\begin{align*}
+    \overline{a}_{k} &= \frac{1}{\Xi} \sum_{N=0}^{\infty} \sum_{E_N} \sum_{\{a_{\lambda}\}}^{'} a_k W(\{a_{\lambda}\}) e^{-\sum_{\lambda} (\alpha + \beta \varepsilon_{\lambda}) a_{\lambda}}
+    \\
+    &= \frac{1}{\Xi} \sum_{\{a_{\lambda}\}} a_k \prod_{\lambda} W_{\lambda} e^{-\sum_{\lambda} a_{\lambda} (\alpha + \beta \varepsilon_{\lambda})}
+    \\
+    &= \frac{\displaystyle \left[\sum_{a_k} a_k \e^{-(\alpha + \beta \varepsilon_k)a_k} \right]\prod_{\lambda \neq k} W_{\lambda} \left[\e^{-\sum_{\lambda} (\alpha + \beta \varepsilon_{\lambda}) a_{\lambda}}\right]}{\displaystyle \left[\sum_{a_k} \e^{-(\alpha + \beta \varepsilon_k)a_k} \right]\prod_{\lambda \neq k} W_{\lambda} \left[\e^{-\sum_{\lambda} (\alpha + \beta \varepsilon_{\lambda}) a_{\lambda}}\right]}
+    \\
+    &= -\pt{}{\alpha} \ln \Xi_k
+    \\
+    &= \frac{g_k}{\e^{\alpha + \beta \varepsilon_k} \pm 1}
+\end{align*}
+上号为Fermion，下号为Boson

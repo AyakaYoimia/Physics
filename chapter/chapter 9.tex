@@ -1,0 +1,307 @@
+\chapter{相变和临界现象的统计理论}
+
+\section{Ising模型}
+
+$N$个自旋位于点阵的格点上，Hamiltonian
+\begin{gather*}
+    H = -J \sum_{\langle ij \rangle} s_i s_j - \mu \mathscr{B} \sum_{i=1}^{N} s_i, \quad s_i = \pm 1
+\end{gather*}
+$\langle ij \rangle$表示$ij$格点相邻，对于铁磁系统$J > 0$，配分函数
+\begin{gather*}
+    Z_N = \sum_{\{s_i\}} \e^{-\frac{H}{kT}}
+\end{gather*}
+
+\subsection{平均场近似}
+
+Hamiltonian
+\begin{gather*}
+    H = - \sum_{i} \mu s_i \left(H+\frac{J}{\mu} \sum_{j}^{'} s_j\right) = -\sum_i \mu s_i (\mathscr{B}+h_i) = - \sum_{i} \mu s_i H_{\mathrm{eff}}
+    \\
+    h_i = \frac{J}{\mu} \sum_{j}^{'} s_j, \quad H_{\mathrm{eff}} = \mathscr{B} + h_i
+\end{gather*}
+将$h_i$替换为平均值，忽略涨落的情况下，各个自旋平均值相等，$\overline{s}_i = \overline{s}$，
+\begin{gather*}
+    \overline{h}_i = \overline{h} = \frac{zJ}{\mu} \overline{s}
+\end{gather*}
+$z$为配位数，Hamiltonian
+\begin{gather*}
+    H_{\textrm{MF}} = - \sum_{i=1}^{N} \mu (\mathscr{B} + \overline{h}) s_i
+\end{gather*}
+配分函数
+\begin{align*}
+    Z_N &= \sum_{s_1} \sum_{s_2} \cdots \sum_{s_N} \e^{\sum_i \frac{\mu (\mathscr{B} + \overline{h}) s_i}{kT}}
+    \\
+    &= \sum_{s_1} \sum_{s_2} \cdots \sum_{s_N} \prod_{i=1}^{N} \e^{\frac{\mu (\mathscr{B} + \overline{h}) s_i}{kT}}
+    \\
+    &= \prod_{i=1}^{N} \left(\sum_{s_i} \e^{\frac{\mu (\mathscr{B} + \overline{h}) s_i}{kT}}\right)
+    \\
+    &= \left[2\cosh \left(\frac{\mu \mathscr{B}}{kT}+\frac{zJ}{kT} \overline{s}\right)\right]^N
+\end{align*}
+\begin{gather*}
+    F = -kT \ln Z_N = -NkT \ln \left[2\cosh \left(\frac{\mu \mathscr{B}}{kT}+\frac{zJ}{kT} \overline{s}\right)\right]
+    \\
+    \overline{\mathscr{M}} = N \mu \overline{s} = -\left(\pt{F}{\mathscr{B}}\right)_T = N \mu \tanh \left(\frac{\mu \mathscr{B}}{kT}+\frac{zJ}{kT} \overline{s}\right)
+    \\
+    \implies \overline{s} = \tanh \left(\frac{\mu \mathscr{B}}{kT}+\frac{zJ}{kT} \overline{s}\right)
+\end{gather*}
+
+\begin{itemize}
+    \item $\mathscr{B} = 0$时，对于铁磁系统，存在临界温度$T_c$，$T>T_c$时为顺磁相，$T<T_c$时发生自发磁化为铁磁相
+    \begin{gather*}
+        T_c = \frac{zJ}{k}
+        \\
+        \overline{s} = \tanh \left(\frac{T_c}{T} \overline{s}\right)
+    \end{gather*}
+    \begin{itemize}
+        \item $T>T_c$，方程只有$\overline{s} = 0$一个解
+        \item $T<T_c$，方程有三个解，
+        \begin{gather*}
+            \overline{s} = 0, \pm \overline{s}_0
+        \end{gather*}
+        $\overline{s} = 0$对应自由能不是极小值，为不稳定解，舍去；$\pm \overline{s}_0$为稳定解，对应自发磁化，自旋向上向下不再对称，发生对称性自发破缺。展开到$\tanh x \approx x - \frac{x^3}{3}$，解得
+        \begin{gather*}
+            \overline{s}_0 = \sqrt{3} \sqrt{1 - \frac{T}{T_c}}^{\frac{1}{2}}
+            \\
+            \overline{\mathscr{M}} \sim (T_c - T)^{\frac{1}{2}},\quad T \to T_c^{-}
+            \\
+            C_{\mathscr{B}} = \begin{cases}
+                0, & T \to T_c^{+}
+                \\
+                3NkT_c & T \to T_c^{-}
+            \end{cases} 
+        \end{gather*}
+    \end{itemize}
+    \item $\mathscr{B} \neq 0$时
+    \begin{itemize}
+        \item $T>T_c, \mathscr{B} \to 0$
+        \begin{gather*}
+            \overline{s} = \tanh \left(\frac{\mu \mathscr{B}}{kT}+\frac{T_c}{T} \overline{s}\right) \approx \frac{\mu \mathscr{B}}{kT} + \frac{T_c}{T} \overline{s}
+            \\
+            \overline{s} = \frac{\mu \mathscr{B}}{k(T - T_c)}
+            \\
+            \overline{\mathscr{M}} = \frac{N \mu^2}{k(T - T_c)} \mathscr{B}
+            \\
+            \chi = \frac{N \mu^2}{k} (T-T_c)^{-1}
+        \end{gather*}
+        \item $T = T_c, \mathscr{B} \to 0$，展开到$\tanh x \approx x - \frac{x^3}{3}$
+        \begin{gather*}
+            \overline{M}(T_c, \mathscr{B}) \sim \mathscr{B}^{\frac{1}{3}}
+        \end{gather*}
+    \end{itemize}
+\end{itemize}
+
+\subsection{一维Ising模型的严格解}
+
+采取周期性边界条件
+\begin{gather*}
+    s_{N+1} = s_1
+    \\
+    H = -J \sum_{i=1}^{N} s_i s_{i+1} - \frac{1}{2} \mu \mathscr{B} \sum_{i=1}^{N} (s_i + s_{i+1})
+    \\
+    Z_N = \sum_{s_1} \sum_{s_2} \cdots \sum_{s_N} \prod_{i=1}^{N} \e^{\frac{1}{kT}\left(J s_i s_{i+1} + \frac{1}{2} \mu \mathscr{B} (s_i + s_{i+1})\right)}
+    \\
+    \intertext{引入矩阵$\hat{P}$}
+    \inpro{s_i}{\hat{P} \vert s_{i+1}} = \e^{\frac{1}{kT}\left(J s_i s_{i+1} + \frac{1}{2} \mu \mathscr{B} (s_i + s_{i+1})\right)}
+    \\
+    \hat{P} = 
+    \begin{bmatrix}
+        \e^{\frac{J+\mu\mathscr{B}}{kT}} & \e^{-\frac{J}{kT}} \\
+        \e^{-\frac{J}{kT}} & \e^{\frac{J-\mu\mathscr{B}}{kT}}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \lambda_+ & 0 \\
+        0 & \lambda_-
+    \end{bmatrix}
+    \\
+    \lambda_{\pm} = \e^{\frac{J}{kT}} \left(\cosh \frac{\mu \mathscr{B}}{kT} \pm \sqrt{\sinh^2 \frac{\mu \mathscr{B}}{kT} + \e^{-\frac{4J}{kT}}}\right)
+    \\
+    Z_N = \sum_{s_1} \sum_{s_2} \cdots \sum_{s_N} \inpro{s_1}{\hat{P} \vert s_2} \inpro{s_2}{\hat{P} \vert s_3} \cdots \inpro{s_N}{\hat{P} \vert s_1} = \Tr (\hat{P}^N) = \lambda_+^N + \lambda_-^N
+    \\
+    \intertext{取$N \to \infty$}
+    \lim_{N \to \infty} \frac{\ln Z_N}{N} = \ln \lambda_+
+    \\
+    F = -kT \ln Z_N = -NJ - NkT \ln \left(\cosh \frac{\mu \mathscr{B}}{kT} + \sqrt{\sinh^2 \frac{\mu \mathscr{B}}{kT} + \e^{-\frac{4J}{kT}}}\right)
+    \\
+    \overline{\mathscr{M}} = -\left(\pt{F}{\mathscr{B}}\right)_T = N \mu \frac{\sinh \frac{\mu \mathscr{B}}{kT}}{\sqrt{\sinh^2 \frac{\mu \mathscr{B}}{kT} + \e^{-\frac{4J}{kT}}}}
+    \\
+    \overline{M}(T, \mathscr{B} = 0) = 0
+\end{gather*}
+不存在有限温度的顺磁-铁磁相变
+
+\section{临界现象}
+
+\begin{itemize}
+    \item 临界现象：临界点的邻域内热力学函数和关联函数有幂律奇异性
+    \item 临界指数
+\begin{itemize}
+    \item 序参量随温度的变化$\beta$
+    \begin{gather*}
+        \mathscr{M}(T) \sim (T_c - T)^{\beta}
+    \end{gather*}
+    \item 临界等温线的平坦度$\delta$
+    \begin{gather*}
+        |\mathscr{H}| \sim |\mathscr{M}|^{\delta}
+    \end{gather*}
+    \item $\chi^0$或$\kappa_T^0$随温度的变化$\gamma$
+    \begin{gather*}
+        \chi^0,\;\kappa_T \sim |T-T_c|^{-\gamma}
+    \end{gather*}
+    \item 比热随温度的变化$\alpha$
+    \begin{gather*}
+        C_{\mathscr{H}}^0 \sim |T-T_c|^{-\alpha},\quad T \to T_c,\;\mathscr{H} = 0
+    \end{gather*}
+    \item 关联长度随温度的变化$\nu$
+    \begin{gather*}
+        \intertext{关联函数}
+        g(i, j) = \overline{(s_i - \overline{s}_i) (s_j - \overline{s}_j)}
+    \end{gather*}
+    当且仅当$i$和$j$两点自旋存在关联时，$g(i, j) \neq 0$。在平均场近似下，
+    \begin{gather*}
+        g(i, j) \sim \frac{\e^{-\frac{|r_i - r_j|}{\xi}}}{|r_i - r_j|^{d-2+\eta}},\quad |r_i - r_j| \to \infty
+        \\
+        \xi \sim |T-T_c|^{-\nu}
+    \end{gather*}
+    \item 关联函数在临界点的衰减$\eta$
+    \begin{gather*}
+        \intertext{在临界点的邻域}
+        g(r) \sim r^{-d+2-\eta},\quad T \to T_c^-,\mathscr{B} = 0
+    \end{gather*}
+    Fourier变换
+    \begin{gather*}
+        \tilde{g}(k) \sim k^{-2+\eta},\quad T \to T_c^-,k \sim 0
+    \end{gather*}
+    取长波长极限，$\tilde{g}(k)$发散，表明涨落关联对长波长很强烈
+\end{itemize}
+    \item 标度律：临界指数之间存在关系
+\begin{gather*}
+    \alpha + 2\beta + \gamma = 2
+    \\
+    \gamma = \beta (\delta - 1)
+    \\
+    \gamma = \nu (2 - \eta)
+    \\
+    \nu d = 2 - \alpha
+\end{gather*}
+    \item 普适性假设\\
+    具有相同空间维数$d$和相同序参量维数$n$的系统属于同一个普适类，有相同的临界指数，亦即有相同的临界行为
+\end{itemize}
+
+\section{涨落与关联的作用}
+
+在临界点，$\xi \to \infty$，系统中出现长程关联，微观相互作用的差异对临界现象的影响可以忽略
+\begin{gather*}
+    \chi = \beta \mu^2 \sum_i \sum_j g(i, j)
+\end{gather*}
+
+\subsection{平均场近似}
+
+对平均场近似进行修正，不同格点自旋平均值可以不相等，但缓慢变化，考虑格点间距为$a$的三维模型，对$i$的相邻格点$j$，展开到二阶
+\begin{gather*}
+    \overline{s}_j = \overline{s}_i + \pt{\overline{s}_i}{x} a + \frac{1}{2} \pt{^2 \overline{s}_i}{x^2} a^2
+    \\
+    \intertext{对6个相邻格点求和}
+    \overline{h}_i = \frac{zJ}{\mu} \overline{s}_i + \frac{Ja^2}{\mu} \nabla^2 \overline{s}_i
+    \\
+    \intertext{类似得到自洽方程}
+    \overline{s}_i = \tanh \left(\frac{\mu \mathscr{B}}{kT} + \frac{zJ}{kT} \overline{s}_i + \frac{Ja^2}{kT} \nabla^2 \overline{s}_i\right)
+    \\
+    \intertext{展开}
+    \tanh x \approx x - \frac{x^3}{3}
+    \\
+    \left(1-\frac{zJ}{kT}\right) \overline{s}_i + \frac{1}{3} \left(\frac{zJ}{kT}\right)^3 \overline{s}_i^3 - \frac{Ja^2}{kT} \nabla^2 \overline{s}_i = \frac{\mu \mathscr{B}_i}{kT}
+\end{gather*}
+定义
+\begin{gather*}
+    b_i = \frac{\mu \mathscr{H}_i}{kT}
+    \\
+    t = \frac{T-T_c}{T_c}
+    \\
+    t \overline{s}_i + \frac{1}{3} \overline{s}_i^3 - \frac{a^2}{z} \nabla^2 \overline{s}_i = b_i
+    \\
+    \intertext{等式两侧对$b_j$求导}
+    (t+\overline{s}_i^2 - \frac{a^2}{z} \nabla^2) \pt{\overline{s}_i}{b_j} = \delta_{ij}
+    \\
+    \pt{\overline{s}_i}{b_j} = g(i, j)
+\end{gather*}
+
+当$T>T_c$时，设外场很弱，$\overline{s}_i^2$项可以忽略
+\begin{gather*}
+    (t - \frac{a^2}{z} \nabla^2) g(i, j) = \delta_{ij}
+    \\
+    \intertext{Fourier展开：$\bm{k}$取值在倒格子空间的第一布里渊区}
+    g(\bm{r}) = \frac{1}{V} \sum_{\bm{k}} \tilde{g}(\bm{k}) \e^{-\i \bm{k} \cdot \bm{r}}
+    \\
+    \delta_{ij} = \frac{a^3}{V} \sum_{\bm{k}} \e^{-\i \bm{k} \cdot \bm{r}}
+    \\
+    \tilde{g}(\bm{k}) = \frac{a^2}{t + \frac{a^2}{z} k^2}
+    \\
+    \intertext{逆变换并连续化}
+    g(\bm{r}) = \frac{a^3}{(2\pi)^3} \int \frac{\e^{-\i \bm{k} \cdot \bm{r}}}{t+\frac{a^2}{z} k^2} \d^3 \bm{k}=\frac{az}{4\pi r} \e^{-\frac{r}{\xi}}
+    \\
+    \xi = \sqrt{\frac{a^2}{zt}} \sim t^{-\frac{1}{2}} \sim (T - T_c)^{-\frac{1}{2}}
+\end{gather*}
+
+\section{重整化群理论}
+
+临界点$\xi \to \infty$，有限尺度变换不会影响临界行为，因此临界点及其临界行为具有尺度变换下的不变性
+\begin{enumerate}
+    \item 通过对系统尺度变换并平均，找出重整化群变换
+    \item 确定重整化群变换的不动点，找出与临界点对应的不动点
+    \item 在不动点附近线性化重整化群变换，计算临界指数
+\end{enumerate}
+
+以一维Ising模型为例
+\begin{enumerate}
+    \item 尺度变换：采用选择性消去法\\
+    设磁场为零，采取自由边界条件，Hamiltonian
+    \begin{gather*}
+        H = -J \sum_{i=1}^{N-1} s_i s_{i+1}
+        \\
+        Z_N = \sum_{\{s_i\}} \e^{\frac{J}{kT} \sum_{i=1}^{N-1} s_i s_{i+1}} = \sum_{\{s_i\}} \prod_{i=1}^{N-1} \e^{K s_i s_{i+1}}
+        \\
+        K = \frac{J}{kT}
+    \end{gather*}
+    分开对奇数项和偶数项求和
+    \begin{align*}
+        Z_N &= \sum_{s_1} \sum_{s_3} \cdots \sum_{s_2} \sum_{s_4} \cdots \e^{Ks_2(s_1+s_3)} \e^{Ks_4(s_3+s_5)} \cdots
+        \\
+        &= \sum_{s_1} \sum_{s_3} \cdots \left[\e^{K(s_1+s_3)} + \e^{-K(s_1+s_3)}\right] \left[\e^{K(s_3+s_5)} + \e^{-K(s_3+s_5)}\right] \cdots
+    \end{align*}
+    消去偶数项的自由度后，设每一项可以写成
+    \begin{gather*}
+        \e^{K(s_1+s_3)} + \e^{-K(s_1+s_3)} = \e^{g+K' s_1 s_3}
+        \\
+        \intertext{得到重整化群变换}
+        K' = \frac{1}{2} \ln (\cosh 2K)
+        \\
+        g=\frac{1}{2} \ln (4 \cosh 2K)
+        \\
+        Z_N(K) = \e^{\frac{N}{2} g(K)} Z_{\frac{N}{2}}(K')
+    \end{gather*}
+    \item 确定重整化群变换的不动点
+    \begin{gather*}
+        \intertext{记}
+        K' = R(K)
+        \\
+        \intertext{不动点}
+        K^* = R(K^*)
+        \\
+        K^* = \frac{1}{2} \ln (\cosh 2K^*)
+        \\
+        K^* = 0 \text{或} \infty
+    \end{gather*}
+    其中$K_c = \infty$对应临界点$T_c = 0$，一维Ising模型不存在有限温度的相变
+    \item 在不动点附近线性化重整化群变换,计算临界指数\\
+    设$K'$在$K_c$邻域，展开得
+    \begin{gather*}
+        K'-K_c \sim \left.\dt{R}{K}\right|_{K=K_c} (K-K_c) = \lambda (K-K_c)
+        \\
+        K - K_c = \frac{J}{k} \left(\frac{1}{T} - \frac{1}{T_c}\right) = \frac{J}{kT} \frac{T_c-T}{T_c} \sim K_c \frac{T_c-T}{T_c}
+        \\
+        \intertext{设重整化群变换将关联长度缩小为$\frac{1}{L}$}
+        \xi \sim |T-T_c|^{-\nu}
+        \\
+        \nu = \frac{\ln L}{\ln \lambda}
+    \end{gather*}
+\end{enumerate}

@@ -1,0 +1,377 @@
+\chapter{涨落理论}
+
+\begin{itemize}
+    \item 围绕平均值的涨落
+    \item Brown运动
+\end{itemize}
+
+\section{准热力学理论}
+
+\begin{itemize}
+    \item 对处于平衡态的孤立系，
+    \begin{gather*}
+        W_{max} = e^{\frac{\overline{S}}{k}}
+    \end{gather*}
+    涨落态
+    \begin{gather*}
+        W = \e^{\frac{S}{k}} = W_{max} \e^{\frac{\Delta S}{k}}
+    \end{gather*}
+    \item 对非孤立系统，考虑系统与大热源（带$'$号）合起来构成孤立系，
+    \begin{gather*}
+        \Delta E + \Delta E' = 0, \quad \Delta V + \Delta V' = 0
+        \\
+        W = W_{max} \e^{\frac{\Delta S + \Delta S'}{k}}
+    \end{gather*}
+    大热源涨落很小，认为温度$\overline{T}$和压强$\overline{p}$固定，而$\Delta E',\Delta V',\Delta S'$可认为无穷小，应用热力学基本微分方程
+    \begin{gather*}
+        \Delta S' =\frac{\Delta E' + \overline{p} \Delta V'}{\overline{T}} = -\frac{\Delta E + \overline{p} \Delta V}{\overline{T}}
+        \\
+        W = W_{max} \e^{-\frac{1}{kT}\left(\Delta E - \overline{T} \Delta S + \overline{p} \Delta V\right)}
+    \end{gather*}
+    \begin{itemize}
+        \item 若涨落很小，展开到二阶，假设平均值的函数关系$\overline{E}( \overline{S}, \overline{V})$可以延拓到涨落值
+        \begin{align*}
+            \Delta E =& E - \overline{E} 
+            \\
+            \approx& \left(\pt{\overline{E}}{\overline{S}}\right)_0 \Delta S + \left(\pt{\overline{E}}{\overline{V}}\right)_0 \Delta V + \frac{1}{2} \left[ \left(\pt{^2 \overline{E}}{\overline{S}^2}\right)_0 (\Delta S)^2 + 2 \left(\pt{^2 \overline{E}}{\overline{S} \partial \overline{V}}\right)_0 \Delta S \Delta V + \left(\pt{^2 \overline{E}}{\overline{V}^2}\right)_0 (\Delta V)^2 \right]
+            \\
+            =&\overline{T} \Delta S - \overline{p} \Delta V + \frac{1}{2} \left(\Delta T \Delta S-\Delta p \Delta V\right)
+        \end{align*}
+        \begin{gather*}
+            W = W_{max} \e^{-\frac{1}{2k\overline{T}}\left(\Delta T \Delta S - \Delta p \Delta V\right)}
+        \end{gather*}
+    \end{itemize}
+\end{itemize}
+
+\section{涨落的空间关联}
+
+定义密度-密度关联函数
+\begin{gather*}
+    C(\bm{r}, \bm{r'}) = \overline{(n(\bm{r})-\overline{n}(\bm{r}))(n(\bm{r'})-\overline{n}(\bm{r'}))}
+\end{gather*}
+$C(\bm{r}, \bm{r'}) \neq 0$当且仅当$\bm{r} \neq \bm{r'}$且两处涨落存在关联
+
+对于均匀流体，$C(\bm{r}, \bm{r'}) = C(\bm{r}-\bm{r'})$
+\begin{gather*}
+    C(\bm{r}) = \overline{(n(\bm{r})-\overline{n})(n(0)-\overline{n})}
+    \\
+    \intertext{Fourier展开}
+    n(\bm{r}) - \overline{n} = \frac{1}{V} \sum_{\bm{q}} \tilde{n}(\bm{q}) \e^{i \bm{q} \cdot \bm{r}}
+    \\
+    C(\bm{r}) = \frac{1}{V} \sum_{\bm{q}} \tilde{C}(\bm{q}) \e^{i \bm{q} \cdot \bm{r}}
+    \\
+    \tilde{n}(\bm{q}) = \int_V (n(\bm{r}) - \overline{n}) \e^{-i \bm{q} \cdot \bm{r}} \d \bm{r}
+    \\
+    \tilde{C}(\bm{q}) = \int C(\bm{r}) \e^{-i \bm{q} \cdot \bm{r}} \d \bm{r}
+    \\
+    \intertext{由$n(\bm{r})-\overline{n}$为实数，}
+    \tilde{n}^*(\bm{q}) = \tilde{n}(-\bm{q})
+    \\
+    |\tilde{n}(\bm{q})|^2 = \iint (n(\bm{r}) - \overline{n})(n(\bm{r'}) - \overline{n}) \e^{-i \bm{q} \cdot (\bm{r} - \bm{r'})} \d \bm{r} \d \bm{r'}
+    \\
+    \overline{|\tilde{n}(\bm{q})|^2} = \iint C(\bm{r} - \bm{r'}) \e^{-i \bm{q} \cdot (\bm{r} - \bm{r'})} \d \bm{r} \d \bm{r'}= \int \d^3 \bm{r'} \int \d^3 \bm{R} C(\bm{R}) \e^{-\i \bm{q} \cdot \bm{R}}=V \tilde{C}(\bm{q})
+    \\
+    C(\bm{r}) = \frac{1}{V^2} \sum_{\bm{q}} \overline{|\tilde{n}(\bm{q})|^2} \e^{i \bm{q} \cdot \bm{r}}
+\end{gather*}
+
+Landau密度涨落理论：假定温度为常数，体积固定不变，选$(T, n)$为独立变量
+\begin{gather*}
+    W = W_{max} \e^{-\frac{\Delta F}{kT}}
+\end{gather*}
+设自由能密度$f$
+\begin{gather*}
+    \Delta f = f - \overline{f} = \frac{a}{2} (n - \overline{n})^2 + \frac{b}{2} (\nabla n)^2
+    \\
+    \intertext{稳定性要求}
+    a>0,\quad b>0
+    \\
+    a = \left(\pt{^2 f}{n^2}\right)_T = \left(\frac{\mu}{n}\right)_T = \frac{1}{n} \left(\pt{p}{n}\right)_T
+\end{gather*}
+临界点$\left(\pt{p}{n}\right)_T=0, a=0$，选择
+\begin{gather*}
+    a = a_0 (T - T_c), \quad a_0 > 0
+    \\
+    \Delta f = \frac{1}{V^2} \sum_{\bm{q},\bm{q'}} \tilde{n}^*(\bm{q}) \tilde{n}(\bm{q'}) \left(\frac{a}{2} + \frac{b}{2} \bm{q} \cdot \bm{q'}\right) \e^{-\i (\bm{q} - \bm{q'}) \cdot \bm{r}}
+    \\
+    \Delta F = \frac{1}{2V} \sum_{\bm{q}} (a+bq^2) |\tilde{n}(\bm{q})|^2
+    \\
+    W = W_{max} \prod_{\bm{q}} \e^{-\frac{(a+bq^2)}{2VkT} |\tilde{n}(\bm{q})|^2}
+    \\
+    \overline{|\tilde{n}(\bm{q})|^2} = \frac{\int_{-\infty}^{+\infty} |\tilde{n}(\bm{q})|^2 W \prod_{\bm{s}} \d \tilde{n}(\bm{s})}{\int W \prod_{\bm{s}} \d \tilde{n}(\bm{s})}=\frac{VkT}{a+bq^2}
+    \\
+    C(\bm{r}) = \frac{kT}{V} \sum_{\bm{q}} \frac{\e^{i \bm{q} \cdot \bm{r}}}{a+bq^2}
+    \\
+    \intertext{在热力学极限下，求和变为积分}
+    C(\bm{r}) = \frac{kT}{(2\pi)^3} \int \frac{\e^{i \bm{q} \cdot \bm{r}}}{a+bq^2} \d^3 \bm{q}=\frac{kT}{4\pi b r} \e^{-r/\xi}
+    \\
+    \intertext{关联长度}
+    \xi = \sqrt{\frac{b}{a}}
+\end{gather*}
+
+\section{Brown运动}
+
+\subsection{Langevin方程}
+
+粒子受力分为平均力和涨落力，考虑Brown运动在某个方向上的运动，Langevin方程为
+\begin{gather*}
+    m \frac{\d^2 x}{\d t^2} = -\alpha \frac{\d x}{\d t} + F(t)
+    \\
+    \frac{m}{2} \dt{^2 x}{t^2} - m \left(\dt{x}{t}\right)^2 = -\alpha \dt{x^2}{t} + x F(t)
+    \\
+    \intertext{取平均，由于涨落力与位置无关，}
+    \overline{xF}=0
+    \\
+    \intertext{由能均分定理，}
+    \overline{m \left(\dt{x}{t}\right)^2} = kT
+    \\
+    \dt{^2}{t^2} \overline{x^2} + \frac{1}{\tau} \dt{}{t} \overline{x^2} = \frac{2kT}{m}
+    \\
+    \tau = \frac{m}{\alpha}
+    \\
+    t=0,\quad \overline{x^2}=0,\quad \left.\dt{}{t} \overline{x^2}\right|_{t=0}=0
+    \\
+    \overline{x^2} = \frac{2kT\tau^2}{m} \left(\frac{t}{\tau} -(1-\e^{-t/\tau})\right)
+\end{gather*}
+\begin{itemize}
+    \item $t\ll \tau$
+    \begin{gather*}
+        \overline{x^2} = \frac{kT}{m} t^2
+    \end{gather*}
+    与力学运动一致
+    \item $t \gg \tau$
+    \begin{gather*}
+        \overline{x^2} = \frac{2kT}{\alpha} t = 2Dt
+        \\
+        D = \frac{kT}{\alpha}
+    \end{gather*}
+\end{itemize}
+
+\subsection{扩散}
+
+引入转移概率$f(x, t)$表示$t=0$时$x=0$处的粒子在$t$时刻出现在$x$处的概率密度
+\begin{gather*}
+    n(x, t+\tau) = \int_{-\infty}^{+\infty} f(x-x', \tau) n(x', t) \d x'=\int_{-\infty}^{+\infty} f(\xi, \tau) n(x-\xi, t) \d \xi
+    \\
+    \intertext{转移概率满足}
+    \begin{cases}
+        \int_{-\infty}^{+\infty} f(\xi, \tau) \d \xi = 1
+        \\
+        f(\xi, \tau) = f(-\xi, \tau)
+    \end{cases}
+    \\
+    \intertext{$\tau$很小时，展开为}
+    n(x, t+\tau) = n(x, t) + \tau \pt{n}{t} + \cdots
+    \\
+    n(x-\xi, t) = n(x, t) - \xi \pt{n}{x} + \frac{1}{2} \xi^2 \pt{^2 n}{x^2} + \cdots
+    \\
+    \intertext{代入得}
+    \pt{n}{t} - D \pt{^2 n}{x^2} = 0
+    \\
+    \intertext{扩散系数}
+    D = \frac{\overline{\xi^2}}{2\tau}
+\end{gather*}
+与前述扩散系数相同。转移概率也满足扩散方程
+\begin{gather*}
+    \pt{}{\tau} f(\xi, \tau) - D \pt{^2}{\xi^2} f(\xi, \tau) = 0
+    \\
+    f(\xi, \tau) = \frac{1}{2\sqrt{\pi D \tau}} \int_{-\infty}^{+\infty} f(\xi', 0) \e^{-\frac{(\xi - \xi')^2}{4D \tau}} \d \xi'
+    \\
+    f(\xi, 0) = \delta(\xi)
+    \\
+    f(\xi, \tau) = \frac{1}{2\sqrt{\pi D \tau}} \e^{-\frac{\xi^2}{4D \tau}}
+\end{gather*}
+
+\subsection{无规行走}
+
+设粒子$t=0$时位于原点，每隔时间$\tau$行走一步，步长$\lambda$，总步数$N = \frac{t}{\tau}$，设$k$步向$+x$方向
+\begin{gather*}
+    P_N(k) = \frac{N!}{k!(N-k)!} \left(\frac{1}{2}\right)^N
+    \\
+    \intertext{位置$x=m\lambda$的概率}
+    P_N(m) = \frac{N!}{\left(\frac{N+m}{2}\right)! \left(\frac{N-m}{2}\right)!} \left(\frac{1}{2}\right)^N
+    \\
+    \intertext{当$t \ll \tau$时}
+    P_N(m) = \sqrt{\frac{2}{\pi N}} \e^{-\frac{m^2}{2N}}
+    \\
+    \intertext{相邻两位置$m$值之差为$2$}
+    P(x, t) = \frac{P_N(m)}{2\lambda} = \frac{1}{\sqrt{2\pi N \lambda^2}} \e^{-\frac{x^2}{2N \lambda^2}}=\frac{1}{2\sqrt{\pi D t}}\e^{-\frac{x^2}{4D t}}
+    \\
+    \overline{x^2(t)}=2Dt
+\end{gather*}
+
+\section{涨落的时间关联}
+
+随机变量$B(t)$的时间关联函数
+\begin{gather*}
+    K_{BB}(t_1, t_2) = \overline{B(t_1)B(t_2)}
+    \\
+    K_{BB}(t_1, t_2) = K_{BB}(t_1 - t_2)
+    \\
+    -K_{BB}(0) \leq K_{BB}(s) \leq K_{BB}(0),\quad \forall s
+    \\
+    K_{BB}(-s) = K_{BB}(s)
+    \\
+    \intertext{存在关联时间$\tau_B$}
+    s\ll \tau_B,\quad K_{BB}(s) \to 0
+\end{gather*}
+
+对于Brown运动，
+\begin{gather*}
+    \dt{u}{t} = - \frac{u}{\tau} + A(t)
+    \\
+    A(t) = \frac{F(t)}{m}
+    \\
+    u(t) = u(0) \e^{-t/\tau} + \e^{-\frac{t}{\tau}} \int_{0}^{t} \e^{\frac{\xi}{\tau}} A(\xi) \d \xi
+    \\
+    \intertext{设所有粒子初速度相同，求系综平均}
+    \overline{u(t)} = u(0) \e^{-t/\tau}
+    \\
+    \overline{u^2(t)} = u^2(0) \e^{-2t/\tau} + \e^{-\frac{2t}{\tau}} \int_{0}^{t} \int_{0}^{t} \e^{\frac{\xi_1 + \xi_2}{\tau}} \overline{A(\xi_1) A(\xi_2)} \d \xi_1 \d \xi_2
+    \\
+    I = \int_{0}^{t} \int_{0}^{t} \e^{\frac{\xi_1 + \xi_2}{\tau}} K_{AA}(\xi_2-\xi_1) \d \xi_1 \d \xi_2
+    \\
+    \intertext{坐标变换}
+    \begin{cases}
+        S = \frac{\xi_1+\xi_2}{2}
+        \\
+        s = \xi_2 - \xi_1
+    \end{cases}
+\end{gather*}
+由于$A(t)$变化很快，关联时间$\tau_A$远小于粒子平均速度的弛豫时间
+\begin{gather*}
+    K_AA(s) = \delta(s)
+    \\
+    \overline{u^2(t)} = u^2(0) \e^{-2t/\tau} + \frac{kT}{m} (1 - \e^{-2t/\tau})
+\end{gather*}
+
+\section{涨落-耗散定理}
+
+在Brown运动中，阻尼系数
+\begin{gather*}
+    \alpha = \frac{m}{\tau} = \frac{m^2}{2kT} \int_{-\infty}^{+\infty} K_{AA}(s) \d s = \frac{m^2}{2kT} \int_{-\infty}^{+\infty} \overline{A(t) A(t+s)} \d s
+\end{gather*}
+\begin{gather*}
+    x(t) = \int_{0}^{t} u(\xi) \d \xi
+    \\
+    \overline{x^2(t)} = \int_{0}^{t} \int_{0}^{t} \overline{u(\xi_1) u(\xi_2)} \d \xi_1 \d \xi_2 = \int_{0}^{t} \int_{0}^{t} K_{uu}(\xi_1, \xi_2) \d \xi_1 \d \xi_2
+    \\
+    \intertext{坐标变换}
+    \begin{cases}
+        S = \frac{\xi_1+\xi_2}{2}
+        \\
+        s = \xi_2 - \xi_1
+    \end{cases}
+    \\
+    K_{uu}(s) = \overline{u(t) u(t+s)} = u^2(0) \e^{-\frac{2t+s}{\tau}} + \e^{-\frac{2t+s}{\tau}} \int_{0}^{t} \int_{0}^{t+s} \e^{\frac{\xi_1 + \xi_2}{\tau}} \overline{A(\xi_1)A(\xi_2)} \d \xi_1 \d \xi_2
+    \\
+    K_{AA}(s) = \overline{A(t) A(t+s)} = C\delta(s)
+    \\
+    K_{uu}(s) = \begin{cases}
+        u^2(0) \e^{-\frac{2t+s}{\tau}} + \frac{C \tau}{2} \e^{-\frac{s}{\tau}} \left(1 - \e^{-\frac{2t}{\tau}}\right), & s > 0
+        \\
+        u^2(0) \e^{-\frac{2t+s}{\tau}} + \frac{C \tau}{2} \e^{\frac{s}{\tau}} \left(1 - \e^{-\frac{2(t+s)}{\tau}}\right), & s < 0
+    \end{cases}
+    \\
+    \intertext{当$t \ll \tau$时}
+    K_{uu}(s) = \frac{kT}{m} \e^{-\frac{|s|}{\tau}}
+    \\
+    \overline{x^2(t)}=\int_{0}^{t}\d S \int_{-\infty}^{+\infty} K_{uu}(s) \d s = t \int_{-\infty}^{+\infty} K_{uu}(s) \d s 
+    \\
+    D = \frac{1}{2} \int_{-\infty}^{+\infty} K_{uu}(s) \d s = \frac{1}{2} \int_{-\infty}^{+\infty} \overline{u(t) u(t+s)} \d s
+\end{gather*}
+
+根据涨落回归假说，平衡态自发涨落的弛豫过程与非平衡态外加热力学力去掉后回归平衡态的弛豫过程遵循相同的宏观规律，联系了涨落与耗散
+
+\section{电路中的热噪声}
+
+Nyquist定理：平衡态温度为$T$的电路系统，电阻$R$两端涨落电压的平方平均
+\begin{gather*}
+    \overline{V^2}=4kTR \Delta \nu
+    \\
+    \intertext{谱密度}
+    S(\nu) =4kT R
+\end{gather*}
+
+借助Brown运动的理论，
+\begin{gather*}
+    L \dt{I(t)}{t} = - R I(t) + V(t)
+    \\
+    K_{VV}(s) = \overline{V^2(0)} \delta(s)
+    \\
+    \overline{V^2(0)} = 2kTR
+    \\
+    \overline{I^2(t)}=I^2(0) \e^{-\frac{2t}{\tau}} + \frac{kT}{L} (1 - \e^{-\frac{2t}{\tau}})
+    \\
+    \tau = \frac{L}{R}
+    \\
+    K_{II}(s) = \frac{kT}{L} \e^{-\frac{|s|}{\tau}}
+    \\
+    \intertext{涨落-耗散定理}
+    R = \frac{1}{2kT} \int_{-\infty}^{+\infty} \overline{V(0)V(s)} \d s
+\end{gather*}
+
+\subsection{时间关联函数的谱分解}
+
+对随机变量$B(t)$，Fourier变换
+\begin{gather*}
+    B(t) = \int_{-\infty}^{+\infty} \tilde{B}(\omega) \e^{i \omega t} \d \omega
+    \\
+    \tilde{B}(\omega) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} B(t) \e^{-i \omega t} \d t
+    \\
+    \intertext{由于$B(t)$为实数，}
+    \tilde{B}^*(\omega) = \tilde{B}(-\omega)
+    \\
+    \intertext{Fourier积分定理}
+    \frac{1}{2\pi} \int_{-\infty}^{+\infty} B^2(t) \d t = \int_{-\infty}^{+\infty} |\tilde{B}(\omega)|^2 \d \omega
+\end{gather*}
+
+对时间关联函数Fourier变换
+\begin{gather*}
+    K_{BB}(s) = \int_{-\infty}^{+\infty} \tilde{K}_{BB}(\omega) \e^{i \omega s} \d \omega
+    \\
+    \tilde{K}_{BB}(\omega) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} K_{BB}(s) \e^{-i \omega s} \d s
+    \\
+    \intertext{由$K_{BB}(s)$为偶函数且为实数}
+    \tilde{K}_{BB}(\omega) = \tilde{K}_{BB}(-\omega)= \tilde{K}_{BB}^*(\omega)
+    \\
+    K_{BB}(s) = \overline{B(t)B(t+s)} = \iint \d \omega \d \omega' \overline{\tilde{B}(\omega) \tilde{B}(\omega')} \e^{\i \omega s} \e^{i (\omega + \omega') t}
+    \\
+    \tilde{K}_{BB}(\omega) = \int \d \omega' \overline{\tilde{B}(\omega) \tilde{B}(\omega')} \e^{i (\omega + \omega') t}
+\end{gather*}
+左侧与$t$无关，要对任何$t$均成立，有
+\begin{gather*}
+    \overline{\tilde{B}(\omega) \tilde{B}(\omega')} = \overline{\tilde{B}(\omega)\tilde{B}(-\omega)} \delta(\omega + \omega')=|\tilde{B}(\omega)|^2 \delta(\omega + \omega')
+    \\
+    \tilde{K}_{BB}(\omega) = |\tilde{B}(\omega)|^2
+\end{gather*}
+
+\subsection{电路中热噪声谱密度}
+
+涨落电压
+\begin{gather*}
+    K_{VV}(s) = 2kTR \delta(s)
+    \\
+    \tilde{K}_{VV}(\omega) = \frac{kTR}{\pi}
+    \\
+    \overline{V^2} = \overline{V^2(t)} = K_{VV}(0) = \int_{-\infty}^{+\infty} \tilde{K}_{VV}(\omega) \d \omega = 4\pi \int_{0}^{+\infty} \tilde{K}_{VV}(\omega) \d \nu
+    \\
+    \intertext{谱密度}
+    S_V(\nu) = 4\pi \tilde{K}_{VV}(\omega) = 4kTR
+    \\
+    \intertext{要求}
+    \nu \ll \frac{1}{\tau_V}
+\end{gather*}
+
+涨落电流
+\begin{gather*}
+    \tilde{K}_{II}(\omega) = \overline{|\tilde{I}(\omega)|^2}
+    \\
+    \tilde{I}(\omega) = \frac{\tilde{V}(\omega)}{R + i \omega L}
+    \\
+    \tilde{K}_{II}(\omega) = \frac{\tilde{K}_{VV}(\omega)}{R^2 + \omega^2 L^2} = \frac{kT R / \pi}{R^2 + \omega^2 L^2}
+    \\
+    K_{II}(s) = \frac{kT}{L} \e^{-\frac{|s|}{\tau}}
+    \\
+    \intertext{对于低频区，$\nu \ll \frac{R}{L}$}
+    \tilde{K}_{II}(\omega) = \frac{kT}{\pi R}
+\end{gather*}

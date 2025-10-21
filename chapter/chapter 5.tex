@@ -1,0 +1,145 @@
+\chapter{非平衡态热力学（线性理论）}
+
+\section{非平衡态热力学（线性理论）基本概念}
+
+\begin{itemize}
+    \item 局域平衡近似\\
+    系统可以分成宏观小微观大的小块，每一小块内部的性质是均匀的，可以用平衡态方式描述，条件为
+    \begin{gather*}
+        \tau_{\text{小块}} \ll \Delta t \ll \tau_{\text{系统}}
+    \end{gather*}
+    $\tau_{\text{小块}}$为小块孤立后的弛豫时间，$\Delta t$为非平衡过程进行的特征时间，$\tau_{\text{系统}}$为系统切断外部作用后的弛豫时间
+    \item 热力学第一定律
+    \begin{gather*}
+        \d U + \d \left(\frac{1}{2} M v^2\right)= \d Q + \d W
+    \end{gather*}
+    假设如下关系仍成立
+    \begin{gather*}
+        T \d S = \d U + p \d V - \sum_{i=1}^{k} \mu_i \d N_i
+    \end{gather*}
+    \item 热力学第二定律
+    \begin{gather*}
+        \begin{cases}
+            \d S = \d_e S + \d_i S
+            \\
+            \d_e S = \frac{\d Q}{T}
+            \\
+            \d_i S \geq 0
+        \end{cases}
+        \\
+        \intertext{熵密度}
+        \pt{s}{t} = \pt{_e s}{t} + \pt{_i s}{t}
+        \\
+        \intertext{熵产生率}
+        \theta = \pt{_i s}{t}
+        \\
+        \intertext{熵平衡方程}
+        \pt{s}{t} + \nabla \cdot \mathbf{J}_s = \theta
+    \end{gather*}
+    \item 质量守恒定律
+    \begin{gather*}
+        \pt{n}{t} + \nabla \cdot \bm{J}_n = 0
+    \end{gather*}
+    \item 输运过程：热力学流与热力学力有线性关系
+    \begin{gather*}
+        \intertext{Fourier热传导定律}
+        \bm{J}_q = - \kappa \nabla T
+        \\
+        \intertext{Fick扩散定律}
+        \bm{J}_n = - D_n \nabla n
+        \\
+        \intertext{Ohm定律}
+        \bm{J}_e = - \sigma \nabla \phi
+    \end{gather*}
+    一般而言，热力学流与热力学力还可能存在交叉效应，
+    \begin{gather*}
+        J_i = \sum_j L_{ij} X_j
+    \end{gather*}
+    在满足
+    \begin{gather*}
+        \theta = \sum_i J_i X_i
+    \end{gather*}
+    的条件下，系数$L_{ij}$有Onsager关系
+    \begin{gather*}
+        L_{ij} = L_{ji}
+    \end{gather*}
+    \item 在恒定的外界条件下，非平衡定态是熵产生率最小的态，且对小的扰动是稳定的
+\end{itemize}
+
+\section{热传导}
+
+考虑均匀非金属固体，体积变化可以忽略，不存在宏观流动，只考虑单纯热传导
+\begin{gather*}
+    \d U = \d Q
+    \\
+    \intertext{内能密度$u$满足}
+    \pt{u}{t} + \nabla \cdot \bm{J}_u = 0
+    \\
+    \intertext{熵产生率}
+    \theta = \pt{s}{t} - \pt{_e s}{t}=\frac{1}{T} \pt{u}{t} + \nabla \cdot \bm{J}_s=-\frac{1}{T} \nabla \cdot \bm{J}_q + \nabla \cdot \left(\frac{\bm{J}_q}{T}\right)=-\frac{1}{T^2} \bm{J}_q \cdot \nabla T = \frac{\kappa}{T^2} (\nabla T)^2 > 0
+\end{gather*}
+
+\section{温差电效应}
+
+热效应和电效应会耦合，设金属各向同性，电子数密度$n_e$，内能密度$u$
+\begin{gather*}
+    \bm{J}=-e \bm{J}_n
+    \\
+    \pt{n_e}{t}=-\nabla \cdot \bm{J}_n=\frac{1}{e} \nabla \cdot \bm{J}
+    \\
+    \pt{u}{t} = - \nabla \cdot \bm{J}_q + \bm{J} \cdot \vec{\mathscr{E}}
+    \\
+    T \d S = \d U - \mu \d N_e
+    \\
+    \pt{s}{t} = \frac{1}{T} \pt{u}{t} - \frac{\mu}{T} \pt{n_e}{t} = \frac{1}{T} (- \nabla \cdot \bm{J}_q + \bm{J} \cdot \vec{\mathscr{E}})-\frac{\mu}{eT} \nabla \cdot \bm{J}
+    \\
+    \pt{s}{t} = - \nabla \cdot \bm{J}_s + \theta
+    \\
+    \bm{J}_s = \frac{1}{T}(\bm{J}_q - \mu \bm{J}_n)
+    \\
+    \theta = \bm{J} \cdot \left(\frac{\vec{\mathscr{E}}}{T} + \nabla \frac{\mu}{eT}\right) + \bm{J}_q \cdot \nabla \frac{1}{T}
+    \\
+    \intertext{选择热力学力分别为}
+    \begin{cases}
+        \bm{X}_1 = \vec{\mathscr{E}} + \frac{1}{e} \nabla \frac{\mu}{T}
+        \\
+        \bm{X}_2 = - \nabla T
+    \end{cases}
+    \\
+    \intertext{对应的热力学流为$\bm{J}$和$\bm{J}_s$}
+    T \theta = \bm{J} \cdot \bm{X}_1 + \bm{J}_s \cdot \bm{X}_2
+    \\
+    \intertext{分别考虑纯电效应和纯热效应}
+    \begin{cases}
+        L_{11} = \sigma
+        \\
+        L_{11} L_{22} - L_{12} L_{21} = \frac{\sigma \kappa}{T}
+    \end{cases}
+    \\
+    \intertext{实际观测中，定义唯象参数}
+    \eta = - \frac{L_{12}}{L_{11}},\quad \frac{\pi}{T} = \frac{L_{21}}{L_{11}}
+\end{gather*}
+\begin{itemize}
+    \item 温差电动势：温差电偶，由两种不同金属$a$和$b$构成回路，温差电动势$E$，
+    \begin{gather*}
+        \pt{E}{T} = \eta_{ab} = \eta_a - \eta_b
+    \end{gather*}
+    \item Peltier效应：两种不同金属$a$和$b$构成回路，系统温度均匀恒定，电流$I$通过时，在接点处单位时间吸收热量
+    \begin{gather*}
+        Q_P = \pi_{ab} I = (\pi_a - \pi_b) I
+    \end{gather*}
+    有Thomson第二关系
+    \begin{gather*}
+        \pi = T \pt{E}{T}
+    \end{gather*}
+    \item Thomson效应：若导体中存在温度梯度，电流通过时，导体在Joule热效应之外单位时间单位体积放热
+    \begin{gather*}
+        q_T=- \tau \bm{J} \cdot \nabla T
+        \\
+        \tau = - \left(\pt{\pi}{T} - \frac{\pi}{T}\right)
+    \end{gather*}
+    Thomson第一关系
+    \begin{gather*}
+        \tau_{ab} = \pt{E}{T} - \pt{\pi_{ab}}{T}
+    \end{gather*}
+\end{itemize}

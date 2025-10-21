@@ -1,0 +1,139 @@
+\chapter{均匀系的平衡性质}
+
+\section*{热力学函数方法}
+
+\section{特性函数与Maxwell关系}
+
+对$p-V-T$系统的可逆过程，
+\begin{itemize}
+    \item 内能$U(S,V)$
+    \begin{gather*}
+        \d U = T \d S - p \d V
+        \\
+        T = \left(\frac{\partial U}{\partial S}\right)_V,\quad p = -\left(\frac{\partial U}{\partial V}\right)_S
+        \\
+        \left(\frac{\partial T}{\partial V}\right)_S = -\left(\frac{\partial p}{\partial S}\right)_V
+    \end{gather*}
+    \item 焓$H(S,p) = U + pV$
+    \begin{gather*}
+        \d H = T \d S + V \d p
+        \\
+        T = \left(\frac{\partial H}{\partial S}\right)_p,\quad V = \left(\frac{\partial H}{\partial p}\right)_S
+        \\
+        \left(\frac{\partial T}{\partial p}\right)_S = \left(\frac{\partial V}{\partial S}\right)_p
+    \end{gather*}
+    \item 自由能$F(T,V) = U - TS$
+    \begin{gather*}
+        \d F = -S \d T - p \d V
+        \\
+        S = -\left(\frac{\partial F}{\partial T}\right)_p,\quad p = -\left(\frac{\partial F}{\partial V}\right)_T
+        \\
+        \left(\frac{\partial S}{\partial V}\right)_T = \left(\frac{\partial p}{\partial T}\right)_V
+    \end{gather*}
+    \item Gibbs函数$G(T,p) = U - TS + pV$
+    \begin{gather*}
+        \d G = -S \d T + V \d p
+        \\
+        S = -\left(\frac{\partial G}{\partial T}\right)_p,\quad V = \left(\frac{\partial G}{\partial p}\right)_T
+        \\
+        \left(\frac{\partial S}{\partial p}\right)_T = -\left(\frac{\partial V}{\partial T}\right)_p
+    \end{gather*}
+\end{itemize}
+
+推论
+\begin{itemize}
+    \item \begin{gather*}
+    C_p-C_V=T\left(\frac{\partial p}{\partial T}\right)_V \left(\frac{\partial V}{\partial T}\right)_p
+    \end{gather*}
+    \item \begin{gather*}
+    \left(\frac{\partial U}{\partial V}\right)_T = T\left(\frac{\partial p}{\partial T}\right)_V - p
+    \end{gather*}
+\end{itemize}
+
+\section{节流过程}
+
+绝热管多孔塞，两侧压强$p_1$和$p_2$，气体流过多孔塞，发生绝热不可逆等焓过程
+
+Joule-Thomson系数
+\begin{gather*}
+    \mu = \left(\frac{\partial T}{\partial p}\right)_H = \frac{1}{C_p}\left[T\left(\frac{\partial V}{\partial T}\right)_p - V\right]
+\end{gather*}
+\begin{itemize}
+    \item $\mu > 0$，致冷区
+    \item $\mu < 0$，致温区
+    \item $\mu = 0$，决定反转曲线
+\end{itemize}
+
+\section{绝热去磁降温的热力学理论}
+
+均匀各向同性顺磁固体可逆过程
+\begin{gather*}
+    \d U = T \d S + \mu_0 \mathscr{H} \d \mathscr{M}
+\end{gather*}
+将磁场划到系统以外，忽略了体积变化，$U$和$S$代表内能和熵的密度
+
+磁场缓慢变化，耗散效应很小，绝热过程近似为可逆过程即等熵过程
+\begin{gather*}
+    \intertext{Maxwell关系}
+    \left(\pt{S}{\mathscr{H}}\right)_T = \mu_0 \left(\pt{\mathscr{M}}{T}\right)_{\mathscr{H}}
+    \\
+    \left(\pt{T}{\mathscr{H}}\right)_S = -\left(\pt{T}{S}\right)_{\mathscr{H}} \left(\pt{S}{\mathscr{H}}\right)_T = -\frac{\mu_0 T}{C_{\mathscr{H}}} \left(\pt{\mathscr{M}}{T}\right)_{\mathscr{H}}
+\end{gather*}
+
+高温弱磁场下，顺磁固体服从Curie定律
+\begin{gather*}
+    \mathscr{M} = \frac{C}{T} \mathscr{H}
+\end{gather*}
+晶场分裂能量$\delta_1 \ll kT$时，
+\begin{gather*}
+    C_{\mathscr{H}}(T, 0) = \frac{b}{T^2}
+    \\
+    C_{\mathscr{H}}(T, \mathscr{H}) = \frac{b+\mu_0 C \mathscr{H}^2}{T^2}
+    \\
+    \left(\pt{T}{\mathscr{H}}\right)_S = \frac{\mu_0 C}{T C_{\mathscr{H}}} \mathscr{H}
+    \\
+    \d S = \left(\pt{S}{T}\right)_{\mathscr{H}} \d T + \left(\pt{S}{\mathscr{H}}\right)_T \d \mathscr{H} = \frac{C_{\mathscr{H}}}{T} \d T + \mu_0 \left(\pt{\mathscr{M}}{T}\right)_{\mathscr{H}} \d \mathscr{H}
+    \\
+    S = S_0 - \frac{b + \mu_0 C \mathscr{H}^2}{T^2}
+\end{gather*}
+等熵过程$T$与$\mathscr{H}$变化趋势相同，达到去磁降温效果
+
+\section{热辐射的热力学理论}
+
+热辐射：热平衡的电磁辐射，包含各种频率，每一种频率的振幅与相位都是随机的，在空间分布均匀各向同性
+
+根据热力学第二定律的Kelvin表述可以证明，内能密度$u$只与温度$T$有关
+
+根据电磁理论可以证明
+\begin{gather*}
+    p=\frac{1}{3}u
+\end{gather*}
+代入热力学基本关系解得
+\begin{gather*}
+    u = a T^4
+    \\
+    U = a T^4 V
+    \\
+    p = \frac{1}{3} a T^4
+\end{gather*}
+
+\section{可逆循环过程方法}
+
+设计可逆循环过程，计算热力学量的变化，非均匀系也可使用
+
+以热辐射为例：设计微小Carnot循环过程，工作于$T$和$T+\d T$之间
+\begin{gather*}
+    \d Q_1 + \d Q_2 = \d p \d V
+    \\
+    \frac{\d Q_1}{T+\d T} + \frac{\d Q_2}{T} = 0
+    \\
+    \implies \frac{\d Q_1}{T+\d T} = \frac{\d Q_1 + \d Q_2}{\d T} = \frac{\d p \d V}{\d T}
+    \\
+    \intertext{代入物态方程}
+    \d Q_1 \approx (u(T) + p(T)) \d V = \frac{4}{3} u(T) \d V
+    \\
+    \intertext{代入得到}
+    \frac{4}{3} \frac{u}{T} = \frac{1}{3} \frac{\d u}{\d T}
+    \\
+    u = a T^4
+\end{gather*}
