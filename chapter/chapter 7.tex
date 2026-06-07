@@ -68,6 +68,9 @@
     \\
     \intertext{熵}
     S = Nk \left( \ln Z - \beta \pt{\ln Z}{\beta} \right)
+    \\
+    \intertext{自由能}
+    F=U-TS = -NkT \ln Z
 \end{gather*}
 Boltzmann关系
 \begin{gather*}
@@ -280,7 +283,7 @@ Lagrange乘子
 \end{gather*}
 但熵与Maxwell-Boltzmann分布不同
 \begin{gather*}
-    S = k \ln W_{MB} - k \ln \overline{N}!
+    S = k \ln W_{MB} - k \ln \overline{N}! = Nk \left( \ln Z - \beta \pt{\ln Z}{\beta} \right) - k \ln \overline{N}!
 \end{gather*}
 
 非简并理想气体分子能量分为平动、转动、振动、束缚电子能量四部分
@@ -356,9 +359,11 @@ Lagrange乘子
 
 经典极限条件
 \begin{gather*}
-    \e^{\alpha} \gg 1
-    \\
-    \frac{\Delta \varepsilon_n}{kT} \ll 1, \quad \forall n
+    \begin{cases}
+        \e^{\alpha} \gg 1
+        \\
+        \frac{\Delta \varepsilon_n}{kT} \ll 1, \quad \forall n
+    \end{cases}
 \end{gather*}
 
 \subsubsection{Maxwell速度分布}
@@ -837,3 +842,50 @@ $v \to v_c^+$时，$\kappa_T \to +\infty$
         C_V = T \left(\pt{S}{T}\right)_V = \overline{N} k \left[\frac{3}{4}+\frac{\Delta}{kT}+\left(\frac{\Delta}{kT}\right)^2\right]
     \end{gather*}
 \end{itemize}
+
+\section*{公式总结}
+
+\begin{table}[htbp]
+    \centering
+    \caption{三种分布对比}
+    \begin{tabular}{cccc}
+        \toprule
+        物理量 & Maxwell-Boltzmann分布 & 非定域子系 \\
+        \midrule
+        热力学概率$W$ & $W_{MB}=\frac{N!}{\prod_{\lambda} a_{\lambda}!}$ & $W_{FD}=\frac{g_{\lambda}!}{a_{\lambda}! (g_{\lambda} - a_{\lambda})!}, W_{BE}=\frac{(a_{\lambda} + g_{\lambda} - 1)!}{a_{\lambda}! (g_{\lambda} - 1)!}$ \\
+        最概然分布$\tilde{a}_{\lambda}$ & $g_{\lambda} \e^{-\alpha-\beta \varepsilon_{\lambda}}$ & $\frac{g_{\lambda}}{\e^{\beta(\varepsilon_{\lambda} - \mu)} \pm 1}$ \\
+        配分函数 & $Z(\beta, V)=\sum_{\lambda} g_{\lambda} \e^{-\beta \varepsilon_{\lambda}}$ & $\Xi(\beta, \alpha, V) = \prod_{\lambda} (1 \pm \e^{-\beta(\varepsilon_{\lambda} - \mu)})^{\pm g_{\lambda}}$\\
+        内能$U$ & $-N\pt{\ln Z}{\beta}$ & $-\pt{\ln \Xi}{\beta}$ \\
+        广义力$Y_l$ & $-\frac{N}{\beta} \pt{\ln Z}{y_l}$ & $-\frac{1}{\beta} \pt{\ln \Xi}{y_l}$ \\
+        熵$S$ & $Nk\left(\ln Z - \beta \pt{\ln Z}{\beta}\right)$ & $k\left(\ln \Xi - \beta \pt{\ln \Xi}{\beta} - \alpha\pt{\ln \Xi}{\alpha}\right)$ \\
+        化学势$\mu$ & $-kT \ln Z$ & $-kT \alpha$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+半经典条件
+\begin{gather*}
+    \frac{\Delta \varepsilon_n}{kT} \ll 1, \quad \forall n \implies \text{量子态求和改为相空间积分}
+    \\
+    \implies \text{$\varepsilon\sim\varepsilon + \d \varepsilon$状态数} g(\varepsilon) \d \varepsilon = \frac{\d \omega}{h^3} = \frac{4\pi V}{h^3} p^2 \d p = 
+    \begin{cases}
+        \frac{2\pi V}{h^3} (2s+1)(2m)^{\frac{3}{2}} \varepsilon^{\frac{1}{2}} \d \varepsilon, \quad \text{自旋$s$的非相对论粒子}
+        \\
+        \frac{8\pi V}{h^3c^3} \varepsilon^2 \d \varepsilon, \quad \text{无质量粒子}
+    \end{cases}
+\end{gather*}
+
+非简并条件：Fermi-Dirac分布和Bose-Einstein分布的区别消失
+\begin{gather*}
+    \e^{\alpha} \gg 1
+    \\
+    W_{sc} = \frac{W_{MB}}{N!}
+    \\
+    \ln \Xi = N = \e^{-\alpha} Z
+    \\
+    S = Nk \left(\ln Z - \beta \pt{\ln Z}{\beta}\right) - k \ln N!
+    \\
+    F = -kT \ln \Xi = -NkT \ln Z + kT \ln N!
+    \\
+    \mu = \left(\pt{F}{N}\right)_{T,V} = -kT \ln \frac{Z}{N}
+\end{gather*}
