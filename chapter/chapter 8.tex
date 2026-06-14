@@ -104,14 +104,21 @@ $s$用来标记量子态
     f_{ij} = f(r_{ij}) = e^{-\beta \varphi_{ij}} - 1
     \\
     \begin{cases}
-        \lim_{r \to 0} f(r) = -1
+        \displaystyle \lim_{r \to 0} f(r) = -1
         \\
         r > r_0,\quad f \to 0
     \end{cases}
     \\
     Q_N = \int \cdots \int \left(1 + \displaystyle \sum_{i<j} f_{ij} + \sum_{i<j} \sum_{i'<j'} f_{ij} f_{i'j'} + \cdots\right) \d^3 \bm{r}_1 \cdots \d^3 \bm{r}_N
 \end{gather*}
-可以取$Q_N$的前若干项进行计算
+可以取$Q_N$的前若干项进行计算。保留到前两项，
+\begin{gather*}
+    Q = V^N + \frac{N(N-1)}{2} V^{N-2} \int \d^3 \bm{r}_1 \int \d^3 \bm{r}_2 f(r_{12})
+    \\
+    = V^N + \frac{N(N-1)}{2} V^{N-2} \int f(r) \d^3 \bm{r} = V^N - N(N-1) V^{N-1} a_2(T)
+    \\
+    a_2(T) = -\frac{1}{2} \int f(r) \d^3 \bm{r} = -2\pi \int_0^{\infty} \left(\e^{\beta\phi(r)}-1\right) r^2 \d r
+\end{gather*}
 
 \subsection{约化分布函数方法}
 
