@@ -404,7 +404,7 @@ Lagrange乘子
         \intertext{态密度}
         D(\varepsilon) = \frac{1}{h^3} \iiint_V \d x \d y \d z \iiint_{\d \varepsilon} \d p_x \d p_y \d p_z = \frac{2\pi V}{h^3} (2m)^{\frac{3}{2}} \varepsilon^{\frac{1}{2}} \d \varepsilon
         \\
-        \ln \Xi = -\frac{2\pi V}{h^3} (2m)^{\frac{3}{2}} \int_{0}^{\infty} \varepsilon^{\frac{1}{2}} \ln(1 - \e^{-\alpha - \beta \varepsilon}) \d \varepsilon = \frac{2\pi V}{h^3} (\frac{2m}{\beta})^{\frac{3}{2}} \frac{2}{3} \int_{0}^{+\infty} \frac{x^{\frac{3}{2}}}{\e^{\alpha + x} - 1} \d x
+        \ln \Xi = -\frac{2\pi V}{h^3} (2m)^{\frac{3}{2}} \int_{0}^{\infty} \varepsilon^{\frac{1}{2}} \ln(1 - \e^{-\alpha - \beta \varepsilon}) \d \varepsilon = \frac{2\pi V}{h^3} \left(\frac{2m}{\beta}\right)^{\frac{3}{2}} \frac{2}{3} \int_{0}^{+\infty} \frac{x^{\frac{3}{2}}}{\e^{\alpha + x} - 1} \d x
         \\
         \intertext{设}
         z = \e^{-\alpha}
@@ -428,7 +428,7 @@ Lagrange乘子
         \lambda_T = \frac{h}{\sqrt{2\pi m k T}}
         \\
         \intertext{由总粒子数条件确定$z$}
-        N = \frac{1}{\lambda_T^3} g_{\frac{5}{2}}(z) \iff y = n \lambda_T^3 = g_{\frac{3}{2}}(z)
+        N = \frac{V}{\lambda_T^3} g_{\frac{3}{2}}(z) \iff y = n \lambda_T^3 = g_{\frac{3}{2}}(z)
         \\
         \intertext{反解出$z$关于$y$的表达式}
         p = \frac{kT}{\lambda_T^3} g_{\frac{5}{2}}(z)
